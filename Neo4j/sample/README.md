@@ -39,15 +39,17 @@ MERGE (cn) <-[:body]- (f6)
 # **Rules** implementation for inference
 
 ## R1
-//min([t1.time[0], t2.time[0], t3.time[0]]), max([t1.time[1], t2.time[1], t3.time[1]])
+
+> ***TODO***: Need to change the rule for every instance (x.ID ?)
+> ***TODO***: Integrate time intervals for validity (weights)
+> min([t1.time[0], t2.time[0], t3.time[0]]), max([t1.time[1], t2.time[1], t3.time[1]])
 ```
-MATCH (:Concept{ID:"Person"})<-[:head]-(t1) -[:body]-> (x:Concept),
-  (:Concept{ID:"LivePeriod"}) <-[:head]- (t2) -[:body]-> (x),
-  (:Concept{ID:"Studied"}) <-[:head]- (t3) -[:body]-> (x), (t3) -[:body]-> (:Concept{ID:"CollegeOfNavarre"})
+MATCH (c1:Concept{ID:"Person"})<-[:head]-(t1) -[:body]-> (x:Concept),
+  (c2:Concept{ID:"LivePeriod"}) <-[:head]- (t2) -[:body]-> (x),
+  (c3:Concept{ID:"Studied"}) <-[:head]- (t3) -[:body]-> (x),
+  (t3) -[:body]-> (c3:Concept{ID:"CollegeOfNavarre"})
 UNWIND [t1.time[0], t2.time[0], t3.time[0]] as t_min
 UNWIND [t1.time[1], t2.time[1], t3.time[1]] as t_max
-MERGE (pf:Concept{ID:"PeasantFamily"})
-MERGE (pf) <-[:head]- (R1:TF{
-	time:[0,0],
-weight:0.6}) -[:body]-> (x)
+MERGE (pf:Concept{ID:"PeasantFamily"+x.ID})
+MERGE (pf) <-[:head]- (R1:TF{ time:[0,0], weight:0.6}) -[:body]-> (x)
 ```
