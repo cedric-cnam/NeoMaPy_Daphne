@@ -79,3 +79,10 @@ MATCH (n)
 OPTIONAL MATCH (n) -[r]-> ()
 DELETE n, r
 ```
+
+## GET the whole graph
+```
+MATCH (n)
+OPTIONAL MATCH (n) -[r]->()
+RETURN n,r
+```
