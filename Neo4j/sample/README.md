@@ -41,15 +41,16 @@ MERGE (cn) <-[:body]- (f6)
 ## R1
 
 > ***TODO***: Need to change the rule for every instance (x.ID ?)
-> ***TODO***: Integrate time intervals for validity (weights)
+> ***TODO***: Integrate time intervals for validity (min weights dans unwind)
 > min([t1.time[0], t2.time[0], t3.time[0]]), max([t1.time[1], t2.time[1], t3.time[1]])
 ```
-MATCH (c1:Concept{ID:"Person"})<-[:head]-(t1) -[:body]-> (x:Concept),
-  (c2:Concept{ID:"LivePeriod"}) <-[:head]- (t2) -[:body]-> (x),
-  (c3:Concept{ID:"Studied"}) <-[:head]- (t3) -[:body]-> (x),
-  (t3) -[:body]-> (c3:Concept{ID:"CollegeOfNavarre"})
-UNWIND [t1.time[0], t2.time[0], t3.time[0]] as t_min
-UNWIND [t1.time[1], t2.time[1], t3.time[1]] as t_max
+MATCH (c1:Concept{ID:"Person"})<-[:head]-(t1:TF) -[:body]-> (x:Concept),
+  (c2:Concept{ID:"LivePeriod"}) <-[:head]- (t2:TF) -[:body]-> (x), (c3:Concept{ID:"MiddleAges"}) <-[:head]- (t2:TF) -[:body]-> (x),
+  (c4:Concept{ID:"Studied"}) <-[:head]- (t3:TF) -[:body]-> (x), (t3) -[:body]-> (c5:Concept{ID:"CollegeOfNavarre"})
+UNWIND min([t1.time[0], t2.time[0], t3.time[0]]) as t_min
+UNWIND max([t1.time[1], t2.time[1], t3.time[1]]) as t_max
+UNWIND min([t1.weight, t2.weight, t3.weight]) as w_min
 MERGE (pf:Concept{ID:"PeasantFamily"})
-MERGE (pf) <-[:head]- (R1:TF{ID:"R1_"+x.ID, time:[0,0], weight:0.6}) -[:body]-> (x)
+MERGE (pf) <-[:head]- (R1:TF{ID:"R1_"+x.ID+"_P"+t1.ID+"_LP"+t2.ID+"_S"+t3.ID}) -[:body]-> (x)
+  ON CREATE SET R1.time=[t_min, t_max], R1.weight=w_min
 ```
