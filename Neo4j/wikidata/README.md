@@ -7,6 +7,9 @@ CREATE INDEX ON :TF(ID);
 
 ## Graph instanciation
 
+File to load the CSV file provided by the *wikidata_extractor* Java program. The file has to be put in the "*import*" folder of your Neo4j database.
+
+```
 LOAD CSV WITH HEADERS FROM "file:/pinstConf_rockit_wikidata_0_5k.csv" as l
 MERGE (ID_from:Concept{ID:l.ID_from})
 MERGE (ID_to:Concept{ID:l.ID_to})
@@ -15,7 +18,7 @@ MERGE (tf:TF{ID:l.ID_TF,date_start:datetime(l.date_start),date_end:datetime(l.da
 MERGE (ID_from) <-[:body]- (tf)
 MERGE (ID_to) <-[:body]- (tf)
 MERGE (ID_o) <-[:head]- (tf)
-
+```
 
 Nodes **Concept** are created with *ID*. Merge creates only if the nodes (with this id) does not exists
 Creates **TF** relationships between *concepts* (use IDs to find them). The time interval and the weight is associated to this relationship
