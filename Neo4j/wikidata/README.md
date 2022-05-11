@@ -15,9 +15,9 @@ MERGE (ID_from:Concept{ID:l.ID_from})
 MERGE (ID_to:Concept{ID:l.ID_to})
 MERGE (ID_o:Concept{ID:l.ID_o})
 MERGE (tf:TF{ID:l.ID_TF,date_start:datetime(l.date_start),date_end:datetime(l.date_end),weight:toFloat(l.proba),valid:l.valid})
-MERGE (ID_from) <-[:body]- (tf)
-MERGE (ID_to) <-[:body]- (tf)
-MERGE (ID_o) <-[:head]- (tf)
+MERGE (ID_from) <-[:s]- (tf)
+MERGE (ID_o) <-[:o]- (tf)
+MERGE (ID_to) <-[:p]- (tf)
 ```
 
 Nodes **Concept** are created with *ID*. Merge creates only if the nodes (with this id) does not exists
