@@ -10,7 +10,7 @@ CREATE INDEX ON :TF(ID);
 File to load the CSV file provided by the *wikidata_extractor* Java program. The file has to be put in the "*import*" folder of your Neo4j database.
 
 ```
-LOAD CSV WITH HEADERS FROM "file:/pinstConf_rockit_wikidata_0_5k.csv" as l
+LOAD CSV WITH HEADERS FROM "file:/pinstConf_rockit_wikidata_0_5k.csv" as l FIELDTERMINATOR ';'
 MERGE (ID_from:Concept{ID:l.ID_from})
 MERGE (ID_to:Concept{ID:l.ID_to})
 MERGE (ID_o:Concept{ID:l.ID_o})
