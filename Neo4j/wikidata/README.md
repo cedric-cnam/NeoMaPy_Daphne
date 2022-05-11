@@ -94,3 +94,37 @@ MATCH (n)
 OPTIONAL MATCH (n) -[r]->()
 RETURN n,r
 ```
+
+
+
+## stat queries
+Number of triplets
+```
+MATCH (ns:Concept) <-[:s]- (tf:TF) -[:o]-> (no), (tf) -[:p]-> (np)
+RETURN COUNT(*)
+```
+
+Nb links per node linked to "o" - 6
+```
+MATCH (tf:TF) -[:o]-> (no)
+RETURN no.ID, count(*)
+```
+
+Nb "s" - 796
+```
+MATCH (tf:TF) -[:s]-> (ns)
+RETURN COUNT(distinct ns)
+```
+
+nb distinct p - 1620
+```
+MATCH (tf:TF) -[:p]-> (np)
+RETURN COUNT(distinct np)
+```
+
+Nb "p" links distribution
+```
+MATCH (tf:TF) -[:p]-> (np)
+RETURN np.ID, count(*) as NB
+ORDER BY NB DESC
+```
