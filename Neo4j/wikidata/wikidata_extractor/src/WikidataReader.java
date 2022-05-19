@@ -20,10 +20,10 @@ public class WikidataReader {
 				Wikiline w = new Wikiline ();
 				l = line.split(",");
 				w.type = l[0].substring(0, l[0].indexOf("("));
-				w.ID_from = w.extractString(l[0]);
+				w.ID_s = w.extractString(l[0]);
 				if(w.type.compareTo("pinstConf") == 0) {
-					w.ID_to = w.extractString(l[2]);
-					w.ID_o = w.extractString(l[1]);
+					w.ID_o = w.extractString(l[2]);
+					w.ID_p = w.extractString(l[1]);
 					w.date_start = w.extractDate(l[3]);
 					w.date_end = w.extractDate(l[4]);
 					if(w.extractString(l[5]).compareTo("true") == 0)
@@ -31,7 +31,7 @@ public class WikidataReader {
 					w.proba = w.extractFloat(l[6]);
 					
 				} else {
-					w.ID_to = w.extractString(l[1]);
+					w.ID_p = w.extractString(l[1]);
 				}
 				lines.add(w);
 			} catch (Exception e) {}

@@ -1,13 +1,15 @@
 import java.time.LocalDate;
 
 public class Wikiline {
-	String ID_from;
-	String ID_to;
+	String ID_s;
 	String ID_o;
+	String ID_p;
 	String date_start;
 	String date_end;
 	boolean valid = false;
 	float proba = 0.0f;
+
+	boolean polarity = true;
 	
 	String type;
 	public Wikiline() {
@@ -31,11 +33,11 @@ public class Wikiline {
 
 	public String toString () {
 		if(type.compareTo("sameAs") == 0)
-			return type+";"+ID_from+"-"+ID_to+";"+ID_from+";"+ID_to;
+			return type+";"+ID_s+"-"+ID_p+";"+ID_s+";"+ID_p;
 		else
 			return type+";"+
-				ID_from+"-"+ID_to+"-"+ID_o+"-"+date_start+"-"+date_end+"-"+proba+";"+
-				ID_from+";"+ID_to+";"+ID_o+";"+
-				date_start+";"+date_end+";"+valid+";"+proba;
+				ID_s+"-"+ID_o+"-"+ID_p+"-"+date_start+"-"+date_end+"-"+proba+";"+
+				ID_s+";"+ID_o+";"+ID_p+";"+
+				date_start+";"+date_end+";"+valid+";"+proba+";"+polarity;
 	}
 }
