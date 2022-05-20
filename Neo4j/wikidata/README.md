@@ -272,6 +272,14 @@ ORDER BY NB ASC
 MATCH (s:Concept) <-[:s]- () RETURN distinct s.ID
 ```
 
+Avg nb of conflicts per node (for TeamPlayer)
+```
+MATCH (c:Concept) <-[:s]- (tf1:TF) -[:p]-> (tp:Concept{name:"teamPlayer"}),
+    (c) <-[:s]- (tf2:TF) -[:p]-> (tp), (tf1) -[conf:conflict]-> (tf2)
+WITH c, count(distinct conf) as NB
+RETURN avg(NB)
+```
+
 ## Temporal Uncertain Rules
 
 **TO BE MODIFIED**
