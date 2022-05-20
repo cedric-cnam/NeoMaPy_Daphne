@@ -259,8 +259,18 @@ MATCH (c:Concept{ID:"Q10869"}) <-[:s]- (tf1:TF) -[:p]-> (tp:Concept{name:"teamPl
 RETURN tf1.ID, tf1.weight, tf2.ID, tf2.weight
 ```
 
+extract inscreasing conflict nodes
+```
+MATCH (c:Concept{ID:"Q10869"}) <-[:s]- (tf1:TF) -[:p]-> (tp:Concept{name:"teamPlayer"}),
+    (c) <-[:s]- (tf2:TF) -[:p]-> (tp), (tf1) -[conf:conflict]-> (tf2)
+RETURN tf1.ID, count(*) as NB, collect(tf2.ID) AS conflicts
+ORDER BY NB ASC
+```
 
-
+### Subject nodes
+```
+MATCH (s:Concept) <-[:s]- () RETURN distinct s.ID
+```
 
 ## Temporal Uncertain Rules
 
