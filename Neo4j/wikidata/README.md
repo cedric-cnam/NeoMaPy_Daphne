@@ -40,13 +40,6 @@ MERGE(ID_w:Concept{ID:"P108"}) ON MATCH SET ID_w.name = "workCompany"
 
 Translation & adaptation from Chekol's rules
 
-Each rule generates **conflict relationships** "type = Cx" (x is the rule number) and "error" is the name. To watch existing conflicts:
-```
-MATCH p= () -[:conflict]- ()
-RETURN p
-LIMIT 20
-```
-
 
 ### 1. A person cannot have two birth dates
 !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P569", z, i3, i4, valid) v sameAs(y, z).
@@ -111,7 +104,7 @@ RETURN p1, p2
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"deathDate"}) <-[:p]- (tf2) -[:s]-> (s)
 WHERE (tf1.date_start > tf2.date_start
-  OR tf1.date_start + duration({years: 150}) <= tf2.date_start) AND tf1.polarity = true AND tf2.polarity = true AND
+  OR tf1.date_start + duration({years: 150}) <= tf2.date_start) AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C3", error:"birthDeathConflict"}]- (tf2)
 ```
 
@@ -156,7 +149,7 @@ MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start + duration({years: 50}) < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+WHERE tf1.date_start + duration({years: 50}) < tf2.date_end AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C7", error:"playerTooOldConflict"}]- (tf2)
 ```
 
@@ -191,7 +184,7 @@ MERGE (tf1) -[:conflict{type:"C14", error:"marriageConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"marriage"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C16", error:"birthMarriageConflict"}]- (tf2)
 ```
 
@@ -227,6 +220,43 @@ WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
     ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
 MERGE (tf1) -[:conflict{type:"C19", error:"twoCompaniesConflict"}]- (tf2)
+```
+
+### stats on conflicts
+Each rule generates **conflict relationships** "type = Cx" (x is the rule number) and "error" is the name. To watch existing conflicts:
+```
+MATCH p= () -[:conflict]- ()
+RETURN p
+LIMIT 20
+```
+
+```
+MATCH () -[c:conflict]- ()
+RETURN c.type, c.error, count(distinct c)
+```
+
+#### Potential Conflict example
+Count number of conflict types
+```
+MATCH (c:Concept{ID:"Q10869"}) <-[:s]- (tf1:TF) -[:p]-> (tp:Concept{name:"teamPlayer"}),
+    (c) <-[:s]- (tf2:TF) -[:p]-> (tp)
+OPTIONAL MATCH (tf1) -[conf:conflict]-> (tf2)
+RETURN conf.type, count(distinct tf1)
+```
+
+Extract the TF graph with and without conflicts
+```
+MATCH (c:Concept{ID:"Q10869"}) <-[:s]- (tf1:TF) -[:p]-> (tp:Concept{name:"teamPlayer"}), o1 = (tf1) -[:o]-> (),
+    (c) <-[:s]- (tf2:TF) -[:p]-> (tp),  o2 = (tf2) -[:o]-> ()
+OPTIONAL MATCH (tf1) -[conf:conflict]-> (tf2)
+RETURn tf1, tf2, conf, o1, o2
+```
+
+Extract conflict graph
+```
+MATCH (c:Concept{ID:"Q10869"}) <-[:s]- (tf1:TF) -[:p]-> (tp:Concept{name:"teamPlayer"}),
+    (c) <-[:s]- (tf2:TF) -[:p]-> (tp), (tf1) -[conf:conflict]-> (tf2)
+RETURN tf1.ID, tf1.weight, tf2.ID, tf2.weight
 ```
 
 
