@@ -99,7 +99,7 @@ Becareful, it's possible to have several TF with predicate **birthDate** for a s
 ```
 MATCH p1=(:Concept{name:"deathDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"deathDate"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1 <> tf2 AND tf1.date_start = tf2.date_start
+WHERE tf1 <> tf2 AND tf1.date_start = tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 RETURN p1, p2
 ```
 
@@ -110,8 +110,8 @@ RETURN p1, p2
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"deathDate"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start > tf2.date_start
-  OR tf1.date_start + duration({years: 150}) <= tf2.date_start
+WHERE (tf1.date_start > tf2.date_start
+  OR tf1.date_start + duration({years: 150}) <= tf2.date_start) AND tf1.polarity = true AND tf2.polarity = true AND
 MERGE (tf1) -[:conflict{type:"C3", error:"birthDeathConflict"}]- (tf2)
 ```
 
@@ -122,7 +122,7 @@ MERGE (tf1) -[:conflict{type:"C3", error:"birthDeathConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start > tf2.date_start
+WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C4", error:"birthPlayerConflict"}]- (tf2)
 ```
 
@@ -133,7 +133,7 @@ MERGE (tf1) -[:conflict{type:"C4", error:"birthPlayerConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"deathDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start < tf2.date_start
+WHERE tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C5", error:"deathPlayerConflict"}]- (tf2)
 ```
 
@@ -144,7 +144,7 @@ MERGE (tf1) -[:conflict{type:"C5", error:"deathPlayerConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start + duration({years: 16}) > tf2.date_start
+WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict"}]- (tf2)
 ```
 
@@ -156,7 +156,7 @@ MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start + duration({years: 50}) < tf2.date_start
+WHERE tf1.date_start + duration({years: 50}) < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C7", error:"playerTooOldConflict"}]- (tf2)
 ```
 
@@ -187,14 +187,47 @@ MERGE (tf1) -[:conflict{type:"C14", error:"marriageConflict"}]- (tf2)
 ### 16. A person must be born before getting married.
 > !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P26", z, i3, i4, valid) v before(i1, i2, i3, i4).
 
+
+```
+MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
+  p2=(:Concept{name:"marriage"}) <-[:p]- (tf2) -[:s]-> (s)
+WHERE tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+MERGE (tf1) -[:conflict{type:"C16", error:"birthMarriageConflict"}]- (tf2)
+```
+
 ### 17. A person must be alive to be married.
 > !pinst(x, "P570", y, i1, i2, valid) v !pinst(x, "P26", z, i3, i4, valid) v before(i3, i4, i1, i2).
+
+```
+MATCH p1=(:Concept{name:"deathDate"}) <-[:p]- (tf1) -[:s]-> (s),
+  p2=(:Concept{name:"marriage"}) <-[:p]- (tf2) -[:s]-> (s)
+WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+MERGE (tf1) -[:conflict{type:"C17", error:"deathMarriageConflict"}]- (tf2)
+```
 
 ### 18. A person cannot be both a player and a coach at the same time.
 >	!pinst(x, "P54", y, i1, i2, valid) v !pinst(x, "P286", z, i3, i4, valid) v disjoint(i1,i2,i3,i4)
 
+```
+MATCH p1=(:Concept{name:"teamPlayer"}) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o1),
+  p2=(:Concept{name:"teamCoach"}) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o2)
+WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
+    ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
+    OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
+MERGE (tf1) -[:conflict{type:"C18", error:"playerCoachConflict"}]- (tf2)
+```
+
 ### 19. A person cannot work for two companies at the same time.
 >	!pinst(x, "P108", y, i1, i2, valid) v !pinst(x, "P108", z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4)
+
+```
+MATCH p1=(:Concept{name:"workCompany"}) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o1),
+  p2=(:Concept{name:"workCompany"}) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o2)
+WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
+    ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
+    OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
+MERGE (tf1) -[:conflict{type:"C19", error:"twoCompaniesConflict"}]- (tf2)
+```
 
 
 
