@@ -3,6 +3,60 @@
 This are *Cypher* queries that produce relationships between *TF* to express the fact it exists a conflict between to Temporal Formulas.
 To achieve this, each query corresponds to the expression of a Constraint.
 
+
+## Uncertain rule
+
+### 1. A player who has played in Team "Q495299" should'nt have played later in Team "Q3873511"
+TODO: revoir min weight
+```
+MATCH p1=(c:Concept{name:"teamPlayer"}) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o1{ID:"Q495299"}),
+  (o2{ID:"Q3873511"})
+WHERE tf1.polarity = true
+WITH c, s, o2, tf1, min([tf1.weight, 0.9]) as var_min
+MERGE (c) <-[:p]- (new_tf:TF{date_start:tf1.date_end, date_end:datetime("9999-12-01"), valid:true,weight:var_min, polarity:false, type:"R1"}) -[:s]-> (s)
+MERGE (new_tf) -[:o]-> (o2)
+MERGE (tf1) -[:rule]-> (new_tf)
+```
+
+## Temporal Uncertain Rules
+
+### Partial Temporal Consistency
+```
+MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
+  p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
+WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
+    (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end AND
+      tf1.date_end < tf2.date_end)
+MERGE (tf1) -[c:conflict]- (tf2)
+ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.pCon=true
+ON MATCH SET c.pCon=true
+```
+
+### Partial Temporal Inconsistency
+```
+MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
+  p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
+WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
+    ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
+    OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
+MERGE (tf1) -[c:conflict]- (tf2)
+ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.pInc=true
+ON MATCH SET c.pInc=true
+```
+
+### Total Temporal Inconsistency
+
+```
+MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
+  p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
+WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
+    (tf1.date_start = tf2.date_start and tf1.date_end = tf2.date_end)
+MERGE (tf1) -[c:conflict]- (tf2)
+ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.tInc=true
+ON MATCH SET c.tInc=true
+```
+
+
 ## Constraint rules
 
 Translation & adaptation from Chekol's rules
@@ -190,7 +244,7 @@ WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
 MERGE (tf1) -[:conflict{type:"C19", error:"twoCompaniesConflict"}]- (tf2)
 ```
 
-## Probabilistic uncertain rules
+## Probabilistic uncertain constraint
 
 
 ### 1. A person rarely plays for a premier league club between 14 and 16
@@ -202,44 +256,4 @@ MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
 WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.date_start + duration({years: 14}) < tf2.date_start
   AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict", weight:0.5}]- (tf2)
-```
-
-
-
-## Temporal Uncertain Rules
-
-### Partial Temporal Consistency
-```
-MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
-  p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
-WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
-    (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end AND
-      tf1.date_end < tf2.date_end)
-MERGE (tf1) -[c:conflict]- (tf2)
-ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.pCon=true
-ON MATCH SET c.pCon=true
-```
-
-### Partial Temporal Inconsistency
-```
-MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
-  p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
-WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
-    ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
-    OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
-MERGE (tf1) -[c:conflict]- (tf2)
-ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.pInc=true
-ON MATCH SET c.pInc=true
-```
-
-### Total Temporal Inconsistency
-
-```
-MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
-  p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
-WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
-    (tf1.date_start = tf2.date_start and tf1.date_end = tf2.date_end)
-MERGE (tf1) -[c:conflict]- (tf2)
-ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.tInc=true
-ON MATCH SET c.tInc=true
 ```
