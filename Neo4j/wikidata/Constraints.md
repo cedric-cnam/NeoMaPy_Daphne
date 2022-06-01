@@ -99,13 +99,13 @@ MERGE (tf1) -[:conflict{type:"C5", error:"deathPlayerConflict"}]- (tf2)
 ```
 
 
-### 6. A person must be atleast 16 before playing for a premier league club.
+### 6. A person must be at least 14 before playing for a premier league club.
 > !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v aboveSixteen(i1, i3)
 
 ```
 MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+WHERE tf1.date_start + duration({years: 14}) > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict"}]- (tf2)
 ```
 
@@ -189,6 +189,21 @@ WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
 MERGE (tf1) -[:conflict{type:"C19", error:"twoCompaniesConflict"}]- (tf2)
 ```
+
+## Probabilistic uncertain rules
+
+
+### 1. A person rarely plays for a premier league club between 14 and 16
+> !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v aboveSixteen(i1, i3)
+
+```
+MATCH p1=(:Concept{name:"birthDate"}) <-[:p]- (tf1) -[:s]-> (s),
+  p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2) -[:s]-> (s)
+WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.date_start + duration({years: 14}) < tf2.date_start
+  AND tf1.polarity = true AND tf2.polarity = true
+MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict", weight:0.5}]- (tf2)
+```
+
 
 
 ## Temporal Uncertain Rules
