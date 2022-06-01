@@ -79,6 +79,11 @@ RETURN tf1.ID, count(*) as NB, collect(tf2.ID) AS conflicts
 ORDER BY NB ASC
 ```
 
+### Marriage conflict example
+```
+MATCH p= (:Concept{ID:"Q19155"}) -- (t1) -- (t2) RETURN p
+```
+
 ### Temporal Conflict
 Count number of temporal inconsistency
 ```
