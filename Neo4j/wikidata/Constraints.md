@@ -213,7 +213,8 @@ MERGE (tf1) -[:conflict{type:"C6", error:"playerAgeConflict", weight:0.5}]- (tf2
 MATCH p1=(p:Concept) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o),
   p2=(p) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o)
 WHERE tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
-    (tf1.date_start < tf2.date_start and tf1.date_end < tf2.date_end)
+    (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end AND
+      tf1.date_end < tf2.date_end)
 MERGE (tf1) -[c:conflict]- (tf2)
 ON CREATE SET c.type="TC1", c.error="TemporalConflict", c.pCon=true
 ON MATCH SET c.pCon=true
