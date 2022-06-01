@@ -42,6 +42,7 @@ MERGE(ID_m:Concept{ID:"P26"}) ON MATCH SET ID_m.name = "marriage"
 MERGE(ID_w:Concept{ID:"P108"}) ON MATCH SET ID_w.name = "workCompany"
 ```
 
+TODO : rename "Person" "Team" "Company"
 
 
 # Graph Management
