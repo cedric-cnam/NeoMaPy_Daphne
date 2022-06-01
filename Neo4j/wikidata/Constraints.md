@@ -195,7 +195,8 @@ MATCH p1=(:Concept{name:"marriage"}) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o
   p2=(:Concept{name:"marriage"}) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o2)
 WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
     ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
-    OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
+    OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) 
+    OR (tf1.date_start = tf2.date_start and tf1.date_end = tf2.date_end))
 MERGE (tf1) -[:conflict{type:"C14", error:"marriageConflict"}]- (tf2)
 ```
 
