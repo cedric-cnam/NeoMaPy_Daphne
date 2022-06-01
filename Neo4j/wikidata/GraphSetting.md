@@ -53,6 +53,12 @@ OPTIONAL MATCH (n) -[r]-> ()
 DELETE n, r
 ```
 
+Remove conflicts TF.
+```
+MATCH (:TF) -[c:conflict]- (:TF)
+DELETE c
+```
+
 Remove infered TF.
 ```
 MATCH (n:TF)
