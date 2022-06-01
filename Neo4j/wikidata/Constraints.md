@@ -189,3 +189,8 @@ WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
 MERGE (tf1) -[:conflict{type:"C19", error:"twoCompaniesConflict"}]- (tf2)
 ```
+
+
+## Temporal Uncertain Rules
+
+**TO BE MODIFIED**
