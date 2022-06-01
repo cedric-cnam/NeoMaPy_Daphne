@@ -216,7 +216,7 @@ MERGE (tf1) -[:conflict{type:"C16", error:"birthMarriageConflict"}]- (tf2)
 ```
 MATCH p1=(:Concept{name:"deathDate"}) <-[:p]- (tf1) -[:s]-> (s),
   p2=(:Concept{name:"marriage"}) <-[:p]- (tf2) -[:s]-> (s)
-WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+WHERE tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C17", error:"deathMarriageConflict"}]- (tf2)
 ```
 
@@ -224,13 +224,15 @@ MERGE (tf1) -[:conflict{type:"C17", error:"deathMarriageConflict"}]- (tf2)
 >	!pinst(x, "P54", y, i1, i2, valid) v !pinst(x, "P286", z, i3, i4, valid) v disjoint(i1,i2,i3,i4)
 
 ```
-MATCH p1=(:Concept{name:"teamPlayer"}) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o1),
-  p2=(:Concept{name:"teamCoach"}) <-[:p]- (tf2) -[:s]-> (s), (tf2) -[:o]-> (o2)
-WHERE o1 <> o2 AND tf1.polarity = true AND tf2.polarity = true AND
+MATCH p1=(:Concept{name:"teamPlayer"}) <-[:p]- (tf1) -[:s]-> (s),
+  p2=(:Concept{name:"teamCoach"}) <-[:p]- (tf2) -[:o]-> (s)
+WHERE tf1.polarity = true AND tf2.polarity = true AND
     ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
 MERGE (tf1) -[:conflict{type:"C18", error:"playerCoachConflict"}]- (tf2)
 ```
+
+NB: The player is the subject while the coach is the object.
 
 ### 19. A person cannot work for two companies at the same time.
 >	!pinst(x, "P108", y, i1, i2, valid) v !pinst(x, "P108", z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4)
