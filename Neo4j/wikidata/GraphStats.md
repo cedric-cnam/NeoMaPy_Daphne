@@ -86,8 +86,15 @@ MATCH (:TF) -[c:conflict{type:"TC1"}]- (:TF)
 RETURN SUM(CASE WHEN c.pCon=true THEN 1 ELSE 0 END) AS nb_pCon,
     SUM(CASE WHEN c.pInc=true THEN 1 ELSE 0 END) AS nb_pInc,
     SUM(CASE WHEN c.tInc=true THEN 1 ELSE 0 END) AS nb_tInc,
-    SUM(CASE WHEN c.pInc=true AND c.pCon=true THEN 1 ELSE 0 END) AS nb_pConpInc
+    SUM(CASE WHEN c.pInc=true AND c.pCon=true THEN 1 ELSE 0 END) AS nb_pConpInc,
     COUNT(*)
+```
+
+Extract subgraph of temporal conflict
+```
+MATCH p=(:TF) -[:conflict{type:"TC1"}]- (:TF)
+RETURN p
+LIMIT 3
 ```
 
 ## Subject nodes
