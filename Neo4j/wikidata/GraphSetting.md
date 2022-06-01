@@ -42,8 +42,19 @@ MERGE(ID_m:Concept{ID:"P26"}) ON MATCH SET ID_m.name = "marriage"
 MERGE(ID_w:Concept{ID:"P108"}) ON MATCH SET ID_w.name = "workCompany"
 ```
 
-TODO : rename "Person" "Team" "Company"
+```
+MATCH (p) <-[:o]- (:TF) -[:p]-> (c:Concept)
+WHERE c.name IN ["teamCoach", "marriage"]
+SET p.name = "Person_"+p.ID
 
+MATCH (p) <-[:o]- (:TF) -[:p]-> (c:Concept)
+WHERE c.name IN ["birthDate", "deathDate"]
+SET p.name = "Date_"+p.ID
+
+MATCH (p) <-[:s]- (:TF) -[:p]-> (c:Concept)
+WHERE c.name IN ["teamPlayer", "marriage", "workCompany", "birthDate", "deathDate"]
+SET p.name = "Person_"+p.ID
+```
 
 # Graph Management
 
