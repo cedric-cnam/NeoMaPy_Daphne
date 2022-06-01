@@ -79,6 +79,17 @@ RETURN tf1.ID, count(*) as NB, collect(tf2.ID) AS conflicts
 ORDER BY NB ASC
 ```
 
+### Temporal Conflict
+Count number of temporal inconsistency
+```
+MATCH (:TF) -[c:conflict{type:"TC1"}]- (:TF)
+RETURN SUM(CASE WHEN c.pCon=true THEN 1 ELSE 0 END) AS nb_pCon,
+    SUM(CASE WHEN c.pInc=true THEN 1 ELSE 0 END) AS nb_pInc,
+    SUM(CASE WHEN c.tInc=true THEN 1 ELSE 0 END) AS nb_tInc,
+    SUM(CASE WHEN c.pInc=true AND c.pCon=true THEN 1 ELSE 0 END) AS nb_pConpInc
+    COUNT(*)
+```
+
 ## Subject nodes
 ```
 MATCH (s:Concept) <-[:s]- () RETURN distinct s.ID
