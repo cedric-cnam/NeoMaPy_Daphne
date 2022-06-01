@@ -41,3 +41,28 @@ MERGE(ID_c:Concept{ID:"P286"}) ON MATCH SET ID_c.name = "teamCoach"
 MERGE(ID_m:Concept{ID:"P26"}) ON MATCH SET ID_m.name = "marriage"
 MERGE(ID_w:Concept{ID:"P108"}) ON MATCH SET ID_w.name = "workCompany"
 ```
+
+
+
+# Graph Management
+
+## Delete the database
+```
+MATCH (n)
+OPTIONAL MATCH (n) -[r]-> ()
+DELETE n, r
+```
+
+Remove infered TF.
+```
+MATCH (n:TF)
+OPTIONAL MATCH (n) -[r]-> ()
+DELETE n, r
+```
+
+## GET the whole graph
+```
+MATCH (n)
+OPTIONAL MATCH (n) -[r]->()
+RETURN n,r
+```
