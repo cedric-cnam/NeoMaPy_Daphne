@@ -5,4 +5,4 @@ This repository contains:
 - [Inference.md](Inference.md) gives the *Cypher* queries that generates new TF by inference (rules)
 - [Constrains.md](Constraints.md) gives the *Cypher* queries that generates all the conflicts related to expressed constraints on the dataset
 - [GraphStats.md](GraphStats.md) gives the *Cypher* queries that extracts statistics from the graph database (Concepts, TF, conflicts, etc.)
-- [MAPInference.md](MAPInference.md) gives the *Cypher* queries used for the MAP inference computation
+- [MAPinference.md](MAPinference.md) gives the *Cypher* queries used for the MAP inference computation
