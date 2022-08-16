@@ -12,7 +12,7 @@ MERGE: create the head of the rule + new TF + the body with links to matched pat
 MATCH (c1:Concept{ID:"Person"})<-[:head]-(t1:TF) -[:body]-> (x:Concept),
   (c2:Concept{ID:"LivePeriod"}) <-[:head]- (t2:TF) -[:body]-> (x), (c3:Concept{ID:"MiddleAges"}) <-[:body]- (t2),
   (c4:Concept{ID:"Studied"}) <-[:head]- (t3:TF) -[:body]-> (x), (c5:Concept{ID:"CollegeOfNavarre"}) <-[:body]- (t3)
-WHERE t1.not is null AND t2.not is null and t3.not is null
+WHERE t1.not is null AND t2.not is null AND t3.not is null
 UNWIND [t1.time[0], t2.time[0], t3.time[0]] as t_min
 UNWIND [t1.time[1], t2.time[1], t3.time[1]] as t_max
 UNWIND [t1.weight, t2.weight, t3.weight] as w_min
@@ -35,7 +35,7 @@ MATCH (c1:Concept{ID:"Person"})<-[:head]-(t1:TF) -[:body]-> (x:Concept),
   (c4:Concept) <-[:head]- (t3:TF) -[:body]-> (x), (t3) -[:body]-> (c5:Concept{ID:"CollegeOfNavarre"})
 WHERE NOT (:Concept{ID:"Renaissance"}) <-- (:TF) --> (x)
   AND t1.not is null AND t2.not is null and t3.not is null
-  AND C4.ID IN ["Studied", "Worked]
+  AND C4.ID IN ["Studied", "Worked"]
 UNWIND [t1.time[0], t2.time[0], t3.time[0]] as t_min
 UNWIND [t1.time[1], t2.time[1], t3.time[1]] as t_max
 UNWIND [t1.weight, t2.weight, t3.weight] as w_min
