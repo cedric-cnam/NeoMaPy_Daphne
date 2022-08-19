@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on 18/08/2022
-Last update 18/08/2022
+Last update 19/08/2022
 
 @author: Victor
 """
@@ -11,8 +11,14 @@ import time
 
 # Load the data
 
-#with open('dicoConfNodes.json', 'r') as f:
-with open('smallDico.json', 'r') as f:
+#with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f:
+#with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:
+#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:
+#with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:   # 0.0 s vs ? ms
+#with open('.\..\..\Data_Json\Dictionnary\\60Dico.json', 'r') as f:   # 0.0 s vs 1093.7 s env. 18min   || 10.36327 vs 10.95413
+#with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:   # 0.0 s vs 41.2 s   || 9.79568 vs 10.2861
+with open('.\..\..\Data_Json\Dictionnary\\50Dico.json', 'r') as f:   # 0.0 s vs 3.8 s    || 9.08248 vs 9.43362
+#with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:   # 0.0 s vs 0.0 s    || 0.86158 vs 1.317489
     dico = json.load(f)
 
 ##############################################################################################################
@@ -28,11 +34,11 @@ output = [0,[],[]]
 for elem in dico.items():
     (k,v) = elem
     #print(f'k: {k}, output[1]: {output[1]}, output[2]: {output[2]}, v[1]: {v[1]}')
-    if (int(k) not in output[2]) and (int(k) not in v[1]) and (not((set(output[1]) & set(v[1])))):
+    if (int(k) not in output[2]) and (not((set(output[1]) & set(v[1])))): #and (int(k) not in v[1])
         output[0] += v[0]
         output[1].append(int(k))
         output[2] += v[1]
-        list(set(output[2]))
+        output[2] = list(set(output[2]))
 
 print((output[0],output[1]))
 
@@ -40,7 +46,9 @@ print((output[0],output[1]))
 end = time.time()
 elapsed = end - start
 
-print(f'Temps d\'exécution : {elapsed:.9}ms')
+print(f'Temps d\'exécution : {elapsed:.5}s')
+
+print('\n\n')
 
 ##############################################################################################################
 ##############################################################################################################
@@ -103,15 +111,95 @@ def best_solution(dico,solution,current):
 ##############################################################################################################
 ##  OPTI A FAIRE ##
 
-# from a solution give the list of all solutions minus one id_node
-def opti_list_of_subsolutions(solution,dico):
-    l = []
-    for i in range(0,len(solution)):
-        l.append([])
-        for j in range(0,len(solution)):
-            if j != i:
-                l[i].append(solution[j])
-    return l
+#def testBuildList(k,liste):
+#	if liste == []:
+#		return True
+#	for l in liste:
+#		if k in l:
+
+def sum_weight(dico,solution):
+    sum = 0
+    for id in solution:
+        sum += dico[str(id)][0]
+    return sum
+
+def max_sum_list_int(dico,l_sol):
+    l_sum = []
+    for sol in l_sol:
+        l_sum.append(sum_weight(dico,sol[0]))
+    return (max(l_sum), l_sol[l_sum.index(max(l_sum))])
+
+
+
+def deletInclude(liste):
+	i = 0
+	while i < len(liste):
+		j = i + 1 
+		while j < len(liste):
+			if set(liste[i][0]) < set(liste[j][0]):
+				del liste[i]
+			if set(liste[j][0]) < set(liste[i][0]):
+				del liste[j]	
+			j += 1
+		i += 1
+	return liste
+
+#liste = [[id_nodes],[conflicts]]
+def compatible_merge(node,liste,dico):
+	new = list(dico[str(node)][1])
+	l_merge_comp = [[node],new]
+	compatible = True
+	for n in liste[0]:
+		if node in dico[str(n)][1] :
+			compatible = False
+		else:
+			new2 = list(dico[str(n)][1])
+			l_merge_comp[0].append(n)
+			l_merge_comp[1] += new2
+			l_merge_comp[1] = list(set(l_merge_comp[1]))
+	
+	return (l_merge_comp,compatible)
+		
+
+
+# Build the solutions
+def build_sol(dico):
+	liste_sol = []
+	i = 0 
+	
+	for k, v in dico.items():
+		if i == 0:
+			new = list(dico[k][1])
+			liste_sol.append([[int(k)],new])
+			i = 1
+
+		else:
+			for j in range(0,len(liste_sol)):
+				(l2,bool) = compatible_merge(int(k),liste_sol[j],dico)
+				if bool:
+					liste_sol[j][0].append(int(k))
+					liste_sol[j][1] += new
+					liste_sol[j][1] = list(set(liste_sol[j][1]))
+				else:
+					liste_sol += [[l2[0],l2[1]]]
+			liste_sol = deletInclude(liste_sol)
+		
+	return liste_sol
+
+	
+	#list(set(output[2]))
+
+#print(build_sol(dico))
+
+start = time.time()
+
+print(max_sum_list_int(dico,build_sol(dico)))
+
+end = time.time()
+elapsed = end - start
+
+print(f'Temps d\'exécution : {elapsed:.5}s')
+
 
 #s = ['1','2','3','4']
 #print(list_of_subsolutions(s))
@@ -159,6 +247,7 @@ def clear_solution(solution):
 def list_max_sol(dico):
     return clear_solution(best_solution(dico,max_solution(dico),[]))
 
+
 def sum_weight_list(dico,solution):
     sum = 0
     for id in solution:
@@ -169,107 +258,14 @@ def max_sum_list(dico,l_sol):
     l_sum = []
     for sol in l_sol:
         l_sum.append(sum_weight_list(dico,sol))
-    #print(l_sum)
     return (max(l_sum), l_sol[l_sum.index(max(l_sum))])
 
 
 start = time.time()
 
-print(max_sum_list(dico,list_max_sol(dico)))
+#print(max_sum_list(dico,list_max_sol(dico)))
 
 end = time.time()
 elapsed = end - start
 
-print(f'Temps d\'exécution : {elapsed:.9}ms')
-
-"""
-    ,
-	"67": [0.17252001, [83]],
-	"73": [0.20397, [83]],
-	"100": [0.18592, [108]],
-	"107": [0.24195, [105]],
-	"113": [0.46576, [166]],
-	"138": [0.22402, [166]],
-	"145": [0.20755, [166]],
-	"153": [0.2441, [166]],
-	"162": [0.33468002, [166]],
-	"165": [0.14474, [166]],
-	"167": [0.17898001, [168]],
-	"168": [0.17043, [167]],
-    "175": [0.24155, [176]],
-	"176": [0.32017, [175]],
-	"177": [0.24866, [178]],
-	"178": [0.29939002, [177]],
-	"181": [0.18523, [182]],
-	"182": [0.20038, [181]],
-	"188": [0.17377, [189]],
-	"189": [0.23321, [188]],
-	"194": [0.17857, [195]],
-	"195": [0.23271, [194]],
-	"198": [0.18506, [199]],
-	"199": [0.25609, [198]],
-	"205": [0.40396, [206]],
-	"206": [0.21610999, [205]],
-	"215": [0.17807999, [217]],
-	"216": [0.21503, [217]],
-	"218": [0.19359, [219]],
-	"219": [0.33287, [218]],
-	"220": [0.30458, [221]],
-	"221": [0.21164998, [220]],
-	"222": [0.15022, [223]],
-	"223": [0.25066, [222]],
-	"224": [0.2214, [225]],
-	"225": [0.21632, [224]],
-	"230": [0.19597, [231]],
-	"231": [0.29549998, [230]],
-	"234": [0.29113, [278]],
-	"235": [0.24142, [278]],
-	"236": [0.27098, [278]],
-	"237": [0.17906, [278]],
-	"238": [0.20515001, [278]],
-	"241": [0.14552, [278]],
-	"244": [0.54685, [278]],
-	"245": [0.39282, [278]],
-	"249": [0.32452, [278]],
-	"255": [0.34094998, [278]],
-	"256": [0.1752, [278]],
-	"261": [0.16288, [278]],
-	"262": [0.18153, [278]],
-	"263": [0.22276, [278]],
-	"291": [0.19404, [296]],
-	"294": [0.24356, [301]],
-	"296": [0.33871, [291]],
-	"299": [0.14242001, [301]],
-	"306": [0.19018, [307]],
-	"307": [0.15582, [306]],
-	"308": [0.19477001, [309]],
-	"309": [0.34094998, [308]],
-	"310": [0.1798, [311]],
-	"311": [0.38132, [310]],
-	"312": [0.51794, [313]],
-	"313": [0.81113994, [312]],
-	"314": [0.35732, [315]],
-	"315": [0.65699, [314]],
-	"319": [0.16056, [318]],
-	"320": [0.45653, [318]],
-	"322": [0.31099, [323]],
-	"323": [0.22907, [322]],
-	"324": [0.52734, [325]],
-	"325": [0.38371998, [324]],
-	"326": [0.16648999, [327]],
-	"327": [0.25775, [326]],
-	"329": [0.17036, [330]],
-	"330": [0.25297, [329]],
-	"335": [0.22072999, [336]],
-	"336": [0.17345999, [335]],
-	"339": [0.2375, [340]],
-	"340": [0.19487, [339]],
-	"341": [0.25684, [342]],
-	"342": [0.24221, [341]],
-	"344": [0.21031001, [345]],
-	"345": [0.17607, [344]],
-	"346": [0.14045, [347]],
-	"347": [0.23321, [346]],
-	"357": [0.20416, [358]],
-	"358": [0.37579, [357]]
-"""
+#print(f'Temps d\'exécution : {elapsed:.5}s')

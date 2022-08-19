@@ -12,7 +12,7 @@ import time
 # Load the data
 
 #with open('dicoConfNodes.json', 'r') as f:
-with open('smallDico.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\smallDico.json', 'r') as f:
     dico = json.load(f)
 
 ##############################################################################################################
