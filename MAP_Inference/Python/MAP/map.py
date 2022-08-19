@@ -18,7 +18,7 @@ import time
 # -----------------------------------------------------------------#      ###   Algo 1 vs Algo 2 vs Algo 3: Temps || Score   ###   -
 # ----------------------------------------------------------------------------------------------------------------------------------
 
-#with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: # 0.234 s vs ?						|| 406.1858 vs ?
+#with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	# 0.234 s vs ?						|| 406.1858 vs ?
 #with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		# 0.05 s vs ? 						|| 158.421 	vs ?
 #with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:		# 0.0 s vs ?						|| 18.077 	vs ?
 #with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		# 0.0 s vs ? 						|| 14.814 	vs ?
