@@ -26,4 +26,4 @@ Where:
 
 # Algorithm 3 - Optimisation 1:
 
-
+![alt text](https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/algo3.jpg)
