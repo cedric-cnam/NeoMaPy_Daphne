@@ -9,14 +9,28 @@ Last update 18/08/2022
 import json
 import time
 
-# Load the data
 
-#with open('dicoConfNodes.json', 'r') as f:
-with open('.\..\..\Data_Json\Dictionnary\smallDico.json', 'r') as f:
+##############################################################################################################
+##############################################################################################################
+############################################# LOAD the data  #################################################
+
+#with open('.\..\..\Data_Json\Dictionnary\\testDico.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\60Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\50Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		
+with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		
     dico = json.load(f)
 
+
 ##############################################################################################################
 ##############################################################################################################
+########################################  Calcule TOUT - Algorithme 2 ########################################
 
 # Algo force brut : test any solution 
 output = [0,[]]
@@ -39,7 +53,6 @@ def max_solution(dico):
 #sol = max_solution(dico)
 #print(test_solution(dico,sol))
 
-
 # from a solution give the list of all solutions minus one id_node
 def list_of_subsolutions(solution):
     l = []
@@ -59,17 +72,13 @@ def best_solution(dico,solution,current):
         return solution
     else:
         l = list_of_subsolutions(solution)
-        #print(f'subliste: {l}')
         for sol in l:
             s = best_solution(dico,sol,current)
-            #print(f'courrante: {current}')
-            #print(f'{s}\n')
             if s not in current and s != current:
                 current.append(s)
         return current
         
 #print(best_solution(dico,max_solution(dico),[]))
-
 
 #Return True if L1 is strictly include in L2, otherwhise False
 def isInclude(L1, L2):
@@ -90,8 +99,10 @@ def clear_solution(solution):
 
 #print(clear_solution(best_solution(dico,max_solution(dico),[])))
 
+
 def list_max_sol(dico):
     return clear_solution(best_solution(dico,max_solution(dico),[]))
+
 
 def sum_weight_list(dico,solution):
     sum = 0
@@ -103,7 +114,6 @@ def max_sum_list(dico,l_sol):
     l_sum = []
     for sol in l_sol:
         l_sum.append(sum_weight_list(dico,sol))
-    #print(l_sum)
     return (max(l_sum), l_sol[l_sum.index(max(l_sum))])
 
 
@@ -114,4 +124,4 @@ print(max_sum_list(dico,list_max_sol(dico)))
 end = time.time()
 elapsed = end - start
 
-print(f'Temps d\'exécution : {elapsed:.9}ms')
+print(f'Temps d\'exécution : {elapsed:.5}s')

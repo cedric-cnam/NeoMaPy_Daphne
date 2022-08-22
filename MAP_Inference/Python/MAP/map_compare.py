@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on 18/08/2022
-Last update 19/08/2022
+Last update 22/08/2022
 
 @author: Victor
 """
@@ -15,10 +15,11 @@ import time
 ####################################### LOAD the data and RESULTS ############################################
 
 # ----------------------------------------------------------------------------------------------------------------------------------
-# -----------------------------------------------------------------#      ###   Algo 1 vs Algo 2 vs Algo 3: Temps || Score   ###   -
+# -----------------------------------------------------------------#      ###   Algo 1 vs Algo 2 vs Algo 3 vs Algo 3+ : Temps || Score   ###   -
 # ----------------------------------------------------------------------------------------------------------------------------------
 
-with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	# 0.234 s vs ?					|| 406.1858 	vs ?
+#with open('.\..\..\Data_Json\Dictionnary\\testDico.json', 'r') as f: 	#  s vs 					||  	vs 
+with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	# 0.4 s vs ?	vs ? vs 11.8 s	|| 406.1858 vs ? vs ? vs 603.81505
 #with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		# 0.05 s vs ? 					|| 158.421 	vs ?
 #with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:		# 0.0 s vs ?					|| 18.077 	vs ?
 #with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		# 0.0 s vs ? 					|| 14.814 	vs ?
@@ -134,10 +135,8 @@ def clear_solution(solution):
 
 #print(clear_solution(best_solution(dico,max_solution(dico),[])))
 
-
 def list_max_sol(dico):
     return clear_solution(best_solution(dico,max_solution(dico),[]))
-
 
 def sum_weight_list(dico,solution):
     sum = 0
@@ -154,12 +153,12 @@ def max_sum_list(dico,l_sol):
 
 start = time.time()
 
-print(max_sum_list(dico,list_max_sol(dico)))
+#print(max_sum_list(dico,list_max_sol(dico)))
 
 end = time.time()
 elapsed = end - start
 
-print(f'Temps d\'exécution : {elapsed:.5}s')
+#print(f'Temps d\'exécution : {elapsed:.5}s')
 
 
 ##############################################################################################################
@@ -176,9 +175,7 @@ def max_sum_list_int(dico,l_sol):
     l_sum = []
     for sol in l_sol:
         l_sum.append(sum_weight(dico,sol[0]))
-    return (max(l_sum), l_sol[l_sum.index(max(l_sum))])
-
-
+    return (max(l_sum), l_sol[l_sum.index(max(l_sum))][0])
 
 def deletInclude(liste):
 	i = 0
@@ -187,7 +184,7 @@ def deletInclude(liste):
 		while j < len(liste):
 			if set(liste[i][0]) < set(liste[j][0]):
 				del liste[i]
-			if set(liste[j][0]) < set(liste[i][0]):
+			elif set(liste[j][0]) < set(liste[i][0]):
 				del liste[j]	
 			j += 1
 		i += 1
@@ -213,7 +210,6 @@ def compatible_merge(node,liste,dico):
 def build_sol(dico):
 	liste_sol = []
 	i = 0 
-	
 	for k, v in dico.items():
 		if i == 0:
 			new = list(dico[k][1])
@@ -236,12 +232,36 @@ def build_sol(dico):
 
 start = time.time()
 
-print(max_sum_list_int(dico,build_sol(dico)))
+#print(max_sum_list_int(dico,build_sol(dico)))
+
+end = time.time()
+elapsed = end - start
+
+#print(f'Temps d\'exécution : {elapsed:.5}s')
+
+
+##############################################################################################################
+##############################################################################################################
+###################################  OPTIMISATION 2 - Algorithme 3+ ########################################## 
+
+##################################### LOAD the data for OPTI 2 ###############################################
+with open('.\..\..\Data_Json\Dictionnary\listOfDico.json', 'r') as f: 	
+    l_dico = json.load(f)
+
+#################################### Apply Opti 1 on the list of dico ########################################
+def solutionForList(l_dico):
+    output = [0,[]]
+    for dico in l_dico["list"]:
+        val,liste = max_sum_list_int(dico,build_sol(dico))
+        output[0] += val
+        output[1] += liste
+    return output
+
+start = time.time()
+
+print(solutionForList(l_dico))
 
 end = time.time()
 elapsed = end - start
 
 print(f'Temps d\'exécution : {elapsed:.5}s')
-
-##############################################################################################################
-##############################################################################################################
