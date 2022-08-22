@@ -19,4 +19,5 @@ Where:
 - Algo 1 is First Solution,
 - Algo 2 is Brute Force,
 - Algo 3 is Opti 1,
-- Algo 3+ is Opti 1 + 2.
+- Algo 3+ is Opti 1 + 2,
+- dicoConfNodes.json contains 2500 nodes.
