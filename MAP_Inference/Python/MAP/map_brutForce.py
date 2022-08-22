@@ -23,9 +23,9 @@ import time
 #with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\50Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		
-with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		
+#with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		
-    dico = json.load(f)
+    #dico = json.load(f)
 
 
 ##############################################################################################################
@@ -117,11 +117,8 @@ def max_sum_list(dico,l_sol):
     return (max(l_sum), l_sol[l_sum.index(max(l_sum))])
 
 
-start = time.time()
-
-print(max_sum_list(dico,list_max_sol(dico)))
-
-end = time.time()
-elapsed = end - start
-
-print(f'Temps d\'exécution : {elapsed:.5}s')
+#start = time.time()
+#print(max_sum_list(dico,list_max_sol(dico)))
+#end = time.time()
+#elapsed = end - start
+#print(f'Temps d\'exécution : {elapsed:.5}s')

@@ -15,7 +15,7 @@ import time
 ###################################### LOAD the data  OPTI 1 #################################################
 
 #with open('.\..\..\Data_Json\Dictionnary\\testDico.json', 'r') as f: 	
-with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		
@@ -25,7 +25,7 @@ with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f:
 #with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		
-    dico = json.load(f)
+    #dico = json.load(f)
 
 
 ##############################################################################################################
@@ -97,13 +97,10 @@ def build_sol(dico):
 
 #print(build_sol(dico))
 
-start = time.time()
-
+#start = time.time()
 #print(max_sum_list_int(dico,build_sol(dico)))
-
-end = time.time()
-elapsed = end - start
-
+#end = time.time()
+#elapsed = end - start
 #print(f'Temps d\'exécution : {elapsed:.5}s')
 
 
@@ -113,8 +110,8 @@ elapsed = end - start
 
 
 ##################################### LOAD the data for OPTI 2 ###############################################
-with open('.\..\..\Data_Json\Dictionnary\listOfDico.json', 'r') as f: 	
-    l_dico = json.load(f)
+#with open('.\..\..\Data_Json\Dictionnary\listOfDico.json', 'r') as f: 	
+    #l_dico = json.load(f)
 
 
 #################################### Apply Opti 1 on the list of dico ########################################
@@ -126,11 +123,8 @@ def solutionForList(l_dico):
         output[1] += liste
     return output
 
-start = time.time()
-
-print(solutionForList(l_dico))
-
-end = time.time()
-elapsed = end - start
-
-print(f'Temps d\'exécution : {elapsed:.5}s')
+#start = time.time()
+#print(solutionForList(l_dico))
+#end = time.time()
+#elapsed = end - start
+#print(f'Temps d\'exécution : {elapsed:.5}s')
