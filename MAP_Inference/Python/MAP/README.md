@@ -1,3 +1,8 @@
+---
+header-includes:
+  - \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+---
+
 ---------------------------------------------------------------------------------
  Results in Time and Score of the different Algorithms      
 ---------------------------------------------------------------------------------
@@ -23,10 +28,7 @@ Where:
 - dicoConfNodes.json contains 2500 nodes.
 
 
----
-header-includes:
-  - \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
----
+
 # Algorithm 3 - Optimisation 1:
 
 \begin{algorithm}[H]
