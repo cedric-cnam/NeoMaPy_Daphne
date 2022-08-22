@@ -84,10 +84,20 @@ with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico.json', 'r') as f:
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico10.json', 'r') as f: 					 	
     l_dico = json.load(f)
 
-#################################### Apply OPTI 1 on the list of dico ########################################
 
-start = time.time()
+############################################### OPTI 1 #######################################################
+
+#print("Algo 3 - Opti 1:")
+#start = time.time()
+#print(mo.max_sum_list_int(dico,mo.build_sol(dico)))
+#end = time.time()
+#elapsed = end - start
+#print(f'Temps d\'exécution : {elapsed:.5}s')    
+
+############################################## OPTI 1 + 2 ####################################################
+
 print("Algo 3 - Opti 1+2:")
+start = time.time()
 print(mo.solutionForList(l_dico))
 end = time.time()
 elapsed = end - start
