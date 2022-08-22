@@ -18,21 +18,21 @@ import map_opti as mo
 ##############################################################################################################
 ####################################### LOAD the data and RESULTS ############################################
 
-# ----------------------------------------------------------------------------------------------------------------------------------
-# -----------------------------------------------------------------#      ###   Algo 1 vs Algo 2 vs Algo 3 vs Algo 3+ : Temps || Score   ###   -
-# ----------------------------------------------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------------------------------------------------------------
+# ----------------------------------      ###   Algo 1 vs Algo 2 vs Algo 3 vs Algo 3+ : Temps || Score   ###      ----------------------------------
+# --------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	# 0.4 s vs ?	vs ? vs 11.8 s	|| 406.1858 vs ? vs ? vs 603.81505
-#with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		# 0.05 s vs ? vs ?	vs 0.3 s			|| 158.421 	vs ? vs ? vs 175.1238
-#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:		# 0.0 s vs ? vs ? vs 0 s			|| 18.077 	vs ? vs ? vs 20.0265
-#with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		# 0 s vs ? 					|| 14.814 	vs ? vs ? vs 15.6493
-#with open('.\..\..\Data_Json\Dictionnary\\60Dico.json', 'r') as f:		# 0 s vs ? 		vs 1093 s (18min)	|| 10.36327 vs    ?    vs 10.95413
-#with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:		# 0 s vs ? 			vs 41.2 s	|| 9.79568  vs    ?    vs 10.2861
-#with open('.\..\..\Data_Json\Dictionnary\\50Dico.json', 'r') as f:		# 0 s vs ? 			vs 3.8 s	|| 9.08248  vs    ?    vs 9.43362
-#with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		# 0 s vs 466 s (8min)	vs 0.0 s	|| 2.31822  vs 2.34025 vs 2.34025
-#with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		# 0 s vs 36 s		vs 0 s vs 0 s	|| 2.08734  vs 2.10937 vs 2.10937 
-#with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		# 0 s vs 13 s 		vs 0 s vs 0 s	|| 0.86158  vs 1.31749 vs 1.317489
+with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	# 0.4s  vs ?   ?    vs 11.8s	    || 406.1858 vs    ?     vs 603.8150
+#with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		    # 0.05s vs ?   ?    vs 0.3s	        || 158.421 	vs    ?     vs 175.1238
+#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:	    # 0.0s  vs ?   ?    vs 0s			|| 18.077 	vs    ?     vs 20.0265
+#with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		    # 0s    vs ?   ?	vs 0s	        || 14.814 	vs    ?     vs 15.6493
+#with open('.\..\..\Data_Json\Dictionnary\\60Dico.json', 'r') as f:		    # 0s    vs ? vs 1093s(18m) vs 0s	|| 10.36327 vs    ?     vs 10.9541
+#with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:		    # 0s    vs ? 		vs 41.2s	    || 9.79568  vs    ?     vs 10.2861
+#with open('.\..\..\Data_Json\Dictionnary\\50Dico.json', 'r') as f:		    # 0s    vs ? 		vs 3.8s	        || 9.08248  vs    ?     vs 9.43362
+#with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		    # 0s    vs 466s(8m)	vs 0s	        || 2.31822  vs 2.34025  vs 2.34025
+#with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		    # 0s    vs 36s		vs 0s   	    || 2.08734  vs 2.10937  vs 2.10937 
+#with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		    # 0s    vs 13s 		vs 0s   	    || 0.86158  vs 1.31749  vs 1.31748
     dico = json.load(f)
 
 
