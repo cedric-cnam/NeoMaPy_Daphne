@@ -21,3 +21,60 @@ Where:
 - Algo 3 is Opti 1,
 - Algo 3+ is Opti 1 + 2,
 - dicoConfNodes.json contains 2500 nodes.
+
+
+---
+header-includes:
+  - \usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+---
+# Algorithm 3 - Optimisation 1:
+
+\begin{algorithm}[H]
+\DontPrintSemicolon
+\SetAlgoLined
+\KwResult{Node merged with the maximum of nodes of a list}
+\SetKwInOut{Input}{Input}\SetKwInOut{Output}{Output}
+\Input{Node = int(key), List = [[set of nodes], [set of conflict nodes]], Dico = {id_node: [weight, [set of conflict nodes]]}}
+\Output{Node+maxList_compatible, bool_compatible}
+\BlankLine
+new = list(dico[str(node)][1])
+l_merge_comp = [[node],new]
+compatible = True
+\For{n in List[0]}{
+    instructions\;
+    \eIf{node in dico[str(n)][1] }{
+        compatible = False
+    }{
+        new2 = list(dico[str(n)][1])\;
+		l_merge_comp[0].append(n)\;
+		l_merge_comp[1] += new2\;
+		l_merge_comp[1] = list(set(l_merge_comp[1]));
+    }
+}
+return (l_merge_comp,compatible)
+\caption{Merge a node with a list}
+\end{algorithm}
+
+
+		
+
+def build_sol(dico):
+	liste_sol = []
+	i = 0 
+	for k, v in dico.items():
+		if i == 0:
+			new = list(dico[k][1])
+			liste_sol.append([[int(k)],new])
+			i = 1
+		else:
+			for j in range(0,len(liste_sol)):
+				(l2,bool) = compatible_merge(int(k),liste_sol[j],dico)
+				if bool:
+					liste_sol[j][0].append(int(k))
+					liste_sol[j][1] += new
+					liste_sol[j][1] = list(set(liste_sol[j][1]))
+				else:
+					liste_sol += [[l2[0],l2[1]]]
+			liste_sol = deletInclude(liste_sol)
+		
+	return liste_sol
