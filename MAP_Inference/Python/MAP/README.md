@@ -14,3 +14,9 @@
 | 12Dico.json        | 0s     | 466s (8min) | 0s            | 0s        | 2.31822  | 2.34025 | 2.34025  | 2.34025  |
 | 11Dico.json        | 0s     | 36s         | 0s            | 0s        | 2.08734  | 2.10937 | 2.10937  | 2.10937  |
 | 10Dico.json        | 0s     | 13s         | 0s            | 0s        | 0.86158  | 1.31749 | 1.31749  | 1.31749  |
+
+Where: 
+- Algo 1 is First Solution,
+- Algo 2 is Brute Force,
+- Algo 3 is Opti 1,
+- Algo 3+ is Opti 1 + 2.
