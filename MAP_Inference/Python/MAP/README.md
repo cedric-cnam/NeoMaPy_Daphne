@@ -2,7 +2,7 @@
  Results in Time and Score of the different Algorithms      
 ---------------------------------------------------------------------------------
 
-|    File            | Time Aglo 1 | Time Algo 2 | Time Algo 3 | Time Algo 3+ | Score Aglo 1 | Score Algo 2 | Score Algo 3 | Score Algo 3+  |
+|    File            | Time Algo 1 | Time Algo 2 | Time Algo 3 | Time Algo 3+ | Score Algo 1 | Score Algo 2 | Score Algo 3 | Score Algo 3+  |
 | ------------------ | :----: | :----:      | :----:        | :-----:   | :----:   | :----:  | :----:   | :------: |
 | dicoConfNodes.json | 0.4s   | ?           | ?             | 11.8s     | 406.1858 |  ?      | ?        | 603.8150 |
 | 1kDico.json        | 0.05s  | ?           | ?             | 0.3s      | 158.421  |  ?      | ?        | 175.1238 |
