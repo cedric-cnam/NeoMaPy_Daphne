@@ -44,6 +44,7 @@ start = time.time()
 output = [0,[],[]]
 for elem in dico.items():
     (k,v) = elem
+    # set & set : check the intersection
     if (int(k) not in output[2]) and (not((set(output[1]) & set(v[1])))): 
         output[0] += v[0]
         output[1].append(int(k))
