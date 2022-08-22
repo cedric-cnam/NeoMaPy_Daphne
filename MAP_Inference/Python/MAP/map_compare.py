@@ -23,9 +23,9 @@ import map_opti as mo
 # --------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	# 0.4s  vs ?   ?    vs 11.8s	    || 406.1858 vs    ?     vs 603.8150
+with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f:    # 0.4s  vs ?   ?    vs 11.8s	    || 406.1858 vs    ?     vs 603.8150
 #with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		    # 0.05s vs ?   ?    vs 0.3s	        || 158.421 	vs    ?     vs 175.1238
-#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:	    # 0.0s  vs ?   ?    vs 0s			|| 18.077 	vs    ?     vs 20.0265
+#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:        # 0.0s  vs ?   ?    vs 0s			|| 18.077 	vs    ?     vs 20.0265
 #with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		    # 0s    vs ?   ?	vs 0s	        || 14.814 	vs    ?     vs 15.6493
 #with open('.\..\..\Data_Json\Dictionnary\\60Dico.json', 'r') as f:		    # 0s    vs ? vs 1093s(18m) vs 0s	|| 10.36327 vs    ?     vs 10.9541
 #with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:		    # 0s    vs ? 		vs 41.2s	    || 9.79568  vs    ?     vs 10.2861
