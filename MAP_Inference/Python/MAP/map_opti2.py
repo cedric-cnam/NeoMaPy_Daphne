@@ -158,13 +158,13 @@ def parallelization(l_dico):
 	return output,elapsed
 
 
-if __name__ == '__main__':
-	with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico.json', 'r') as f: 	
-		l_dico = json.load(f)
+#if __name__ == '__main__':
+	#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico.json', 'r') as f: 	
+		#l_dico = json.load(f)
 
 	#start = time.time()
-	output,elaspe = parallelization(l_dico)
+	#output,elaspe = parallelization(l_dico)
 	#end = time.time()
 	#elapsed = end - start
 	#print(f'Temps d\'exécution : {elapsed:.5}s\n')
-	print(output[0])
+	#print(output[0])
