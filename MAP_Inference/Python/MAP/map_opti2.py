@@ -26,7 +26,7 @@ with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:
 #with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		
 #with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		
-	dico = json.load(f)
+    dico = json.load(f)
 
 
 ##############################################################################################################
@@ -40,10 +40,10 @@ def sum_weight(dico,solution):
     return sum
 
 def max_sum_list_int(dico,l_sol):
-    l_sum = []
-    for sol in l_sol:
-        l_sum.append(sum_weight(dico,sol[0]))
-    return (max(l_sum), l_sol[l_sum.index(max(l_sum))][0])
+	l_sum = []
+	for sol in l_sol:
+		l_sum.append(sum_weight(dico,sol[0]))
+	return (max(l_sum), l_sol[l_sum.index(max(l_sum))][0])
 
 def deletInclude(liste):
 	i = 0
@@ -52,61 +52,61 @@ def deletInclude(liste):
 		while j < len(liste):
 			if set(liste[i][0]) < set(liste[j][0]):
 				del liste[i]
+				continue
 			elif set(liste[j][0]) < set(liste[i][0]):
 				del liste[j]	
+				continue
 			j += 1
 		i += 1
 	return liste
 
 #liste = [[id_nodes],[conflicts]]
 def compatible_merge(node,liste,dico):
-	new = list(dico[str(node)][1])
-	l_merge_comp = [[node],new]
+	l_merge_comp = [[node],set(dico[str(node)][1])]
 	compatible = True
 	for n in liste[0]:
-		if node in dico[str(n)][1] :
+		if node in dico[str(n)][1]:
 			compatible = False
 		else:
-			new2 = list(dico[str(n)][1])
 			l_merge_comp[0].append(n)
-			l_merge_comp[1] += new2
-			l_merge_comp[1] = list(set(l_merge_comp[1]))
-	
+			l_merge_comp[1] |= set(dico[str(n)][1])
 	return (l_merge_comp,compatible)
 		
 # Build the solutions
 def build_sol(dico):
 	liste_sol = []
-	i = 0 
-	# supprimer if i == 0
-	for k, v in dico.items():
-		if i == 0: 
-			new = list(v[1])
-            #new = list(dico[k][1])
-			liste_sol.append([[int(k)],new])
-			i = 1
-		else:
+	l_dico = list(dico.items())
+	liste_sol.append([[int(l_dico[0][0])],set(l_dico[0][1][1])])
+	for i in range(1,len(l_dico)):
 			for j in range(0,len(liste_sol)):
-				(l2,bool) = compatible_merge(int(k),liste_sol[j],dico)
+				(l2,bool) = compatible_merge(int(l_dico[i][0]),liste_sol[j],dico)
 				if bool:
-					liste_sol[j][0].append(int(k))
-					liste_sol[j][1] += new
-					liste_sol[j][1] = list(set(liste_sol[j][1]))
+					liste_sol[j][0].append(int(l_dico[i][0]))
+					liste_sol[j][1] |= set(l_dico[0][1][1])
 				else:
 					liste_sol += [[l2[0],l2[1]]]
 			liste_sol = deletInclude(liste_sol)
-		
 	return liste_sol
+
+
+    #new = list(l_dico[0][1][1])
+	#new = list(dico[k1][1])
+	#for k, v in dico.items():
+		#if i == 0: 
+		#	new = list(v[1])
+        #   #new = list(dico[k][1])
+		#	liste_sol.append([[int(k)],new])
+		#	i = 1
+		#else:
 
 #print(build_sol(dico))
 
-"""
-start = time.time()
-print(max_sum_list_int(dico,build_sol(dico)))
-end = time.time()
-elapsed = end - start
-print(f'Temps d\'exécution : {elapsed:.5}s')
-"""
+#start = time.time()
+#print(max_sum_list_int(dico,build_sol(dico)))
+#end = time.time()
+#elapsed = end - start
+#print(f'Temps d\'exécution : {elapsed:.5}s')
+
 
 ##############################################################################################################
 ##############################################################################################################
@@ -163,7 +163,7 @@ if __name__ == '__main__':
 		l_dico = json.load(f)
 
 	#start = time.time()
-	output,elapse = parallelization(l_dico)
+	output,elaspe = parallelization(l_dico)
 	#end = time.time()
 	#elapsed = end - start
 	#print(f'Temps d\'exécution : {elapsed:.5}s\n')
