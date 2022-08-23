@@ -8,6 +8,7 @@ Last update 19/08/2022
 
 import json
 import time
+import multiprocessing
 
 
 ##############################################################################################################
@@ -78,8 +79,9 @@ def build_sol(dico):
 	liste_sol = []
 	i = 0 
 	for k, v in dico.items():
-		if i == 0:
-			new = list(dico[k][1])
+		if i == 0: 
+			new = list(v[1])
+            #new = list(dico[k][1])
 			liste_sol.append([[int(k)],new])
 			i = 1
 		else:
@@ -110,7 +112,7 @@ def build_sol(dico):
 
 
 ##################################### LOAD the data for OPTI 2 ###############################################
-#with open('.\..\..\Data_Json\Dictionnary\listOfDico.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico.json', 'r') as f: 	
     #l_dico = json.load(f)
 
 
@@ -123,8 +125,41 @@ def solutionForList(l_dico):
         output[1] += liste
     return output
 
-#start = time.time()
-#print(solutionForList(l_dico))
-#end = time.time()
-#elapsed = end - start
-#print(f'Temps d\'exécution : {elapsed:.5}s')
+"""
+start = time.time()
+output = solutionForList(l_dico)
+end = time.time()
+elapsed = end - start
+print(output[0])
+print(f'Temps d\'exécution : {elapsed:.5}s')
+"""
+
+############################################ Parallelization #################################################
+
+
+def task(dico):
+	val,liste = max_sum_list_int(dico,build_sol(dico))
+	return val,liste
+
+
+def parallelization(l_dico):
+	output = [0,[]]
+	pool = multiprocessing.Pool()
+	result = pool.imap(task, l_dico["list"])
+	for val,liste in result:
+		output[0] += val
+		output[1] += liste
+	return output
+
+"""	
+if __name__ == '__main__':
+	with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico.json', 'r') as f: 	
+		l_dico = json.load(f)
+
+	start = time.time()
+	output = parallelization(l_dico)
+	end = time.time()
+	elapsed = end - start
+	print(f'Temps d\'exécution : {elapsed:.5}s\n')
+	print(output[0])
+"""
