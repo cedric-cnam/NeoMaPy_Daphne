@@ -11,7 +11,7 @@ import time
 
 import map_firstSolution as mf
 import map_brutForce as mb
-import map_opti as mo
+import map_opti2 as mo
 
 if __name__ == '__main__':
 
@@ -109,9 +109,9 @@ if __name__ == '__main__':
 ############################################ OPTI 1 + 2 + 3 ###################################################
 
     print("Algo 3 - Opti 1+2+3:")
-    start = time.time()
-    output = mo.parallelization(l_dico)
-    end = time.time()
-    elapsed = end - start
+    #start = time.time()
+    output,elapsed = mo.parallelization(l_dico)
+    #end = time.time()
+    #elapsed = end - start
     print(output[0])
     print(f'Temps d\'exécution : {elapsed:.5}s')
