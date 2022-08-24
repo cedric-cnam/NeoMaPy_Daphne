@@ -82,11 +82,20 @@ public class Translate2Neo4j {
 	public static void main (String args []) {
 		float ratio_rand_negative_polarity = 0.1f;
 		boolean lowWeight = true;
-		
+		int [] errors = {0, 1, 10, 25, 50, 75, 100};
+		int [] evidences = {5, 10, 25, 50, 75, 100, 200, 250};
 
+		for(int evidence : evidences) {
+			for(int error : errors) {
+				new Translate2Neo4j(fileName(error,evidence), ratio_rand_negative_polarity, lowWeight);
+			}
+		}
+
+		/*
 		new Translate2Neo4j(fileName(0,5), ratio_rand_negative_polarity, lowWeight);
 		new Translate2Neo4j(fileName(1,5), ratio_rand_negative_polarity, lowWeight);
 		new Translate2Neo4j(fileName(0,250), ratio_rand_negative_polarity, lowWeight);
 		new Translate2Neo4j(fileName(100,250), ratio_rand_negative_polarity, lowWeight);
+		*/
 	}
 }
