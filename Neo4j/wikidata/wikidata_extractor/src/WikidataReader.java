@@ -5,14 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WikidataReader {
-	String inputFolder = "data/input/";
 	BufferedReader br;
 	public WikidataReader() {
 	}
 
 	public List<Wikiline> readFile (String f) throws IOException {
 		List<Wikiline> lines = new ArrayList<Wikiline> ();
-		br = new BufferedReader (new FileReader (inputFolder +f));
+		br = new BufferedReader (new FileReader (Translate2Neo4j.inputFolder +f));
 		String line;
 		String [] l;
 		while( (line = br.readLine()) != null) {

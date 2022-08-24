@@ -1,13 +1,18 @@
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Translate2Neo4j {
 	WikidataReader wr = new WikidataReader ();
-	String outputFolder = "data/output/";
-	
-	public Translate2Neo4j(String file, float ratio_rand_negative_polarity, boolean lowWeight) {
+	public static String outputFolder = "data/output/";
+	public static String inputFolder = "data/input/";
+	public static float ratio_rand_negative_polarity = 0.1f;
+	public static boolean lowWeight = true;
+
+	public Translate2Neo4j(String file) {
 		try {
 			List<Wikiline> lines = wr.readFile (file);
 			int nb_rand_negative_polarity = new Float(new Float(lines.size()).floatValue()*ratio_rand_negative_polarity).intValue();
@@ -46,7 +51,7 @@ public class Translate2Neo4j {
 					nb_rand_negative_polarity--;
 				}
 			}
-			System.out.println("proba | true "+min_true+"-"+max_true+", nb:"+nb_true+", avg:"+(sum_true/nb_true)+"| false "+min_false+"-"+max_false+", nb:"+nb_false+", avg:"+(sum_false/nb_false));
+			System.out.println(file+"\tproba | true "+min_true+"-"+max_true+", nb:"+nb_true+", avg:"+(sum_true/nb_true)+"| false "+min_false+"-"+max_false+", nb:"+nb_false+", avg:"+(sum_false/nb_false));
 			writeCSV (lines, file);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -79,20 +84,63 @@ public class Translate2Neo4j {
 		return "rockit_wikidata_"+falseFact+"_"+nbFact+"k.csv";
 	}
 	
-	public static void main (String args []) {
-		float ratio_rand_negative_polarity = 0.1f;
-		boolean lowWeight = true;
-		int [] errors = {0, 1, 10, 25, 50, 75, 100};
-		int [] evidences = {5, 10, 25, 50, 75, 100, 200, 250};
+	private static List<String> readFolder () {
+		List<String> files = new ArrayList<String> ();
+		try {
+			File f = new File(inputFolder);
+			File[] listOfFiles = f.listFiles();
 
-		for(int evidence : evidences) {
-			for(int error : errors) {
-				new Translate2Neo4j(fileName(error,evidence), ratio_rand_negative_polarity, lowWeight);
+			for (File file : listOfFiles) {
+			    if (file.isFile()) {
+			    	files.add(file.getName());
+			    }
+			}
+		} catch (Exception e) {
+			
+		}
+		return files;
+	}
+
+	public static void main (String args []) {
+		boolean set = true;
+		if(args.length > 0) {
+			try {
+				for(String s : args) {
+					if(s.startsWith("--input=")) {
+						inputFolder = s.substring(7);
+					} else if(s.startsWith("--output=")) {
+						outputFolder = s.substring(8);
+					} else if(s.startsWith("--ratio=")) {
+						ratio_rand_negative_polarity = new Float(s.substring(8));
+					} else if(s.startsWith("--lowWeight=")) {
+						lowWeight = s.substring(13).compareTo("true") == 0;
+					} else
+						set = false;
+				}
+			} catch (Exception e) {
+				set = false;
 			}
 		}
+		
+		
+		if(!set){
+			System.out.println("The rockit extractor must specify the input and output folders:\n"
+					+ "java -jar Translate2Neo4j --input="+inputFolder+" --output="+outputFolder+"\n"
+					+ "But also if output evidences could have polarities (ratio and low weighted polarities)\n"
+					+ "\t--ratio="+ratio_rand_negative_polarity
+					+ "\t--lowWeight="+lowWeight);
+		} else {
+			System.out.println("Rockit extractor with params:\n"
+					+ "\tinputFolder="+inputFolder+"\n"
+					+ "\toutputFolder="+outputFolder+"\n"
+					+ "\tpolarities ratio="+ratio_rand_negative_polarity+", and low weighted polarities lowWeight="+lowWeight);
+		}
 
+		for(String file : readFolder()) {
+			new Translate2Neo4j(file);
+		}
 		/*
-		new Translate2Neo4j(fileName(0,5), ratio_rand_negative_polarity, lowWeight);
+		
 		new Translate2Neo4j(fileName(1,5), ratio_rand_negative_polarity, lowWeight);
 		new Translate2Neo4j(fileName(0,250), ratio_rand_negative_polarity, lowWeight);
 		new Translate2Neo4j(fileName(100,250), ratio_rand_negative_polarity, lowWeight);
