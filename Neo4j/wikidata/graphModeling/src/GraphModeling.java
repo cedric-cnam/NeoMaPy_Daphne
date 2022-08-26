@@ -23,7 +23,7 @@ public class GraphModeling {
 	public void init () throws Exception {
 		config = readJSONFile("config.json");
 		connection = new Connection ();
-		connection.initLog((String)config.get(inputFile));
+		connection.initLog(inputFile);
 	}
 
 	public void close () throws Exception {
@@ -149,6 +149,7 @@ public class GraphModeling {
 						+ "Query files are in the folder \"cypherQueries\".");
 				System.exit(0);
 			}
+			System.out.println("inputFile="+inputFile);
 
 			GraphModeling gm = new GraphModeling ();
 			if(!noDelete)
