@@ -15,9 +15,10 @@ import time
 ############################################## LOAD the data #################################################
 
 #with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	
-#with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f: 
+#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kClean.json', 'r') as f: 
+#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kConf.json', 'r') as f: 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kConf.json', 'r') as f: 
-with open('.\dico-2.5kConf.json', 'r') as f:     
+with open('.\dico-1kConf.json', 'r') as f:     
     dic = json.load(f)
 
 def oneDico(key, dico, l_id, d_out):
@@ -95,23 +96,6 @@ def Ndico(dico):
 
 
 
-"""
-def decrease(dico):
-    l_deso = list(dico.items())
-    l_croi = [l_deso[0]]
-    for i in range(1,len(l_deso)):
-        add = False
-        for j in range (0,len(l_croi)):
-            if len(l_deso[i][1][1]) >= len(l_croi[j][1][1]):
-                l_croi.insert(j,l_deso[i])
-                add = True
-                break
-        if add == False:
-            l_croi.insert(j+1,l_deso[i])
-    return l_croi
-"""
-
-
 
 """
 for k,v in dico.items():
@@ -141,7 +125,7 @@ print(f'list = {list_size}')
 
 
 # Creation of the json file of this dictionnary    
-fichier = open("listOfDico2.5kClear.json", "w")
+fichier = open("listOfDico1kClear.json", "w")
 
 ListeOfDicos = Ndico(dic)
 

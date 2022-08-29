@@ -4,7 +4,7 @@
 
 |    File            | Time Algo 1 | Time Algo 2 | Time Algo 3 | Time Algo 3+ | Time Algo 3* |  Score Algo 1 | Score Algo 2 | Score Algo 3 | Score Algo 3+ and 3* |
 | ------------------ | :----: | :----:      | :----:        | :-----:    | :-----:   | :----:   | :----:  | :----:   | :------: | 
-| dicoConfNodes.json |0.1-0.4s| ?           | ?             | 2s         | 1.4s      | 406.1858 |  ?      | ?        | 603.8150 |
+| dicoConfNodes.json |0.1-0.4s| ?           | ?             | 1.1s       | 1.2s      | 406.1858 |  ?      | ?        | 433.02028 |
 | 1kDico.json        | 0.03s  | ?           | ?             | 0.01s      | 0.3s      | 158.421  |  ?      | ?        | 175.1238 |
 | 100Dico.json       | 0s     | ?           | ?             | 0s         | 0.25s     | 18.077   |  ?      | ?        | 20.0265  |
 | 80Dico.json        | 0s     | ?           | ?             | 0s         | 0.25s     | 14.814   |  ?      | ?        | 15.6493  |

@@ -11,7 +11,7 @@ import json
 
 
 # Give your initial json file containing the conflicting nodes
-data = 'dico-2.5kinit.json'
+data = 'dico-1kClean.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -19,10 +19,10 @@ with open(data, 'r') as f:
 ##############################################################################################################
 
 # Creation of the json file of this dictionnary    
-file1 = open("dico-2.5kNoConf.json", "w")
+file1 = open("dico-1kNoConf.json", "w")
 file1.write("{\n")
 
-file2 = open("dico-2.5kConf.json", "w")
+file2 = open("dico-1kConf.json", "w")
 file2.write("{\n")
 
 i = 0

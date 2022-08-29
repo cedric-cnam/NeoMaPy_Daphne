@@ -12,8 +12,8 @@ import json
 
 # Give your initial json file containing the conflicting nodes
 #data = 'dicoTest100.json'
-#data = '1kDico.json'
-data = '.\..\..\Data_Json\Dictionnary\dicoConfNodes.json'
+data = '.\..\..\Data_Json\Dictionnary\\1kDico.json'
+#data = '.\..\..\Data_Json\Dictionnary\dicoConfNodes.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -131,7 +131,7 @@ output = select2(dico)
 ##############################################################################################################
 
 # Creation of the json file of this dictionnary    
-fichier = open("dico-2.5kinit.json", "w")
+fichier = open("dico-1kinit.json", "w")
 fichier.write("{\n")
 
 size = len(output)
