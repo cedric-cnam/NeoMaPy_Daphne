@@ -1,0 +1,1 @@
+for f in $(ls /Users/ntravers/Library/Application\ Support/Neo4j\ Desktop/Application/relate-data/dbmss/dbms-a5b441e1-93b1-4df3-95a9-f7add0213961/import); do    java -jar graphModeling.jar --inputFile=$f ;  done;
