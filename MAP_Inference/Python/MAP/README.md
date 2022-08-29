@@ -23,6 +23,14 @@ Where:
 - Algo 3* is Opti 1 + 2 + 3 (parallelization),
 - dicoConfNodes.json contains 2500 nodes.
 
+Process:
+1) Apply delChoice.py to delete the obvious bad node, i.e. if:
+    - the node is in conflict with another node which has the same conflict (or a subset) but with a better weight
+     (set_i >= set_j and list_dico[i][1][0] < list_dico[j][1][0]) 
+2) Apply divideDico.py to separate in two files the nodes, one with the set of nodes without conflitcs and the second with conflict
+3) Apply dicoToNdico.py from the file of conflicting nodes. It build a list of dictionnary where each dictionnary have connected node and it orders the nodes from most to least conflictual (i.e. decreasing order of the number of conflicts)
+4) Apply map_opti3.py to use the algorithm
+
 
 # Algorithm 3 - Optimisation 1:
 

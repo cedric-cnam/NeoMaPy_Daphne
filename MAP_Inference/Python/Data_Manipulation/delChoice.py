@@ -87,8 +87,9 @@ def group2(dico):
                 if int(list_dico[i][0]) in list_dico[j][1][1]:
                     set1 = set(list_dico[i][1][1]) - {int(list_dico[j][0])}
                     set2 = set(list_dico[j][1][1]) - {int(list_dico[i][0])} 
-                    if(set1 == set2 and list_dico[i][1][0] < list_dico[j][1][0]) or \
-                        (set1 > set2 and list_dico[i][1][0] < list_dico[j][1][0]):
+                    #if(set1 == set2 and list_dico[i][1][0] < list_dico[j][1][0]) or \
+                    #    (set1 > set2 and list_dico[i][1][0] < list_dico[j][1][0]):
+                    if set1 >= set2 and list_dico[i][1][0] < list_dico[j][1][0]:
                         list_ban.update({int(list_dico[i][0])})
             """
             if int(list_dico[j][0]) not in list_ban:
