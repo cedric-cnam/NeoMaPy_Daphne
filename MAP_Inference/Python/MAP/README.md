@@ -29,8 +29,12 @@ Where:
     - the same conflict or a subset (set_A >= set_B), and
     - with a better weight (score_A < score_B),
 then A is an obvious bad node and it must be deleted. 
-2) Apply divideDico.py to split the nodes into two files, one with all nodes without conflict and the second with conflict.
-3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where each dictionary has connected nodes and it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
+2) Apply divideDico.py to split the nodes into two files:
+    - one with all nodes without conflict and 
+    - the second with conflict.
+3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where:
+    - each dictionary has connected nodes and 
+    - it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
   ## Algorithm 
 4) Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
     - deletInclude eliminates from the current list of solutions those that are included,

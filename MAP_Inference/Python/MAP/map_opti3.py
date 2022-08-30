@@ -95,7 +95,7 @@ def build_sol(dico):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
-    thresh = int(nb_nodes*0.6)
+    threshold = int(nb_nodes*0.6)
     liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
     maxi = l_dico[0][1][0]
 
@@ -110,7 +110,7 @@ def build_sol(dico):
                 liste_sol[j][2] += l_dico[i][1][0]
                 if maxi < liste_sol[j][2]:
                     maxi = liste_sol[j][2]
-                elif i > thresh:
+                elif i > threshold:
                     potential_max = liste_sol[j][2]
                     for k in range(i+1,len(l_dico)):
                         potential_max += l_dico[k][1][0]  
