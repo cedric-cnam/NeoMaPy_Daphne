@@ -26,9 +26,9 @@ Where:
 # Process:
   ## Data Manipulation
 1) Apply delChoice.py to remove the obvious bad nodes, i.e. if a node A is in conflict with another node B that has:
-  - the same conflict or a subset (set_A >= set_B), and
-  - with a better weight (score_A < score_B),
-  then A is an obvious bad node and it must be deleted. 
+    - the same conflict or a subset (set_A >= set_B), and
+    - with a better weight (score_A < score_B),
+then A is an obvious bad node and it must be deleted. 
 2) Apply divideDico.py to split the nodes into two files, one with all nodes without conflict and the second with conflict.
 3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where each dictionary has connected nodes and it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
   ## Algorithm 
