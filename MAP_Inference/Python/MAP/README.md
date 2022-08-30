@@ -23,13 +23,18 @@ Where:
 - Algo 3* is Opti 1 + 2 + 3 (parallelization),
 - dicoConfNodes.json contains 2500 nodes.
 
-Process:
-1) Apply delChoice.py to delete the obvious bad node, i.e. if:
-    - the node is in conflict with another node which has the same conflict (or a subset) but with a better weight
-     (set_i >= set_j and list_dico[i][1][0] < list_dico[j][1][0]) 
-2) Apply divideDico.py to separate in two files the nodes, one with the set of nodes without conflitcs and the second with conflict
-3) Apply dicoToNdico.py from the file of conflicting nodes. It build a list of dictionnary where each dictionnary have connected node and it orders the nodes from most to least conflictual (i.e. decreasing order of the number of conflicts)
-4) Apply map_opti3.py to use the algorithm
+# Process:
+  ## Data Manipulation
+1) Apply delChoice.py to remove the obvious bad nodes, i.e. if a node A is in conflict with another node B that has:
+  - the same conflict or a subset (set_A >= set_B), and
+  - with a better weight (score_A < score_B),
+  then A is an obvious bad node and it must be deleted. 
+2) Apply divideDico.py to split the nodes into two files, one with all nodes without conflict and the second with conflict.
+3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where each dictionary has connected nodes and it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
+  ## Algorithm 
+4) Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
+    - deletInclude eliminates from the current list of solutions those that are included,
+    - use a threshold (experimental optimization of the calculation around 0.6, i.e. after 60% of the dictionary nodes) to start searching and removing bad solutions which, even adding the (sum of the) last nodes, cannot have a better score than the current best solution.
 
 
 # Algorithm 3 - Optimisation 1:
