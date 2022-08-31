@@ -44,5 +44,9 @@ then A is an obvious bad node and it must be deleted.
 # Algorithm 3 - Optimisation 1:
 
 <p align="center">
-  <img src="https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/algo3.jpg"/>
+  <img src="https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/compatible_merge.jpg"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/build_solutions.jpg"/>
 </p>
