@@ -36,10 +36,10 @@ then A is an obvious bad node and it must be deleted.
     - each dictionary has connected nodes and 
     - it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
   ## Algorithm 
-4.a) Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
+4) [Option 1] Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
     - deletInclude eliminates from the current list of solutions those that are included,
     - use a threshold (experimental optimization of the calculation around 0.6, i.e. after 60% of the dictionary nodes) to start searching and removing bad solutions which, even adding the (sum of the) last nodes, cannot have a better score than the current best solution.
-4.b) For big data set, use the function parallelization to parallelize buildSol on the different dico.
+4) [Option 2] For big data set, use the function parallelization to parallelize buildSol on the different dico.
   
 
 
