@@ -18,9 +18,9 @@
 Where: 
 - Algo 1 is First Solution,
 - Algo 2 is Brute Force,
-- Algo 3 is Opti 1 (see below), 
-- Algo 3+ is Opti 1 + 2 (dico in connected partition),
-- Algo 3* is Opti 1 + 2 + 3 (parallelization),
+- Algo 3 is Opti 1 (deleteInclude + Threshold), 
+- Algo 3+ is Opti 1 + 2 (Clean data + Dico in connected partition + Dico in decreasing conflicts order),
+- Algo 3* is Opti 1 + 2 + 3 (Parallelization),
 - dicoConfNodes.json contains 2500 nodes.
 
 # Process:
