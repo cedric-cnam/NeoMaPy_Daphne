@@ -1,3 +1,22 @@
+# Process:
+  ## Data Manipulation
+1) Apply cleanData.py to remove the obvious bad nodes, i.e. if a node A is in conflict with another node B that has:
+    - the same conflict or a subset (set_A >= set_B), and
+    - with a better weight (score_A < score_B),
+then A is an obvious bad node and it must be deleted. 
+2) Apply divideDico.py to split the nodes into two files:
+    - one with all nodes without conflict and 
+    - the second with conflict.
+3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where:
+    - each dictionary has connected nodes and 
+    - it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
+  ## Algorithm 
+4) [Option 1] Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
+    - deletInclude eliminates from the current list of solutions those that are included,
+    - use a threshold (experimental optimization of the calculation around 0.6, i.e. after 60% of the dictionary nodes) to start searching and removing bad solutions which, even adding the (sum of the) last nodes, cannot have a better score than the current best solution.
+4) [Option 2] For big data set, use the function parallelization to parallelize buildSol on the different dico.
+  
+
 ---------------------------------------------------------------------------------
  # Results in Time of the Process   
 ---------------------------------------------------------------------------------
@@ -32,25 +51,6 @@ Where:
 - Algo 3+ is Opti 1 + 2 (Clean data + Dico in connected partition + Dico in decreasing conflicts order),
 - Algo 3* is Opti 1 + 2 + 3 (Parallelization),
 - dicoConfNodes.json contains 2500 nodes.
-
-# Process:
-  ## Data Manipulation
-1) Apply cleanData.py to remove the obvious bad nodes, i.e. if a node A is in conflict with another node B that has:
-    - the same conflict or a subset (set_A >= set_B), and
-    - with a better weight (score_A < score_B),
-then A is an obvious bad node and it must be deleted. 
-2) Apply divideDico.py to split the nodes into two files:
-    - one with all nodes without conflict and 
-    - the second with conflict.
-3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where:
-    - each dictionary has connected nodes and 
-    - it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
-  ## Algorithm 
-4) [Option 1] Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
-    - deletInclude eliminates from the current list of solutions those that are included,
-    - use a threshold (experimental optimization of the calculation around 0.6, i.e. after 60% of the dictionary nodes) to start searching and removing bad solutions which, even adding the (sum of the) last nodes, cannot have a better score than the current best solution.
-4) [Option 2] For big data set, use the function parallelization to parallelize buildSol on the different dico.
-  
 
 
 # Algorithm 3 - Optimisation 1:
