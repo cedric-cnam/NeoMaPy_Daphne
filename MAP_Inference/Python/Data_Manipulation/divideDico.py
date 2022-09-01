@@ -9,9 +9,9 @@ Last update 18/08/2022
 import time
 import json
 
-
+start = time.time()
 # Give your initial json file containing the conflicting nodes
-data = 'dico-1kClean.json'
+data = 'dico-2.5kinit.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -19,10 +19,10 @@ with open(data, 'r') as f:
 ##############################################################################################################
 
 # Creation of the json file of this dictionnary    
-file1 = open("dico-1kNoConf.json", "w")
+file1 = open("dico-2.5kNoConf.json", "w")
 file1.write("{\n")
 
-file2 = open("dico-1kConf.json", "w")
+file2 = open("dico-2.5kConf.json", "w")
 file2.write("{\n")
 
 i = 0
@@ -57,3 +57,7 @@ file1.close()
 file2.write("]\n")
 file2.write("}")
 file2.close()
+
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution : {elapsed:.5}s')

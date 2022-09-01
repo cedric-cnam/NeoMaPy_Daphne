@@ -12,8 +12,8 @@ import json
 
 # Give your initial json file containing the conflicting nodes
 #data = 'dicoTest100.json'
-data = '.\..\..\Data_Json\Dictionnary\\1kDico.json'
-#data = '.\..\..\Data_Json\Dictionnary\dicoConfNodes.json'
+#data = '.\..\..\Data_Json\Dictionnary\\1kDico.json'
+data = '.\..\..\Data_Json\Dictionnary\dicoConfNodes.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -102,7 +102,50 @@ def group2(dico):
             """        
     return list_ban
 
+start = time.time()
+l1 = group2(dico)
+#print(f'group2 list_ban = {l1}\n')
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution g2 : {elapsed:.5}s')
 
+def group3(dico):
+    list_ban = set()
+    list_dico = list(dico.items())
+    i = 0
+    while i < len(list_dico):
+        j = i+1
+        set_i = set(list_dico[i][1][1])
+        while j < len(list_dico): 
+            if int(list_dico[i][0]) in list_dico[j][1][1]:
+                set1 = set_i - {int(list_dico[j][0])}
+                set2 = set(list_dico[j][1][1]) - {int(list_dico[i][0])} 
+                if set1 >= set2 and list_dico[i][1][0] < list_dico[j][1][0]:
+                    list_ban |= {int(list_dico[i][0])}
+                    del list_dico[i]
+                    i -= 1
+                    break 
+
+                elif set1 <= set2 and list_dico[i][1][0] > list_dico[j][1][0]:
+                    list_ban |= {int(list_dico[j][0])}
+                    del list_dico[j]
+                    j -= 1  
+                              
+            j += 1
+        i += 1   
+    return list_ban
+
+start = time.time()
+l2 = group3(dico)
+#print(f'group3 list_ban = {l2}\n')
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution g3 : {elapsed:.5}s')
+
+print(f'l1 - l2 = {l1-l2}\n')
+
+
+print(f'l2 - l1 = {l2-l1}\n')
 
 # selectione chaque nodes qui n'est pas banni
 def select2(dico):
@@ -116,23 +159,46 @@ def select2(dico):
                 if n not in list_ban:
                     output[i][1].append(n)
             i +=1
+    return output     
+
+# selectione chaque nodes qui n'est pas banni
+def select3(dico):
+    list_ban = group3(dico)
+    output = []
+    i = 0
+    for k,v in dico.items():
+        if int(k) not in list_ban:
+            output.append([int(k),[]])
+            for n in v[1]:
+                if n not in list_ban:
+                    output[i][1].append(n)
+            i +=1
     return output        
 
-
-#start = time.time()
+"""
+start = time.time()
 output = select2(dico)
 #print(output)
-#end = time.time()
-#elapsed = end - start
-#print(f'Temps d\'exécution : {elapsed:.5}s')
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution 2: {elapsed:.5}s')
 
-
+start = time.time()
+output = select3(dico)
+#print(output)
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution 3: {elapsed:.5}s')
+"""
+output = select3(dico)
 
 
 ##############################################################################################################
 
+
+
 # Creation of the json file of this dictionnary    
-fichier = open("dico-1kinit.json", "w")
+fichier = open("dico-2.5kinit.json", "w")
 fichier.write("{\n")
 
 size = len(output)
@@ -155,3 +221,5 @@ for k,v in output:
 
 fichier.write("}")
 fichier.close()
+
+

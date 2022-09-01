@@ -1,5 +1,15 @@
 ---------------------------------------------------------------------------------
- Results in Time and Score of the different Algorithms      
+ # Results in Time of the Process   
+---------------------------------------------------------------------------------
+
+|    File            | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
+| ------------------ | :----:       | :----:        | :----:         |   :----:     | :--:   |
+| dicoConfNodes.json |    0.73s     |     0.01s     |     0.017s     |    1.1s      |  < 2s  |
+| 1kDico.json        | ...          | ...           | ...            |       ...    |  ...   |
+
+
+---------------------------------------------------------------------------------
+ # Results in Time and Score of the different Algorithms      
 ---------------------------------------------------------------------------------
 
 |    File            | Time Algo 1 | Time Algo 2 | Time Algo 3 | Time Algo 3+ | Time Algo 3* |  Score Algo 1 | Score Algo 2 | Score Algo 3 | Score Algo 3+ and 3* |

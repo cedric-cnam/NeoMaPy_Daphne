@@ -13,12 +13,12 @@ import time
 ##############################################################################################################
 ##############################################################################################################
 ############################################## LOAD the data #################################################
-
+start = time.time()
 #with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kClean.json', 'r') as f: 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kConf.json', 'r') as f: 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kConf.json', 'r') as f: 
-with open('.\dico-1kConf.json', 'r') as f:     
+with open('.\dico-2.5kConf.json', 'r') as f:     
     dic = json.load(f)
 
 def oneDico(key, dico, l_id, d_out):
@@ -162,3 +162,7 @@ fichier.write("\t ]\n")
 fichier.write("}")
 
 fichier.close() 
+
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution : {elapsed:.5}s')
