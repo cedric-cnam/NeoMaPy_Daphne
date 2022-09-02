@@ -54,6 +54,11 @@ Where:
 - Algo 3* is Opti 1 + 2 + 3 (Parallelization),
 - dicoConfNodes.json contains 2500 nodes.
 
+
+
+- Sum of the nodes without conflict initially = 575.3432406800008 
+- Sum of the MAP = 1008.36352068
+
 ---------------------------------------------------------------------------------
 
 

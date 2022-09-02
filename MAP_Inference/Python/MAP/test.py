@@ -16,11 +16,24 @@ with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf2.json', 'r') 
 	dicoB = json.load(f2)
 """
 
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as fi:
-	dicoInfi = json.load(fi)    
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as fi:
+#	dicoInfi = json.load(fi)    
+
+with open('dicowithoutConfNodes.json', 'r') as f:
+	dico = json.load(f)  
+
+sum = 0
+for k,v in dico.items():
+    sum += v[0]
+
+print(sum)
+
+# 575.3432406800008 
 
 
-liste = list(dicoInfi['list'])
+
+#liste = list(dicoInfi['list'])
+
 #print(dicoInfi)
 
 #for i in range(0,len(liste)):
@@ -296,7 +309,7 @@ def increase(dico):
             l_croi.insert(j+1,l_deso[i])
     return l_croi
 
-inc = increase(dico_desordre)
+#inc = increase(dico_desordre)
 
 def decrease(dico):
     l_deso = list(dico.items())
@@ -312,6 +325,7 @@ def decrease(dico):
             l_croi.insert(j+1,l_deso[i])
     return l_croi
 
+"""
 dec = decrease(dico_desordre)
 
 for elem in inc:
@@ -321,3 +335,4 @@ print('\n')
 
 for elem in dec:
     print(elem)
+"""
