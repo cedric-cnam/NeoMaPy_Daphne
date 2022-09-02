@@ -27,9 +27,14 @@ for k,v in dico.items():
     sum += v[0]
 
 print(sum)
-
 # 575.3432406800008 
 
+print(len(dico))
+# 2196
+
+# conf (1607) + noConf (2196)  = total nodes = 3803
+
+# len(output.db) = 2031
 
 
 #liste = list(dicoInfi['list'])

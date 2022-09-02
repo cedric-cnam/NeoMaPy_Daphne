@@ -30,9 +30,8 @@ import multiprocessing
     #dico = json.load(f)
 
 
-with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kNoConf.json', 'r') as f:
-#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
-#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
+#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kNoConf.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
     dico = json.load(f)
 
 
@@ -161,16 +160,16 @@ print(max_sum_list_int(d_1,res))
 
 
 ##################################### LOAD the data for OPTI 2 ###############################################
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico1kClear.json', 'r') as f: 	
-#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico1kClear.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
 #################################### Apply Opti 1 on the list of dico ########################################
 def solutionForList(l_dico):
 	output = [0,[]]
-	i = 0
-	size = len(l_dico["list"])
+	#i = 0
+	#size = len(l_dico["list"])
 	for dico in l_dico["list"]:
 		#print(f'{i} / {size}')
 		val,liste = max_sum_list_int(dico,build_sol(dico))
@@ -206,11 +205,25 @@ print(f'temps moyen = {avg_time_1/10}\n')
 output1 = solutionForList(l_dico)
 #print(output1[0])
 #print(output1[1])
+
 output2 = sum_weight(dico,dico)
 #print(output2)
 print(f'Score total = {output1[0]+output2}')
 #print(output1[1])
 
+set_noConf = set()
+for id in dico:
+    set_noConf.update({int(id)})
+print(len(set_noConf))
+#611
+
+set_conf = set(output1[1])
+print(len(set_conf))
+#996
+
+set_total = set_conf.union(set_noConf)
+print(len(set_total))
+#1607
 
 ############################################ Parallelization #################################################
 
