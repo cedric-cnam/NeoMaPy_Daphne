@@ -161,7 +161,8 @@ print(max_sum_list_int(d_1,res))
 
 ##################################### LOAD the data for OPTI 2 ###############################################
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico1kClear.json', 'r') as f: 	
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -171,24 +172,25 @@ def solutionForList(l_dico):
 	#i = 0
 	#size = len(l_dico["list"])
 	for dico in l_dico["list"]:
-		#print(f'{i} / {size}')
+		#print(f'{i} / {size} with length = {len(dico)}')
 		val,liste = max_sum_list_int(dico,build_sol(dico))
 		output[0] += val
 		output[1] += liste
 		#i+=1
 	return output
 
-"""
+"""   
 avg_time_1 = 0 
 for i in range(0,10):
     start = time.time()
     output1 = solutionForList(l_dico)
     end = time.time()
     elapsed1 = end - start
+    avg_time_1 += elapsed1
     #print(output1[0])
     #print(output1[1])
     print(f'Temps d\'exécution conf : {elapsed1:.5}s')
-    
+ 
     start = time.time()
     output2 = sum_weight(dico,dico)
     #print(output2)
@@ -199,18 +201,23 @@ for i in range(0,10):
     #print(output1[1])
     print(f'Temps d\'exécution total : {elapsed1 + elapsed2:.5}s\n')
     avg_time_1 += elapsed1 + elapsed2
+
 print(f'temps moyen = {avg_time_1/10}\n')
 """
 
-output1 = solutionForList(l_dico)
+#output1 = solutionForList(l_dico)
+
 #print(output1[0])
 #print(output1[1])
 
-output2 = sum_weight(dico,dico)
+#output2 = sum_weight(dico,dico)
 #print(output2)
-print(f'Score total = {output1[0]+output2}')
+
+#print(f'Score total = {output1[0]}')
+#print(f'Score total = {output1[0]+output2}')
 #print(output1[1])
 
+"""
 set_noConf = set()
 for id in dico:
     set_noConf.update({int(id)})
@@ -224,6 +231,7 @@ print(len(set_conf))
 set_total = set_conf.union(set_noConf)
 print(len(set_total))
 #1607
+"""
 
 ############################################ Parallelization #################################################
 
@@ -246,25 +254,27 @@ def parallelization(l_dico):
 	#print(f'Temps d\'exécution : {elapsed:.5}s')
 	return output#,elapsed
 
-"""
+
 if __name__ == '__main__':
     with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
+    #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 
         l_dico = json.load(f)
 
     start = time.time()
     output1 = parallelization(l_dico)
-    #end = time.time()
-    #elapsed = end - start
-    #print(f'Temps d\'exécution conf : {elapsed1:.5}s\n')
+    end = time.time()
+    elapsed = end - start
+    print(f'Temps d\'exécution conf : {elapsed:.5}s\n')
     #print(output[0])
 
     #start = time.time()
-    output2 = sum_weight(dico,dico)
+    #output2 = sum_weight(dico,dico)
     #print(output2)
-    end = time.time()
-    elapsed2 = end - start
-    print(f'Temps d\'exécution no conf : {elapsed2:.5}s')
+    #end = time.time()
+    #elapsed2 = end - start
+    #print(f'Temps d\'exécution no conf : {elapsed2:.5}s')
 
     #print(f'Temps d\'exécution total : {elapsed1+elapsed2:.5}s')
-    print(f'Score total = {output1[0]+output2}')
-"""
+    #print(f'Score total = {output1[0]+output2}')
+    print(f'Score total = {output1[0]}')
+

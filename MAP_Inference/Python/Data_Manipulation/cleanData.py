@@ -102,12 +102,12 @@ def group2(dico):
             """        
     return list_ban
 
-start = time.time()
-l1 = group2(dico)
+#start = time.time()
+#l1 = group2(dico)
 #print(f'group2 list_ban = {l1}\n')
-end = time.time()
-elapsed = end - start
-print(f'Temps d\'exécution g2 : {elapsed:.5}s')
+#end = time.time()
+#elapsed = end - start
+#print(f'Temps d\'exécution g2 : {elapsed:.5}s')
 
 def group3(dico):
     list_ban = set()
@@ -135,17 +135,17 @@ def group3(dico):
         i += 1   
     return list_ban
 
-start = time.time()
-l2 = group3(dico)
+#start = time.time()
+#l2 = group3(dico)
 #print(f'group3 list_ban = {l2}\n')
-end = time.time()
-elapsed = end - start
-print(f'Temps d\'exécution g3 : {elapsed:.5}s')
+#end = time.time()
+#elapsed = end - start
+#print(f'Temps d\'exécution g3 : {elapsed:.5}s')
 
-print(f'l1 - l2 = {l1-l2}\n')
+#print(f'l1 - l2 = {l1-l2}\n')
 
 
-print(f'l2 - l1 = {l2-l1}\n')
+#print(f'l2 - l1 = {l2-l1}\n')
 
 # selectione chaque nodes qui n'est pas banni
 def select2(dico):

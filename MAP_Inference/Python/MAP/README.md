@@ -51,13 +51,23 @@ Where:
 - Algo 2 is Brute Force,
 - Algo 3 is Opti 1 (deleteInclude + Threshold), 
 - Algo 3+ is Opti 1 + 2 (Clean data + Dico in connected partition + Dico in decreasing conflicts order),
-- Algo 3* is Opti 1 + 2 + 3 (Parallelization),
-- dicoConfNodes.json contains 2500 nodes.
+- Algo 3* is Opti 1 + 2 + 3 (Parallelization).
 
 
-
+Stats:
+- Number of conflicted nodes initially (dicoConfNodes.json): 2480
+- 469 dico with max length = 115
+- average time 1.55s (without parallelization)
+- average time 1.75s (with parallelization)
+-------------------------------------------------------------------
+- Number of conflicted nodes after cleanData and divideDico: 1414 
+- 66 dico with max length = 109
+- avg time 1.1s (without parallelization)
+- average time 1.2s (with parallelization)
+-------------------------------------------------------------------
 - Sum of the nodes without conflict initially = 575.3432406800008 
 - Sum of the MAP = 1008.36352068
+
 
 ---------------------------------------------------------------------------------
 
