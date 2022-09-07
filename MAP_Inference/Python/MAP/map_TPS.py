@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on 18/08/2022
-Last update 24/08/2022
+Last update 07/09/2022
 
 @author: Victor
 """
@@ -62,6 +62,8 @@ def deletInclude(liste):
 		i += 1
 	return liste
 
+
+###############################################################################################
 
 ###############################################################################################
 
@@ -371,31 +373,6 @@ def solution_sum_pond(l_dico):
 		#i+=1
 	return output
 
-"""   
-avg_time_1 = 0 
-for i in range(0,10):
-    start = time.time()
-    output1 = solutionForList(l_dico)
-    end = time.time()
-    elapsed1 = end - start
-    avg_time_1 += elapsed1
-    #print(output1[0])
-    #print(output1[1])
-    print(f'Temps d\'exécution conf : {elapsed1:.5}s')
- 
-    start = time.time()
-    output2 = sum_weight(dico,dico)
-    #print(output2)
-    end = time.time()
-    elapsed2 = end - start
-    print(f'Temps d\'exécution no conf : {elapsed2:.5}s')
-    #print(output1[0]+output2)
-    #print(output1[1])
-    print(f'Temps d\'exécution total : {elapsed1 + elapsed2:.5}s\n')
-    avg_time_1 += elapsed1 + elapsed2
-
-print(f'temps moyen = {avg_time_1/10}\n')
-"""
 
 start = time.time()
 output_sum = solution_sum(l_dico)
@@ -453,21 +430,7 @@ print(f'Set sum_alpha - sum_pond = {set_21}')
 print(f'Set sum_pond - sum = {set_30}')
 print(f'Set sum_pond - sum_alpha = {set_31}')
 
-"""
-set_noConf = set()
-for id in dico:
-    set_noConf.update({int(id)})
-print(len(set_noConf))
-#611
 
-set_conf = set(output1[1])
-print(len(set_conf))
-#996
-
-set_total = set_conf.union(set_noConf)
-print(len(set_total))
-#1607
-"""
 
 ############################################ Parallelization #################################################
 
