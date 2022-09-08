@@ -1,10 +1,42 @@
+# Process:
+  ## Data Manipulation
+1) Apply cleanData.py to remove the obvious bad nodes, i.e. if a node A is in conflict with another node B that has:
+    - the same conflict or a subset (set_A >= set_B), and
+    - with a better weight (score_A < score_B),
+then A is an obvious bad node and it must be deleted. 
+2) Apply divideDico.py to split the nodes into two files:
+    - one with all nodes without conflict and 
+    - the second with conflict.
+3) Apply dicoToNdico.py from the conflicted nodes file. It builds a list of dictionaries where:
+    - each dictionary has connected nodes and 
+    - it orders the nodes from most to least conflicting (i.e. in decreasing order of the number of conflicts).
+  ## Algorithm 
+4) [Option 1] Apply map_opti3.py to use the buildSol algorithm which has 2 optimizations:
+    - deletInclude eliminates from the current list of solutions those that are included,
+    - use a threshold (experimental optimization of the calculation around 0.6, i.e. after 60% of the dictionary nodes) to start searching and removing bad solutions which, even adding the (sum of the) last nodes, cannot have a better score than the current best solution.
+4) [Option 2] For big data set, use the function parallelization to parallelize buildSol on the different dico.
+  
+
 ---------------------------------------------------------------------------------
- Results in Time and Score of the different Algorithms      
+
+
+ # Results in Time of the Process   
+
+|    File            | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
+| ------------------ | :----:       | :----:        | :----:         |   :----:     | :--:   |
+| dicoConfNodes.json |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
+| dicoConfNodes.json |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
+| 1kDico.json        | ...          | ...           | ...            |       ...    |  ...   |
+
+
 ---------------------------------------------------------------------------------
+
+
+ # Results in Time and Score of the different Algorithms      
 
 |    File            | Time Algo 1 | Time Algo 2 | Time Algo 3 | Time Algo 3+ | Time Algo 3* |  Score Algo 1 | Score Algo 2 | Score Algo 3 | Score Algo 3+ and 3* |
 | ------------------ | :----: | :----:      | :----:        | :-----:    | :-----:   | :----:   | :----:  | :----:   | :------: | 
-| dicoConfNodes.json |0.1-0.4s| ?           | ?             | 2s         | 1.4s      | 406.1858 |  ?      | ?        | 603.8150 |
+| dicoConfNodes.json | 0.25s  | ?           | ?             | 1.1s       | 1.2s      | 406.1858 |  ?      | ?        | 433.02028 |
 | 1kDico.json        | 0.03s  | ?           | ?             | 0.01s      | 0.3s      | 158.421  |  ?      | ?        | 175.1238 |
 | 100Dico.json       | 0s     | ?           | ?             | 0s         | 0.25s     | 18.077   |  ?      | ?        | 20.0265  |
 | 80Dico.json        | 0s     | ?           | ?             | 0s         | 0.25s     | 14.814   |  ?      | ?        | 15.6493  |
@@ -18,14 +50,35 @@
 Where: 
 - Algo 1 is First Solution,
 - Algo 2 is Brute Force,
-- Algo 3 is Opti 1 (see below), 
-- Algo 3+ is Opti 1 + 2 (dico in connected partition),
-- Algo 3* is Opti 1 + 2 + 3 (parallelization),
-- dicoConfNodes.json contains 2500 nodes.
+- Algo 3 is Opti 1 (deleteInclude + Threshold), 
+- Algo 3+ is Opti 1 + 2 (Clean data + Dico in connected partition + Dico in decreasing conflicts order),
+- Algo 3* is Opti 1 + 2 + 3 (Parallelization).
+
+
+Stats:
+- Number of conflicted nodes initially (dicoConfNodes.json): 2480
+- 469 dico with max length = 115
+- average time 1.55s (without parallelization)
+- average time 1.75s (with parallelization)
+-------------------------------------------------------------------
+- Number of conflicted nodes after cleanData and divideDico: 1414 
+- 66 dico with max length = 109
+- avg time 1.1s (without parallelization)
+- average time 1.2s (with parallelization)
+-------------------------------------------------------------------
+- Sum of the nodes without conflict initially = 575.3432406800008 
+- Sum of the MAP = 1008.36352068
+
+
+---------------------------------------------------------------------------------
 
 
 # Algorithm 3 - Optimisation 1:
 
 <p align="center">
-  <img src="https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/algo3.jpg"/>
+  <img src="https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/compatible_merge.jpg"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/cedric-cnam/Daphne-UTKG/blob/main/MAP_Inference/Img/build_solutions.jpg"/>
 </p>

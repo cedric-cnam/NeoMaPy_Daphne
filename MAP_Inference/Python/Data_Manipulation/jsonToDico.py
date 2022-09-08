@@ -10,7 +10,8 @@ import json
 
 
 # Give your initial json file containing the conflicting nodes
-data = 'conflictNodes.json'
+#data = 'conflictNodes.json'
+data = 'withoutconflicts.json'
 with open(data, 'r') as f:
     liste = json.load(f)
 
@@ -19,18 +20,32 @@ with open(data, 'r') as f:
 
 # Creation of the dictionnary of conflincting nodes where (key,value) is ('id' : [weight, listOfConflicts])
 dico={}
+"""
 for i in liste:
     id = i["Node_id"]
     w = i["weight"]
     conf = i["Conflicts_node_ids"]
     dico[id] = (w,conf)
+"""
 
+for i in liste:
+    id = i["Node_id"]
+    w = i["weight"]
+    if type(w) == list:
+        sum = 0
+        for w_i in w:
+            sum += w_i
+        w = sum
+    if w == None :
+        w = 0
+    conf = []
+    dico[id] = (w,conf)
 
 ##############################################################################################################
 ##############################################################################################################
 
 # Creation of the json file of this dictionnary    
-fichier = open("dicoConfNodes.json", "w")
+fichier = open("dicowithoutConfNodes.json", "w")
 fichier.write("{\n")
 
 size = len(dico)
