@@ -12,6 +12,7 @@ public class GraphModeling {
 
 	private static JSONParser parser = null;
 	public static JSONObject config;
+	public static boolean inference = true;
 	
 	public String [][] replacements = {
 	};
@@ -23,7 +24,7 @@ public class GraphModeling {
 	public void init () throws Exception {
 		config = readJSONFile("config.json");
 		connection = new Connection ();
-		connection.initLog(inputFile);
+		connection.initLog(inputFile,(inference?"withInference":"withoutInference"));
 	}
 
 	public void close () throws Exception {
@@ -34,7 +35,13 @@ public class GraphModeling {
 		graphSetting ("schema.cypher");
 		graphSetting ("delete.cypher");
 		graphSetting ("graphSetting.cypher");
-		graphSetting ("inference.cypher");
+	}
+
+	public void inference() throws Exception {
+		graphSetting ("inference.cypher");		
+	}
+
+	public void constraints() throws Exception {
 		graphSetting ("constraints.cypher");
 	}
 	
@@ -61,7 +68,7 @@ public class GraphModeling {
 			for(String [] replacement : replacements) {
 				if(q.instruction.compareTo(replacement[0]) == 0) {
 					q.query = q.query.replace("<<"+replacement[1]+">>",(String)config.get(replacement[2]));
-				}	
+				}
 			}
 		}
 		connection.readQueries2CSV(fileQueries, queries, csvFile);
@@ -131,6 +138,8 @@ public class GraphModeling {
 					for(String s : args) {
 						if(s.startsWith("--inputFile=")) {
 							inputFile = s.substring(12);
+						} if(s.startsWith("--inference=")) {
+								inference = s.substring(12).compareTo("true")==0;
 						} else if(s.startsWith("--help")) {
 							set = false;
 						} else if(s.startsWith("--noDelete")) {
@@ -146,16 +155,21 @@ public class GraphModeling {
 			if(!set || inputFile == null){
 				System.out.println("--inputFile=XXX.csv  -> evidences that have to be imported. Files must be put in the \"import\" neo4j folder of your database. It removes the previous database and create a new one with the input data.\n"
 						+ "--noDelete  -> apply directly queries without delete existing nodes\n"
+						+ "--inference=true/false -> apply inference rules (by default=true)\n"
 						+ "Query files are in the folder \"cypherQueries\".");
 				System.exit(0);
 			}
 			System.out.println("inputFile="+inputFile);
 
 			GraphModeling gm = new GraphModeling ();
-			if(!noDelete)
+			if(!noDelete) {
 				gm.graphSettings();
+			}
+			if(inference)
+				gm.inference();
+			gm.constraints();
 			gm.statsQueries ("stats.cypher", "stats");
-			gm.resultQueries ("conflicts.cypher");
+			gm.resultQueries ("results.cypher");
 			gm.close();
 
 		} catch (Exception e) {

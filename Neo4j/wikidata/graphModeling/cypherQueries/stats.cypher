@@ -23,12 +23,12 @@ ORDER BY NB DESC;
 MATCH () -[c:conflict]- ()
 RETURN c.type as TYPE, c.error as CONFLICT_CODE, count(distinct c) as NB;
 
-//Count number of temporal inconsistency
+//Nb temporal conflicts
 MATCH (:TF) -[c:conflict{type:"TC1"}]- (:TF)
 RETURN SUM(CASE WHEN c.pCon=true THEN 1 ELSE 0 END) AS NB_pCon,
+    SUM(CASE WHEN c.pInc=true AND c.pCon=true THEN 1 ELSE 0 END) AS NB_pConpInc,
     SUM(CASE WHEN c.pInc=true THEN 1 ELSE 0 END) AS NB_pInc,
     SUM(CASE WHEN c.tInc=true THEN 1 ELSE 0 END) AS NB_tInc,
-    SUM(CASE WHEN c.pInc=true AND c.pCon=true THEN 1 ELSE 0 END) AS NB_pConpInc,
     COUNT(*) as NB_total;
 
     

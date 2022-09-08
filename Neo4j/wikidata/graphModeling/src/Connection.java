@@ -1,10 +1,14 @@
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import org.json.simple.JSONObject;
 import org.neo4j.driver.AuthTokens;
@@ -37,9 +41,12 @@ public class Connection implements AutoCloseable {
 		log.close();
 	}
 
-	public void initLog(String file) throws Exception {
+	public void initLog(String file, String subFolder) throws Exception {
 		outputFolder = "output/" + file + "/";
 		File f = new File(outputFolder);
+		f.mkdir();
+		outputFolder = "output/" + file + "/"+subFolder+"/";
+		f = new File(outputFolder);
 		f.mkdir();
 		log = new BufferedWriter(new FileWriter(outputFolder + "time.csv"));
 		log.write("STEP;QUERY;TIME (ms)\n");
@@ -95,7 +102,6 @@ public class Connection implements AutoCloseable {
 			session.readTransaction(new TransactionWork<Integer>() {
 				@Override
 				public Integer execute(Transaction tx) {
-					long total = 0l;
 					Instant start, end;
 					Duration timeElapsed;
 					BufferedWriter output = null;
@@ -140,13 +146,11 @@ public class Connection implements AutoCloseable {
 			session.readTransaction(new TransactionWork<Integer>() {
 				@Override
 				public Integer execute(Transaction tx) {
-					long total = 0l;
 					Instant start, end;
 					Duration timeElapsed;
 					BufferedWriter output = null;
 					try {
 						for (Query q : queries) {
-							int i = 0;
 							start = Instant.now();
 							Result result = tx.run(q.query);
 							end = Instant.now();
@@ -167,6 +171,7 @@ public class Connection implements AutoCloseable {
 							output.write("]");
 							output.flush();
 							output.close();
+							zipFile(outputFolder + q.instruction, ".json");
 						}
 					} catch (IOException e1) {
 						// TODO Auto-generated catch block
@@ -178,6 +183,25 @@ public class Connection implements AutoCloseable {
 		}
 	}
 
+	private void zipFile (String sourceFile, String ext) throws IOException {
+		FileOutputStream fos = new FileOutputStream(sourceFile+".zip");
+        ZipOutputStream zipOut = new ZipOutputStream(fos);
+        File fileToZip = new File(sourceFile+ext);
+        FileInputStream fis = new FileInputStream(fileToZip);
+        ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
+        zipOut.putNextEntry(zipEntry);
+        byte[] bytes = new byte[1024];
+        int length;
+        while((length = fis.read(bytes)) >= 0) {
+            zipOut.write(bytes, 0, length);
+        }
+        zipOut.close();
+        fis.close();
+        fos.close();
+        fileToZip.delete();
+	}
+
+	@SuppressWarnings("unchecked")
 	private JSONObject toJSON (Record r) {
 		JSONObject o = new JSONObject ();
 		for(String k : r.keys()) {
