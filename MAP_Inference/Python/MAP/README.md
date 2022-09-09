@@ -73,10 +73,25 @@ Stats:
 ---------------------------------------------------------------------------------
 
 NeoMaPy:
+0_5k:
+- Time without clear data and without parallelization : 2.1 sec
 - Score conflicts = 317.80555020000025
 - Score no conflicts = 721.7768804300002
 - Score total = 1039.5824306300005
 
+0_50k:
+- Time without clear data and without parallelization : 5.1 sec
+- Score conflicts = 1987.274360180002
+- Score no conflicts = 9428.338059280117
+- Score total = 11415.612419460118
+
+n-RockIt:
+- 0_5k:
+    - Time = 25 sec
+
+- 0_50k:
+    - Time = 2 min 40
+    
 ---------------------------------------------------------------------------------
 
 # Algorithm 3 - Optimisation 1:

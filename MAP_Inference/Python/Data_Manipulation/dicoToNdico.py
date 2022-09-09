@@ -18,7 +18,7 @@ start = time.time()
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kClean.json', 'r') as f: 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kConf.json', 'r') as f: 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kConf.json', 'r') as f: 
-with open('.\dicotIncConf.json', 'r') as f:     
+with open('.\dicotIncConf_0_50k.json', 'r') as f:     
     dic = json.load(f)
 
 def oneDico(key, dico, l_id, d_out):
@@ -125,7 +125,7 @@ print(f'list = {list_size}')
 
 
 # Creation of the json file of this dictionnary    
-fichier = open("listOfDicotInc5k.json", "w")
+fichier = open("listOfDicotInc0_50k.json", "w")
 
 ListeOfDicos = Ndico(dic)
 

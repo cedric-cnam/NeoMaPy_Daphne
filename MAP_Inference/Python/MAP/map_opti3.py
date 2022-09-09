@@ -32,7 +32,7 @@ import multiprocessing
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kNoConf.json', 'r') as f:
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
-with open('.\dicotIncNoConf.json', 'r') as f:
+with open('.\dicotIncNoConf_0_50k.json', 'r') as f:
     dico = json.load(f)
 
 
@@ -164,7 +164,7 @@ print(max_sum_list_int(d_1,res))
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico1kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
-with open('.\listOfDicotInc5k.json', 'r') as f: 	
+with open('.\listOfDicotInc_0_50k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
