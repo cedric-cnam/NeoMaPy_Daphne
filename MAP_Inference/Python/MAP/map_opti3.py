@@ -31,7 +31,8 @@ import multiprocessing
 
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kNoConf.json', 'r') as f:
-with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
+#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
+with open('.\dicotIncNoConf.json', 'r') as f:
     dico = json.load(f)
 
 
@@ -162,7 +163,8 @@ print(max_sum_list_int(d_1,res))
 ##################################### LOAD the data for OPTI 2 ###############################################
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico1kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
+with open('.\listOfDicotInc5k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -205,16 +207,20 @@ for i in range(0,10):
 print(f'temps moyen = {avg_time_1/10}\n')
 """
 
-#output1 = solutionForList(l_dico)
+start = time.time()
+output1 = solutionForList(l_dico)
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution no conf : {elapsed:.5}s')
 
-#print(output1[0])
+print(output1[0])
 #print(output1[1])
 
-#output2 = sum_weight(dico,dico)
-#print(output2)
+output2 = sum_weight(dico,dico)
+print(output2)
 
 #print(f'Score total = {output1[0]}')
-#print(f'Score total = {output1[0]+output2}')
+print(f'Score total = {output1[0]+output2}')
 #print(output1[1])
 
 """
@@ -254,7 +260,7 @@ def parallelization(l_dico):
 	#print(f'Temps d\'exécution : {elapsed:.5}s')
 	return output#,elapsed
 
-
+"""
 if __name__ == '__main__':
     with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 
@@ -277,4 +283,4 @@ if __name__ == '__main__':
     #print(f'Temps d\'exécution total : {elapsed1+elapsed2:.5}s')
     #print(f'Score total = {output1[0]+output2}')
     print(f'Score total = {output1[0]}')
-
+"""
