@@ -22,11 +22,15 @@ then A is an obvious bad node and it must be deleted.
 
  # Results in Time of the Process   
 
-|    File            | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
-| ------------------ | :----:       | :----:        | :----:         |   :----:     | :--:   |
-| dicoConfNodes.json |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
-| dicoConfNodes.json |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
-| 1kDico.json        | ...          | ...           | ...            |       ...    |  ...   |
+|    File                 | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
+| ------------------      | :----:       | :----:        | :----:         |   :----:     | :--:   |
+| dicotIncConf_0_50k.json |  Not Used    |   Not Used    |     0.15s      |    - s       |  - s   |
+| dicotIncConf_0_25k.json |  Not Used    |   Not Used    |     0.20s      |    - s       |  - s   |
+| dicotIncConf_0_10k.json |  Not Used    |   Not Used    |     0.08s      |    - s       |  - s   |
+| dicotIncConf_0_5k.json  |  Not Used    |   Not Used    |     0.02s      |    - s       |  - s   |
+| dicoConfNodes.json      |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
+| dicoConfNodes.json      |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
+| 1kDico.json             | ...          | ...           | ...            |       ...    |  ...   |
 
 
 ---------------------------------------------------------------------------------
