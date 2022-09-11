@@ -24,10 +24,10 @@ then A is an obvious bad node and it must be deleted.
 
 |    File                 | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
 | ------------------      | :----:       | :----:        | :----:         |   :----:     | :--:   |
-| dicotIncConf_0_50k.json |  Not Used    |   Not Used    |     0.15s      |    - s       |  - s   |
-| dicotIncConf_0_25k.json |  Not Used    |   Not Used    |     0.20s      |    - s       |  - s   |
-| dicotIncConf_0_10k.json |  Not Used    |   Not Used    |     0.08s      |    - s       |  - s   |
-| dicotIncConf_0_5k.json  |  Not Used    |   Not Used    |     0.02s      |    - s       |  - s   |
+| dicotIncConf_0_50k.json |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
+| dicotIncConf_0_25k.json |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |
+| dicotIncConf_0_10k.json |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |
+| dicotIncConf_0_5k.json  |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |
 | dicoConfNodes.json      |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
 | dicoConfNodes.json      |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
 | 1kDico.json             | ...          | ...           | ...            |       ...    |  ...   |
@@ -78,16 +78,40 @@ Stats:
 
 NeoMaPy:
 - 0_5k:
-    - Time without clear data and without parallelization : 2.1 sec
+    - Time without clear data and without parallelization : 2.4 sec
     - Score conflicts = 317.80555020000025
     - Score no conflicts = 721.7768804300002
     - Score total = 1039.5824306300005
+    - listOfDicotInc_0_5k contains 1700 nodes, 86 dico with max length = 115
+    - DicotIncNoConf_0_5k contains 2942 nodes
+    - Total nodes = 4642
+
+- 0_10k:
+    - Time without clear data and without parallelization : 3.8 sec
+    - Score conflicts = 601.5846702499992
+    - Score no conflicts = 1500.7107203200044
+    - Score total = 2102.2953905700037
+    - listOfDicotInc_0_10k contains 3263 nodes, 199 dico with max length = 117
+    - DicotIncNoConf_0_10k contains 6074 nodes
+    - Total nodes = 9337
+
+- 0_25k:
+    - Time without clear data and without parallelization : 5.3 sec
+    - Score conflicts = 1124.3495005700006
+    - Score no conflicts = 4454.232609100002
+    - Score total = 5578.582109670003
+    - listOfDicotInc_0_25k contains 6 124 nodes, 450 dico with max length = 133
+    - DicotIncNoConf_0_25k contains 17 898 nodes
+    - Total nodes = 24 022
 
 - 0_50k:
-    - Time without clear data and without parallelization : 5.1 sec
+    - Time without clear data and without parallelization : 5.4 sec
     - Score conflicts = 1987.274360180002
     - Score no conflicts = 9428.338059280117
     - Score total = 11415.612419460118
+    - listOfDicotInc_0_50k contains 10 767 nodes, 843 dico with max length = 348 
+    - DicotIncNoConf_0_50k contains 37 838 nodes
+    - Total nodes = 48 605
 
 n-RockIt:
 - 0_5k:

@@ -16,9 +16,9 @@ with open(data_conf, 'r') as f:
 
 
 # Give your initial json file containing the non conflicting nodes
-data_noconf = '.\..\..\Data_Json\Initial_Data\\tInc_noConflicts_100_50k.json'
-with open(data_noconf, 'r') as f2:
-    liste_noconf = json.load(f2)
+#data_noconf = '.\..\..\Data_Json\Initial_Data\\tInc_noConflicts_0_10k.json'
+#with open(data_noconf, 'r') as f2:
+#    liste_noconf = json.load(f2)
 
 
 ##############################################################################################################
@@ -26,6 +26,7 @@ with open(data_noconf, 'r') as f2:
 
 
 # Creation of the dictionnary of conflincting nodes where (key,value) is ('id' : [weight, listOfConflicts])
+
 dico_conf = {}
 for i in liste_conf:
     id = i["Node_id"]
@@ -33,19 +34,18 @@ for i in liste_conf:
     conf = i["Conflicts_node_ids"]
     dico_conf[id] = (w,conf)
 
-
+"""
 # Creation of the dictionnary of non conflincting nodes where (key,value) is ('id' : [weight, []])
 dico_noconf = {}
 for i in liste_noconf:
     id = i["Node_id"]
     w = i["weight"]
     conf = []
-    dico_conf[id] = (w,conf)
-
+    dico_noconf[id] = (w,conf)
+"""
 
 ##############################################################################################################
 ##############################################################################################################
-
 
 
 # Creation of the json file of this dictionnary of conflicting nodes 
@@ -69,9 +69,9 @@ fichier_conf.write("}")
 fichier_conf.close()
 
 
-
+"""
 # Creation of the json file of this dictionnary of non conflicting nodes 
-fichier_noconf = open("dicotIncNoConf_100_50k.json", "w")
+fichier_noconf = open("dicotIncNoConf_0_10k.json", "w")
 fichier_noconf.write("{\n")
 size = len(dico_noconf)
 i = 1
@@ -89,3 +89,4 @@ for (k,v) in dico_noconf.items():
     i += 1
 fichier_noconf.write("}")
 fichier_noconf.close()
+"""

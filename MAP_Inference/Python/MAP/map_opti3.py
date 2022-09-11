@@ -16,23 +16,8 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-#with open('.\..\..\Data_Json\Dictionnary\\testDico.json', 'r') as f: 	
-#with open('.\..\..\Data_Json\Dictionnary\dicoConfNodes.json', 'r') as f: 	
-#with open('.\..\..\Data_Json\Dictionnary\\1kDico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\100Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\80Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\60Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\55Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\50Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\12Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\11Dico.json', 'r') as f:		
-#with open('.\..\..\Data_Json\Dictionnary\\10Dico.json', 'r') as f:		
-    #dico = json.load(f)
-
-
-#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-1kNoConf.json', 'r') as f:
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
-with open('.\dicotIncNoConf_0_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_10k.json', 'r') as f:
     dico = json.load(f)
 
 
@@ -161,25 +146,28 @@ print(max_sum_list_int(d_1,res))
 
 
 ##################################### LOAD the data for OPTI 2 ###############################################
-#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico1kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
-with open('.\listOfDicotInc_0_50k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_10k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
 #################################### Apply Opti 1 on the list of dico ########################################
 def solutionForList(l_dico):
-	output = [0,[]]
-	#i = 0
-	#size = len(l_dico["list"])
-	for dico in l_dico["list"]:
-		#print(f'{i} / {size} with length = {len(dico)}')
-		val,liste = max_sum_list_int(dico,build_sol(dico))
-		output[0] += val
-		output[1] += liste
-		#i+=1
-	return output
+    output = [0,[]]
+    #i = 0
+    #sum = 0
+    #size = len(l_dico["list"])
+    for dico in l_dico["list"]:
+        #if len(dico) > 10:
+        #    print(f'{i} / {size} with length = {len(dico)} ')
+        #sum += len(dico)
+        val,liste = max_sum_list_int(dico,build_sol(dico))
+        output[0] += val
+        output[1] += liste
+        #i+=1
+    #print(f'nb total nodes = {sum}')
+    return output
 
 """   
 avg_time_1 = 0 
@@ -211,11 +199,13 @@ start = time.time()
 output1 = solutionForList(l_dico)
 end = time.time()
 elapsed = end - start
-print(f'Temps d\'exécution no conf : {elapsed:.5}s')
+print(f'Temps d\'exécution conf : {elapsed:.5}s')
 
 print(output1[0])
 #print(output1[1])
 
+
+#print(f'nb nodes no conf : {len(dico)}')
 output2 = sum_weight(dico,dico)
 print(output2)
 
