@@ -198,35 +198,16 @@ n-RockIt:
   - 9 observed Predicates
   - 18 number of formulas
 
-- 0_5k:
-    - Time = 25 sec
-    - 24 037 evidence atoms
-    - 199 573 constraints
-
-- 50_5k:
-    - Time = 57 sec
-    - 32 217 evidence atoms
-    - 557 083 constraints
+|    File                     | Time                | evidence atoms | constrains     |
+| ------------------          | :----:              | :----:         | :----:         |  
+| 0_5k                        |  25 s               |   24 037       |   199 573      |  
+| 50_5k                       |  57 s               |   32 217       |   557 083      |
+| 100_5k                      |  1 min 18 (78s)     |   40 339       |   816 094      |  
+| 0_50k                       |  2 min 40 (160s)    |   284 732      |   1 097 073    |
+| 50_50k                      |  5 min 52 (352s)    |   370 596      |   3 041 768    |  
+| 100_50k                     |  9 min 34 (574s)    |   459 073      |   4 711 701    |
     
-- 100_5k:
-    - Time = 1 min 18 (78 sec)
-    - 40 339 evidence atoms
-    - 816 094 constraints
 
-- 0_50k:
-    - Time = 2 min 40 (160 sec)
-    - 284 732 evidence atoms
-    - 1 097 073 constraints
-
-- 50_50k:
-    - Time = 5 min 52 (352 sec)
-    - 370 596 evidence atoms
-    - 3 041 768 constraints
-
-- 100_50k:
-    - Time = 9 min 34 (574 sec)
-    - 459 073 evidence atoms
-    - 4 711 701 constraints
 
 ---------------------------------------------------------------------------------
 
