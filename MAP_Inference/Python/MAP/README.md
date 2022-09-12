@@ -30,6 +30,7 @@ then A is an obvious bad node and it must be deleted.
 | dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
 | dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
 | dicotIncConf_50_50k.json    |  Not Used    |   Not Used    |     3.6s       |    887s      |  891s  |
+| dicotIncConf_0_50k.json     |    18.7s     |     0.07s     |     0.13s      |    3.7s      |  22s   |
 | dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_0_25k.json     |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |
@@ -38,6 +39,7 @@ then A is an obvious bad node and it must be deleted.
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_100_5k.json    |  Not Used    |   Not Used    |     1.1s       |    ? s       |  ? s   |
 | dicotIncConf_50_5k.json //  |  7.5s        |   0.14s       |     0.6s       |    316s      |  324s  |
+| dicotIncConf_50_5k.json //  |  Not Used    |   Not Used    |     0.6s       |    339s      |  339s  |
 | dicotIncConf_50_5k.json     |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
 | dicotIncConf_50_5k.json     |  Not Used    |   Not Used    |     0.6s       |    405s      |  405s  |
 | dicotIncConf_10_5k.json     |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |
@@ -121,7 +123,7 @@ NeoMaPy:
     - DicotIncNoConf_10_5k contains 2814 nodes
     - Total nodes = 4925 (148 bad nodes deleted)
 
-- 50_5k:
+- 50_5k without clear:
     - Time without clear data and without parallelization : 405 sec
     - Score conflicts = 563.2840405795994
     - Score no conflicts = 549.1886800916598
@@ -130,7 +132,7 @@ NeoMaPy:
     - DicotIncNoConf_50_5k contains 2491 nodes
     - Total nodes = 6838 
 
-- 50_5k:
+- 50_5k with clear:
     - Time with clear data and with parallelization : 316 sec
     - Time with clear data and without parallelization : 361 sec
     - Score conflicts = 444.7572303775998

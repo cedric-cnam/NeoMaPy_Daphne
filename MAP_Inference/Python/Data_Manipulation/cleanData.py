@@ -13,7 +13,7 @@ import json
 # Give your initial json file containing the conflicting nodes
 #data = 'dicoTest100.json'
 #data = '.\..\..\Data_Json\Dictionnary\\1kDico.json'
-data = '.\..\..\Data_Json\Dictionnary\dicotIncConf_50_50k.json'
+data = '.\..\..\Data_Json\Dictionnary\dicotIncConf_0_50k.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -25,7 +25,9 @@ def group(dico):
     list_ban = set()
     list_dico = list(dico.items())
     i = 0
-    while i < len(list_dico):
+    #print(f'nb dico = {len(list_dico)}')
+    while i < len(list_dico):    
+        #print(f' i = {i}')
         j = i+1
         set_i = set(list_dico[i][1][1])
         while j < len(list_dico): 
@@ -45,9 +47,15 @@ def group(dico):
         i += 1   
     return list_ban   
 
+
+
 # selectione chaque nodes qui n'est pas banni
 def select(dico):
+    #start = time.time()
     list_ban = group(dico)
+    #end = time.time()
+    #elapsed = end - start
+    #print(f'Temps d\'exécution: {elapsed:.5}s')
     output = []
     i = 0
     for k,v in dico.items():
@@ -70,7 +78,7 @@ output = select(dico)
 
 
 # Creation of the json file of this dictionnary    
-fichier = open("dicotIncInitClear_50_50k.json", "w")
+fichier = open("dicotIncInitClear_0_50k.json", "w")
 fichier.write("{\n")
 size = len(output)
 i = 1
