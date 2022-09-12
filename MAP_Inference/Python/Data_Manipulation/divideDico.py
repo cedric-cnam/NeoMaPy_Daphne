@@ -11,7 +11,7 @@ import json
 
 start = time.time()
 # Give your initial json file containing the conflicting nodes
-data = 'dicotIncInitClear_50_5k.json'
+data = 'dicotIncInitClear_50_50k.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -19,10 +19,10 @@ with open(data, 'r') as f:
 ##############################################################################################################
 
 # Creation of the json file of this dictionnary    
-file1 = open("dicotIncNoConfClear_50_5k.json", "w")
+file1 = open("dicotIncNoConfClear_50_50k.json", "w")
 file1.write("{\n")
 
-file2 = open("dicotIncConfClear_50_5k.json", "w")
+file2 = open("dicotIncConfClear_50_50k.json", "w")
 file2.write("{\n")
 
 i = 0

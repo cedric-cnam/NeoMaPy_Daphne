@@ -22,26 +22,30 @@ then A is an obvious bad node and it must be deleted.
 
  # Results in Time of the Process   
 
-|    File                   | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
-| ------------------        | :----:       | :----:        | :----:         |   :----:     | :--:   |
-| dicotIncConf_100_50k.json |  Not Used    |   Not Used    |     8.7s       |    ? s       |  ? s   |
-| dicotIncConf_50_50k.json  |  Not Used    |   Not Used    |     3.6s       |    ? s       |  ? s   |
-| dicotIncConf_0_50k.json   |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
-|---------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_0_25k.json   |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |
-|---------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_0_10k.json   |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |
-|---------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_100_5k.json  |  Not Used    |   Not Used    |     1.1s       |    ? s       |  ? s   |
-| dicotIncConf_50_5k.json //|  7.5s        |   0.14s       |     0.6s       |    316s      |  324s  |
-| dicotIncConf_50_5k.json   |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
-| dicotIncConf_50_5k.json   |  Not Used    |   Not Used    |     0.6s       |    405s      |  405s  |
-| dicotIncConf_10_5k.json   |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |
-| dicotIncConf_10_5k.json   |  Not Used    |   Not Used    |     0.05s      |    6.8s      |  6.8s  |
-| dicotIncConf_0_5k.json    |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |
-|---------------------------|--------------|---------------|----------------|--------------|--------|
-| dicoConfNodes.json        |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
-| dicoConfNodes.json        |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
+|    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
+| ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   |
+| dicotIncConf_100_50k.json   |  Not Used    |   Not Used    |     8.7s       |    ? s       |  ? s   |
+|-----------------------------|--------------|---------------|----------------|--------------|--------|
+| dicotIncConf_50_50k.json // |    415s      |      1s       |     3.7s       |    533s      |  953s  |
+| dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
+| dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
+| dicotIncConf_50_50k.json    |  Not Used    |   Not Used    |     3.6s       |    887s      |  891s  |
+| dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
+|-----------------------------|--------------|---------------|----------------|--------------|--------|
+| dicotIncConf_0_25k.json     |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |
+|-----------------------------|--------------|---------------|----------------|--------------|--------|
+| dicotIncConf_0_10k.json     |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |
+|-----------------------------|--------------|---------------|----------------|--------------|--------|
+| dicotIncConf_100_5k.json    |  Not Used    |   Not Used    |     1.1s       |    ? s       |  ? s   |
+| dicotIncConf_50_5k.json //  |  7.5s        |   0.14s       |     0.6s       |    316s      |  324s  |
+| dicotIncConf_50_5k.json     |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
+| dicotIncConf_50_5k.json     |  Not Used    |   Not Used    |     0.6s       |    405s      |  405s  |
+| dicotIncConf_10_5k.json     |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |
+| dicotIncConf_10_5k.json     |  Not Used    |   Not Used    |     0.05s      |    6.8s      |  6.8s  |
+| dicotIncConf_0_5k.json      |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |
+|-----------------------------|--------------|---------------|----------------|--------------|--------|
+| dicoConfNodes.json          |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
+| dicoConfNodes.json          |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
 
 
 ---------------------------------------------------------------------------------
@@ -133,7 +137,7 @@ NeoMaPy:
     - Score clear conflicts = 118.526810202
     - Score no conflicts = 549.1886800916598
     - Score total = 1112.472720671259
-    - listOfDicotInc_50_5k contains 3506 nodes, 75 dico with max length = 416
+    - listOfDicotInc_50_5kClear contains 3506 nodes, 75 dico with max length = 416
     - DicotIncNoConfClear_50_5k contains 460 nodes
     - DicotIncNoConf_50_5k contains 2491 nodes
     - Total nodes = 6457 
@@ -165,12 +169,62 @@ NeoMaPy:
     - DicotIncNoConf_0_50k contains 37 838 nodes
     - Total nodes = 48 605
 
+- 50_50k without clear:
+    - Time without clear data and without parallelization : 887 sec
+    - Time without clear data and with parallelization : 525 sec
+    - Score conflicts = 5117.00397999309
+    - Score no conflicts = 7288.239498509248
+    - Score total = 12405.24347850234
+    - listOfDicotInc_50_50k contains 39 909 nodes, 5393 dico with max length = 461 
+    - DicotIncNoConf_50_50k contains 32 718 nodes
+    - Total nodes = 72 627
+
+- 50_50k with clear:
+    - Time with clear data and without parallelization : 812 sec
+    - Time without clear data and with parallelization : 533 sec
+    - Score conflicts = 3518.037851
+    - Score clear = 1598.9661291441232
+    - Score no conflicts = 7288.239498509248
+    - Score total = 12405.24347850234
+    - listOfDicotInc_50_50kClear contains 28 169 nodes, 743 dico with max length = 461
+    - DicotIncNoConfClear_50_50k contains 6 029 nodes
+    - DicotIncNoConf_50_50k contains 32 718 nodes
+    - Total nodes = 66 916
+
 n-RockIt:
+  - 8 hidden Predicates
+  - 9 observed Predicates
+  - 18 number of formulas
+
 - 0_5k:
     - Time = 25 sec
+    - 24 037 evidence atoms
+    - 199 573 constraints
+
+- 50_5k:
+    - Time = 57 sec
+    - 32 217 evidence atoms
+    - 557 083 constraints
+    
+- 100_5k:
+    - Time = 1 min 18 (78 sec)
+    - 40 339 evidence atoms
+    - 816 094 constraints
 
 - 0_50k:
-    - Time = 2 min 40
+    - Time = 2 min 40 (160 sec)
+    - 284 732 evidence atoms
+    - 1 097 073 constraints
+
+- 50_50k:
+    - Time = 5 min 52 (352 sec)
+    - 370 596 evidence atoms
+    - 3 041 768 constraints
+
+- 100_50k:
+    - Time = 9 min 34 (574 sec)
+    - 459 073 evidence atoms
+    - 4 711 701 constraints
 
 ---------------------------------------------------------------------------------
 
