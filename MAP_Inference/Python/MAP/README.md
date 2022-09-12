@@ -21,7 +21,7 @@ then A is an obvious bad node and it must be deleted.
  # Compare NeoMaPy vs n-RockIt
 |    File                     | NeoMaPy | n-RockIt  |
 | ------------------          | :--:    | :--:      |
-| dicotIncConf_100_50k.json   |  1711s  |  574      |
+| dicotIncConf_100_50k.json   |  1711s  |  574s     |
 | dicotIncConf_50_50k.json // |  529s   |  352s     |
 | dicotIncConf_10_50k.json // |  330s   |  220s     |
 | dicotIncConf_0_50k.json     |  5.4s   |  160s     |
