@@ -20,6 +20,8 @@ import multiprocessing
 with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_50_5k.json', 'r') as f:
     dico = json.load(f)
 
+with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
+    dico2 = json.load(f2)
 
 ##############################################################################################################
 ##############################################################################################################
@@ -148,53 +150,29 @@ print(max_sum_list_int(d_1,res))
 ##################################### LOAD the data for OPTI 2 ###############################################
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_5k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_5kClear.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
 #################################### Apply Opti 1 on the list of dico ########################################
 def solutionForList(l_dico):
     output = [0,[]]
-    i = 0
-    sum = 0
-    size = len(l_dico["list"])
+    #i = 0
+    #sum = 0
+    #size = len(l_dico["list"])
     for dico in l_dico["list"]:
         #if len(dico) > 10:
-        print(f'{i} / {size} with length = {len(dico)} ')
-        sum += len(dico)
+        #print(f'{i} / {size} with length = {len(dico)} ')
+        #sum += len(dico)
         val,liste = max_sum_list_int(dico,build_sol(dico))
         output[0] += val
         output[1] += liste
-        i+=1
-    print(f'nb total nodes = {sum}')
+        #i+=1
+    #print(f'nb total nodes conf = {sum}')
     return output
 
-"""   
-avg_time_1 = 0 
-for i in range(0,10):
-    start = time.time()
-    output1 = solutionForList(l_dico)
-    end = time.time()
-    elapsed1 = end - start
-    avg_time_1 += elapsed1
-    #print(output1[0])
-    #print(output1[1])
-    print(f'Temps d\'exécution conf : {elapsed1:.5}s')
- 
-    start = time.time()
-    output2 = sum_weight(dico,dico)
-    #print(output2)
-    end = time.time()
-    elapsed2 = end - start
-    print(f'Temps d\'exécution no conf : {elapsed2:.5}s')
-    #print(output1[0]+output2)
-    #print(output1[1])
-    print(f'Temps d\'exécution total : {elapsed1 + elapsed2:.5}s\n')
-    avg_time_1 += elapsed1 + elapsed2
 
-print(f'temps moyen = {avg_time_1/10}\n')
 """
-
 start = time.time()
 output1 = solutionForList(l_dico)
 end = time.time()
@@ -204,30 +182,19 @@ print(f'Temps d\'exécution conf : {elapsed:.5}s')
 print(output1[0])
 #print(output1[1])
 
+#print(f'nb nodes clear conf : {len(dico2)}')
+output12 = sum_weight(dico2,dico2)
+print(output12)
 
-print(f'nb nodes no conf : {len(dico)}')
+#print(f'nb nodes no conf : {len(dico)}')
 output2 = sum_weight(dico,dico)
 print(output2)
 
 #print(f'Score total = {output1[0]}')
-print(f'Score total = {output1[0]+output2}')
+print(f'Score total = {output1[0] + output12 + output2}')
 #print(output1[1])
-
 """
-set_noConf = set()
-for id in dico:
-    set_noConf.update({int(id)})
-print(len(set_noConf))
-#611
 
-set_conf = set(output1[1])
-print(len(set_conf))
-#996
-
-set_total = set_conf.union(set_noConf)
-print(len(set_total))
-#1607
-"""
 
 ############################################ Parallelization #################################################
 
@@ -250,9 +217,9 @@ def parallelization(l_dico):
 	#print(f'Temps d\'exécution : {elapsed:.5}s')
 	return output#,elapsed
 
-"""
+
 if __name__ == '__main__':
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_5kClear.json', 'r') as f: 	
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 
         l_dico = json.load(f)
 
@@ -272,5 +239,12 @@ if __name__ == '__main__':
 
     #print(f'Temps d\'exécution total : {elapsed1+elapsed2:.5}s')
     #print(f'Score total = {output1[0]+output2}')
-    print(f'Score total = {output1[0]}')
-"""
+    #print(f'Score total = {output1[0]}')
+
+    output12 = sum_weight(dico2,dico2)
+    print(output12)
+
+    output2 = sum_weight(dico,dico)
+    print(output2)
+
+    print(f'Score total = {output1[0] + output12 + output2}')
