@@ -19,23 +19,21 @@ then A is an obvious bad node and it must be deleted.
 
 ---------------------------------------------------------------------------------
  # Compare NeoMaPy vs n-RockIt
-|    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  | n-RockIt  |
-| ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   | :--:      |
-| dicotIncConf_100_50k.json   |  Not Used    |   Not Used    |     8.7s       |    ? s       |  ? s   |  574      |
-| dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |  352s     |
-| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    329s      |  330s  |  220s     |
-| dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |  160s     |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|-----------|
-| dicotIncConf_0_25k.json     |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |  76s      |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|-----------|
-| dicotIncConf_0_10k.json     |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |  42s      |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|-----------|
-| dicotIncConf_100_5k.json    |  Not Used    |   Not Used    |     1.1s       |    ? s       |  ? s   |  78s      |
-| dicotIncConf_50_5k.json //  |  7.5s        |   0.14s       |     0.6s       |    316s      |  324s  |  57s      |
-| dicotIncConf_50_5k.json //  |  Not Used    |   Not Used    |     0.6s       |    339s      |  339s  |  57s      |
-| dicotIncConf_10_5k.json     |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |  29s      |
-| dicotIncConf_10_5k.json     |  Not Used    |   Not Used    |     0.05s      |    6.8s      |  6.8s  |  29s      |
-| dicotIncConf_0_5k.json      |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |  25s      |
+|    File                     | NeoMaPy | n-RockIt  |
+| ------------------          | :--:    | :--:      |
+| dicotIncConf_100_50k.json   |  ? s    |  574      |
+| dicotIncConf_50_50k.json // |  529s   |  352s     |
+| dicotIncConf_10_50k.json // |  330s   |  220s     |
+| dicotIncConf_0_50k.json     |  5.4s   |  160s     |
+|-----------------------------|---------|-----------|
+| dicotIncConf_0_25k.json     |  5.3s   |  76s      |
+|-----------------------------|---------|-----------|
+| dicotIncConf_0_10k.json     |  3.8s   |  42s      |
+|-----------------------------|---------|-----------|
+| dicotIncConf_100_5k.json    |  ? s    |  78s      |
+| dicotIncConf_50_5k.json //  |  339s   |  57s      |
+| dicotIncConf_10_5k.json     |  6.8s   |  29s      |
+| dicotIncConf_0_5k.json      |  2.4s   |  25s      |
 
 
 
