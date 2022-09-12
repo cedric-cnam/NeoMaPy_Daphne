@@ -27,13 +27,16 @@ then A is an obvious bad node and it must be deleted.
 | dicotIncConf_100_50k.json |  Not Used    |   Not Used    |     8.7s       |    ? s       |  ? s   |
 | dicotIncConf_50_50k.json  |  Not Used    |   Not Used    |     3.6s       |    ? s       |  ? s   |
 | dicotIncConf_0_50k.json   |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
-| ------------------        | :----:       | :----:        | :----:         |   :----:     | :--:   |
+|---------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_0_25k.json   |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |
+|---------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_0_10k.json   |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |
-| ------------------        | :----:       | :----:        | :----:         |   :----:     | :--:   |
+|---------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_100_5k.json  |  Not Used    |   Not Used    |     1.1s       |    ? s       |  ? s   |
-| dicotIncConf_50_5k.json   |  Not Used    |   Not Used    |     0.6s       |    ? s       |  ? s   |
+| dicotIncConf_50_5k.json   |  Not Used    |   Not Used    |     0.6s       |    405s      |  405s  |
+| dicotIncConf_10_5k.json   |  Not Used    |   Not Used    |     0.05s      |    6.8s      |  6.8s  |
 | dicotIncConf_0_5k.json    |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |
+|---------------------------|--------------|---------------|----------------|--------------|--------|
 | dicoConfNodes.json        |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
 | dicoConfNodes.json        |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
 
@@ -90,6 +93,24 @@ NeoMaPy:
     - listOfDicotInc_0_5k contains 1700 nodes, 86 dico with max length = 115
     - DicotIncNoConf_0_5k contains 2942 nodes
     - Total nodes = 4642
+
+- 10_5k:
+    - Time without clear data and without parallelization : 6.8 sec
+    - Score conflicts = 376.3193302000005
+    - Score no conflicts = 677.5936404393991
+    - Score total = 1053.9129706393996
+    - listOfDicotInc_10_5k contains 2259 nodes, 145 dico with max length = 143
+    - DicotIncNoConf_10_5k contains 2814 nodes
+    - Total nodes = 5073
+
+- 50_5k:
+    - Time without clear data and without parallelization : 405 sec
+    - Score conflicts = 563.2840405795994
+    - Score no conflicts = 549.1886800916598
+    - Score total = 1112.4727206712591
+    - listOfDicotInc_50_5k contains 4347 nodes, 355 dico with max length = 419
+    - DicotIncNoConf_50_5k contains 2491 nodes
+    - Total nodes = 6838 
 
 - 0_10k:
     - Time without clear data and without parallelization : 3.8 sec
