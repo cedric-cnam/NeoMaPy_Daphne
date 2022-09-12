@@ -30,6 +30,7 @@ then A is an obvious bad node and it must be deleted.
 | dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
 | dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
 | dicotIncConf_50_50k.json    |  Not Used    |   Not Used    |     3.6s       |    887s      |  891s  |
+| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    329s      |  330s  |
 | dicotIncConf_0_50k.json     |    18.7s     |     0.07s     |     0.13s      |    3.7s      |  22s   |
 | dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
@@ -171,6 +172,15 @@ NeoMaPy:
     - DicotIncNoConf_0_50k contains 37 838 nodes
     - Total nodes = 48 605
 
+- 10_50k:
+    - Time without clear data and with parallelization : 329 sec
+    - Score conflicts = 2559.32257055
+    - Score no conflicts = 9010.019988558492
+    - Score total = 11569.342559108089
+    - listOfDicotInc_10_50k contains - nodes, - dico with max length = ? 
+    - DicotIncNoConf_10_50k contains - nodes
+    - Total nodes = 
+
 - 50_50k without clear:
     - Time without clear data and without parallelization : 887 sec
     - Time without clear data and with parallelization : 525 sec
@@ -204,6 +214,7 @@ n-RockIt:
 | 50_5k                       |  57 s               |   32 217       |   557 083      |
 | 100_5k                      |  1 min 18 (78s)     |   40 339       |   816 094      |  
 | 0_50k                       |  2 min 40 (160s)    |   284 732      |   1 097 073    |
+| 10_50k                      |  3 min 40 (220s)    |   301 034      |   1 713 594    |
 | 50_50k                      |  5 min 52 (352s)    |   370 596      |   3 041 768    |  
 | 100_50k                     |  9 min 34 (574s)    |   459 073      |   4 711 701    |
     
