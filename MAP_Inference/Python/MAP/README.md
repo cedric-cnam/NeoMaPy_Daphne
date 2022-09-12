@@ -21,7 +21,7 @@ then A is an obvious bad node and it must be deleted.
  # Compare NeoMaPy vs n-RockIt
 |    File                     | NeoMaPy | n-RockIt  |
 | ------------------          | :--:    | :--:      |
-| dicotIncConf_100_50k.json   |  ? s    |  574      |
+| dicotIncConf_100_50k.json   |  1711s  |  574      |
 | dicotIncConf_50_50k.json // |  529s   |  352s     |
 | dicotIncConf_10_50k.json // |  330s   |  220s     |
 | dicotIncConf_0_50k.json     |  5.4s   |  160s     |
@@ -30,7 +30,7 @@ then A is an obvious bad node and it must be deleted.
 |-----------------------------|---------|-----------|
 | dicotIncConf_0_10k.json     |  3.8s   |  42s      |
 |-----------------------------|---------|-----------|
-| dicotIncConf_100_5k.json    |  ? s    |  78s      |
+| dicotIncConf_100_5k.json    |  385s   |  78s      |
 | dicotIncConf_50_5k.json //  |  339s   |  57s      |
 | dicotIncConf_10_5k.json     |  6.8s   |  29s      |
 | dicotIncConf_0_5k.json      |  2.4s   |  25s      |
@@ -41,7 +41,7 @@ then A is an obvious bad node and it must be deleted.
 
 |    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
 | ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   |
-| dicotIncConf_100_50k.json   |  Not Used    |   Not Used    |     8.7s       |    ? s       |  ? s   |
+| dicotIncConf_100_50k.json   |  Not Used    |   Not Used    |     8.7s       |    1711s     |  1720s |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_50_50k.json // |    415s      |      1s       |     3.7s       |    533s      |  953s  |
 | dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
@@ -55,7 +55,7 @@ then A is an obvious bad node and it must be deleted.
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_0_10k.json     |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_100_5k.json    |  Not Used    |   Not Used    |     1.1s       |    ? s       |  ? s   |
+| dicotIncConf_100_5k.json    |  Not Used    |   Not Used    |     1.1s       |    385s      |  386s  |
 | dicotIncConf_50_5k.json //  |  7.5s        |   0.14s       |     0.6s       |    316s      |  324s  |
 | dicotIncConf_50_5k.json //  |  Not Used    |   Not Used    |     0.6s       |    339s      |  339s  |
 | dicotIncConf_50_5k.json     |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
@@ -162,6 +162,12 @@ NeoMaPy:
     - DicotIncNoConf_50_5k contains 2491 nodes
     - Total nodes = 6457 
 
+- 100_5k without clear:
+    - Time without clear data and with parallelization : 384.4s
+    - Score conflicts = 870.5461207135
+    - Score no conflicts = 310.56638963602006
+    - Score total = 1181.11251034952
+
 - 0_10k:
     - Time without clear data and without parallelization : 3.8 sec
     - Score conflicts = 601.5846702499992
@@ -219,6 +225,12 @@ NeoMaPy:
     - DicotIncNoConfClear_50_50k contains 6 029 nodes
     - DicotIncNoConf_50_50k contains 32 718 nodes
     - Total nodes = 66 916
+
+- 100_50k:
+    - 1711.7s
+    - 8513.251010129014
+    - 5046.633859383296
+    - Score total = 13559.884869512309
 
 n-RockIt:
   - 8 hidden Predicates

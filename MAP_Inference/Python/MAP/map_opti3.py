@@ -17,7 +17,7 @@ import multiprocessing
 ###################################### LOAD the data  OPTI 1 #################################################
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_10_5k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
     dico = json.load(f)
 
 with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -221,7 +221,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_5k.json', 'r') as f: 		
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 		
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 
         l_dico = json.load(f)
 
@@ -230,7 +230,7 @@ if __name__ == '__main__':
     end = time.time()
     elapsed = end - start
     print(f'Temps d\'exécution conf : {elapsed:.5}s\n')
-    #print(output[0])
+    print(output1[0])
 
     #start = time.time()
     #output2 = sum_weight(dico,dico)
