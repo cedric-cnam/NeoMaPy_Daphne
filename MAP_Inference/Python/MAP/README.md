@@ -21,9 +21,9 @@ then A is an obvious bad node and it must be deleted.
  # Compare NeoMaPy vs n-RockIt
 |    File                     | NeoMaPy | n-RockIt  |
 | ------------------          | :--:    | :--:      |
-| dicotIncConf_100_50k.json   |  1711s  |  574s     |
+|dicotIncConf_100_50k.json // |  1720s  |  574s     |
 | dicotIncConf_50_50k.json // |  529s   |  352s     |
-| dicotIncConf_10_50k.json // |  330s   |  220s     |
+| dicotIncConf_10_50k.json // |  202s   |  220s     |
 | dicotIncConf_0_50k.json     |  5.4s   |  160s     |
 |-----------------------------|---------|-----------|
 | dicotIncConf_0_25k.json     |  5.3s   |  76s      |
@@ -41,13 +41,13 @@ then A is an obvious bad node and it must be deleted.
 
 |    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
 | ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   |
-| dicotIncConf_100_50k.json   |  Not Used    |   Not Used    |     8.7s       |    1711s     |  1720s |
+|dicotIncConf_100_50k.json // |  Not Used    |   Not Used    |     8.7s       |    1711s     |  1720s |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_50_50k.json // |    415s      |      1s       |     3.7s       |    533s      |  953s  |
 | dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
 | dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
 | dicotIncConf_50_50k.json    |  Not Used    |   Not Used    |     3.6s       |    887s      |  891s  |
-| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    329s      |  330s  |
+| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    201s      |  202s  |
 | dicotIncConf_0_50k.json     |    18.7s     |     0.07s     |     0.13s      |    3.7s      |  22s   |
 | dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
@@ -111,7 +111,7 @@ Stats:
 
 ---------------------------------------------------------------------------------
 
-NeoMaPy:
+# NeoMaPy:
 - 0_5k:
     - Time without clear data and without parallelization : 2.4 sec
     - Score conflicts = 317.80555020000025
@@ -126,7 +126,9 @@ NeoMaPy:
     - Score conflicts = 376.3193302000005
     - Score no conflicts = 677.5936404393991
     - Score total = 1053.912970639399
-    - listOfDicotInc_10_5k contains 2259 nodes, 145 dico with max length = 143
+    - listOfDicotInc_10_5k contains 2259 nodes, 145 dico with max length = 143 
+    - (indice, size, time) = [(0, 143, 6.06s), (1, 134, 0.19s), (2, 106, 0.07s)]
+    - distrib = [133, 9, 3, 0, 0, 0, 0, 0, 0, 0]
     - DicotIncNoConf_10_5k contains 2814 nodes
     - Total nodes = 5073
 
@@ -192,11 +194,14 @@ NeoMaPy:
     - Score no conflicts = 9428.338059280117
     - Score total = 11415.612419460118
     - listOfDicotInc_0_50k contains 10 767 nodes, 843 dico with max length = 348 
+    - (indice, size, time) = [(0, 348, 0.64s), (1, 194, 0.21s), (2, 123, 0.08s), (3, 89, 0.02s), (4, 86, 0.69s), (5, 111, 1.90s)]
+    - distribution with a gap of 50 = [809, 27, 5, 1, 0, 0, 1, 0, 0, 0]
     - DicotIncNoConf_0_50k contains 37 838 nodes
     - Total nodes = 48 605
 
 - 10_50k:
-    - Time without clear data and with parallelization : 329 sec
+    - Time without clear data and with parallelization : 201 sec
+    - approx : 46.5sec with score = 11499.86382898
     - Score conflicts = 2559.32257055
     - Score no conflicts = 9010.019988558492
     - Score total = 11569.342559108089
@@ -232,7 +237,64 @@ NeoMaPy:
     - 5046.633859383296
     - Score total = 13559.884869512309
 
-n-RockIt:
+----------------------------------------------------------------------------------------------------
+# TEST 
+
+- 10_5k:
+    - Time without clear data and without parallelization : 6.8 sec
+    - Score conflicts = 376.3193302000005
+    - Score no conflicts = 677.5936404393991
+    - Score total = 1053.912970639399
+    - listOfDicotInc_10_5k contains 2259 nodes, 145 dico with max length = 143 
+    - (indice, size, time) = [(0, 143, 6.06s), (1, 134, 0.19s), (2, 106, 0.07s)]
+    - distrib = [133, 9, 3, 0, 0, 0, 0, 0, 0, 0]
+    - DicotIncNoConf_10_5k contains 2814 nodes
+    - Total nodes = 5073
+
+0 / 145 with length = 143
+temps de comp à indice 0 = 1.8977432250976562
+temps de inc à indice 0 = 3.888690710067749
+taille moyenne de list_sol dans inc à indice 0 = 332.2464788732394
+Temps d'exécution 0 : 6.747s
+
+1 / 145 with length = 134
+temps de comp à indice 1 = 0.09781098365783691
+temps de inc à indice 1 = 0.045911312103271484
+taille moyenne de list_sol dans inc à indice 1 = 47.63157894736842
+Temps d'exécution 1 : 0.16157s
+
+- 0_50k:
+    - Time without clear data and without parallelization : 5.4 sec
+    - Score conflicts = 1987.274360180002
+    - Score no conflicts = 9428.338059280117
+    - Score total = 11415.612419460118
+    - listOfDicotInc_0_50k contains 10 767 nodes, 843 dico with max length = 348 
+    - (indice, size, time) = [(0, 348, 0.64s), (1, 194, 0.21s), (2, 123, 0.08s), (3, 89, 0.02s), (4, 86, 0.69s), (5, 111, 1.90s)]
+    - distribution with a gap of 50 = [809, 27, 5, 1, 0, 0, 1, 0, 0, 0]
+    - DicotIncNoConf_0_50k contains 37 838 nodes
+    - Total nodes = 48 605
+
+0 / 843 with length = 348
+temps de comp à indice 0 = 0.5567188262939453
+temps de inc à indice 0 = 0.04073143005371094
+taille moyenne de list_sol dans inc à indice 0 = 24.270893371757925
+Temps d'exécution 0 : 0.61449s
+
+4 / 843 with length = 86
+temps de comp à indice 4 = 0.14849162101745605
+temps de inc à indice 4 = 0.4060025215148926
+taille moyenne de list_sol dans inc à indice 4 = 109.17647058823529
+Temps d'exécution 4 : 0.66025s
+
+5 / 843 with length = 111
+temps de comp à indice 5 = 0.523388147354126
+temps de inc à indice 5 = 0.9915013313293457
+taille moyenne de list_sol dans inc à indice 5 = 248.38181818181818
+Temps d'exécution 5 : 1.7832s
+
+----------------------------------------------------------------------------------------------------------------------------
+
+# n-RockIt:
   - 8 hidden Predicates
   - 9 observed Predicates
   - 18 number of formulas
