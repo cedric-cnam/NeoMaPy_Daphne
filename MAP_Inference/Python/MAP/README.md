@@ -23,7 +23,7 @@ then A is an obvious bad node and it must be deleted.
 | ------------------          | :--:    | :--:      |
 |dicotIncConf_100_50k.json // |  1720s  |  574s     |
 | dicotIncConf_50_50k.json // |  529s   |  352s     |
-| dicotIncConf_10_50k.json // |  202s   |  220s     |
+| dicotIncConf_10_50k.json // |  175s   |  220s     |
 | dicotIncConf_0_50k.json     |  5.4s   |  160s     |
 |-----------------------------|---------|-----------|
 | dicotIncConf_0_25k.json     |  5.3s   |  76s      |
@@ -47,7 +47,7 @@ then A is an obvious bad node and it must be deleted.
 | dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
 | dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
 | dicotIncConf_50_50k.json    |  Not Used    |   Not Used    |     3.6s       |    887s      |  891s  |
-| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    201s      |  202s  |
+| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    174s      |  175s  |
 | dicotIncConf_0_50k.json     |    18.7s     |     0.07s     |     0.13s      |    3.7s      |  22s   |
 | dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
@@ -200,7 +200,7 @@ Stats:
     - Total nodes = 48 605
 
 - 10_50k:
-    - Time without clear data and with parallelization : 201 sec
+    - Time without clear data and with parallelization : 174 sec
     - approx : 46.5sec with score = 11499.86382898
     - Score conflicts = 2559.32257055
     - Score no conflicts = 9010.019988558492
