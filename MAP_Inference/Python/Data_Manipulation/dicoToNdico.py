@@ -15,7 +15,7 @@ import time
 ############################################## LOAD the data #################################################
 
 start = time.time()
-data_conf = '.\..\..\Data_Json\Dictionnary\dicotIncConf_10_50k.json'
+data_conf = '.\..\..\Data_Json\Dictionnary\dicotIncConf_100_50k.json'
 #data_conf = '.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncConfClear_0_50k.json'
 with open(data_conf, 'r') as f:     
     dic = json.load(f)
@@ -56,7 +56,8 @@ def Ndico(dico):
             d_out = {}
             d_out[str(k)] = dico[str(k)]
             l_id, d_out = oneDico(k, dico, [int(k)], d_out)
-            d_total.append(decrease(d_out))
+            #d_total.append(decrease(d_out))
+            d_total.append(d_out)
             l_id_total.update(set(l_id))
     return d_total
 
@@ -66,7 +67,7 @@ def Ndico(dico):
 ############################################## Write the data ################################################
 
 # Creation of the json file of this dictionnary    
-fichier = open("listOfDicotInc_10_50k.json", "w")
+fichier = open("listOfDicotInc_100_50k.json", "w")
 fichier.write("{\n")
 fichier.write("\t \"list\": [\n")
 ListeOfDicos = Ndico(dic)

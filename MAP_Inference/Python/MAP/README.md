@@ -43,22 +43,36 @@ Where:
 
  # Results in Time of the Process   
 
-|    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
-| ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   |
-|dicotIncConf_100_50k.json // |  Not Used    |   Not Used    |     8.7s       |    757s      |  766s  |
-| dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    144s      |  148s  |
-| dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    174s      |  175s  |
-| dicotIncConf_0_50k.json  // |  Not Used    |   Not Used    |     0.15s      |    1.2s      |  1.3s  |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_0_25k.json  // |  Not Used    |   Not Used    |     0.08s      |    0.95s     |   1s   |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_0_10k.json  // |  Not Used    |   Not Used    |     0.04s      |    0.69s     |  0.7s  |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_100_5k.json // |  Not Used    |   Not Used    |     1.1s       |    109s      |  110s  |
-| dicotIncConf_50_5k.json  // |  Not Used    |   Not Used    |     0.6s       |    111s      |  112s  |
-| dicotIncConf_10_5k.json  // |  Not Used    |   Not Used    |     0.05s      |    2.2s      |  2.2s  |
-| dicotIncConf_0_5k.json   // |  Not Used    |   Not Used    |     0.02s      |    0.56s     |  0.6s  |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|
+|    File                     | dicoToNdico.py | MaPy.py      | Total  |
+| :------------------:        |    :----:      |   :----:     | :--:   |
+| dicotIncConf_100_50k.json   |     7s         |    757s      |  764s  |
+| dicotIncConf_75_50k.json    |     3.6s       |    - s       |  - s   |
+| dicotIncConf_50_50k.json    |     3.1s       |    144s      |  148s  |
+| dicotIncConf_25_50k.json    |     2.35s      |    - s       |  - s   |
+| dicotIncConf_10_50k.json    |     1s         |    174s      |  175s  |
+| dicotIncConf_0_50k.json     |     0.15s      |    1.2s      |  1.3s  |
+|-----------------------------|----------------|--------------|--------|
+| dicotIncConf_100_25k.json   |     3.15s      |    - s       |  - s   |
+| dicotIncConf_75_25k.json    |     2.8s       |    - s       |  - s   |
+| dicotIncConf_50_25k.json    |     2.45s      |    - s       |  - s   |
+| dicotIncConf_25_25k.json    |     1.15s      |    - s       |  - s   |
+| dicotIncConf_10_25k.json    |     0.6s       |    - s       |  - s   |
+| dicotIncConf_0_25k.json     |     0.08s      |    0.95s     |   1s   |
+|-----------------------------|----------------|--------------|--------|
+| dicotIncConf_100_10k.json   |     1.6s       |    - s       |  - s   |
+| dicotIncConf_75_10k.json    |     1.25s      |    - s       |  - s   |
+| dicotIncConf_50_10k.json    |     1s         |    - s       |  - s   |
+| dicotIncConf_25_10k.json    |     0.6s       |    - s       |  - s   |
+| dicotIncConf_10_10k.json    |     0.24s      |    - s       |  - s   |
+| dicotIncConf_0_10k.json     |     0.04s      |    0.69s     |  0.7s  |
+|-----------------------------|----------------|--------------|--------|
+| dicotIncConf_100_5k.json    |     1s         |    109s      |  110s  |
+| dicotIncConf_75_5k.json     |     0.7s       |    - s       |  - s   |
+| dicotIncConf_50_5k.json     |     0.55s      |    111s      |  112s  |
+| dicotIncConf_25_5k.json     |     0.25s      |    - s       |  - s   | 
+| dicotIncConf_10_5k.json     |     0.05s      |    2.2s      |  2.2s  |
+| dicotIncConf_0_5k.json      |     0.02s      |    0.56s     |  0.6s  |
+|-----------------------------|----------------|--------------|--------|
 
 
 | dicoConfNodes.json          |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
