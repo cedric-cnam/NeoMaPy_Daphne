@@ -24,16 +24,16 @@ then A is an obvious bad node and it must be deleted.
 |dicotIncConf_100_50k.json // |  766s   |  574s     |
 | dicotIncConf_50_50k.json // |  148s   |  352s     |
 | dicotIncConf_10_50k.json // |  87s    |  220s     |
-| dicotIncConf_0_50k.json     |  5.4s   |  160s     |                
+| dicotIncConf_0_50k.json  // |  1.4s   |  160s     |                
 |-----------------------------|---------|-----------|
-| dicotIncConf_0_25k.json     |  5.3s   |  76s      |                
+| dicotIncConf_0_25k.json  // |   1s    |  76s      |                
 |-----------------------------|---------|-----------|
-| dicotIncConf_0_10k.json     |  3.8s   |  42s      |                
+| dicotIncConf_0_10k.json  // |  0.7s   |  42s      |                
 |-----------------------------|---------|-----------|
-| dicotIncConf_100_5k.json    |  385s   |  78s      |                
-| dicotIncConf_50_5k.json //  |  339s   |  57s      |                
-| dicotIncConf_10_5k.json     |  2s     |  29s      |                
-| dicotIncConf_0_5k.json      |  2.4s   |  25s      |                
+| dicotIncConf_100_5k.json // |  110s   |  78s      |                
+| dicotIncConf_50_5k.json  // |  112s   |  57s      |                
+| dicotIncConf_10_5k.json  // |  2.2s   |  29s      |                
+| dicotIncConf_0_5k.json   // |  0.6s   |  25s      |                
 
 
 
@@ -42,32 +42,30 @@ then A is an obvious bad node and it must be deleted.
 |    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
 | ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   |
 |dicotIncConf_100_50k.json // |  Not Used    |   Not Used    |     8.7s       |    757s      |  766s  |
-|-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_50_50k.json // |    415s      |      1s       |     3.7s       |    533s      |  953s  |
-| dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
-| dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
-| dicotIncConf_50_50k.json    |  Not Used    |   Not Used    |     3.6s       |    887s      |  891s  |
+| dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    144s      |  148s  |
 | dicotIncConf_10_50k.json // |  Not Used    |   Not Used    |     1s         |    174s      |  175s  |
-| dicotIncConf_0_50k.json     |    18.7s     |     0.07s     |     0.13s      |    3.7s      |  22s   |
-| dicotIncConf_0_50k.json     |  Not Used    |   Not Used    |     0.15s      |    5.4s      |  5.4s  |
+| dicotIncConf_0_50k.json  // |  Not Used    |   Not Used    |     0.15s      |    1.2s      |  1.3s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_0_25k.json     |  Not Used    |   Not Used    |     0.08s      |    5.3s      |  5.3s  |
+| dicotIncConf_0_25k.json  // |  Not Used    |   Not Used    |     0.08s      |    0.95s     |   1s   |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_0_10k.json     |  Not Used    |   Not Used    |     0.04s      |    3.8s      |  3.8s  |
+| dicotIncConf_0_10k.json  // |  Not Used    |   Not Used    |     0.04s      |    0.69s     |  0.7s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
-| dicotIncConf_100_5k.json    |  Not Used    |   Not Used    |     1.1s       |    385s      |  386s  |
-| dicotIncConf_50_5k.json //  |  7.5s        |   0.14s       |     0.6s       |    316s      |  324s  |
-| dicotIncConf_50_5k.json //  |  Not Used    |   Not Used    |     0.6s       |    339s      |  339s  |
-| dicotIncConf_50_5k.json     |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
-| dicotIncConf_50_5k.json     |  Not Used    |   Not Used    |     0.6s       |    405s      |  405s  |
-| dicotIncConf_10_5k.json     |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |
-| dicotIncConf_10_5k.json     |  Not Used    |   Not Used    |     0.05s      |    2s        |  2s    |
-| dicotIncConf_0_5k.json      |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |
+| dicotIncConf_100_5k.json // |  Not Used    |   Not Used    |     1.1s       |    109s      |  110s  |
+| dicotIncConf_50_5k.json  // |  Not Used    |   Not Used    |     0.6s       |    111s      |  112s  |
+| dicotIncConf_10_5k.json  // |  Not Used    |   Not Used    |     0.05s      |    2.2s      |  2.2s  |
+| dicotIncConf_0_5k.json   // |  Not Used    |   Not Used    |     0.02s      |    0.56s     |  0.6s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
+
+
 | dicoConfNodes.json          |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
 | dicoConfNodes.json          |  Not Used    |   Not Used    |     0.015s     |    1.55s     |  1.6s  |
-
-
+|-----------------------------|--------------|---------------|----------------|--------------|--------|
+| dicotIncConf_50_50k.json // |    415s      |      1s       |     3.7s       |    533s      |  953s  |
+| dicotIncConf_50_50k.json    |    415s      |      1s       |     3.6s       |    812s      |  1230s |
+| dicotIncConf_0_50k.json     |    18.7s     |     0.07s     |     0.13s      |    3.7s      |  22s   |
+| dicotIncConf_50_5k.json //  |  7.5s        |   0.14s       |     0.6s       |    339s      |  339s  |
+| dicotIncConf_50_5k.json     |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
+| dicotIncConf_10_5k.json     |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |
 ---------------------------------------------------------------------------------
 
 
@@ -144,7 +142,7 @@ Stats:
     - Total nodes = 4925 (148 bad nodes deleted)
 
 - 50_5k without clear:
-    - Time without clear data and without parallelization : 405 sec
+    - Time without clear data and without parallelization : 111.5 sec
     - Score conflicts = 563.2840405795994
     - Score no conflicts = 549.1886800916598
     - Score total = 1112.472720671259

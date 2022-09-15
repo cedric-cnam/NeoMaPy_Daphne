@@ -20,11 +20,12 @@ import multiprocessing
 ###################################### LOAD the data  OPTI 1 #################################################
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_5k.json', 'r') as f:
     dico = json.load(f)
 
-with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
-    dico2 = json.load(f2)
+
+#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
+#    dico2 = json.load(f2)
 
 ##############################################################################################################
 ##############################################################################################################
@@ -380,7 +381,7 @@ print(max_sum_list_int(d_1,res))
 ##################################### LOAD the data for OPTI 2 ###############################################
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_5k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_50k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -409,7 +410,7 @@ def solutionForList(l_dico):
         #sum += len(dico)
         #if i == 0:
         #    start = time.time()
-        val,liste = max_sum_list_int(dico,build_sol(dico,i))
+        val,liste = max_sum_list_int(dico,build_sol(dico))#,i))
         #if i == 0:
         #    end = time.time()
         #    elapsed = end - start
@@ -472,10 +473,13 @@ print(output1a[0])
 
 #print(f'nb nodes no conf : {len(dico)}')
 
-#output2 = sum_weight(dico,dico)
-#print(output2)
+"""
+output2 = sum_weight(dico,dico)
+print(output2)
 
-#print(f'Score total na = {output1[0] + output2}')
+print(f'Score total na = {output1[0] + output2}')
+"""
+
 #print(f'Score total a = {output1a[0] + output2}')
 #print(f'Score total = {output1[0] + output12 + output2}')
 
@@ -532,7 +536,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 		
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_5k.json', 'r') as f: 		
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 
         l_dico = json.load(f)
 
