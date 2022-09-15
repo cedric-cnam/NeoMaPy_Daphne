@@ -20,7 +20,7 @@ import multiprocessing
 ###################################### LOAD the data  OPTI 1 #################################################
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kNoConf.json', 'r') as f:
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_10_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
     dico = json.load(f)
 
 with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -105,9 +105,7 @@ def compatible_merge(node,liste,dico):
 #liste = [[id_nodes],[conflicts]]
 def compatible_merge(node,liste,dico):
     l_merge_comp = [{node}, set(dico[str(node)][1]), dico[str(node)][0]]
-    #print(f'node = {node} and liste[1] = {liste[1]}')
     if not(node in liste[1]):
-        #print("C'est True")
         compatible = True
         l_merge_comp = []
     else:
@@ -122,13 +120,19 @@ def compatible_merge(node,liste,dico):
 
 
 # Build the solutions
-def build_sol(dico):
+def build_sol(dico): #,index):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
     threshold = int(nb_nodes*0.67)
+    threshold2 = int(nb_nodes*0.35)
     liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
     maxi = l_dico[0][1][0]
+
+    set_nodes = set()
+    for l in l_dico:
+        set_nodes.add(int(l[0]))
+
     for i in range(1,len(l_dico)):
         j = 0
         h = 0 # sert à ne pas compter plusieurs fois les nodes ajoutés en fin de liste
@@ -139,14 +143,27 @@ def build_sol(dico):
                 liste_sol[j][1] |= set(l_dico[i][1][1])
                 liste_sol[j][2] += l_dico[i][1][0]
                 if maxi < liste_sol[j][2]:
-                    maxi = liste_sol[j][2]                    
+                    maxi = liste_sol[j][2]   
                 if i > threshold:
                     potential_max = liste_sol[j][2]
                     for k in range(i+1,len(l_dico)):
                         potential_max += l_dico[k][1][0]  
                     if potential_max < maxi:
-                        del liste_sol[j]
-                        j -= 1 
+                        set_id = set()
+                        for l in liste_sol:
+                            if l != liste_sol[j]:
+                                set_id |= l[0]
+                        set_diff = liste_sol[j][0] - set_id
+                        if len(set_diff) == 0:
+                            del liste_sol[j]
+                            j -= 1 
+                        else:
+                            liste_sol[j][0] = set_diff
+                            liste_sol[j][1] = set()
+                            liste_sol[j][2] = 0
+                            for n in liste_sol[j][0]:
+                                liste_sol[j][1] |= set(dico[str(n)][1])
+                                liste_sol[j][2] += dico[str(n)][0]        
             else:
                 include = False
                 for l in liste_sol:
@@ -160,8 +177,33 @@ def build_sol(dico):
                     if maxi < l2[2]:
                         maxi = l2[2]
             j += 1
-        if i%2  == 0:    
+        if i%3  == 0:    
             deletInclude(liste_sol)    
+
+        if i > threshold2 and i%3==0:
+            x = 0
+            while x < len(liste_sol):
+                diff = set_nodes - liste_sol[x][1]
+                sum_max = 0
+                for n in diff:
+                    sum_max += dico[str(n)][0]
+                if sum_max + liste_sol[x][2] < maxi:
+                    set_id = set()
+                    for l in liste_sol:
+                        if l != liste_sol[x]:
+                            set_id |= l[0]
+                    set_diff = liste_sol[x][0] - set_id
+                    if len(set_diff) == 0:
+                        del liste_sol[x]
+                        x -= 1
+                    else:
+                        liste_sol[x][0] = set_diff
+                        liste_sol[x][1] = set()
+                        liste_sol[x][2] = 0
+                        for n in liste_sol[x][0]:
+                            liste_sol[x][1] |= set(dico[str(n)][1])
+                            liste_sol[x][2] += dico[str(n)][0]
+                x += 1 
 
     return liste_sol
 
@@ -174,7 +216,7 @@ def build_sol_approx(dico):#,index):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
-    threshold = int(nb_nodes*0.7)
+    threshold = int(nb_nodes*0.67)
     step = int(nb_nodes*0.2)
     liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
     maxi = l_dico[0][1][0]
@@ -228,7 +270,7 @@ def build_sol_approx(dico):#,index):
                     max_len = len(liste_sol[j][0])
                     """
 
-                if i > (threshold + step*6):
+                if i > threshold:
                     potential_max = liste_sol[j][2]
                     for k in range(i+1,len(l_dico)):
                         potential_max += l_dico[k][1][0]  
@@ -244,12 +286,9 @@ def build_sol_approx(dico):#,index):
                         include = True
                         break
 
-                    if l2[0]>l[0]:
-                        #print(f'l2[0] = {l2[0]} et')
-                        #print(f'l[0] = {l[0]}\n')
-                        #time.sleep(1)
-                        include = True
-                        #break
+                    #if l2[0]>l[0]:
+                        #include = True
+                        
                 if not(include):
                     liste_sol += [[l2[0],l2[1],l2[2]]]
                     h += 1
@@ -341,7 +380,7 @@ print(max_sum_list_int(d_1,res))
 ##################################### LOAD the data for OPTI 2 ###############################################
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5kClear.json', 'r') as f: 	
 #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 	
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_50k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_5k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -370,7 +409,7 @@ def solutionForList(l_dico):
         #sum += len(dico)
         #if i == 0:
         #    start = time.time()
-        val,liste = max_sum_list_int(dico,build_sol(dico))#,i))
+        val,liste = max_sum_list_int(dico,build_sol(dico,i))
         #if i == 0:
         #    end = time.time()
         #    elapsed = end - start
@@ -379,7 +418,7 @@ def solutionForList(l_dico):
         output[0] += val
         output[1] |= set(liste)
         #output[1] += liste
-        #i+=1
+        i+=1
     #print(f'nb total nodes conf = {sum}')
     #print(f'record = {record}')
     return output
@@ -405,14 +444,15 @@ def solutionForListapprox(l_dico):
         #i+=1
     return output
 
+"""
+start = time.time()
+output1 = solutionForList(l_dico)
+end = time.time()
+elapsed = end - start
+print(f'Temps d\'exécution conf : {elapsed:.5}s')
 
-#start = time.time()
-#output1 = solutionForList(l_dico)
-#end = time.time()
-#elapsed = end - start
-#print(f'Temps d\'exécution conf : {elapsed:.5}s')
-
-#print(output1[0])
+print(output1[0])
+"""
 
 #print(output1[1])
 
@@ -425,6 +465,7 @@ print(f'Temps d\'exécution conf approx : {elapsed:.5}s')
 
 print(output1a[0])
 """
+
 #print(f'nb nodes clear conf : {len(dico2)}')
 #output12 = sum_weight(dico2,dico2)
 #print(output12)
@@ -434,25 +475,30 @@ print(output1a[0])
 #output2 = sum_weight(dico,dico)
 #print(output2)
 
-#print(f'Score total = {output1[0] + output2}')
+#print(f'Score total na = {output1[0] + output2}')
+#print(f'Score total a = {output1a[0] + output2}')
 #print(f'Score total = {output1[0] + output12 + output2}')
 
-"""
 
+"""
 set_na = set(output1[1])
 
 set_a = set(output1a[1])
 
-print(f'long na = {len(set_na)}')
-print(f'long approx = {len(set_a)}')
+print(f'long a = {len(set_na)}')
+print(f'long na = {len(set_a)}')
 
 
 print(set_a - set_na) 
 # = {2785, 2765, 2767, 2770, 2738, 2779}
 print('\n')
 print(set_na - set_a)
+"""
+
 # = {2786, 7363, 7309, 2766, 5136, 2768, 5139, 2771, 2775, 4664, 2780}
-    
+""" 
+{6085, 6086, 6088, 6090, 6091, 6094, 6095, 6097, 6098, 6100, 6102, 6103, 6106, 6108, 6109, 6113, 6115, 6116, 6121, 6123, 6124, 6130, 6132}
+
     {2784, 2786, 7363, 2788, 2789, 2790, 2791, 2764, 2766, 2768, 2769, 2771, 2773, 2775, 2778, 2780, 2782, 2783}
       ok    ok    ok    ok    ok    ok    ok    no    ok    no    ok    no    no    no     ok    ok   ok    ok
       ok    no    ok    ok    ok    ok    ok    ok    ok    no    ok    no    ok    no     ok    ok   ok    ok
@@ -486,7 +532,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_50k.json', 'r') as f: 		
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 		
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico2.5k.json', 'r') as f: 
         l_dico = json.load(f)
 

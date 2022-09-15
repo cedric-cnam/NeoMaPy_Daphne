@@ -21,19 +21,19 @@ then A is an obvious bad node and it must be deleted.
  # Compare NeoMaPy vs n-RockIt
 |    File                     | NeoMaPy | n-RockIt  |
 | ------------------          | :--:    | :--:      |
-|dicotIncConf_100_50k.json // |  1720s  |  574s     |
-| dicotIncConf_50_50k.json // |  529s   |  352s     |
-| dicotIncConf_10_50k.json // |  175s   |  220s     |
-| dicotIncConf_0_50k.json     |  5.4s   |  160s     |
+|dicotIncConf_100_50k.json // |  766s   |  574s     |
+| dicotIncConf_50_50k.json // |  148s   |  352s     |
+| dicotIncConf_10_50k.json // |  87s    |  220s     |
+| dicotIncConf_0_50k.json     |  5.4s   |  160s     |                
 |-----------------------------|---------|-----------|
-| dicotIncConf_0_25k.json     |  5.3s   |  76s      |
+| dicotIncConf_0_25k.json     |  5.3s   |  76s      |                
 |-----------------------------|---------|-----------|
-| dicotIncConf_0_10k.json     |  3.8s   |  42s      |
+| dicotIncConf_0_10k.json     |  3.8s   |  42s      |                
 |-----------------------------|---------|-----------|
-| dicotIncConf_100_5k.json    |  385s   |  78s      |
-| dicotIncConf_50_5k.json //  |  339s   |  57s      |
-| dicotIncConf_10_5k.json     |  6.8s   |  29s      |
-| dicotIncConf_0_5k.json      |  2.4s   |  25s      |
+| dicotIncConf_100_5k.json    |  385s   |  78s      |                
+| dicotIncConf_50_5k.json //  |  339s   |  57s      |                
+| dicotIncConf_10_5k.json     |  2s     |  29s      |                
+| dicotIncConf_0_5k.json      |  2.4s   |  25s      |                
 
 
 
@@ -41,7 +41,7 @@ then A is an obvious bad node and it must be deleted.
 
 |    File                     | cleanData.py | divideDico.py | dicoToNdico.py | map_opti3.py | Total  |
 | ------------------          | :----:       | :----:        | :----:         |   :----:     | :--:   |
-|dicotIncConf_100_50k.json // |  Not Used    |   Not Used    |     8.7s       |    1711s     |  1720s |
+|dicotIncConf_100_50k.json // |  Not Used    |   Not Used    |     8.7s       |    757s      |  766s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicotIncConf_50_50k.json // |    415s      |      1s       |     3.7s       |    533s      |  953s  |
 | dicotIncConf_50_50k.json // |  Not Used    |   Not Used    |     3.6s       |    525s      |  529s  |
@@ -61,7 +61,7 @@ then A is an obvious bad node and it must be deleted.
 | dicotIncConf_50_5k.json     |  7.5s        |   0.14s       |     0.6s       |    361s      |  369s  |
 | dicotIncConf_50_5k.json     |  Not Used    |   Not Used    |     0.6s       |    405s      |  405s  |
 | dicotIncConf_10_5k.json     |  0.95s       |   0.02s       |     0.04s      |    4.7s      |  5.7s  |
-| dicotIncConf_10_5k.json     |  Not Used    |   Not Used    |     0.05s      |    6.8s      |  6.8s  |
+| dicotIncConf_10_5k.json     |  Not Used    |   Not Used    |     0.05s      |    2s        |  2s    |
 | dicotIncConf_0_5k.json      |  Not Used    |   Not Used    |     0.02s      |    2.4s      |  2.4s  |
 |-----------------------------|--------------|---------------|----------------|--------------|--------|
 | dicoConfNodes.json          |    0.75s     |     0.01s     |     0.015s     |    1.1s      |  1.8s  |
@@ -200,8 +200,8 @@ Stats:
     - Total nodes = 48 605
 
 - 10_50k:
-    - Time without clear data and with parallelization : 174 sec
-    - approx : 46.5sec with score = 11499.86382898
+    - Time without clear data and with parallelization : 86 sec
+    - approx : 24.8sec with score = 11525.039648848187
     - Score conflicts = 2559.32257055
     - Score no conflicts = 9010.019988558492
     - Score total = 11569.342559108089
@@ -211,7 +211,7 @@ Stats:
 
 - 50_50k without clear:
     - Time without clear data and without parallelization : 887 sec
-    - Time without clear data and with parallelization : 525 sec
+    - Time without clear data and with parallelization : 145 sec
     - Score conflicts = 5117.00397999309
     - Score no conflicts = 7288.239498509248
     - Score total = 12405.24347850234
@@ -232,7 +232,8 @@ Stats:
     - Total nodes = 66 916
 
 - 100_50k:
-    - 1711.7s
+    - 756.9s
+    - approx = 288.9s et score = 8215.354050270247 + 5046.633859383296  ==> 13261.987909653544
     - 8513.251010129014
     - 5046.633859383296
     - Score total = 13559.884869512309
