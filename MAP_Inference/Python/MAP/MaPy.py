@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on 18/08/2022
-Last update 24/08/2022
+Last update 16/09/2022
 
 @author: Victor
 """
@@ -17,7 +17,7 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_5k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_50_10k.json', 'r') as f:
     dico = json.load(f)
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -173,8 +173,8 @@ def build_sol(dico): #,index):
 
 ##################################### LOAD the data for OPTI 2 ###############################################
 
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_50k.json', 'r') as f: 	
-    l_dico = json.load(f)
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_50k.json', 'r') as f: 	
+#    l_dico = json.load(f)
 
 
 #################################### Apply Opti 1 on the list of dico ########################################
@@ -224,7 +224,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_5k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_10k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
