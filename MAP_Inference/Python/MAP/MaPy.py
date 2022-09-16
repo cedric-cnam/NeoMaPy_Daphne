@@ -17,7 +17,7 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_50_10k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
     dico = json.load(f)
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -82,8 +82,17 @@ def build_sol(dico): #,index):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
+    #nb_conf_max = len(l_dico[0][1][1])
+    #if nb_conf_max > 200:
+    #    modulo = 2
+    #else:
+    #    modulo = 3
+    modulo = 3
+    #modulo2 = 3
     threshold = int(nb_nodes*0.67)
-    threshold2 = int(nb_nodes*0.35)
+    #threshold = int(nb_nodes*0.7)
+    #threshold2 = int(nb_nodes*0.35)
+    #threshold2 = int(nb_nodes*0.45)
     liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
     maxi = l_dico[0][1][0]
 
@@ -135,10 +144,10 @@ def build_sol(dico): #,index):
                     if maxi < l2[2]:
                         maxi = l2[2]
             j += 1
-        if i%3  == 0:    
+        if i%modulo  == 0:    
             deletInclude(liste_sol)    
-
-        if i > threshold2 and i%3==0:
+        """
+        if i > threshold2 and i%modulo2==0:
             x = 0
             while x < len(liste_sol):
                 diff = set_nodes - liste_sol[x][1]
@@ -162,7 +171,7 @@ def build_sol(dico): #,index):
                             liste_sol[x][1] |= set(dico[str(n)][1])
                             liste_sol[x][2] += dico[str(n)][0]
                 x += 1 
-
+        """
     return liste_sol
 
 
@@ -224,7 +233,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_10k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
