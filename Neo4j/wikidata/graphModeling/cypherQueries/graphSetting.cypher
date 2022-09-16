@@ -1,4 +1,5 @@
 //dataset loading
+USING PERIODIC COMMIT 1000
 LOAD CSV WITH HEADERS FROM "file:/<<FILE>>" as l FIELDTERMINATOR ';'
 MERGE (ID_s:Concept{ID:l.ID_s})
 MERGE (ID_o:Concept{ID:l.ID_o})
