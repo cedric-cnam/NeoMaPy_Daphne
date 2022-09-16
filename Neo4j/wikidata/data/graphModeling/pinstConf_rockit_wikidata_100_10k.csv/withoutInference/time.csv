@@ -1,64 +1,64 @@
-STEP;QUERY;TIME (ms)
-schema.cypher;indices;8
-schema.cypher;indices;2
-schema.cypher;indices;1
-schema.cypher;indices;1
-schema.cypher;indices;1
-schema.cypher;indices;1
-schema.cypher;TOTAL;14
-
-delete.cypher;delete nodes;1736
-delete.cypher;TOTAL;1736
-
-graphSetting.cypher;dataset loading;7790
-graphSetting.cypher;concepts name;1
-graphSetting.cypher;concepts name;1
-graphSetting.cypher;concepts name;1
-graphSetting.cypher;concepts name;1
-graphSetting.cypher;concepts name;1
-graphSetting.cypher;concepts name;0
-graphSetting.cypher;persons;2
-graphSetting.cypher;dates;13
-graphSetting.cypher;persons;40
-graphSetting.cypher;TOTAL;7850
-
-constraints.cypher;Partial Temporal Consistency;2430
-constraints.cypher;Partial Temporal Inconsistency;3128
-constraints.cypher;Total Temporal Inconsistency;2237
-constraints.cypher;C1;172
-constraints.cypher;C1-1;89
-constraints.cypher;C2;106
-constraints.cypher;C2-1;17
-constraints.cypher;C3;59
-constraints.cypher;C4;5203
-constraints.cypher;C4;5167
-constraints.cypher;C5;5101
-constraints.cypher;C6;7423
-constraints.cypher;C7;5116
-constraints.cypher;C8;38747
-constraints.cypher;C14;271
-constraints.cypher;C16;38
-constraints.cypher;C17;35
-constraints.cypher;C18;35
-constraints.cypher;C19;12
-constraints.cypher;C6;6055
-constraints.cypher;TOTAL;81441
-
-stats.cypher;Nb triplets;68
-stats.cypher;Nb "o";62
-stats.cypher;Nb "s";27
-stats.cypher;nb "p";27
-stats.cypher;Nb "p" links distribution;41
-stats.cypher;Nb conflicts distribution;1459
-stats.cypher;Nb temporal conflicts;880
-stats.cypher;Distribution of linked "o";36
-results.cypher;mapping_Neo4j_wikidata;65
-results.cypher;inferredNodes;38
-results.cypher;tCon_noConflicts;16
-results.cypher;tCon_conflicts;1235
-results.cypher;pCon_noConflicts;3388
-results.cypher;pCon_conflicts;3005
-results.cypher;pInc_noConflicts;3480
-results.cypher;pInc_conflicts;3087
-results.cypher;tInc_noConflicts;3550
-results.cypher;tInc_conflicts;3123
+STEP;QUERY;TIME (ms);;
+schema.cypher;indices;8;;
+schema.cypher;indices;2;;
+schema.cypher;indices;1;;
+schema.cypher;indices;1;;
+schema.cypher;indices;1;;
+schema.cypher;indices;1;;
+schema.cypher;TOTAL;14;;
+;;;;
+delete.cypher;delete nodes;1736;;
+delete.cypher;TOTAL;1736;;
+;;;;
+graphSetting.cypher;dataset loading;7790;;
+graphSetting.cypher;concepts name;1;;
+graphSetting.cypher;concepts name;1;;
+graphSetting.cypher;concepts name;1;;
+graphSetting.cypher;concepts name;1;;
+graphSetting.cypher;concepts name;1;;
+graphSetting.cypher;concepts name;0;;
+graphSetting.cypher;persons;2;;92156
+graphSetting.cypher;dates;13;;
+graphSetting.cypher;persons;40;;
+graphSetting.cypher;TOTAL;7850;;
+;;;;
+constraints.cypher;Partial Temporal Consistency;2430;;
+constraints.cypher;Partial Temporal Inconsistency;3128;;
+constraints.cypher;Total Temporal Inconsistency;2237;;
+constraints.cypher;C1;172;;
+constraints.cypher;C1-1;89;;
+constraints.cypher;C2;106;;
+constraints.cypher;C2-1;17;;
+constraints.cypher;C3;59;;
+constraints.cypher;C4;5203;;
+constraints.cypher;C4;5167;;
+constraints.cypher;C5;5101;;
+constraints.cypher;C6;7423;;
+constraints.cypher;C7;5116;;
+constraints.cypher;C8;38747;;
+constraints.cypher;C14;271;;
+constraints.cypher;C16;38;;
+constraints.cypher;C17;35;;
+constraints.cypher;C18;35;;
+constraints.cypher;C19;12;;
+constraints.cypher;C6;6055;;
+constraints.cypher;TOTAL;81441;;
+;;;;
+stats.cypher;Nb triplets;68;;
+stats.cypher;"Nb ""o""";62;;
+stats.cypher;"Nb ""s""";27;;
+stats.cypher;"nb ""p""";27;;
+stats.cypher;"Nb ""p"" links distribution";41;;
+stats.cypher;Nb conflicts distribution;1459;;
+stats.cypher;Nb temporal conflicts;880;;
+stats.cypher;"Distribution of linked ""o""";36;;
+results.cypher;mapping_Neo4j_wikidata;65;;
+results.cypher;inferredNodes;38;;
+results.cypher;tCon_noConflicts;16;;
+results.cypher;tCon_conflicts;1235;;
+results.cypher;pCon_noConflicts;3388;;
+results.cypher;pCon_conflicts;3005;;
+results.cypher;pInc_noConflicts;3480;;
+results.cypher;pInc_conflicts;3087;;
+results.cypher;tInc_noConflicts;3550;;
+results.cypher;tInc_conflicts;3123;;

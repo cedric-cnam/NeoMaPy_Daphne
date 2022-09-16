@@ -1,6 +1,8 @@
 
 import json
 
+
+
 """
 with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kConf.json', 'r') as f:
 	dico1 = json.load(f)
@@ -50,6 +52,19 @@ print(len(dico))
 
 
 """
+ 
+                        frozset = frozenset()
+                        it = len(l2(0))
+                        for i in range(0,len(l2[0])):
+                            for p in range(1,it):   
+                                l_f = []
+                                for decalage in range(i,len(l2[0])):                  
+                                    for j in range(i,p):
+                                        l_f.append(l2[0][j])
+                                        #frozset = frozset.union(frozenset([l2[0][i]]))
+                                        set_sol.add(frozset(l_f))
+                        
+
 dico1.update(dico2)
 
 dicoA.update(dicoB)
