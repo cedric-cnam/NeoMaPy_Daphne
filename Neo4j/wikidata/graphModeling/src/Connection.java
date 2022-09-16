@@ -61,38 +61,31 @@ public class Connection implements AutoCloseable {
 	}
 
 	public void updateQueries(String step, List<Query> queries) {
-		try (Session session = driver.session()) {
-			// int nb =
-			session.writeTransaction(new TransactionWork<Integer>() {
-				@Override
-				public Integer execute(Transaction tx) {
-					long total = 0l;
-					Instant start, end;
-					Duration timeElapsed;
-					for (Query q : queries) {
-						start = Instant.now();
-						tx.run(q.query);
-						end = Instant.now();
-						timeElapsed = Duration.between(start, end);
-						total += timeElapsed.toMillis();
-						try {
-							log(step, q.instruction, timeElapsed.toMillis());
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
-					}
-					try {
-						log(step, "TOTAL", total);
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					return 1;
+		long total = 0l;
+		Instant start, end;
+		Duration timeElapsed;
+		for (Query q : queries) {
+			try (Session session = driver.session()) {
+				start = Instant.now();
+				session.run(q.query);
+				end = Instant.now();
+				timeElapsed = Duration.between(start, end);
+				total += timeElapsed.toMillis();
+				try {
+					log(step, q.instruction, timeElapsed.toMillis());
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			});
-		} catch (org.neo4j.driver.exceptions.ServiceUnavailableException e) {
-			e.printStackTrace();
-			System.exit(0);
-		} catch (Exception e) {
+			} catch (org.neo4j.driver.exceptions.ServiceUnavailableException e) {
+				e.printStackTrace();
+				System.exit(0);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} 
+		try {
+			log(step, "TOTAL", total);
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
