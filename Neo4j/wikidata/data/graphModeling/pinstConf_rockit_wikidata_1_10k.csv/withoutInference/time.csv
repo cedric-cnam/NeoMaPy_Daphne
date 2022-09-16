@@ -1,0 +1,64 @@
+STEP;QUERY;TIME (ms)
+schema.cypher;indices;7
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;0
+schema.cypher;indices;0
+schema.cypher;indices;0
+schema.cypher;TOTAL;9
+
+delete.cypher;delete nodes;2546
+delete.cypher;TOTAL;2546
+
+graphSetting.cypher;dataset loading;2227
+graphSetting.cypher;concepts name;2
+graphSetting.cypher;concepts name;1
+graphSetting.cypher;concepts name;1
+graphSetting.cypher;concepts name;1
+graphSetting.cypher;concepts name;1
+graphSetting.cypher;concepts name;1
+graphSetting.cypher;persons;3
+graphSetting.cypher;dates;8
+graphSetting.cypher;persons;22
+graphSetting.cypher;TOTAL;2267
+
+constraints.cypher;Partial Temporal Consistency;673
+constraints.cypher;Partial Temporal Inconsistency;740
+constraints.cypher;Total Temporal Inconsistency;622
+constraints.cypher;C1;59
+constraints.cypher;C1-1;44
+constraints.cypher;C2;47
+constraints.cypher;C2-1;9
+constraints.cypher;C3;43
+constraints.cypher;C4;1007
+constraints.cypher;C4;974
+constraints.cypher;C5;996
+constraints.cypher;C6;1613
+constraints.cypher;C7;861
+constraints.cypher;C8;2424
+constraints.cypher;C14;139
+constraints.cypher;C16;13
+constraints.cypher;C17;12
+constraints.cypher;C18;35
+constraints.cypher;C19;7
+constraints.cypher;C6;1405
+constraints.cypher;TOTAL;11723
+
+stats.cypher;Nb triplets;33
+stats.cypher;Nb "o";14
+stats.cypher;Nb "s";14
+stats.cypher;nb "p";14
+stats.cypher;Nb "p" links distribution;22
+stats.cypher;Nb conflicts distribution;45
+stats.cypher;Nb temporal conflicts;40
+stats.cypher;Distribution of linked "o";20
+results.cypher;mapping_Neo4j_wikidata;56
+results.cypher;inferredNodes;21
+results.cypher;tCon_noConflicts;11
+results.cypher;tCon_conflicts;45
+results.cypher;pCon_noConflicts;114
+results.cypher;pCon_conflicts;90
+results.cypher;pInc_noConflicts;115
+results.cypher;pInc_conflicts;89
+results.cypher;tInc_noConflicts;115
+results.cypher;tInc_conflicts;90
