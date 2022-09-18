@@ -1,5 +1,5 @@
 //UncertainRule-teams-Q495299-Q3873511
-MATCH p1=(c:Concept{name:"teamPlayer"}) <-[:p]- (tf1) -[:s]-> (s), (tf1) -[:o]-> (o1{ID:"Q495299"}), (o2{ID:"Q3873511"})
+MATCH p1=(c:Concept{name:"teamPlayer"}) <-[:p]- (tf1:TF) -[:s]-> (s), (tf1) -[:o]-> (o1:Concept{ID:"Q495299"}), (o2:Concept{ID:"Q3873511"})
 WHERE tf1.polarity = true
 UNWIND [tf1.weight, 0.9] as var_min
 WITH c, s, o2, tf1, min(var_min) as var_min

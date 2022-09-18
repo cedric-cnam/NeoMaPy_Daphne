@@ -32,8 +32,8 @@ public class GraphModeling {
 	}
 
 	public void graphSettings() throws Exception {
-		graphSetting ("schema.cypher");
 		graphSetting ("delete.cypher");
+		graphSetting ("schema.cypher");
 		graphSetting ("graphSetting.cypher");
 	}
 
