@@ -2,7 +2,10 @@
 cd /root
 for f in $(ls /var/lib/neo4j/import);\
 do \
-  java -jar graphModeling.jar --inputFile=$f --inference=false; \
-  java -jar graphModeling.jar --inputFile=$f --inference=true --noDelete; \
-  sleep 5; \
+  date; >> log \
+  java -jar graphModeling.jar --inputFile=$f --inference=false; >> log \
+  date; tail -n 10 log; \
+  java -jar graphModeling.jar --inputFile=$f --inference=true --noDelete; >> log \
+  tail -n 10 log; \
+  date ; sleep 5; \
 done;
