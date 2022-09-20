@@ -64,32 +64,32 @@ Where:
 
 |    File                     | dicoToNdico.py | MaPy.py      | Total  |
 | :------------------:        |    :----:      |   :----:     | :--:   |
-| dicotIncConf_100_50k.json   |     7s         |   212.8s     |  220s  |
-| dicotIncConf_75_50k.json    |     3.6s       |    171s      |  175s  |
-| dicotIncConf_50_50k.json    |     3.1s       |     55s      |   58s  |
-| dicotIncConf_25_50k.json    |     2.35s      |    105s      |  107s  |
-| dicotIncConf_10_50k.json    |     1s         |     13s      |   14s  |
+| dicotIncConf_100_50k.json   |     7s         |   78.3s      |   85s  |
+| dicotIncConf_75_50k.json    |     3.6s       |   26.5s      |   30s  |
+| dicotIncConf_50_50k.json    |     3.1s       |   27.5s      | 30.5s  |
+| dicotIncConf_25_50k.json    |     2.35s      |   20.2s      | 22.5s  |
+| dicotIncConf_10_50k.json    |     1s         |     11s      |   12s  |
 | dicotIncConf_0_50k.json     |     0.15s      |    1.2s      |  1.3s  |
 |-----------------------------|----------------|--------------|--------|
-| dicotIncConf_100_25k.json   |     3.15s      |    59.5s     | 62.5s  |
-| dicotIncConf_75_25k.json    |     2.8s       |    32.7s     | 35.5s  |
-| dicotIncConf_50_25k.json    |     2.45s      |      35s     | 37.5s  |
-| dicotIncConf_25_25k.json    |     1.15s      |    14.5s     | 15.5s  |
-| dicotIncConf_10_25k.json    |     0.6s       |      10s     | 10.5s  |
+| dicotIncConf_100_25k.json   |     3.15s      |    27.8s     |  31s   |
+| dicotIncConf_75_25k.json    |     2.8s       |    27.5s     |  30s   |
+| dicotIncConf_50_25k.json    |     2.45s      |    20.5s     |  23s   |
+| dicotIncConf_25_25k.json    |     1.15s      |    11.5s     | 12.5s  |
+| dicotIncConf_10_25k.json    |     0.6s       |      8s      |  8.5s  |
 | dicotIncConf_0_25k.json     |     0.08s      |    0.95s     |   1s   |
 |-----------------------------|----------------|--------------|--------|
-| dicotIncConf_100_10k.json   |     1.6s       |     99s      |  100s  |
-| dicotIncConf_75_10k.json    |     1.25s      |    120s      |  121s  |
-| dicotIncConf_50_10k.json    |     1s         |    13.5s     |  14.5s |
-| dicotIncConf_25_10k.json    |     0.6s       |    10.8s     |  11.5s |
-| dicotIncConf_10_10k.json    |     0.24s      |    9.7s      |  10s   |
+| dicotIncConf_100_10k.json   |     1.6s       |    19.3s     |  21s   |
+| dicotIncConf_75_10k.json    |     1.25s      |    18.6s     |  20s   |
+| dicotIncConf_50_10k.json    |     1s         |    10.3s     |  11.5s |
+| dicotIncConf_25_10k.json    |     0.6s       |    8.5s      |  9s    |
+| dicotIncConf_10_10k.json    |     0.24s      |    7.3s      |  7.5s  |
 | dicotIncConf_0_10k.json     |     0.04s      |    0.69s     |  0.7s  |
 |-----------------------------|----------------|--------------|--------|
-| dicotIncConf_100_5k.json    |     1s         |    13.4s     |  14.5s |
-| dicotIncConf_75_5k.json     |     0.7s       |    13.8s     |  14.5s |
-| dicotIncConf_50_5k.json     |     0.55s      |    8.9s      |  9s    |
-| dicotIncConf_25_5k.json     |     0.25s      |    10.5s     |  11s   | 
-| dicotIncConf_10_5k.json     |     0.05s      |    0.73s     |  0.8s  |
+| dicotIncConf_100_5k.json    |     1s         |    11.5s     |  12.5s |
+| dicotIncConf_75_5k.json     |     0.7s       |    10.2s     |  11s   |
+| dicotIncConf_50_5k.json     |     0.55s      |    5.9s      |  6.5s  |
+| dicotIncConf_25_5k.json     |     0.25s      |    8.2s      |  8.5s  | 
+| dicotIncConf_10_5k.json     |     0.05s      |    0.9s      |  1s    |
 | dicotIncConf_0_5k.json      |     0.02s      |    0.56s     |  0.6s  |
 |-----------------------------|----------------|--------------|--------|
 
@@ -164,15 +164,15 @@ Where:
 
 - 25_10k:
     - Time : 97.37 sec
-    - Score conflicts = 821.7069606575997
+    - Score conflicts = 821.8637606575996
     - Score no conflicts = 1353.9256999269187
-    - Score total = 2175.6326605845184
+    - Score total = 2175.7894605845186
 
 - 50_10k:
     - Time : 153.89 sec
-    - Score conflicts = 1144.9110609235995
+    - Score conflicts = 1145.1463909435995
     - Score no conflicts = 1097.8501295498572
-    - Score total = 2242.7611904734567
+    - Score total = 2242.996520493457
 
 - 75_10k:
     - Time : 224.38 sec
@@ -182,9 +182,9 @@ Where:
 
 - 100_10k:
     - Time : 167.6 sec
-    - Score conflicts = 1769.849120883162
+    - Score conflicts = 1770.084450903162
     - Score no conflicts = 601.1349196811121
-    - Score total = 2370.984040564274
+    - Score total = 2371.219370584274
 
 ------------------------------------------------------------------------------------------- 
 
@@ -199,9 +199,9 @@ Where:
 
 - 10_25k:
     - Time : 105 sec
-    - Score conflicts = 1337.8598712075996
+    - Score conflicts = 1338.0166712075995
     - Score no conflicts = 4319.886808383882
-    - Score total = 5657.7466795914825
+    - Score total = 5657.903479591482
 
 - 25_25k:
     - Time : 105.92 sec
@@ -217,9 +217,9 @@ Where:
 
 - 75_25k:
     - Time : 217.8 sec
-    - Score conflicts = 3435.15731096963
+    - Score conflicts = 3435.57713096963
     - Score no conflicts = 2785.3418481313674
-    - Score total = 6220.4991591009975
+    - Score total = 6220.918979100998
 
 - 100_25k:
     - Time : 163.87 sec
@@ -251,9 +251,9 @@ Where:
 
 - 25_50k:
     - Time : 224.5 sec
-    - Score conflicts = 3519.56521100519
+    - Score conflicts = 3519.8857710051902
     - Score no conflicts = 8228.037928652875
-    - Score total = 11747.603139658066
+    - Score total = 11747.923699658066
 
 - 50_50k:
     - Time : 145 sec
@@ -269,6 +269,7 @@ Where:
     - Score conflicts = 6869.803541977189
     - Score no conflicts = 6288.838057316909
     - Score total = 13158.641599294097
+    - Score total = 13159.1569293041 => 26.5s
 
 - 100_50k:
     - 756.9s
@@ -276,6 +277,7 @@ Where:
     - 8513.251010129014
     - 5046.633859383296
     - Score total = 13559.884869512309
+    - Score total = 13559.38823950231 => 78.3s
 
 
 

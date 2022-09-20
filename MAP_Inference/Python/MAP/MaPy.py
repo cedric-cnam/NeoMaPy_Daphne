@@ -8,7 +8,7 @@ Last update 16/09/2022
 
 from ast import Continue
 import json
-from re import S
+from re import S, X
 import time
 import copy
 import multiprocessing
@@ -18,7 +18,7 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_10_50k.json', 'r') as f:
     dico = json.load(f)
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -28,9 +28,14 @@ with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f
 ##############################################################################################################
 ##############################################  Algorithmes ################################################## 
 
+def printSol2(l_sol):
+    for l in l_sol:
+        if 89 in l[0]:
+            print(f'{l[0]}, {l[2]}')
+
 def printSol(l_sol):
-	for l in l_sol:
-		print(f'{l[0]}')
+    for l in l_sol:
+        print(f'{l[0]}, {l[2]}')
 
 
 def sum_weight(dico,solution):
@@ -83,8 +88,8 @@ def build_sol(dico):#,index):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
-    modulo = 6
-    modulo2 = 8
+    modulo = 4
+    modulo2 = 2
     threshold = int(nb_nodes*0.67)
     #threshold2 = int(nb_nodes*0.33)
     liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
@@ -106,19 +111,28 @@ def build_sol(dico):#,index):
             potential_winner = copy.deepcopy(max_sol)
             new_max = False
             for k in range(i+1,len(l_dico)):
-                if int(l_dico[k][0]) not in potential_winner[1]: 
+                if int(l_dico[k][0]) not in potential_winner[1]:
                     potential_winner[0].add(int(l_dico[k][0]))
                     potential_winner[1] |= set(l_dico[k][1][1])
                     potential_winner[2] += l_dico[k][1][0]
             if potential_winner[2] > winner[2]:
-                winner = potential_winner
+                winner = copy.deepcopy(potential_winner)
                 try_winner = True
+
         if try_winner:
             x = 0
             try_winner = False
             while x < len(liste_sol):                
                 if len(liste_sol[x][0]) + len(liste_sol[x][1]) > threshold:
-                    diff = set_nodes - liste_sol[x][1]
+                    """
+                    potential_max = liste_sol[x][2]
+                    for k in range(i+1,len(l_dico)):
+                        potential_max += l_dico[k][1][0] 
+                    if potential_max < winner[2]:
+                        del liste_sol[x]
+                        x -= 1
+                    """             
+                    diff = (set_nodes - liste_sol[x][1]) #- liste_sol[x][0]
                     sum_max = 0
                     for n in diff:
                         sum_max += dico[str(n)][0]
@@ -129,15 +143,19 @@ def build_sol(dico):#,index):
                                 set_id |= l[0]
                         set_diff = liste_sol[x][0] - set_id
                         if len(set_diff) == 0:
-                            del liste_sol[x]
-                            x -= 1
-                        else: # solution ne pouvant gagner mais avec des nodes a garder => new sol contient uniquement new nodes
-                            liste_sol[x][0] = set_diff
-                            liste_sol[x][1] = set()
-                            liste_sol[x][2] = 0
-                            for n in liste_sol[x][0]:
-                                liste_sol[x][1] |= set(dico[str(n)][1])
-                                liste_sol[x][2] += dico[str(n)][0]
+                                del liste_sol[x]
+                                x -= 1
+                        else: # solution ne pouvant gagner mais avec des nodes a garder => new sol contient uniquement new nodes                           
+                            #potential_max = liste_sol[x][2]
+                            #for k in range(i+1,len(l_dico)):
+                            #    potential_max += l_dico[k][1][0] 
+                            #if potential_max < winner[2]:
+                                liste_sol[x][0] = set_diff
+                                liste_sol[x][1] = set()
+                                liste_sol[x][2] = 0
+                                for n in liste_sol[x][0]:
+                                    liste_sol[x][1] |= set(dico[str(n)][1])
+                                    liste_sol[x][2] += dico[str(n)][0] 
                 x += 1 
 
         while j < len(liste_sol)-h:
@@ -148,7 +166,7 @@ def build_sol(dico):#,index):
                 liste_sol[j][2] += l_dico[i][1][0]
                 if maxi < liste_sol[j][2]:
                     maxi = liste_sol[j][2]
-                    max_sol = liste_sol[j]  
+                    max_sol = copy.deepcopy(liste_sol[j])  
                     new_max = True
                 
                 #if i > threshold2:
@@ -157,14 +175,17 @@ def build_sol(dico):#,index):
                     for k in range(i+1,len(l_dico)):
                         potential_max += l_dico[k][1][0]  
                     if potential_max < maxi:
+                        """
                         set_id = set()
                         for l in liste_sol:
                             if l != liste_sol[j]:
                                 set_id |= l[0]
                         set_diff = liste_sol[j][0] - set_id
                         if len(set_diff) == 0:
-                            del liste_sol[j]
-                            j -= 1 
+                            """
+                        del liste_sol[j]
+                        j -= 1 
+                        """
                         else:
                             liste_sol[j][0] = set_diff
                             liste_sol[j][1] = set()
@@ -172,12 +193,12 @@ def build_sol(dico):#,index):
                             for n in liste_sol[j][0]:
                                 liste_sol[j][1] |= set(dico[str(n)][1])
                                 liste_sol[j][2] += dico[str(n)][0]      
-                     
+                            """
+                    
             else:
                 include = False
                 for l in liste_sol:
-                    #include = False
-                    if l2[0] <= l[0]: #or l2[0]>l[0]:
+                    if l2[0] <= l[0]:# or l2[0]>l[0]:
                         include = True
                         break
                 if not(include):
@@ -185,18 +206,18 @@ def build_sol(dico):#,index):
                     h += 1
                     if maxi < l2[2]:
                         maxi = l2[2]
-                        max_sol = l2
+                        max_sol = copy.deepcopy(l2)
                         new_max = True
             j += 1
         if i%modulo  == 0:    
             deletInclude(liste_sol)    
-        
+
         #if i > threshold2 and i%modulo2==0:
         if i%modulo2 == 0:
             x = 0
             while x < len(liste_sol):                
                 if len(liste_sol[x][0]) + len(liste_sol[x][1]) > threshold:
-                    diff = set_nodes - liste_sol[x][1]
+                    diff = (set_nodes - liste_sol[x][1]) - liste_sol[x][0]
                     sum_max = 0
                     for n in diff:
                         sum_max += dico[str(n)][0]
@@ -218,7 +239,15 @@ def build_sol(dico):#,index):
                                 liste_sol[x][2] += dico[str(n)][0]
                 x += 1 
 
+    for sol in liste_sol:
+        for i2 in range(0,i):
+            if int(l_dico[i2][0]) not in sol[1] and int(l_dico[i2][0]) not in sol[0]:
+                sol[0].add(int(l_dico[i2][0]))
+                sol[1] |= set(l_dico[i2][1][1])
+                sol[2] += l_dico[i2][1][0]
+    
     return liste_sol
+
 
 ##############################################################################################################
 ##############################################################################################################
@@ -227,7 +256,7 @@ def build_sol(dico):#,index):
 
 ##################################### LOAD the data for OPTI 2 ###############################################
 
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_5k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_75_10k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -235,20 +264,19 @@ with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_5k.json', '
 def solutionForList(l_dico):
     set_init = set()
     output = [0, set_init]
-    #i = 0
-    #size = len(l_dico["list"])
+    i = 0
+    size = len(l_dico["list"])
     for dico in l_dico["list"]:
-        #if len(dico) > 100:
-        #     print(f'{i} / {size} avec len = {len(dico)}')
-        #    start = time.time()
+        #start = time.time()
         val,liste = max_sum_list_int(dico,build_sol(dico))
         output[0] += val
         output[1] |= set(liste)
-        #if len(dico) > 100:
-        #    end = time.time()
-        #    elapsed = end - start
-        #    print(f'Temps d\'exécution {i} : {elapsed:.5}s')
-        #i += 1
+        #if len(dico) > 50:
+        #end = time.time()
+        #elapsed = end - start
+        #if elapsed > 1:
+        #    print(f'Temps d\'exécution {i} / {size} avec len = {len(dico)} et time: {elapsed:.5}s')
+        i += 1
     return output
 
 
@@ -261,13 +289,24 @@ print(f'Temps d\'exécution conf : {elapsed:.5}s')
 print(output1[0])
 #output12 = sum_weight(dico2,dico2)
 #print(output12)
+
 output2 = sum_weight(dico,dico)
 print(output2)
 print(f'Score total = {output1[0] + output2}')
 #print(f'Score total = {output1[0] + output12 + output2}')
+print(len(output1[1]))
+#print(output1[1])
+
+
+print(f'len approx = {len(set_app)}')
+
+print(f'len approx = {len(set_na)}')
+
+print(f'diff na - app = {set_na - set_app}')
+
+print(f'diff app - na = {set_app - set_na}')
+
 """
-
-
 ############################################ Parallelization #################################################
 
 
@@ -288,7 +327,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_50k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
