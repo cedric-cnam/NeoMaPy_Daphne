@@ -1,0 +1,44 @@
+STEP;QUERY;TIME (ms)
+inference.cypher;UncertainRule-teams-Q495299-Q3873511;173
+inference.cypher;TOTAL;173
+
+constraints.cypher;Partial Temporal Consistency;972
+constraints.cypher;Partial Temporal Inconsistency;1873
+constraints.cypher;Total Temporal Inconsistency;1285
+constraints.cypher;C1 - birthDateConflict;142
+constraints.cypher;C1-1 - birthDateConflictPolarity;105
+constraints.cypher;C2 - deathDateConflict;123
+constraints.cypher;C2-1 - deathDateConflictPolarity;53
+constraints.cypher;C3 - birthDeathConflict;144
+constraints.cypher;C4 - birthPlayerConflict;24
+constraints.cypher;C4 - birthPlayerConflict;258
+constraints.cypher;C5 - deathPlayerConflict;154
+constraints.cypher;C6 - playerAgeConflict;292
+constraints.cypher;C7 - playerTooOldConflict;293
+constraints.cypher;C8 - twoTeamsConflict;15305
+constraints.cypher;C14 - marriageConflict;40
+constraints.cypher;C16 - birthMarriageConflict;51
+constraints.cypher;C17 - deathMarriageConflict;31
+constraints.cypher;C18 - playerCoachConflict;125
+constraints.cypher;C19 - twoCompaniesConflict;5
+constraints.cypher;C6 - playerAgeConflict;326
+constraints.cypher;TOTAL;21601
+
+stats.cypher;Nb triplets;267
+stats.cypher;Nb "o";101
+stats.cypher;Nb "s";102
+stats.cypher;nb "p";100
+stats.cypher;Nb "p" links distribution;161
+stats.cypher;Nb conflicts distribution;298
+stats.cypher;Nb temporal conflicts;218
+stats.cypher;Distribution of linked "o";151
+results.cypher;mapping_Neo4j_wikidata;583
+results.cypher;inferredNodes;81
+results.cypher;tCon_noConflicts;1
+results.cypher;tCon_conflicts;305
+results.cypher;pCon_noConflicts;736
+results.cypher;pCon_conflicts;578
+results.cypher;pInc_noConflicts;752
+results.cypher;pInc_conflicts;589
+results.cypher;tInc_noConflicts;760
+results.cypher;tInc_conflicts;589

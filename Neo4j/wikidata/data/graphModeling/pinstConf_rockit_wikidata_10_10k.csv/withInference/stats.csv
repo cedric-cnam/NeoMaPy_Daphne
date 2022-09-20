@@ -1,6 +1,6 @@
 
 ;NB_triplets
-Nb triplets;10292
+Nb triplets;10226
 
 ;NB_o
 Nb "o";3138
@@ -12,31 +12,31 @@ Nb "s";1600
 nb "p";6
 
 ;ID;NAME;NB
-Nb "p" links distribution;"P54";"teamPlayer";7430
-Nb "p" links distribution;"P569";"birthDate";1664
-Nb "p" links distribution;"P570";"deathDate";866
-Nb "p" links distribution;"P26";"marriage";282
-Nb "p" links distribution;"P108";"workCompany";36
-Nb "p" links distribution;"P286";"teamCoach";14
+Nb "p" links distribution;"P54";NULL;7364
+Nb "p" links distribution;"P569";NULL;1664
+Nb "p" links distribution;"P570";NULL;866
+Nb "p" links distribution;"P26";NULL;282
+Nb "p" links distribution;"P108";NULL;36
+Nb "p" links distribution;"P286";NULL;14
 
 ;TYPE;CONFLICT_CODE;NB
-Nb conflicts distribution;"C8";"twoTeamsConflict";88306
-Nb conflicts distribution;"TC1";"TemporalConflict";2896
-Nb conflicts distribution;"C7";"playerTooOldConflict";960
-Nb conflicts distribution;"C6";"playerAgeConflict";992
-Nb conflicts distribution;"C1";"birthDateConflict";66
-Nb conflicts distribution;"C4";"birthPlayerConflict";415
-Nb conflicts distribution;"C16";"birthMarriageConflict";17
-Nb conflicts distribution;"C14";"marriageConflict";212
-Nb conflicts distribution;"C1-1";"birthDateConflictPolarity";3
-Nb conflicts distribution;"C2-1";"deathDateConflictPolarity";3
-Nb conflicts distribution;"C3";"birthDeathConflict";10
-Nb conflicts distribution;"C2";"deathDateConflict";9
-Nb conflicts distribution;"C17";"deathMarriageConflict";6
-Nb conflicts distribution;"C19";"twoCompaniesConflict";110
+Nb conflicts distribution;"C16";NULL;17
+Nb conflicts distribution;"C1";NULL;66
+Nb conflicts distribution;"TC1";NULL;2738
+Nb conflicts distribution;"C14";NULL;212
+Nb conflicts distribution;"C17";NULL;6
+Nb conflicts distribution;"C19";NULL;110
+Nb conflicts distribution;"C3";NULL;10
+Nb conflicts distribution;"C2";NULL;9
+Nb conflicts distribution;"C1-1";NULL;3
+Nb conflicts distribution;"C2-1";NULL;3
+Nb conflicts distribution;"C6";NULL;992
+Nb conflicts distribution;"C8";NULL;88306
+Nb conflicts distribution;"C7";NULL;960
+Nb conflicts distribution;"C4";NULL;415
 
 ;NB_pCon;NB_pConpInc;NB_pInc;NB_tInc;NB_total
-Nb temporal conflicts;484;484;5556;236;5792
+Nb temporal conflicts;476;476;5240;236;5476
 
 ;o_ID;NB
 Distribution of linked "o";"Q1277549";254
@@ -45,7 +45,6 @@ Distribution of linked "o";"Q1450557";143
 Distribution of linked "o";"Q1344163";94
 Distribution of linked "o";"Q132885";93
 Distribution of linked "o";"Q2701714";82
-Distribution of linked "o";"Q3873511";81
 Distribution of linked "o";"Q9617";80
 Distribution of linked "o";"Q1450568";72
 Distribution of linked "o";"Q5794";72
@@ -66,17 +65,17 @@ Distribution of linked "o";"Q704";44
 Distribution of linked "o";"Q3873548";43
 Distribution of linked "o";"Q3590024";42
 Distribution of linked "o";"Q1422";42
-Distribution of linked "o";"Q631";41
 Distribution of linked "o";"Q182876";41
+Distribution of linked "o";"Q631";41
 Distribution of linked "o";"Q2347256";41
 Distribution of linked "o";"Q19477";40
 Distribution of linked "o";"Q2609";40
 Distribution of linked "o";"Q204675";38
 Distribution of linked "o";"Q2739";37
 Distribution of linked "o";"Q9616";36
+Distribution of linked "o";"Q172476";35
 Distribution of linked "o";"Q7156";35
 Distribution of linked "o";"Q314851";35
-Distribution of linked "o";"Q172476";35
 Distribution of linked "o";"Q1129595";35
 Distribution of linked "o";"Q514714";34
 Distribution of linked "o";"Q19597";34
@@ -87,10 +86,10 @@ Distribution of linked "o";"Q2713491";31
 Distribution of linked "o";"Q11938";30
 Distribution of linked "o";"Q131499";30
 Distribution of linked "o";"Q3873513";30
+Distribution of linked "o";"Q730809";29
 Distribution of linked "o";"Q19509";29
 Distribution of linked "o";"Q267245";29
 Distribution of linked "o";"Q19444";29
-Distribution of linked "o";"Q730809";29
 Distribution of linked "o";"Q676899";29
 Distribution of linked "o";"Q2627402";28
 Distribution of linked "o";"Q218372";27
@@ -112,35 +111,35 @@ Distribution of linked "o";"Q822021";23
 Distribution of linked "o";"Q204238";23
 Distribution of linked "o";"Q483868";23
 Distribution of linked "o";"Q3873503";23
-Distribution of linked "o";"Q185163";22
 Distribution of linked "o";"Q8682";22
+Distribution of linked "o";"Q185163";22
 Distribution of linked "o";"Q18744";22
 Distribution of linked "o";"Q9426";22
 Distribution of linked "o";"Q748445";22
 Distribution of linked "o";"Q2266580";22
+Distribution of linked "o";"Q2641";21
 Distribution of linked "o";"Q270995";21
 Distribution of linked "o";"Q319699";21
 Distribution of linked "o";"Q19500";21
 Distribution of linked "o";"Q1998181";21
 Distribution of linked "o";"Q1464421";21
 Distribution of linked "o";"Q849179";21
-Distribution of linked "o";"Q2641";21
 Distribution of linked "o";"Q302977";21
 Distribution of linked "o";"Q29103";20
 Distribution of linked "o";"Q47050";20
 Distribution of linked "o";"Q1049176";20
 Distribution of linked "o";"Q128148";20
 Distribution of linked "o";"Q287129";20
-Distribution of linked "o";"Q1811026";19
 Distribution of linked "o";"Q19513";19
+Distribution of linked "o";"Q1811026";19
 Distribution of linked "o";"Q1672798";19
 Distribution of linked "o";"Q193481";19
 Distribution of linked "o";"Q10383";19
+Distribution of linked "o";"Q18656";18
 Distribution of linked "o";"Q4122219";18
 Distribution of linked "o";"Q18723";18
 Distribution of linked "o";"Q50602";18
 Distribution of linked "o";"Q16845355";18
-Distribution of linked "o";"Q18656";18
 Distribution of linked "o";"Q47762";18
 Distribution of linked "o";"Q2356290";18
 Distribution of linked "o";"Q221882";18
@@ -162,6 +161,7 @@ Distribution of linked "o";"Q212269";16
 Distribution of linked "o";"Q2308235";16
 Distribution of linked "o";"Q1202768";16
 Distribution of linked "o";"Q483020";15
+Distribution of linked "o";"Q3873511";15
 Distribution of linked "o";"Q18741";15
 Distribution of linked "o";"Q4127955";15
 Distribution of linked "o";"Q483856";15
@@ -315,6 +315,7 @@ Distribution of linked "o";"Q1785447";8
 Distribution of linked "o";"Q19462";8
 Distribution of linked "o";"Q105853";8
 Distribution of linked "o";"Q9213751";8
+Distribution of linked "o";"Q601723";7
 Distribution of linked "o";"Q48911";7
 Distribution of linked "o";"Q16847600";7
 Distribution of linked "o";"Q18736";7
@@ -349,7 +350,6 @@ Distribution of linked "o";"Q464810";7
 Distribution of linked "o";"Q181930";7
 Distribution of linked "o";"Q5132102";7
 Distribution of linked "o";"Q134241";7
-Distribution of linked "o";"Q601723";7
 Distribution of linked "o";"Q17521353";7
 Distribution of linked "o";"Q207373";7
 Distribution of linked "o";"Q5212629";7
@@ -361,6 +361,7 @@ Distribution of linked "o";"Q35933";7
 Distribution of linked "o";"Q218883";7
 Distribution of linked "o";"Q2406451";7
 Distribution of linked "o";"Q151747";7
+Distribution of linked "o";"Q53438";6
 Distribution of linked "o";"Q2276413";6
 Distribution of linked "o";"Q18661";6
 Distribution of linked "o";"Q22707";6
@@ -401,7 +402,6 @@ Distribution of linked "o";"Q2229763";6
 Distribution of linked "o";"Q497334";6
 Distribution of linked "o";"Q2175909";6
 Distribution of linked "o";"Q180798";6
-Distribution of linked "o";"Q53438";6
 Distribution of linked "o";"Q19523";5
 Distribution of linked "o";"Q3590215";5
 Distribution of linked "o";"Q161034";5
@@ -453,6 +453,13 @@ Distribution of linked "o";"Q795978";5
 Distribution of linked "o";"Q698702";5
 Distribution of linked "o";"Q1386854";5
 Distribution of linked "o";"Q221766";5
+Distribution of linked "o";"Q3217941";4
+Distribution of linked "o";"Q76346";4
+Distribution of linked "o";"Q57487";4
+Distribution of linked "o";"Q798194";4
+Distribution of linked "o";"Q1230608";4
+Distribution of linked "o";"Q61689";4
+Distribution of linked "o";"Q699668";4
 Distribution of linked "o";"Q797530";4
 Distribution of linked "o";"Q1757655";4
 Distribution of linked "o";"Q170040";4
@@ -522,13 +529,9 @@ Distribution of linked "o";"Q19585";4
 Distribution of linked "o";"Q1976387";4
 Distribution of linked "o";"Q582900";4
 Distribution of linked "o";"Q1023500";4
-Distribution of linked "o";"Q3217941";4
-Distribution of linked "o";"Q76346";4
-Distribution of linked "o";"Q57487";4
-Distribution of linked "o";"Q798194";4
-Distribution of linked "o";"Q1230608";4
-Distribution of linked "o";"Q61689";4
-Distribution of linked "o";"Q699668";4
+Distribution of linked "o";"19400628";3
+Distribution of linked "o";"19460819";3
+Distribution of linked "o";"19610918";3
 Distribution of linked "o";"Q333838";3
 Distribution of linked "o";"19790314";3
 Distribution of linked "o";"Q19518";3
@@ -563,7 +566,6 @@ Distribution of linked "o";"Q3106835";3
 Distribution of linked "o";"19620101";3
 Distribution of linked "o";"04000101";3
 Distribution of linked "o";"Q18659";3
-Distribution of linked "o";"19610918";3
 Distribution of linked "o";"19450101";3
 Distribution of linked "o";"Q190916";3
 Distribution of linked "o";"Q202660";3
@@ -577,7 +579,6 @@ Distribution of linked "o";"Q8248325";3
 Distribution of linked "o";"19370101";3
 Distribution of linked "o";"Q18662";3
 Distribution of linked "o";"Q388972";3
-Distribution of linked "o";"19460819";3
 Distribution of linked "o";"Q4738632";3
 Distribution of linked "o";"Q157828";3
 Distribution of linked "o";"Q634434";3
@@ -617,7 +618,6 @@ Distribution of linked "o";"Q12606061";3
 Distribution of linked "o";"Q182930";3
 Distribution of linked "o";"Q153539";3
 Distribution of linked "o";"Q19487";3
-Distribution of linked "o";"19400628";3
 Distribution of linked "o";"Q686659";3
 Distribution of linked "o";"Q270420";3
 Distribution of linked "o";"Q9653";3
@@ -626,6 +626,143 @@ Distribution of linked "o";"Q38124";3
 Distribution of linked "o";"Q131215";3
 Distribution of linked "o";"Q377621";3
 Distribution of linked "o";"Q3571594";3
+Distribution of linked "o";"Q191789";2
+Distribution of linked "o";"17320222";2
+Distribution of linked "o";"17991214";2
+Distribution of linked "o";"19660218";2
+Distribution of linked "o";"Q14623681";2
+Distribution of linked "o";"19520311";2
+Distribution of linked "o";"20010511";2
+Distribution of linked "o";"Q152019";2
+Distribution of linked "o";"19460706";2
+Distribution of linked "o";"15990600";2
+Distribution of linked "o";"15990606";2
+Distribution of linked "o";"16600806";2
+Distribution of linked "o";"19420624";2
+Distribution of linked "o";"19151125";2
+Distribution of linked "o";"20061210";2
+Distribution of linked "o";"18820707";2
+Distribution of linked "o";"19420628";2
+Distribution of linked "o";"19110116";2
+Distribution of linked "o";"19820122";2
+Distribution of linked "o";"18210409";2
+Distribution of linked "o";"18670831";2
+Distribution of linked "o";"19560318";2
+Distribution of linked "o";"19730401";2
+Distribution of linked "o";"14730219";2
+Distribution of linked "o";"15430524";2
+Distribution of linked "o";"Q3374257";2
+Distribution of linked "o";"19451112";2
+Distribution of linked "o";"16060606";2
+Distribution of linked "o";"16841001";2
+Distribution of linked "o";"18981122";2
+Distribution of linked "o";"19800822";2
+Distribution of linked "o";"14310401";2
+Distribution of linked "o";"14630101";2
+Distribution of linked "o";"14640101";2
+Distribution of linked "o";"Q1981049";2
+Distribution of linked "o";"19320404";2
+Distribution of linked "o";"19861229";2
+Distribution of linked "o";"Q1271632";2
+Distribution of linked "o";"19490622";2
+Distribution of linked "o";"18830703";2
+Distribution of linked "o";"19240603";2
+Distribution of linked "o";"Q448233";2
+Distribution of linked "o";"18990824";2
+Distribution of linked "o";"19860614";2
+Distribution of linked "o";"19370114";2
+Distribution of linked "o";"20121029";2
+Distribution of linked "o";"18720716";2
+Distribution of linked "o";"19280618";2
+Distribution of linked "o";"Q68761";2
+Distribution of linked "o";"18790314";2
+Distribution of linked "o";"19550418";2
+Distribution of linked "o";"19570422";2
+Distribution of linked "o";"19210521";2
+Distribution of linked "o";"19891214";2
+Distribution of linked "o";"18960606";2
+Distribution of linked "o";"19500917";2
+Distribution of linked "o";"Q6294";2
+Distribution of linked "o";"Q554175";2
+Distribution of linked "o";"19171119";2
+Distribution of linked "o";"19841031";2
+Distribution of linked "o";"18031211";2
+Distribution of linked "o";"18690308";2
+Distribution of linked "o";"Q3080523";2
+Distribution of linked "o";"19201209";2
+Distribution of linked "o";"19180909";2
+Distribution of linked "o";"20120129";2
+Distribution of linked "o";"19081103";2
+Distribution of linked "o";"20011109";2
+Distribution of linked "o";"19440613";2
+Distribution of linked "o";"19380408";2
+Distribution of linked "o";"19221114";2
+Distribution of linked "o";"20160216";2
+Distribution of linked "o";"19050729";2
+Distribution of linked "o";"19340921";2
+Distribution of linked "o";"19570310";2
+Distribution of linked "o";"20110502";2
+Distribution of linked "o";"18501116";2
+Distribution of linked "o";"19010712";2
+Distribution of linked "o";"18450426";2
+Distribution of linked "o";"19221008";2
+Distribution of linked "o";"18990508";2
+Distribution of linked "o";"19920323";2
+Distribution of linked "o";"18541122";2
+Distribution of linked "o";"17860820";2
+Distribution of linked "o";"Q57212";2
+Distribution of linked "o";"Q61972";2
+Distribution of linked "o";"17500728";2
+Distribution of linked "o";"16850321";2
+Distribution of linked "o";"16850331";2
+Distribution of linked "o";"19471001";2
+Distribution of linked "o";"20090407";2
+Distribution of linked "o";"00140819";2
+Distribution of linked "o";"00320428";2
+Distribution of linked "o";"00690416";2
+Distribution of linked "o";"00391230";2
+Distribution of linked "o";"00810913";2
+Distribution of linked "o";"00760124";2
+Distribution of linked "o";"01380710";2
+Distribution of linked "o";"01880404";2
+Distribution of linked "o";"02170408";2
+Distribution of linked "o";"19170911";2
+Distribution of linked "o";"19890928";2
+Distribution of linked "o";"19600208";2
+Distribution of linked "o";"19090331";2
+Distribution of linked "o";"19450206";2
+Distribution of linked "o";"18610619";2
+Distribution of linked "o";"18961230";2
+Distribution of linked "o";"18780819";2
+Distribution of linked "o";"19440801";2
+Distribution of linked "o";"18130522";2
+Distribution of linked "o";"18830213";2
+Distribution of linked "o";"19230714";2
+Distribution of linked "o";"19991107";2
+Distribution of linked "o";"19350621";2
+Distribution of linked "o";"20040924";2
+Distribution of linked "o";"19891124";2
+Distribution of linked "o";"19881002";2
+Distribution of linked "o";"19840725";2
+Distribution of linked "o";"19910614";2
+Distribution of linked "o";"19871003";2
+Distribution of linked "o";"19880325";2
+Distribution of linked "o";"19760814";2
+Distribution of linked "o";"19810830";2
+Distribution of linked "o";"19880121";2
+Distribution of linked "o";"19520205";2
+Distribution of linked "o";"19860114";2
+Distribution of linked "o";"19300609";2
+Distribution of linked "o";"19971124";2
+Distribution of linked "o";"02250120";2
+Distribution of linked "o";"02440211";2
+Distribution of linked "o";"02490101";2
+Distribution of linked "o";"02040101";2
+Distribution of linked "o";"19720623";2
+Distribution of linked "o";"19651119";2
+Distribution of linked "o";"18680823";2
+Distribution of linked "o";"19441210";2
+Distribution of linked "o";"19670914";2
 Distribution of linked "o";"19931107";2
 Distribution of linked "o";"19860930";2
 Distribution of linked "o";"Q309400";2
@@ -793,143 +930,6 @@ Distribution of linked "o";"Q2631577";2
 Distribution of linked "o";"Q38245";2
 Distribution of linked "o";"Q179658";2
 Distribution of linked "o";"Q2578091";2
-Distribution of linked "o";"Q191789";2
-Distribution of linked "o";"17320222";2
-Distribution of linked "o";"17991214";2
-Distribution of linked "o";"19660218";2
-Distribution of linked "o";"Q14623681";2
-Distribution of linked "o";"19520311";2
-Distribution of linked "o";"20010511";2
-Distribution of linked "o";"Q152019";2
-Distribution of linked "o";"19460706";2
-Distribution of linked "o";"15990600";2
-Distribution of linked "o";"15990606";2
-Distribution of linked "o";"16600806";2
-Distribution of linked "o";"19420624";2
-Distribution of linked "o";"19151125";2
-Distribution of linked "o";"20061210";2
-Distribution of linked "o";"18820707";2
-Distribution of linked "o";"19420628";2
-Distribution of linked "o";"19110116";2
-Distribution of linked "o";"19820122";2
-Distribution of linked "o";"18210409";2
-Distribution of linked "o";"18670831";2
-Distribution of linked "o";"19560318";2
-Distribution of linked "o";"19730401";2
-Distribution of linked "o";"14730219";2
-Distribution of linked "o";"15430524";2
-Distribution of linked "o";"Q3374257";2
-Distribution of linked "o";"19451112";2
-Distribution of linked "o";"16060606";2
-Distribution of linked "o";"16841001";2
-Distribution of linked "o";"18981122";2
-Distribution of linked "o";"19800822";2
-Distribution of linked "o";"14310401";2
-Distribution of linked "o";"14630101";2
-Distribution of linked "o";"14640101";2
-Distribution of linked "o";"Q1981049";2
-Distribution of linked "o";"19320404";2
-Distribution of linked "o";"19861229";2
-Distribution of linked "o";"Q1271632";2
-Distribution of linked "o";"19490622";2
-Distribution of linked "o";"18830703";2
-Distribution of linked "o";"19240603";2
-Distribution of linked "o";"Q448233";2
-Distribution of linked "o";"18990824";2
-Distribution of linked "o";"19860614";2
-Distribution of linked "o";"19370114";2
-Distribution of linked "o";"20121029";2
-Distribution of linked "o";"18720716";2
-Distribution of linked "o";"19280618";2
-Distribution of linked "o";"Q68761";2
-Distribution of linked "o";"18790314";2
-Distribution of linked "o";"19550418";2
-Distribution of linked "o";"19570422";2
-Distribution of linked "o";"19210521";2
-Distribution of linked "o";"19891214";2
-Distribution of linked "o";"18960606";2
-Distribution of linked "o";"19500917";2
-Distribution of linked "o";"Q6294";2
-Distribution of linked "o";"Q554175";2
-Distribution of linked "o";"19171119";2
-Distribution of linked "o";"19841031";2
-Distribution of linked "o";"18031211";2
-Distribution of linked "o";"18690308";2
-Distribution of linked "o";"Q3080523";2
-Distribution of linked "o";"19201209";2
-Distribution of linked "o";"19180909";2
-Distribution of linked "o";"20120129";2
-Distribution of linked "o";"19081103";2
-Distribution of linked "o";"20011109";2
-Distribution of linked "o";"19440613";2
-Distribution of linked "o";"19380408";2
-Distribution of linked "o";"19221114";2
-Distribution of linked "o";"20160216";2
-Distribution of linked "o";"19050729";2
-Distribution of linked "o";"19340921";2
-Distribution of linked "o";"19570310";2
-Distribution of linked "o";"20110502";2
-Distribution of linked "o";"18501116";2
-Distribution of linked "o";"19010712";2
-Distribution of linked "o";"18450426";2
-Distribution of linked "o";"19221008";2
-Distribution of linked "o";"18990508";2
-Distribution of linked "o";"19920323";2
-Distribution of linked "o";"18541122";2
-Distribution of linked "o";"17860820";2
-Distribution of linked "o";"Q57212";2
-Distribution of linked "o";"Q61972";2
-Distribution of linked "o";"17500728";2
-Distribution of linked "o";"16850321";2
-Distribution of linked "o";"16850331";2
-Distribution of linked "o";"19471001";2
-Distribution of linked "o";"20090407";2
-Distribution of linked "o";"00140819";2
-Distribution of linked "o";"00320428";2
-Distribution of linked "o";"00690416";2
-Distribution of linked "o";"00391230";2
-Distribution of linked "o";"00810913";2
-Distribution of linked "o";"00760124";2
-Distribution of linked "o";"01380710";2
-Distribution of linked "o";"01880404";2
-Distribution of linked "o";"02170408";2
-Distribution of linked "o";"19170911";2
-Distribution of linked "o";"19890928";2
-Distribution of linked "o";"19600208";2
-Distribution of linked "o";"19090331";2
-Distribution of linked "o";"19450206";2
-Distribution of linked "o";"18610619";2
-Distribution of linked "o";"18961230";2
-Distribution of linked "o";"18780819";2
-Distribution of linked "o";"19440801";2
-Distribution of linked "o";"18130522";2
-Distribution of linked "o";"18830213";2
-Distribution of linked "o";"19230714";2
-Distribution of linked "o";"19991107";2
-Distribution of linked "o";"19350621";2
-Distribution of linked "o";"20040924";2
-Distribution of linked "o";"19891124";2
-Distribution of linked "o";"19881002";2
-Distribution of linked "o";"19840725";2
-Distribution of linked "o";"19910614";2
-Distribution of linked "o";"19871003";2
-Distribution of linked "o";"19880325";2
-Distribution of linked "o";"19760814";2
-Distribution of linked "o";"19810830";2
-Distribution of linked "o";"19880121";2
-Distribution of linked "o";"19520205";2
-Distribution of linked "o";"19860114";2
-Distribution of linked "o";"19300609";2
-Distribution of linked "o";"19971124";2
-Distribution of linked "o";"02250120";2
-Distribution of linked "o";"02440211";2
-Distribution of linked "o";"02490101";2
-Distribution of linked "o";"02040101";2
-Distribution of linked "o";"19720623";2
-Distribution of linked "o";"19651119";2
-Distribution of linked "o";"18680823";2
-Distribution of linked "o";"19441210";2
-Distribution of linked "o";"19670914";2
 Distribution of linked "o";"19851205";1
 Distribution of linked "o";"19620306";1
 Distribution of linked "o";"19700604";1

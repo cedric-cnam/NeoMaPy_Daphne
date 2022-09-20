@@ -1,6 +1,6 @@
 
 ;NB_triplets
-Nb triplets;9391
+Nb triplets;9337
 
 ;NB_o
 Nb "o";3138
@@ -12,31 +12,30 @@ Nb "s";1600
 nb "p";6
 
 ;ID;NAME;NB
-Nb "p" links distribution;"P54";"teamPlayer";6695
-Nb "p" links distribution;"P569";"birthDate";1579
-Nb "p" links distribution;"P570";"deathDate";816
-Nb "p" links distribution;"P26";"marriage";263
-Nb "p" links distribution;"P108";"workCompany";24
-Nb "p" links distribution;"P286";"teamCoach";14
+Nb "p" links distribution;"P54";NULL;6641
+Nb "p" links distribution;"P569";NULL;1579
+Nb "p" links distribution;"P570";NULL;816
+Nb "p" links distribution;"P26";NULL;263
+Nb "p" links distribution;"P108";NULL;24
+Nb "p" links distribution;"P286";NULL;14
 
 ;TYPE;CONFLICT_CODE;NB
-Nb conflicts distribution;"TC1";"TemporalConflict";577
-Nb conflicts distribution;"C14";"marriageConflict";219
-Nb conflicts distribution;"C6";"playerAgeConflict";245
-Nb conflicts distribution;"C8";"twoTeamsConflict";12076
-Nb conflicts distribution;"C1";"birthDateConflict";10
-Nb conflicts distribution;"C2-1";"deathDateConflictPolarity";3
-Nb conflicts distribution;"C1-1";"birthDateConflictPolarity";2
+Nb conflicts distribution;"C14";NULL;219
+Nb conflicts distribution;"C6";NULL;245
+Nb conflicts distribution;"C8";NULL;12076
+Nb conflicts distribution;"TC1";NULL;475
+Nb conflicts distribution;"C1";NULL;10
+Nb conflicts distribution;"C2-1";NULL;3
+Nb conflicts distribution;"C1-1";NULL;2
 
 ;NB_pCon;NB_pConpInc;NB_pInc;NB_tInc;NB_total
-Nb temporal conflicts;64;64;906;248;1154
+Nb temporal conflicts;58;58;702;248;950
 
 ;o_ID;NB
 Distribution of linked "o";"Q1277549";173
 Distribution of linked "o";"Q47774";129
 Distribution of linked "o";"Q1450557";92
 Distribution of linked "o";"Q5794";72
-Distribution of linked "o";"Q3873511";69
 Distribution of linked "o";"Q9617";69
 Distribution of linked "o";"Q1543";69
 Distribution of linked "o";"Q1344163";67
@@ -139,6 +138,7 @@ Distribution of linked "o";"Q212269";16
 Distribution of linked "o";"Q2308235";16
 Distribution of linked "o";"Q1202768";16
 Distribution of linked "o";"Q18723";15
+Distribution of linked "o";"Q3873511";15
 Distribution of linked "o";"Q18741";15
 Distribution of linked "o";"Q4127955";15
 Distribution of linked "o";"Q483856";15

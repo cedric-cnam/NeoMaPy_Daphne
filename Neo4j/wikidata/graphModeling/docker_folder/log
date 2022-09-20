@@ -1,0 +1,19 @@
+inputFile=pinstConf_rockit_wikidata_0_200k.csv
+----------------
+delete.cypher	delete nodes	146 ms
+delete.cypher	TOTAL	146 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	19521 ms
+graphSetting.cypher	TOTAL	19521 ms
+----------------

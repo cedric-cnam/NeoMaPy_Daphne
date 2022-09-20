@@ -1,6 +1,6 @@
 
 ;NB_triplets
-Nb triplets;97382
+Nb triplets;97212
 
 ;NB_o
 Nb "o";21565
@@ -12,32 +12,32 @@ Nb "s";14500
 nb "p";6
 
 ;ID;NAME;NB
-Nb "p" links distribution;"P54";"teamPlayer";47684
-Nb "p" links distribution;"P569";"birthDate";29254
-Nb "p" links distribution;"P570";"deathDate";18734
-Nb "p" links distribution;"P26";"marriage";1298
-Nb "p" links distribution;"P108";"workCompany";282
-Nb "p" links distribution;"P286";"teamCoach";130
+Nb "p" links distribution;"P54";NULL;47514
+Nb "p" links distribution;"P569";NULL;29254
+Nb "p" links distribution;"P570";NULL;18734
+Nb "p" links distribution;"P26";NULL;1298
+Nb "p" links distribution;"P108";NULL;282
+Nb "p" links distribution;"P286";NULL;130
 
 ;TYPE;CONFLICT_CODE;NB
-Nb conflicts distribution;"C16";"birthMarriageConflict";551
-Nb conflicts distribution;"C1";"birthDateConflict";11671
-Nb conflicts distribution;"TC1";"TemporalConflict";61128
-Nb conflicts distribution;"C14";"marriageConflict";3373
-Nb conflicts distribution;"C17";"deathMarriageConflict";113
-Nb conflicts distribution;"C1-1";"birthDateConflictPolarity";315
-Nb conflicts distribution;"C2-1";"deathDateConflictPolarity";246
-Nb conflicts distribution;"C19";"twoCompaniesConflict";804
-Nb conflicts distribution;"C2";"deathDateConflict";1620
-Nb conflicts distribution;"C3";"birthDeathConflict";2423
-Nb conflicts distribution;"C8";"twoTeamsConflict";2045103
-Nb conflicts distribution;"C6";"playerAgeConflict";29490
-Nb conflicts distribution;"C7";"playerTooOldConflict";34081
-Nb conflicts distribution;"C4";"birthPlayerConflict";16919
-Nb conflicts distribution;"C5";"deathPlayerConflict";124
+Nb conflicts distribution;"C16";NULL;551
+Nb conflicts distribution;"C1";NULL;11671
+Nb conflicts distribution;"TC1";NULL;60486
+Nb conflicts distribution;"C14";NULL;3373
+Nb conflicts distribution;"C17";NULL;113
+Nb conflicts distribution;"C1-1";NULL;315
+Nb conflicts distribution;"C2-1";NULL;246
+Nb conflicts distribution;"C19";NULL;804
+Nb conflicts distribution;"C3";NULL;2423
+Nb conflicts distribution;"C2";NULL;1620
+Nb conflicts distribution;"C6";NULL;29490
+Nb conflicts distribution;"C8";NULL;2045103
+Nb conflicts distribution;"C7";NULL;34081
+Nb conflicts distribution;"C4";NULL;16919
+Nb conflicts distribution;"C5";NULL;124
 
 ;NB_pCon;NB_pConpInc;NB_pInc;NB_tInc;NB_total
-Nb temporal conflicts;13118;13118;120376;1880;122256
+Nb temporal conflicts;12150;12150;119092;1880;120972
 
 ;o_ID;NB
 Distribution of linked "o";"Q314851";600
@@ -50,7 +50,6 @@ Distribution of linked "o";"Q43310";348
 Distribution of linked "o";"Q47774";310
 Distribution of linked "o";"Q319699";270
 Distribution of linked "o";"Q204238";260
-Distribution of linked "o";"Q3873511";230
 Distribution of linked "o";"Q1450557";224
 Distribution of linked "o";"Q1202759";214
 Distribution of linked "o";"Q47762";212
@@ -229,6 +228,7 @@ Distribution of linked "o";"Q170561";62
 Distribution of linked "o";"Q1023185";62
 Distribution of linked "o";"Q18656";60
 Distribution of linked "o";"Q50602";60
+Distribution of linked "o";"Q3873511";60
 Distribution of linked "o";"Q19467";60
 Distribution of linked "o";"Q1998181";60
 Distribution of linked "o";"Q1672798";60

@@ -1,64 +1,58 @@
-STEP;QUERY;TIME (ms);;
-schema.cypher;indices;7;;
-schema.cypher;indices;2;;
-schema.cypher;indices;1;;
-schema.cypher;indices;2;;
-schema.cypher;indices;1;;
-schema.cypher;indices;1;;
-schema.cypher;TOTAL;14;;
-;;;;
-delete.cypher;delete nodes;335;;
-delete.cypher;TOTAL;335;;
-;;;;
-graphSetting.cypher;dataset loading;9403;;
-graphSetting.cypher;concepts name;1;;
-graphSetting.cypher;concepts name;1;;
-graphSetting.cypher;concepts name;1;;30764
-graphSetting.cypher;concepts name;1;;
-graphSetting.cypher;concepts name;1;;
-graphSetting.cypher;concepts name;1;;
-graphSetting.cypher;persons;2;;
-graphSetting.cypher;dates;33;;
-graphSetting.cypher;persons;57;;
-graphSetting.cypher;TOTAL;9501;;
-;;;;
-constraints.cypher;Partial Temporal Consistency;1220;;
-constraints.cypher;Partial Temporal Inconsistency;1361;;
-constraints.cypher;Total Temporal Inconsistency;1160;;
-constraints.cypher;C1;115;;
-constraints.cypher;C1-1;83;;
-constraints.cypher;C2;89;;
-constraints.cypher;C2-1;34;;
-constraints.cypher;C3;88;;
-constraints.cypher;C4;1902;;
-constraints.cypher;C4;1917;;
-constraints.cypher;C5;2382;;
-constraints.cypher;C6;3839;;
-constraints.cypher;C7;1979;;
-constraints.cypher;C8;4093;;
-constraints.cypher;C14;145;;
-constraints.cypher;C16;28;;
-constraints.cypher;C17;12;;
-constraints.cypher;C18;36;;
-constraints.cypher;C19;4;;
-constraints.cypher;C6;2670;;
-constraints.cypher;TOTAL;23157;;
-;;;;
-stats.cypher;Nb triplets;76;;
-stats.cypher;"Nb ""o""";29;;
-stats.cypher;"Nb ""s""";29;;
-stats.cypher;"nb ""p""";27;;
-stats.cypher;"Nb ""p"" links distribution";46;;
-stats.cypher;Nb conflicts distribution;78;;
-stats.cypher;Nb temporal conflicts;48;;
-stats.cypher;"Distribution of linked ""o""";42;;
-results.cypher;mapping_Neo4j_wikidata;79;;
-results.cypher;inferredNodes;34;;
-results.cypher;tCon_noConflicts;2;;
-results.cypher;tCon_conflicts;73;;
-results.cypher;pCon_noConflicts;194;;
-results.cypher;pCon_conflicts;145;;
-results.cypher;pInc_noConflicts;192;;
-results.cypher;pInc_conflicts;143;;
-results.cypher;tInc_noConflicts;193;;
-results.cypher;tInc_conflicts;145;;
+STEP;QUERY;TIME (ms)
+delete.cypher;delete nodes;874
+delete.cypher;TOTAL;874
+
+schema.cypher;indices;2
+schema.cypher;indices;2
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;TOTAL;11
+
+graphSetting.cypher;dataset loading;2396
+graphSetting.cypher;TOTAL;2396
+
+constraints.cypher;Partial Temporal Consistency;43948
+constraints.cypher;Partial Temporal Inconsistency;360
+constraints.cypher;Total Temporal Inconsistency;242
+constraints.cypher;C1 - birthDateConflict;38
+constraints.cypher;C1-1 - birthDateConflictPolarity;28
+constraints.cypher;C2 - deathDateConflict;33
+constraints.cypher;C2-1 - deathDateConflictPolarity;19
+constraints.cypher;C3 - birthDeathConflict;39
+constraints.cypher;C4 - birthPlayerConflict;1
+constraints.cypher;C4 - birthPlayerConflict;59
+constraints.cypher;C5 - deathPlayerConflict;34
+constraints.cypher;C6 - playerAgeConflict;68
+constraints.cypher;C7 - playerTooOldConflict;70
+constraints.cypher;C8 - twoTeamsConflict;3592
+constraints.cypher;C14 - marriageConflict;23
+constraints.cypher;C16 - birthMarriageConflict;16
+constraints.cypher;C17 - deathMarriageConflict;11
+constraints.cypher;C18 - playerCoachConflict;28
+constraints.cypher;C19 - twoCompaniesConflict;2
+constraints.cypher;C6 - playerAgeConflict;94
+constraints.cypher;TOTAL;48705
+
+stats.cypher;Nb triplets;73
+stats.cypher;Nb "o";29
+stats.cypher;Nb "s";29
+stats.cypher;nb "p";28
+stats.cypher;Nb "p" links distribution;46
+stats.cypher;Nb conflicts distribution;72
+stats.cypher;Nb temporal conflicts;49
+stats.cypher;Distribution of linked "o";42
+results.cypher;mapping_Neo4j_wikidata;171
+results.cypher;inferredNodes;33
+results.cypher;tCon_noConflicts;2
+results.cypher;tCon_conflicts;73
+results.cypher;pCon_noConflicts;183
+results.cypher;pCon_conflicts;136
+results.cypher;pInc_noConflicts;183
+results.cypher;pInc_conflicts;137
+results.cypher;tInc_noConflicts;181
+results.cypher;tInc_conflicts;143

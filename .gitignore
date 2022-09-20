@@ -1,2 +1,4 @@
 
 .DS_Store
+Neo4j/wikidata/graphModeling/import/*
+Neo4j/wikidata/graphModeling/docker_import/output/*
