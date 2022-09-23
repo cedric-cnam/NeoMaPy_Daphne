@@ -1,10 +1,10 @@
 import csv
 
 #data = ".\..\..\..\Neo4J\wikidata\data\\rockit_wikidata_0_5k.csv"
-data_csv = "rockit_wikidata_0_5k-10.csv"
+data_csv = ".\..\..\Data_Json\\nRocKit\\rockit_wikidata_0_5k-10.csv"
 file_csv = open(data_csv,"r")
 
-data_db = "output_0_5k-10.db"
+data_db = ".\..\..\Data_Json\\nRocKit\\output_0_5k-10v2.db"
 file_db = open(data_db,'r')
 
 sum = 0
@@ -24,7 +24,7 @@ for line_db in file_db:
         if id_3 > 0:
             while id_3 < 10000000:
                 id_3 = id_3*10
-                print(id_3)
+                #print(id_3)
 
     elif id_3[-2:] == '.0':
         id_3 = int(id_3[:-2])

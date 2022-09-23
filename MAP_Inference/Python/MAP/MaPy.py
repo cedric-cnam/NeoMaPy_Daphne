@@ -18,7 +18,7 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_10_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k.json', 'r') as f:
     dico = json.load(f)
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -256,7 +256,7 @@ def build_sol(dico):#,index):
 
 ##################################### LOAD the data for OPTI 2 ###############################################
 
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_75_10k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -327,7 +327,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_10_50k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
@@ -336,6 +336,7 @@ if __name__ == '__main__':
     elapsed = end - start
     print(f'Temps d\'exécution conf : {elapsed:.5}s\n')
     print(output1[0])
+    print(f'len sol conf = {len(output1[1])}')
 
     start = time.time()
     output2 = sum_weight(dico,dico)
@@ -344,5 +345,8 @@ if __name__ == '__main__':
     print(f'Temps d\'exécution no conf : {elapsed:.5}s\n')
     print(output2)
 
+    
+    print(f'nb nodes no conf = {len(dico)}')
+    print(f'nb nodes total = {len(output1[1]) + len(dico)}')
     #print(f'Score total = {output1[0] + output12 + output2}')
     print(f'Score total = {output1[0] + output2}')
