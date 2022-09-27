@@ -138,6 +138,7 @@ public class GraphModeling {
 					for(String s : args) {
 						if(s.startsWith("--inputFile=")) {
 							inputFile = s.substring(12);
+							inputFile = inputFile.substring(inputFile.lastIndexOf("/"));
 						} if(s.startsWith("--inference=")) {
 								inference = s.substring(12).compareTo("true")==0;
 						} else if(s.startsWith("--help")) {
