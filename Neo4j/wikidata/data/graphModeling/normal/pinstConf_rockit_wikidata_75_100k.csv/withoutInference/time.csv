@@ -1,0 +1,58 @@
+STEP;QUERY;TIME (ms)
+delete.cypher;delete nodes;46971
+delete.cypher;TOTAL;46971
+
+schema.cypher;indices;2
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;TOTAL;10
+
+graphSetting.cypher;dataset loading;16464
+graphSetting.cypher;TOTAL;16464
+
+constraints.cypher;Partial Temporal Consistency;26
+constraints.cypher;Partial Temporal Inconsistency;160
+constraints.cypher;Total Temporal Inconsistency;115
+constraints.cypher;C1 - birthDateConflict;1162
+constraints.cypher;C1-1 - birthDateConflictPolarity;283
+constraints.cypher;C2 - deathDateConflict;450
+constraints.cypher;C2-1 - deathDateConflictPolarity;164
+constraints.cypher;C3 - birthDeathConflict;574
+constraints.cypher;C4 - birthPlayerConflict;382
+constraints.cypher;C4 - birthPlayerConflict;1582
+constraints.cypher;C5 - deathPlayerConflict;324
+constraints.cypher;C6 - playerAgeConflict;2276
+constraints.cypher;C7 - playerTooOldConflict;2586
+constraints.cypher;C8 - twoTeamsConflict;301807
+constraints.cypher;C14 - marriageConflict;1094
+constraints.cypher;C16 - birthMarriageConflict;182
+constraints.cypher;C17 - deathMarriageConflict;110
+constraints.cypher;C18 - playerCoachConflict;306
+constraints.cypher;C19 - twoCompaniesConflict;178
+constraints.cypher;C6 - playerAgeConflict;1258
+constraints.cypher;TOTAL;315019
+
+stats.cypher;Nb triplets;529
+stats.cypher;Nb "o";228
+stats.cypher;Nb "s";196
+stats.cypher;nb "p";192
+stats.cypher;Nb "p" links distribution;307
+stats.cypher;Nb conflicts distribution;8260
+stats.cypher;Nb temporal conflicts;6696
+stats.cypher;Distribution of linked "o";336
+results.cypher;mapping_Neo4j_wikidata;1075
+results.cypher;inferredNodes;205
+results.cypher;tCon_noConflicts;15
+results.cypher;tCon_conflicts;8960
+results.cypher;pCon_noConflicts;19716
+results.cypher;pCon_conflicts;19061
+results.cypher;pInc_noConflicts;20009
+results.cypher;pInc_conflicts;19425
+results.cypher;tInc_noConflicts;20188
+results.cypher;tInc_conflicts;19458
