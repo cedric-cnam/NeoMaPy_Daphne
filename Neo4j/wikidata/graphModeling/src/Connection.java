@@ -42,10 +42,11 @@ public class Connection implements AutoCloseable {
 	}
 
 	public void initLog(String file, String subFolder) throws Exception {
-		outputFolder = "output/" + file + "/";
+		String fol = file.substring(file.lastIndexOf("/"));
+		outputFolder = "output/" + fol + "/";
 		File f = new File(outputFolder);
 		f.mkdir();
-		outputFolder = "output/" + file + "/"+subFolder+"/";
+		outputFolder = "output/" + fol + "/"+subFolder+"/";
 		f = new File(outputFolder);
 		f.mkdir();
 		log = new BufferedWriter(new FileWriter(outputFolder + "time.csv"));
