@@ -22,8 +22,24 @@ public class Wikiline {
 	}
 
 	public String extractDate (String d) throws Exception{
-		String s = d.substring(2, 6)+"-"+d.substring(6,8)+"-01";
-		LocalDate.parse(s);
+		String s = "";
+		if(d.startsWith(" \"-")) {
+			String year = d.substring(3, 7);
+			String month = "01";
+			s = year+"-"+month+"-01";
+			LocalDate.parse(s);
+			
+		} else {
+			String year = d.substring(2, 6);
+			String month = d.substring(6,8);
+			if(month.compareTo("00") == 0)
+				month = "01";
+			if(year.compareTo("0000") == 0)
+				s = "0000-01-01";
+			else
+				s = year+"-"+month+"-01";
+			LocalDate.parse(s);			
+		}
 		return s;
 	}
 

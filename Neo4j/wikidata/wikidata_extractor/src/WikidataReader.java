@@ -33,7 +33,7 @@ public class WikidataReader {
 					w.ID_p = w.extractString(l[1]);
 				}
 				lines.add(w);
-			} catch (Exception e) {}
+			} catch (Exception e) {System.out.println(line);e.printStackTrace();}
 		}
 		return lines;
 	}

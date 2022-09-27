@@ -1,16 +1,21 @@
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class Translate2Neo4j {
 	WikidataReader wr = new WikidataReader ();
-	public static String outputFolder = "data/output/";
-	public static String inputFolder = "data/input/";
-	public static float ratio_rand_negative_polarity = 0.1f;
+	public static String outputFolder = "../data/wikidata2graphModeling/";
+	public static String inputFolder = "../data/input/";
+	public static float ratio_rand_negative_polarity = 0.0f;
 	public static boolean lowWeight = true;
+	public static boolean weightsNormalization = false;
 
 	public Translate2Neo4j(String file) {
 		try {
@@ -25,10 +30,12 @@ public class Translate2Neo4j {
 			float sum_false = 0;
 			float nb_false = 0;
 			for(Wikiline w : lines) {
-				if(w.proba > 0) {
+				if(w.proba > 0 || !weightsNormalization) {
 					//weights normalization
-					w.proba = w.proba % 10;
-					w.proba /= 10.0;
+					if(weightsNormalization) {
+						w.proba = w.proba % 10;
+						w.proba /= 10.0;
+					}
 					if(w.valid) {
 						min_true = Math.min(min_true, w.proba);
 						max_true = Math.max(max_true, w.proba);
@@ -42,18 +49,23 @@ public class Translate2Neo4j {
 					}
 				}
 			}
-			int rand;
-			while (nb_rand_negative_polarity > 0) {
-				rand = new Double(Math.floor(Math.random()*lines.size())).intValue();
-				Wikiline l = lines.get(rand);
-				if(l.polarity && (!lowWeight || l.proba < sum_true/nb_true)) {
-					l.polarity = false;
-					nb_rand_negative_polarity--;
+			if(ratio_rand_negative_polarity > 0) {
+				int rand;
+				while (nb_rand_negative_polarity > 0) {
+					rand = new Double(Math.floor(Math.random()*lines.size())).intValue();
+					Wikiline l = lines.get(rand);
+					if(l.polarity && (!lowWeight || l.proba < sum_true/nb_true)) {
+						l.polarity = false;
+						nb_rand_negative_polarity--;
+					}
 				}
 			}
-			System.out.println(file+"\tproba | true "+min_true+"-"+max_true+", nb:"+nb_true+", avg:"+(sum_true/nb_true)+"| false "+min_false+"-"+max_false+", nb:"+nb_false+", avg:"+(sum_false/nb_false));
+			System.out.println(file+"\tproba ("+ratio_rand_negative_polarity+") | valid "+min_true+"-"+max_true+", nb:"+nb_true+", avg:"+(sum_true/nb_true)+"| invalid "+min_false+"-"+max_false+", nb:"+nb_false+", avg:"+(sum_false/nb_false));
 			writeCSV (lines, file);
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -78,12 +90,23 @@ public class Translate2Neo4j {
 		sameAs_bw.close();
 		p_bw.flush();
 		p_bw.close();
+		zipFile(f);
 	}
 
 	public static String fileName (int falseFact, int nbFact) {
 		return "rockit_wikidata_"+falseFact+"_"+nbFact+"k.csv";
 	}
 	
+	public static void initOutput() throws Exception {
+		String subFolder = "pol-"+ratio_rand_negative_polarity+"_normalizedWeights-"+weightsNormalization+"_lowWeights-"+lowWeight;
+		File f = new File(outputFolder);
+		f.mkdir();
+
+		outputFolder += subFolder + "/";
+		f = new File(outputFolder);
+		f.mkdir();
+	}
+
 	private static List<String> readFolder () {
 		List<String> files = new ArrayList<String> ();
 		try {
@@ -99,6 +122,44 @@ public class Translate2Neo4j {
 			
 		}
 		return files;
+	}
+
+	private void zipFile (String sourceFile) throws IOException {
+		FileOutputStream fos = new FileOutputStream(outputFolder + sourceFile +".zip");
+        ZipOutputStream zipOut = new ZipOutputStream(fos);
+
+        File fileToZip = new File(outputFolder + "sameAs_"+sourceFile);
+        FileInputStream fis = new FileInputStream(fileToZip);
+
+        ZipEntry zipEntry = new ZipEntry(fileToZip.getName());
+        zipOut.putNextEntry(zipEntry);
+        byte[] bytes = new byte[1024];
+        int length;
+        while((length = fis.read(bytes)) >= 0) {
+            zipOut.write(bytes, 0, length);
+        }
+
+        fis.close();
+        fileToZip.delete();
+        fis = null;
+        fileToZip = null;
+
+        fileToZip = new File(outputFolder + "pinstConf_"+sourceFile);
+        fis = new FileInputStream(fileToZip);
+
+        zipEntry = new ZipEntry(fileToZip.getName());
+        zipOut.putNextEntry(zipEntry);
+        while((length = fis.read(bytes)) >= 0) {
+            zipOut.write(bytes, 0, length);
+        }
+
+        fis.close();
+        fileToZip.delete();
+        fis = null;
+        fileToZip = null;
+
+        zipOut.close();
+        fos.close();
 	}
 
 	public static void main (String args []) {
@@ -134,6 +195,13 @@ public class Translate2Neo4j {
 					+ "\tinputFolder="+inputFolder+"\n"
 					+ "\toutputFolder="+outputFolder+"\n"
 					+ "\tpolarities ratio="+ratio_rand_negative_polarity+", and low weighted polarities lowWeight="+lowWeight);
+		}
+
+		try {
+			initOutput ();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		for(String file : readFolder()) {

@@ -1,5 +1,6 @@
 //Temporal Uncertain Rules
 //Partial Temporal Consistency
+:auto
 MATCH (tf1:TF),(tf2:TF)
 WHERE tf1.p=tf2.p and tf1.o=tf2.o and tf1.s=tf2.s and tf1 <> tf2 AND tf1.polarity = true AND tf2.polarity = false AND
     (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end AND
