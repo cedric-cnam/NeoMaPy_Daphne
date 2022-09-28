@@ -346,6 +346,7 @@ for id in set_rockit:
 #print(f'nb conflit rockit = {sum}')
 
 print(f'nb nodes conflit rockit = {len(set_conf)}')
+print(set_conf)
 #without sA = 1566
 #sameAS = 21
 
