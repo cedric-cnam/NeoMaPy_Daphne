@@ -295,12 +295,13 @@ print(output2)
 print(f'Score total MaPy = {output1[0] + output2}')
 print(f'Score Rockit = 1097.7027803900003')
 print(f'Score Rockit sameAS = 505.30539979')
+print(f'Score Rockit sameAS tinc = 505.26962978')
 
 #print(f'Score total = {output1[0] + output12 + output2}')
 print(len(output1[1])+len(dico))
 #print(output1[1])
 
-with open('n-rockit_solution_0_5ksA.json', 'r') as f:
+with open('n-rockit_solution_0_4642_tinc.json', 'r') as f:
     l_rockit = json.load(f)
 
 set_mapy = set(output1[1])
