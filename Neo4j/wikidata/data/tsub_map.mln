@@ -44,10 +44,10 @@ disjoint(i1,i2,i3,i4) := [(i2 < i3) || (i4 < i1)]
 !pinst(x, "P570", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v before(i3, i4, i1, i2).
 
 // 6. A person must be atleast 16 before playing for a premier league club.
-4.0   !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v aboveSixteen(i1, i3)
+4.0   !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v aboveSixteen(i1, i3). 
 
 // 7. Someone who is older than 50 years does not play in a club.
-4.0   !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v belowFifty(i1, i4)
+4.0   !pinst(x, "P569", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v belowFifty(i1, i4).
 
 // 8. A footballer cannot play for two different clubs at the same time/period.
 !pinst(x, "P54", y, i1, i2, valid) v !pinst(x, "P54", z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4).
@@ -65,7 +65,7 @@ disjoint(i1,i2,i3,i4) := [(i2 < i3) || (i4 < i1)]
 !pinst(x, "P570", y, i1, i2, valid) v !pinst(x, "P26", z, i3, i4, valid) v before(i3, i4, i1, i2).
 
 // 18. A person cannot be both a player and a coach at the same time.
-4.0		!pinst(x, "P54", y, i1, i2, valid) v !pinst(x, "P286", z, i3, i4, valid) v disjoint(i1,i2,i3,i4)
+4.0		!pinst(x, "P54", y, i1, i2, valid) v !pinst(x, "P286", z, i3, i4, valid) v disjoint(i1,i2,i3,i4).
 
 // 19. A person cannot work for two companies at the same time.
-4.0		!pinst(x, "P108", y, i1, i2, valid) v !pinst(x, "P108", z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4)
+4.0		!pinst(x, "P108", y, i1, i2, valid) v !pinst(x, "P108", z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4).
