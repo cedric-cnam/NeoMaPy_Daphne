@@ -79,7 +79,7 @@ MERGE (tf1) -[:conflict{type:"C5"}]- (tf2);
 //C6 - playerAgeConflict
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
-WHERE tf1.date_start + duration({years: 14}) > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
+WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C6"}]- (tf2);
 
 //C7 - playerTooOldConflict
