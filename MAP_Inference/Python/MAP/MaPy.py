@@ -18,7 +18,7 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k_true.json', 'r') as f:
     dico = json.load(f)
 
 #with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_50_5k.json', 'r') as f2:
@@ -256,7 +256,7 @@ def build_sol(dico):#,index):
 
 ##################################### LOAD the data for OPTI 2 ###############################################
 
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k.json', 'r') as f: 	
+with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k_true.json', 'r') as f: 	
     l_dico = json.load(f)
 
 
@@ -301,18 +301,27 @@ print(f'Score Rockit sameAS tinc = 505.26962978')
 print(len(output1[1])+len(dico))
 #print(output1[1])
 
-with open('n-rockit_solution_0_4642_tinc.json', 'r') as f:
+
+
+with open('n-rockit_solution_0_5k_true2.json', 'r') as f:
     l_rockit = json.load(f)
 
-set_mapy = set(output1[1])
+set_k = set()
+for k,v in dico.items():
+    set_k.add(int(k))
+
+set_mapy = set(output1[1]).union(set_k)
 set_rockit = set(l_rockit)
 
-#print(f'diff mapy - rockit = {set_mapy - set_rockit}')
+diff1 = set_mapy.difference(set_rockit)
+print(f'diff mapy - rockit = {diff1}\n')
+print(len(diff1))
 
-#print(f'diff rockit - mapy = {set_rockit - set_mapy}')
+diff2 = set_rockit.difference(set_mapy)
+print(f'diff rockit - mapy = {diff2}')
+print(len(diff2))
 
-"""
-"""
+
 set_conf = set()
 sum = 0
 q = 0
@@ -337,6 +346,7 @@ for id in set_rockit:
 #print(f'nb conflit rockit = {sum}')
 
 print(f'nb nodes conflit rockit = {len(set_conf)}')
+print(set_conf)
 #without sA = 1566
 #sameAS = 21
 
@@ -359,6 +369,8 @@ for id in set_mapy:
                     sum += 1
 
 print(f'nb conflit mapy = {sum}')
+
+
 
 ############################################ Parallelization #################################################
 
