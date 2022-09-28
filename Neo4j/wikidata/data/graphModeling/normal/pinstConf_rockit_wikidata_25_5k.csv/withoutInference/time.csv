@@ -1,0 +1,58 @@
+STEP;QUERY;TIME (ms)
+delete.cypher;delete nodes;565
+delete.cypher;TOTAL;565
+
+schema.cypher;indices;2
+schema.cypher;indices;2
+schema.cypher;indices;2
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;indices;1
+schema.cypher;TOTAL;12
+
+graphSetting.cypher;dataset loading;629
+graphSetting.cypher;TOTAL;629
+
+constraints.cypher;Partial Temporal Consistency;2
+constraints.cypher;Partial Temporal Inconsistency;9
+constraints.cypher;Total Temporal Inconsistency;9
+constraints.cypher;C1 - birthDateConflict;17
+constraints.cypher;C1-1 - birthDateConflictPolarity;7
+constraints.cypher;C2 - deathDateConflict;10
+constraints.cypher;C2-1 - deathDateConflictPolarity;4
+constraints.cypher;C3 - birthDeathConflict;13
+constraints.cypher;C4 - birthPlayerConflict;2
+constraints.cypher;C4 - birthPlayerConflict;44
+constraints.cypher;C5 - deathPlayerConflict;12
+constraints.cypher;C6 - playerAgeConflict;90
+constraints.cypher;C7 - playerTooOldConflict;89
+constraints.cypher;C8 - twoTeamsConflict;9326
+constraints.cypher;C14 - marriageConflict;232
+constraints.cypher;C16 - birthMarriageConflict;8
+constraints.cypher;C17 - deathMarriageConflict;6
+constraints.cypher;C18 - playerCoachConflict;43
+constraints.cypher;C19 - twoCompaniesConflict;27
+constraints.cypher;C6 - playerAgeConflict;77
+constraints.cypher;TOTAL;10027
+
+stats.cypher;Nb triplets;19
+stats.cypher;Nb "o";9
+stats.cypher;Nb "s";7
+stats.cypher;nb "p";7
+stats.cypher;Nb "p" links distribution;11
+stats.cypher;Nb conflicts distribution;264
+stats.cypher;Nb temporal conflicts;211
+stats.cypher;Distribution of linked "o";10
+results.cypher;mapping_Neo4j_wikidata;39
+results.cypher;inferredNodes;13
+results.cypher;tCon_noConflicts;17
+results.cypher;tCon_conflicts;303
+results.cypher;pCon_noConflicts;656
+results.cypher;pCon_conflicts;630
+results.cypher;pInc_noConflicts;680
+results.cypher;pInc_conflicts;641
+results.cypher;tInc_noConflicts;686
+results.cypher;tInc_conflicts;646
