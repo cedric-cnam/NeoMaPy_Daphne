@@ -1,6 +1,7 @@
 //dataset loading
 USING PERIODIC COMMIT 100
 LOAD CSV WITH HEADERS FROM "file:/<<FILE>>" as l FIELDTERMINATOR ';'
+WITH l WHERE datetime(l.date_start) <= datetime(l.date_end)
 MERGE (ID_s:Concept{ID:l.ID_s})
 MERGE (ID_o:Concept{ID:l.ID_o})
 MERGE (ID_p:Concept{ID:l.ID_p})
