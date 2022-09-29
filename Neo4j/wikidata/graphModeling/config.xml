@@ -5,7 +5,7 @@
     <!--define folder properties-->
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="/Users/ntravers/eclipse-workspace"/>
-    <property name="dir.jarfile" value="${dir.buildfile}/docker_folder"/>
+    <property name="dir.jarfile" value="${dir.buildfile}/neo4jDocker_folder"/>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/graphModeling.jar" filesetmanifest="mergewithoutmain">
             <manifest>

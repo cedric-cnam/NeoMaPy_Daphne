@@ -1,2 +1,10 @@
 #!/bin/bash
-sudo docker exec -it neo4j_graphModeling /root/testall.sh
+sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_5k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_10k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_25k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_50k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_75k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_100k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_150k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_200k"
+#sudo docker exec -it neo4j_graphModeling bash -c "/root/testall.sh *_250k"
