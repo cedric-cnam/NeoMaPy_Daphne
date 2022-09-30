@@ -48,8 +48,6 @@ WHERE tf1.date_start + duration({years: 50}) < tf2.date_end
 MERGE (tf1) -[:conflict{type:"C7"}]- (tf2);
 
 //C8 - twoTeamsConflict
-MATCH (s:Concept)
-WHERE (:TF{p:"P54"}) -[:s]->  (s)
 MATCH (tf1:TF{p:"P54"}) -[:s]->  (s) <-[:s]- (tf2:TF{p:"P54"})
 WHERE tf1.o <> tf2.o and ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
