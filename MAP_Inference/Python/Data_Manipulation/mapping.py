@@ -1,7 +1,7 @@
 import json
 
 #data = ".\..\..\..\Neo4J\wikidata\data\\rockit_wikidata_0_5k.csv"
-data_db = "output(33).db"
+data_db = "output_0_5k_avecC0.db"
 #".\..\..\Data_Json\\nRocKit\\rockit_wikidata_0_5k-10.csv"
 
 file_db = open(data_db,"r")
@@ -48,9 +48,9 @@ for line_db in file_db:
     #file_solution.write("\n")
 
 
-file_json = "mapping_Neo4j_wikidata_0_5k_true.json"
+file_json = "mapping_Neo4j_wikidata_0_5k_nrockit.json"
 #file_json = open(data_json,"r")
-file_solution = open("n-rockit_solution_0_5k_true2.json","w")
+file_solution = open("n-rockit_solution_0_5k_avecC0.json","w")
 
 with open(file_json, 'r') as f:
     l_dico = json.load(f)
