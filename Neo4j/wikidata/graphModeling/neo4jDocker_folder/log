@@ -2469,3 +2469,3566 @@ constraints.cypher	C4 - birthPlayerConflict	93 ms
 constraints.cypher	C5 - deathPlayerConflict	59 ms
 constraints.cypher	C6 - playerAgeConflict	129 ms
 constraints.cypher	C7 - playerTooOldConflict	114 ms
+inputFile=pinstConf_rockit_wikidata_0_25k.csv
+----------------
+delete.cypher	delete nodes	4804 ms
+delete.cypher	TOTAL	4804 ms
+----------------
+schema.cypher	indices	25 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	9 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	7 ms
+schema.cypher	indices	6 ms
+schema.cypher	TOTAL	87 ms
+----------------
+graphSetting.cypher	dataset loading	8274 ms
+graphSetting.cypher	TOTAL	8274 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	4110 ms
+constraints.cypher	C1 - birthDateConflict	132 ms
+constraints.cypher	C2 - deathDateConflict	109 ms
+constraints.cypher	C3 - birthDeathConflict	174 ms
+constraints.cypher	C4 - birthPlayerConflict	124 ms
+constraints.cypher	C5 - deathPlayerConflict	82 ms
+constraints.cypher	C6 - playerAgeConflict	225 ms
+constraints.cypher	C7 - playerTooOldConflict	173 ms
+constraints.cypher	C8 - twoTeamsConflict	4831 ms
+constraints.cypher	C14 - marriageConflict	279 ms
+constraints.cypher	C16 - birthMarriageConflict	44 ms
+constraints.cypher	C17 - deathMarriageConflict	33 ms
+constraints.cypher	C18 - playerCoachConflict	76 ms
+constraints.cypher	C19 - twoCompaniesConflict	88 ms
+constraints.cypher	TOTAL	10480 ms
+----------------
+stats.cypher	Nb triplets	127 ms
+stats.cypher	Nb "o"	53 ms
+stats.cypher	Nb "s"	51 ms
+stats.cypher	nb "p"	57 ms
+stats.cypher	Nb "p" links distribution	128 ms
+stats.cypher	Nb conflicts distribution	181 ms
+stats.cypher	Nb temporal conflicts	160 ms
+stats.cypher	Distribution of linked "o"	81 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	297 ms
+results.cypher	inferredNodes	118 ms
+results.cypher	tCon_noConflicts	30 ms
+results.cypher	tCon_conflicts	246 ms
+results.cypher	pCon_noConflicts	548 ms
+results.cypher	pCon_conflicts	320 ms
+results.cypher	pInc_noConflicts	352 ms
+results.cypher	pInc_conflicts	330 ms
+results.cypher	tInc_noConflicts	370 ms
+results.cypher	tInc_conflicts	341 ms
+Thu Sep 29 09:49:50 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_25k.csv
+----------------
+delete.cypher	delete nodes	2928 ms
+delete.cypher	TOTAL	2928 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	20 ms
+----------------
+graphSetting.cypher	dataset loading	9219 ms
+graphSetting.cypher	TOTAL	9219 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	10127 ms
+constraints.cypher	C1 - birthDateConflict	398 ms
+constraints.cypher	C2 - deathDateConflict	151 ms
+constraints.cypher	C3 - birthDeathConflict	208 ms
+constraints.cypher	C4 - birthPlayerConflict	491 ms
+constraints.cypher	C5 - deathPlayerConflict	104 ms
+constraints.cypher	C6 - playerAgeConflict	831 ms
+constraints.cypher	C7 - playerTooOldConflict	843 ms
+constraints.cypher	C8 - twoTeamsConflict	79045 ms
+constraints.cypher	C14 - marriageConflict	780 ms
+constraints.cypher	C16 - birthMarriageConflict	89 ms
+constraints.cypher	C17 - deathMarriageConflict	66 ms
+constraints.cypher	C18 - playerCoachConflict	99 ms
+constraints.cypher	C19 - twoCompaniesConflict	122 ms
+constraints.cypher	TOTAL	93354 ms
+----------------
+stats.cypher	Nb triplets	204 ms
+stats.cypher	Nb "o"	69 ms
+stats.cypher	Nb "s"	68 ms
+stats.cypher	nb "p"	66 ms
+stats.cypher	Nb "p" links distribution	97 ms
+stats.cypher	Nb conflicts distribution	2783 ms
+stats.cypher	Nb temporal conflicts	2236 ms
+stats.cypher	Distribution of linked "o"	91 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	386 ms
+results.cypher	inferredNodes	59 ms
+results.cypher	tCon_noConflicts	37 ms
+results.cypher	tCon_conflicts	3189 ms
+results.cypher	pCon_noConflicts	6325 ms
+results.cypher	pCon_conflicts	5900 ms
+results.cypher	pInc_noConflicts	6439 ms
+inputFile=pinstConf_rockit_wikidata_0_50k.csv
+----------------
+inputFile=pinstConf_rockit_wikidata_0_5k.csv
+----------------
+delete.cypher	delete nodes	20876 ms
+delete.cypher	TOTAL	20876 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	20 ms
+----------------
+graphSetting.cypher	dataset loading	1274 ms
+graphSetting.cypher	TOTAL	1274 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	522 ms
+constraints.cypher	C1 - birthDateConflict	36 ms
+constraints.cypher	C2 - deathDateConflict	37 ms
+constraints.cypher	C3 - birthDeathConflict	42 ms
+constraints.cypher	C4 - birthPlayerConflict	49 ms
+constraints.cypher	C5 - deathPlayerConflict	35 ms
+constraints.cypher	C6 - playerAgeConflict	71 ms
+constraints.cypher	C7 - playerTooOldConflict	52 ms
+constraints.cypher	C8 - twoTeamsConflict	1422 ms
+constraints.cypher	C14 - marriageConflict	299 ms
+constraints.cypher	C16 - birthMarriageConflict	12 ms
+constraints.cypher	C17 - deathMarriageConflict	4 ms
+constraints.cypher	C18 - playerCoachConflict	41 ms
+constraints.cypher	C19 - twoCompaniesConflict	54 ms
+constraints.cypher	TOTAL	2676 ms
+----------------
+stats.cypher	Nb triplets	30 ms
+stats.cypher	Nb "o"	14 ms
+stats.cypher	Nb "s"	14 ms
+stats.cypher	nb "p"	14 ms
+stats.cypher	Nb "p" links distribution	18 ms
+stats.cypher	Nb conflicts distribution	50 ms
+stats.cypher	Nb temporal conflicts	58 ms
+stats.cypher	Distribution of linked "o"	17 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	103 ms
+results.cypher	inferredNodes	37 ms
+results.cypher	tCon_noConflicts	23 ms
+results.cypher	tCon_conflicts	69 ms
+results.cypher	pCon_noConflicts	133 ms
+results.cypher	pCon_conflicts	116 ms
+results.cypher	pInc_noConflicts	132 ms
+results.cypher	pInc_conflicts	124 ms
+results.cypher	tInc_noConflicts	131 ms
+results.cypher	tInc_conflicts	116 ms
+Thu Sep 29 09:53:54 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_5k.csv
+----------------
+delete.cypher	delete nodes	726 ms
+delete.cypher	TOTAL	726 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	1513 ms
+graphSetting.cypher	TOTAL	1513 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	1065 ms
+constraints.cypher	C1 - birthDateConflict	48 ms
+constraints.cypher	C2 - deathDateConflict	22 ms
+constraints.cypher	C3 - birthDeathConflict	32 ms
+constraints.cypher	C4 - birthPlayerConflict	121 ms
+constraints.cypher	C5 - deathPlayerConflict	29 ms
+constraints.cypher	C6 - playerAgeConflict	188 ms
+constraints.cypher	C7 - playerTooOldConflict	297 ms
+constraints.cypher	C8 - twoTeamsConflict	25764 ms
+constraints.cypher	C14 - marriageConflict	585 ms
+constraints.cypher	C16 - birthMarriageConflict	47 ms
+constraints.cypher	C17 - deathMarriageConflict	86 ms
+constraints.cypher	C18 - playerCoachConflict	46 ms
+constraints.cypher	C19 - twoCompaniesConflict	98 ms
+constraints.cypher	TOTAL	28428 ms
+----------------
+stats.cypher	Nb triplets	40 ms
+stats.cypher	Nb "o"	15 ms
+stats.cypher	Nb "s"	14 ms
+stats.cypher	nb "p"	14 ms
+stats.cypher	Nb "p" links distribution	20 ms
+stats.cypher	Nb conflicts distribution	909 ms
+stats.cypher	Nb temporal conflicts	712 ms
+stats.cypher	Distribution of linked "o"	19 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	74 ms
+results.cypher	inferredNodes	14 ms
+results.cypher	tCon_noConflicts	32 ms
+results.cypher	tCon_conflicts	973 ms
+results.cypher	pCon_noConflicts	1978 ms
+results.cypher	pCon_conflicts	1847 ms
+results.cypher	pInc_noConflicts	2002 ms
+results.cypher	pInc_conflicts	1898 ms
+results.cypher	tInc_noConflicts	2030 ms
+results.cypher	tInc_conflicts	1945 ms
+Thu Sep 29 09:54:41 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_5k.csv
+----------------
+delete.cypher	delete nodes	5640 ms
+delete.cypher	TOTAL	5640 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	1004 ms
+graphSetting.cypher	TOTAL	1004 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	621 ms
+constraints.cypher	C1 - birthDateConflict	16 ms
+constraints.cypher	C2 - deathDateConflict	13 ms
+constraints.cypher	C3 - birthDeathConflict	15 ms
+constraints.cypher	C4 - birthPlayerConflict	28 ms
+constraints.cypher	C5 - deathPlayerConflict	9 ms
+constraints.cypher	C6 - playerAgeConflict	42 ms
+constraints.cypher	C7 - playerTooOldConflict	43 ms
+constraints.cypher	C8 - twoTeamsConflict	2412 ms
+constraints.cypher	C14 - marriageConflict	215 ms
+constraints.cypher	C16 - birthMarriageConflict	34 ms
+constraints.cypher	C17 - deathMarriageConflict	30 ms
+constraints.cypher	C18 - playerCoachConflict	40 ms
+constraints.cypher	C19 - twoCompaniesConflict	65 ms
+constraints.cypher	TOTAL	3583 ms
+----------------
+stats.cypher	Nb triplets	21 ms
+stats.cypher	Nb "o"	9 ms
+stats.cypher	Nb "s"	9 ms
+stats.cypher	nb "p"	8 ms
+stats.cypher	Nb "p" links distribution	12 ms
+stats.cypher	Nb conflicts distribution	97 ms
+stats.cypher	Nb temporal conflicts	90 ms
+stats.cypher	Distribution of linked "o"	12 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	42 ms
+results.cypher	inferredNodes	8 ms
+results.cypher	tCon_noConflicts	15 ms
+results.cypher	tCon_conflicts	115 ms
+results.cypher	pCon_noConflicts	228 ms
+results.cypher	pCon_conflicts	224 ms
+results.cypher	pInc_noConflicts	225 ms
+results.cypher	pInc_conflicts	212 ms
+results.cypher	tInc_noConflicts	230 ms
+results.cypher	tInc_conflicts	212 ms
+Thu Sep 29 09:54:55 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_5k.csv
+----------------
+delete.cypher	delete nodes	958 ms
+delete.cypher	TOTAL	958 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	15 ms
+----------------
+graphSetting.cypher	dataset loading	978 ms
+graphSetting.cypher	TOTAL	978 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	481 ms
+constraints.cypher	C1 - birthDateConflict	12 ms
+constraints.cypher	C2 - deathDateConflict	11 ms
+constraints.cypher	C3 - birthDeathConflict	12 ms
+constraints.cypher	C4 - birthPlayerConflict	16 ms
+constraints.cypher	C5 - deathPlayerConflict	8 ms
+constraints.cypher	C6 - playerAgeConflict	29 ms
+constraints.cypher	C7 - playerTooOldConflict	18 ms
+constraints.cypher	C8 - twoTeamsConflict	1407 ms
+constraints.cypher	C14 - marriageConflict	183 ms
+constraints.cypher	C16 - birthMarriageConflict	14 ms
+constraints.cypher	C17 - deathMarriageConflict	13 ms
+constraints.cypher	C18 - playerCoachConflict	37 ms
+constraints.cypher	C19 - twoCompaniesConflict	15 ms
+constraints.cypher	TOTAL	2256 ms
+----------------
+stats.cypher	Nb triplets	30 ms
+stats.cypher	Nb "o"	8 ms
+stats.cypher	Nb "s"	8 ms
+stats.cypher	nb "p"	7 ms
+stats.cypher	Nb "p" links distribution	10 ms
+stats.cypher	Nb conflicts distribution	46 ms
+stats.cypher	Nb temporal conflicts	38 ms
+stats.cypher	Distribution of linked "o"	10 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	37 ms
+results.cypher	inferredNodes	8 ms
+results.cypher	tCon_noConflicts	4 ms
+results.cypher	tCon_conflicts	57 ms
+results.cypher	pCon_noConflicts	109 ms
+results.cypher	pCon_conflicts	99 ms
+results.cypher	pInc_noConflicts	108 ms
+results.cypher	pInc_conflicts	102 ms
+results.cypher	tInc_noConflicts	108 ms
+results.cypher	tInc_conflicts	98 ms
+Thu Sep 29 09:55:02 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_5k.csv
+----------------
+delete.cypher	delete nodes	706 ms
+delete.cypher	TOTAL	706 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	1230 ms
+graphSetting.cypher	TOTAL	1230 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	643 ms
+constraints.cypher	C1 - birthDateConflict	19 ms
+constraints.cypher	C2 - deathDateConflict	15 ms
+constraints.cypher	C3 - birthDeathConflict	16 ms
+constraints.cypher	C4 - birthPlayerConflict	48 ms
+constraints.cypher	C5 - deathPlayerConflict	10 ms
+constraints.cypher	C6 - playerAgeConflict	96 ms
+constraints.cypher	C7 - playerTooOldConflict	89 ms
+constraints.cypher	C8 - twoTeamsConflict	9890 ms
+constraints.cypher	C14 - marriageConflict	174 ms
+constraints.cypher	C16 - birthMarriageConflict	24 ms
+constraints.cypher	C17 - deathMarriageConflict	11 ms
+constraints.cypher	C18 - playerCoachConflict	11 ms
+constraints.cypher	C19 - twoCompaniesConflict	32 ms
+constraints.cypher	TOTAL	11078 ms
+----------------
+stats.cypher	Nb triplets	23 ms
+stats.cypher	Nb "o"	9 ms
+stats.cypher	Nb "s"	9 ms
+stats.cypher	nb "p"	9 ms
+stats.cypher	Nb "p" links distribution	13 ms
+stats.cypher	Nb conflicts distribution	316 ms
+stats.cypher	Nb temporal conflicts	294 ms
+stats.cypher	Distribution of linked "o"	12 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	45 ms
+results.cypher	inferredNodes	9 ms
+results.cypher	tCon_noConflicts	5 ms
+results.cypher	tCon_conflicts	355 ms
+results.cypher	pCon_noConflicts	700 ms
+results.cypher	pCon_conflicts	649 ms
+results.cypher	pInc_noConflicts	744 ms
+results.cypher	pInc_conflicts	682 ms
+results.cypher	tInc_noConflicts	721 ms
+results.cypher	tInc_conflicts	686 ms
+Thu Sep 29 09:55:22 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_5k.csv
+----------------
+delete.cypher	delete nodes	2150 ms
+delete.cypher	TOTAL	2150 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	16 ms
+----------------
+graphSetting.cypher	dataset loading	1175 ms
+graphSetting.cypher	TOTAL	1175 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	808 ms
+constraints.cypher	C1 - birthDateConflict	51 ms
+constraints.cypher	C2 - deathDateConflict	38 ms
+constraints.cypher	C3 - birthDeathConflict	46 ms
+constraints.cypher	C4 - birthPlayerConflict	67 ms
+constraints.cypher	C5 - deathPlayerConflict	12 ms
+constraints.cypher	C6 - playerAgeConflict	166 ms
+constraints.cypher	C7 - playerTooOldConflict	144 ms
+constraints.cypher	C8 - twoTeamsConflict	16794 ms
+constraints.cypher	C14 - marriageConflict	578 ms
+constraints.cypher	C16 - birthMarriageConflict	42 ms
+constraints.cypher	C17 - deathMarriageConflict	47 ms
+constraints.cypher	C18 - playerCoachConflict	41 ms
+constraints.cypher	C19 - twoCompaniesConflict	70 ms
+constraints.cypher	TOTAL	18904 ms
+----------------
+stats.cypher	Nb triplets	27 ms
+stats.cypher	Nb "o"	11 ms
+stats.cypher	Nb "s"	11 ms
+stats.cypher	nb "p"	11 ms
+stats.cypher	Nb "p" links distribution	15 ms
+stats.cypher	Nb conflicts distribution	531 ms
+stats.cypher	Nb temporal conflicts	413 ms
+stats.cypher	Distribution of linked "o"	14 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	73 ms
+results.cypher	inferredNodes	10 ms
+results.cypher	tCon_noConflicts	18 ms
+results.cypher	tCon_conflicts	588 ms
+results.cypher	pCon_noConflicts	1172 ms
+results.cypher	pCon_conflicts	1182 ms
+results.cypher	pInc_noConflicts	1212 ms
+results.cypher	pInc_conflicts	1176 ms
+results.cypher	tInc_noConflicts	1235 ms
+results.cypher	tInc_conflicts	1170 ms
+Thu Sep 29 09:55:55 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_5k.csv
+----------------
+delete.cypher	delete nodes	3432 ms
+delete.cypher	TOTAL	3432 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	15 ms
+----------------
+graphSetting.cypher	dataset loading	1250 ms
+graphSetting.cypher	TOTAL	1250 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	960 ms
+constraints.cypher	C1 - birthDateConflict	46 ms
+constraints.cypher	C2 - deathDateConflict	28 ms
+constraints.cypher	C3 - birthDeathConflict	34 ms
+constraints.cypher	C4 - birthPlayerConflict	103 ms
+constraints.cypher	C5 - deathPlayerConflict	13 ms
+constraints.cypher	C6 - playerAgeConflict	162 ms
+constraints.cypher	C7 - playerTooOldConflict	206 ms
+constraints.cypher	C8 - twoTeamsConflict	21019 ms
+constraints.cypher	C14 - marriageConflict	551 ms
+constraints.cypher	C16 - birthMarriageConflict	37 ms
+constraints.cypher	C17 - deathMarriageConflict	30 ms
+constraints.cypher	C18 - playerCoachConflict	13 ms
+constraints.cypher	C19 - twoCompaniesConflict	46 ms
+constraints.cypher	TOTAL	23248 ms
+----------------
+stats.cypher	Nb triplets	32 ms
+stats.cypher	Nb "o"	13 ms
+stats.cypher	Nb "s"	12 ms
+stats.cypher	nb "p"	12 ms
+stats.cypher	Nb "p" links distribution	18 ms
+stats.cypher	Nb conflicts distribution	697 ms
+stats.cypher	Nb temporal conflicts	523 ms
+stats.cypher	Distribution of linked "o"	17 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	80 ms
+results.cypher	inferredNodes	12 ms
+results.cypher	tCon_noConflicts	10 ms
+results.cypher	tCon_conflicts	771 ms
+results.cypher	pCon_noConflicts	1604 ms
+results.cypher	pCon_conflicts	1445 ms
+results.cypher	pInc_noConflicts	1538 ms
+results.cypher	pInc_conflicts	1465 ms
+results.cypher	tInc_noConflicts	1675 ms
+results.cypher	tInc_conflicts	1510 ms
+Thu Sep 29 09:56:37 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_10k.csv
+----------------
+delete.cypher	delete nodes	4446 ms
+delete.cypher	TOTAL	4446 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	16 ms
+----------------
+graphSetting.cypher	dataset loading	17211 ms
+graphSetting.cypher	TOTAL	17211 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	1987 ms
+constraints.cypher	C1 - birthDateConflict	42 ms
+constraints.cypher	C2 - deathDateConflict	40 ms
+constraints.cypher	C3 - birthDeathConflict	46 ms
+constraints.cypher	C4 - birthPlayerConflict	61 ms
+constraints.cypher	C5 - deathPlayerConflict	39 ms
+constraints.cypher	C6 - playerAgeConflict	121 ms
+constraints.cypher	C7 - playerTooOldConflict	81 ms
+constraints.cypher	C8 - twoTeamsConflict	2496 ms
+constraints.cypher	C14 - marriageConflict	231 ms
+constraints.cypher	C16 - birthMarriageConflict	13 ms
+constraints.cypher	C17 - deathMarriageConflict	11 ms
+constraints.cypher	C18 - playerCoachConflict	42 ms
+constraints.cypher	C19 - twoCompaniesConflict	39 ms
+constraints.cypher	TOTAL	5249 ms
+----------------
+stats.cypher	Nb triplets	36 ms
+stats.cypher	Nb "o"	14 ms
+stats.cypher	Nb "s"	13 ms
+stats.cypher	nb "p"	13 ms
+stats.cypher	Nb "p" links distribution	20 ms
+stats.cypher	Nb conflicts distribution	84 ms
+stats.cypher	Nb temporal conflicts	79 ms
+stats.cypher	Distribution of linked "o"	19 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	70 ms
+results.cypher	inferredNodes	13 ms
+results.cypher	tCon_noConflicts	14 ms
+results.cypher	tCon_conflicts	107 ms
+results.cypher	pCon_noConflicts	201 ms
+results.cypher	pCon_conflicts	185 ms
+results.cypher	pInc_noConflicts	203 ms
+results.cypher	pInc_conflicts	187 ms
+results.cypher	tInc_noConflicts	208 ms
+results.cypher	tInc_conflicts	189 ms
+Thu Sep 29 09:57:08 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_10k.csv
+----------------
+delete.cypher	delete nodes	1261 ms
+delete.cypher	TOTAL	1261 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	3186 ms
+graphSetting.cypher	TOTAL	3186 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	4801 ms
+constraints.cypher	C1 - birthDateConflict	133 ms
+constraints.cypher	C2 - deathDateConflict	49 ms
+constraints.cypher	C3 - birthDeathConflict	61 ms
+constraints.cypher	C4 - birthPlayerConflict	330 ms
+constraints.cypher	C5 - deathPlayerConflict	65 ms
+constraints.cypher	C6 - playerAgeConflict	514 ms
+constraints.cypher	C7 - playerTooOldConflict	551 ms
+constraints.cypher	C8 - twoTeamsConflict	44696 ms
+constraints.cypher	C14 - marriageConflict	688 ms
+constraints.cypher	C16 - birthMarriageConflict	202 ms
+constraints.cypher	C17 - deathMarriageConflict	71 ms
+constraints.cypher	C18 - playerCoachConflict	55 ms
+constraints.cypher	C19 - twoCompaniesConflict	59 ms
+constraints.cypher	TOTAL	52275 ms
+----------------
+stats.cypher	Nb triplets	80 ms
+stats.cypher	Nb "o"	36 ms
+stats.cypher	Nb "s"	34 ms
+stats.cypher	nb "p"	34 ms
+stats.cypher	Nb "p" links distribution	47 ms
+stats.cypher	Nb conflicts distribution	1527 ms
+stats.cypher	Nb temporal conflicts	1172 ms
+stats.cypher	Distribution of linked "o"	43 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	190 ms
+results.cypher	inferredNodes	39 ms
+results.cypher	tCon_noConflicts	35 ms
+results.cypher	tCon_conflicts	1737 ms
+results.cypher	pCon_noConflicts	3489 ms
+results.cypher	pCon_conflicts	3270 ms
+results.cypher	pInc_noConflicts	3485 ms
+results.cypher	pInc_conflicts	3374 ms
+results.cypher	tInc_noConflicts	3719 ms
+results.cypher	tInc_conflicts	3363 ms
+Thu Sep 29 09:58:34 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_10k.csv
+----------------
+delete.cypher	delete nodes	10217 ms
+delete.cypher	TOTAL	10217 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	14 ms
+----------------
+graphSetting.cypher	dataset loading	2132 ms
+graphSetting.cypher	TOTAL	2132 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	1027 ms
+constraints.cypher	C1 - birthDateConflict	37 ms
+constraints.cypher	C2 - deathDateConflict	35 ms
+constraints.cypher	C3 - birthDeathConflict	41 ms
+constraints.cypher	C4 - birthPlayerConflict	72 ms
+constraints.cypher	C5 - deathPlayerConflict	34 ms
+constraints.cypher	C6 - playerAgeConflict	118 ms
+constraints.cypher	C7 - playerTooOldConflict	108 ms
+constraints.cypher	C8 - twoTeamsConflict	9182 ms
+constraints.cypher	C14 - marriageConflict	225 ms
+constraints.cypher	C16 - birthMarriageConflict	16 ms
+constraints.cypher	C17 - deathMarriageConflict	14 ms
+constraints.cypher	C18 - playerCoachConflict	42 ms
+constraints.cypher	C19 - twoCompaniesConflict	61 ms
+constraints.cypher	TOTAL	11012 ms
+----------------
+stats.cypher	Nb triplets	38 ms
+stats.cypher	Nb "o"	15 ms
+stats.cypher	Nb "s"	15 ms
+stats.cypher	nb "p"	15 ms
+stats.cypher	Nb "p" links distribution	22 ms
+stats.cypher	Nb conflicts distribution	314 ms
+stats.cypher	Nb temporal conflicts	242 ms
+stats.cypher	Distribution of linked "o"	21 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	78 ms
+results.cypher	inferredNodes	14 ms
+results.cypher	tCon_noConflicts	13 ms
+results.cypher	tCon_conflicts	364 ms
+results.cypher	pCon_noConflicts	700 ms
+results.cypher	pCon_conflicts	671 ms
+results.cypher	pInc_noConflicts	732 ms
+results.cypher	pInc_conflicts	684 ms
+results.cypher	tInc_noConflicts	724 ms
+results.cypher	tInc_conflicts	696 ms
+Thu Sep 29 09:59:04 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_10k.csv
+----------------
+delete.cypher	delete nodes	2441 ms
+delete.cypher	TOTAL	2441 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	1657 ms
+graphSetting.cypher	TOTAL	1657 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	847 ms
+constraints.cypher	C1 - birthDateConflict	17 ms
+constraints.cypher	C2 - deathDateConflict	15 ms
+constraints.cypher	C3 - birthDeathConflict	17 ms
+constraints.cypher	C4 - birthPlayerConflict	29 ms
+constraints.cypher	C5 - deathPlayerConflict	14 ms
+constraints.cypher	C6 - playerAgeConflict	46 ms
+constraints.cypher	C7 - playerTooOldConflict	32 ms
+constraints.cypher	C8 - twoTeamsConflict	2452 ms
+constraints.cypher	C14 - marriageConflict	230 ms
+constraints.cypher	C16 - birthMarriageConflict	16 ms
+constraints.cypher	C17 - deathMarriageConflict	10 ms
+constraints.cypher	C18 - playerCoachConflict	50 ms
+constraints.cypher	C19 - twoCompaniesConflict	55 ms
+constraints.cypher	TOTAL	3830 ms
+----------------
+stats.cypher	Nb triplets	35 ms
+stats.cypher	Nb "o"	14 ms
+stats.cypher	Nb "s"	14 ms
+stats.cypher	nb "p"	13 ms
+stats.cypher	Nb "p" links distribution	19 ms
+stats.cypher	Nb conflicts distribution	83 ms
+stats.cypher	Nb temporal conflicts	79 ms
+stats.cypher	Distribution of linked "o"	19 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	85 ms
+results.cypher	inferredNodes	13 ms
+results.cypher	tCon_noConflicts	14 ms
+results.cypher	tCon_conflicts	108 ms
+results.cypher	pCon_noConflicts	205 ms
+results.cypher	pCon_conflicts	185 ms
+results.cypher	pInc_noConflicts	206 ms
+results.cypher	pInc_conflicts	189 ms
+results.cypher	tInc_noConflicts	211 ms
+results.cypher	tInc_conflicts	193 ms
+Thu Sep 29 09:59:16 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_10k.csv
+----------------
+delete.cypher	delete nodes	1256 ms
+delete.cypher	TOTAL	1256 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	2090 ms
+graphSetting.cypher	TOTAL	2090 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	1179 ms
+constraints.cypher	C1 - birthDateConflict	33 ms
+constraints.cypher	C2 - deathDateConflict	22 ms
+constraints.cypher	C3 - birthDeathConflict	26 ms
+constraints.cypher	C4 - birthPlayerConflict	110 ms
+constraints.cypher	C5 - deathPlayerConflict	18 ms
+constraints.cypher	C6 - playerAgeConflict	126 ms
+constraints.cypher	C7 - playerTooOldConflict	120 ms
+constraints.cypher	C8 - twoTeamsConflict	17553 ms
+constraints.cypher	C14 - marriageConflict	580 ms
+constraints.cypher	C16 - birthMarriageConflict	44 ms
+constraints.cypher	C17 - deathMarriageConflict	82 ms
+constraints.cypher	C18 - playerCoachConflict	57 ms
+constraints.cypher	C19 - twoCompaniesConflict	59 ms
+constraints.cypher	TOTAL	20009 ms
+----------------
+stats.cypher	Nb triplets	43 ms
+stats.cypher	Nb "o"	17 ms
+stats.cypher	Nb "s"	16 ms
+stats.cypher	nb "p"	17 ms
+stats.cypher	Nb "p" links distribution	24 ms
+stats.cypher	Nb conflicts distribution	560 ms
+stats.cypher	Nb temporal conflicts	418 ms
+stats.cypher	Distribution of linked "o"	23 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	103 ms
+results.cypher	inferredNodes	16 ms
+results.cypher	tCon_noConflicts	16 ms
+results.cypher	tCon_conflicts	628 ms
+results.cypher	pCon_noConflicts	1266 ms
+results.cypher	pCon_conflicts	1283 ms
+results.cypher	pInc_noConflicts	1262 ms
+results.cypher	pInc_conflicts	1224 ms
+results.cypher	tInc_noConflicts	1317 ms
+results.cypher	tInc_conflicts	1234 ms
+Thu Sep 29 09:59:51 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_10k.csv
+----------------
+delete.cypher	delete nodes	4028 ms
+delete.cypher	TOTAL	4028 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	2217 ms
+graphSetting.cypher	TOTAL	2217 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	1482 ms
+constraints.cypher	C1 - birthDateConflict	60 ms
+constraints.cypher	C2 - deathDateConflict	26 ms
+constraints.cypher	C3 - birthDeathConflict	63 ms
+constraints.cypher	C4 - birthPlayerConflict	134 ms
+constraints.cypher	C5 - deathPlayerConflict	35 ms
+constraints.cypher	C6 - playerAgeConflict	337 ms
+constraints.cypher	C7 - playerTooOldConflict	331 ms
+constraints.cypher	C8 - twoTeamsConflict	27239 ms
+constraints.cypher	C14 - marriageConflict	563 ms
+constraints.cypher	C16 - birthMarriageConflict	30 ms
+constraints.cypher	C17 - deathMarriageConflict	30 ms
+constraints.cypher	C18 - playerCoachConflict	25 ms
+constraints.cypher	C19 - twoCompaniesConflict	38 ms
+constraints.cypher	TOTAL	30393 ms
+----------------
+stats.cypher	Nb triplets	52 ms
+stats.cypher	Nb "o"	22 ms
+stats.cypher	Nb "s"	20 ms
+stats.cypher	nb "p"	20 ms
+stats.cypher	Nb "p" links distribution	30 ms
+stats.cypher	Nb conflicts distribution	936 ms
+stats.cypher	Nb temporal conflicts	675 ms
+stats.cypher	Distribution of linked "o"	27 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	108 ms
+results.cypher	inferredNodes	19 ms
+results.cypher	tCon_noConflicts	12 ms
+results.cypher	tCon_conflicts	1010 ms
+results.cypher	pCon_noConflicts	2117 ms
+results.cypher	pCon_conflicts	1905 ms
+results.cypher	pInc_noConflicts	2066 ms
+results.cypher	pInc_conflicts	1957 ms
+results.cypher	tInc_noConflicts	2106 ms
+results.cypher	tInc_conflicts	1985 ms
+Thu Sep 29 10:00:46 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_10k.csv
+----------------
+delete.cypher	delete nodes	6166 ms
+delete.cypher	TOTAL	6166 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	50933 ms
+graphSetting.cypher	TOTAL	50933 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	4204 ms
+constraints.cypher	C1 - birthDateConflict	110 ms
+constraints.cypher	C2 - deathDateConflict	60 ms
+constraints.cypher	C3 - birthDeathConflict	74 ms
+constraints.cypher	C4 - birthPlayerConflict	225 ms
+constraints.cypher	C5 - deathPlayerConflict	67 ms
+constraints.cypher	C6 - playerAgeConflict	377 ms
+constraints.cypher	C7 - playerTooOldConflict	457 ms
+constraints.cypher	C8 - twoTeamsConflict	34558 ms
+constraints.cypher	C14 - marriageConflict	660 ms
+constraints.cypher	C16 - birthMarriageConflict	33 ms
+constraints.cypher	C17 - deathMarriageConflict	74 ms
+constraints.cypher	C18 - playerCoachConflict	59 ms
+constraints.cypher	C19 - twoCompaniesConflict	30 ms
+constraints.cypher	TOTAL	40988 ms
+----------------
+stats.cypher	Nb triplets	61 ms
+stats.cypher	Nb "o"	25 ms
+stats.cypher	Nb "s"	26 ms
+stats.cypher	nb "p"	25 ms
+stats.cypher	Nb "p" links distribution	36 ms
+stats.cypher	Nb conflicts distribution	1153 ms
+stats.cypher	Nb temporal conflicts	871 ms
+stats.cypher	Distribution of linked "o"	32 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	129 ms
+results.cypher	inferredNodes	23 ms
+results.cypher	tCon_noConflicts	15 ms
+results.cypher	tCon_conflicts	1303 ms
+results.cypher	pCon_noConflicts	2496 ms
+results.cypher	pCon_conflicts	2407 ms
+results.cypher	pInc_noConflicts	2583 ms
+results.cypher	pInc_conflicts	2520 ms
+results.cypher	tInc_noConflicts	2658 ms
+results.cypher	tInc_conflicts	2541 ms
+Thu Sep 29 10:02:46 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_25k.csv
+----------------
+delete.cypher	delete nodes	8144 ms
+delete.cypher	TOTAL	8144 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	3 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	13 ms
+----------------
+graphSetting.cypher	dataset loading	4962 ms
+graphSetting.cypher	TOTAL	4962 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	3508 ms
+constraints.cypher	C1 - birthDateConflict	78 ms
+constraints.cypher	C2 - deathDateConflict	58 ms
+constraints.cypher	C3 - birthDeathConflict	66 ms
+constraints.cypher	C4 - birthPlayerConflict	74 ms
+constraints.cypher	C5 - deathPlayerConflict	46 ms
+constraints.cypher	C6 - playerAgeConflict	142 ms
+constraints.cypher	C7 - playerTooOldConflict	92 ms
+constraints.cypher	C8 - twoTeamsConflict	4405 ms
+constraints.cypher	C14 - marriageConflict	226 ms
+constraints.cypher	C16 - birthMarriageConflict	15 ms
+constraints.cypher	C17 - deathMarriageConflict	10 ms
+constraints.cypher	C18 - playerCoachConflict	48 ms
+constraints.cypher	C19 - twoCompaniesConflict	40 ms
+constraints.cypher	TOTAL	8808 ms
+----------------
+stats.cypher	Nb triplets	107 ms
+stats.cypher	Nb "o"	31 ms
+stats.cypher	Nb "s"	30 ms
+stats.cypher	nb "p"	29 ms
+stats.cypher	Nb "p" links distribution	44 ms
+stats.cypher	Nb conflicts distribution	152 ms
+stats.cypher	Nb temporal conflicts	127 ms
+stats.cypher	Distribution of linked "o"	44 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	211 ms
+results.cypher	inferredNodes	64 ms
+results.cypher	tCon_noConflicts	13 ms
+results.cypher	tCon_conflicts	186 ms
+results.cypher	pCon_noConflicts	343 ms
+results.cypher	pCon_conflicts	317 ms
+results.cypher	pInc_noConflicts	355 ms
+results.cypher	pInc_conflicts	326 ms
+results.cypher	tInc_noConflicts	358 ms
+results.cypher	tInc_conflicts	331 ms
+Thu Sep 29 10:03:13 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_25k.csv
+----------------
+delete.cypher	delete nodes	3017 ms
+delete.cypher	TOTAL	3017 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	7633 ms
+graphSetting.cypher	TOTAL	7633 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	10587 ms
+constraints.cypher	C1 - birthDateConflict	377 ms
+constraints.cypher	C2 - deathDateConflict	115 ms
+constraints.cypher	C3 - birthDeathConflict	168 ms
+constraints.cypher	C4 - birthPlayerConflict	457 ms
+constraints.cypher	C5 - deathPlayerConflict	74 ms
+constraints.cypher	C6 - playerAgeConflict	734 ms
+constraints.cypher	C7 - playerTooOldConflict	794 ms
+constraints.cypher	C8 - twoTeamsConflict	74132 ms
+constraints.cypher	C14 - marriageConflict	802 ms
+constraints.cypher	C16 - birthMarriageConflict	73 ms
+constraints.cypher	C17 - deathMarriageConflict	58 ms
+constraints.cypher	C18 - playerCoachConflict	125 ms
+constraints.cypher	C19 - twoCompaniesConflict	146 ms
+constraints.cypher	TOTAL	88642 ms
+----------------
+stats.cypher	Nb triplets	170 ms
+stats.cypher	Nb "o"	69 ms
+stats.cypher	Nb "s"	67 ms
+stats.cypher	nb "p"	65 ms
+stats.cypher	Nb "p" links distribution	96 ms
+stats.cypher	Nb conflicts distribution	2722 ms
+stats.cypher	Nb temporal conflicts	2090 ms
+stats.cypher	Distribution of linked "o"	91 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	357 ms
+results.cypher	inferredNodes	59 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	3140 ms
+results.cypher	pCon_noConflicts	6174 ms
+results.cypher	pCon_conflicts	5849 ms
+results.cypher	pInc_noConflicts	6232 ms
+results.cypher	pInc_conflicts	6028 ms
+results.cypher	tInc_noConflicts	6522 ms
+results.cypher	tInc_conflicts	6173 ms
+Thu Sep 29 10:05:45 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_25k.csv
+----------------
+delete.cypher	delete nodes	20656 ms
+delete.cypher	TOTAL	20656 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	5576 ms
+graphSetting.cypher	TOTAL	5576 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	2068 ms
+constraints.cypher	C1 - birthDateConflict	65 ms
+constraints.cypher	C2 - deathDateConflict	44 ms
+constraints.cypher	C3 - birthDeathConflict	60 ms
+constraints.cypher	C4 - birthPlayerConflict	111 ms
+constraints.cypher	C5 - deathPlayerConflict	33 ms
+constraints.cypher	C6 - playerAgeConflict	156 ms
+constraints.cypher	C7 - playerTooOldConflict	158 ms
+constraints.cypher	C8 - twoTeamsConflict	19519 ms
+constraints.cypher	C14 - marriageConflict	576 ms
+constraints.cypher	C16 - birthMarriageConflict	49 ms
+constraints.cypher	C17 - deathMarriageConflict	51 ms
+constraints.cypher	C18 - playerCoachConflict	54 ms
+constraints.cypher	C19 - twoCompaniesConflict	70 ms
+constraints.cypher	TOTAL	23014 ms
+----------------
+stats.cypher	Nb triplets	94 ms
+stats.cypher	Nb "o"	34 ms
+stats.cypher	Nb "s"	32 ms
+stats.cypher	nb "p"	32 ms
+stats.cypher	Nb "p" links distribution	49 ms
+stats.cypher	Nb conflicts distribution	630 ms
+stats.cypher	Nb temporal conflicts	466 ms
+stats.cypher	Distribution of linked "o"	47 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	199 ms
+results.cypher	inferredNodes	32 ms
+results.cypher	tCon_noConflicts	16 ms
+results.cypher	tCon_conflicts	695 ms
+results.cypher	pCon_noConflicts	1391 ms
+results.cypher	pCon_conflicts	1370 ms
+results.cypher	pInc_noConflicts	1395 ms
+results.cypher	pInc_conflicts	1362 ms
+results.cypher	tInc_noConflicts	1471 ms
+results.cypher	tInc_conflicts	1447 ms
+Thu Sep 29 10:06:47 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_25k.csv
+----------------
+delete.cypher	delete nodes	5640 ms
+delete.cypher	TOTAL	5640 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	7237 ms
+graphSetting.cypher	TOTAL	7237 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	1731 ms
+constraints.cypher	C1 - birthDateConflict	51 ms
+constraints.cypher	C2 - deathDateConflict	52 ms
+constraints.cypher	C3 - birthDeathConflict	46 ms
+constraints.cypher	C4 - birthPlayerConflict	65 ms
+constraints.cypher	C5 - deathPlayerConflict	30 ms
+constraints.cypher	C6 - playerAgeConflict	105 ms
+constraints.cypher	C7 - playerTooOldConflict	91 ms
+constraints.cypher	C8 - twoTeamsConflict	4597 ms
+constraints.cypher	C14 - marriageConflict	230 ms
+constraints.cypher	C16 - birthMarriageConflict	40 ms
+constraints.cypher	C17 - deathMarriageConflict	37 ms
+constraints.cypher	C18 - playerCoachConflict	50 ms
+constraints.cypher	C19 - twoCompaniesConflict	66 ms
+constraints.cypher	TOTAL	7191 ms
+----------------
+stats.cypher	Nb triplets	88 ms
+stats.cypher	Nb "o"	31 ms
+stats.cypher	Nb "s"	30 ms
+stats.cypher	nb "p"	30 ms
+stats.cypher	Nb "p" links distribution	45 ms
+stats.cypher	Nb conflicts distribution	161 ms
+stats.cypher	Nb temporal conflicts	133 ms
+stats.cypher	Distribution of linked "o"	44 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	169 ms
+results.cypher	inferredNodes	29 ms
+results.cypher	tCon_noConflicts	11 ms
+results.cypher	tCon_conflicts	200 ms
+results.cypher	pCon_noConflicts	367 ms
+results.cypher	pCon_conflicts	336 ms
+results.cypher	pInc_noConflicts	374 ms
+results.cypher	pInc_conflicts	346 ms
+results.cypher	tInc_noConflicts	383 ms
+results.cypher	tInc_conflicts	361 ms
+Thu Sep 29 10:07:13 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_25k.csv
+----------------
+delete.cypher	delete nodes	2907 ms
+delete.cypher	TOTAL	2907 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	6155 ms
+graphSetting.cypher	TOTAL	6155 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	6253 ms
+constraints.cypher	C1 - birthDateConflict	129 ms
+constraints.cypher	C2 - deathDateConflict	89 ms
+constraints.cypher	C3 - birthDeathConflict	105 ms
+constraints.cypher	C4 - birthPlayerConflict	238 ms
+constraints.cypher	C5 - deathPlayerConflict	89 ms
+constraints.cypher	C6 - playerAgeConflict	452 ms
+constraints.cypher	C7 - playerTooOldConflict	469 ms
+constraints.cypher	C8 - twoTeamsConflict	34294 ms
+constraints.cypher	C14 - marriageConflict	594 ms
+constraints.cypher	C16 - birthMarriageConflict	52 ms
+constraints.cypher	C17 - deathMarriageConflict	53 ms
+constraints.cypher	C18 - playerCoachConflict	73 ms
+constraints.cypher	C19 - twoCompaniesConflict	82 ms
+constraints.cypher	TOTAL	42972 ms
+----------------
+stats.cypher	Nb triplets	107 ms
+stats.cypher	Nb "o"	40 ms
+stats.cypher	Nb "s"	39 ms
+stats.cypher	nb "p"	39 ms
+stats.cypher	Nb "p" links distribution	58 ms
+stats.cypher	Nb conflicts distribution	1087 ms
+stats.cypher	Nb temporal conflicts	870 ms
+stats.cypher	Distribution of linked "o"	64 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	222 ms
+results.cypher	inferredNodes	38 ms
+results.cypher	tCon_noConflicts	23 ms
+results.cypher	tCon_conflicts	1249 ms
+results.cypher	pCon_noConflicts	2486 ms
+results.cypher	pCon_conflicts	2365 ms
+results.cypher	pInc_noConflicts	2571 ms
+results.cypher	pInc_conflicts	2405 ms
+results.cypher	tInc_noConflicts	2587 ms
+results.cypher	tInc_conflicts	2485 ms
+Thu Sep 29 10:08:27 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_25k.csv
+----------------
+delete.cypher	delete nodes	9174 ms
+delete.cypher	TOTAL	9174 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	6569 ms
+graphSetting.cypher	TOTAL	6569 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	8196 ms
+constraints.cypher	C1 - birthDateConflict	169 ms
+constraints.cypher	C2 - deathDateConflict	80 ms
+constraints.cypher	C3 - birthDeathConflict	105 ms
+constraints.cypher	C4 - birthPlayerConflict	338 ms
+constraints.cypher	C5 - deathPlayerConflict	68 ms
+constraints.cypher	C6 - playerAgeConflict	529 ms
+constraints.cypher	C7 - playerTooOldConflict	613 ms
+constraints.cypher	C8 - twoTeamsConflict	65406 ms
+constraints.cypher	C14 - marriageConflict	647 ms
+constraints.cypher	C16 - birthMarriageConflict	83 ms
+constraints.cypher	C17 - deathMarriageConflict	35 ms
+constraints.cypher	C18 - playerCoachConflict	51 ms
+constraints.cypher	C19 - twoCompaniesConflict	48 ms
+constraints.cypher	TOTAL	76368 ms
+----------------
+stats.cypher	Nb triplets	152 ms
+stats.cypher	Nb "o"	48 ms
+stats.cypher	Nb "s"	47 ms
+stats.cypher	nb "p"	47 ms
+stats.cypher	Nb "p" links distribution	70 ms
+stats.cypher	Nb conflicts distribution	2138 ms
+stats.cypher	Nb temporal conflicts	1582 ms
+stats.cypher	Distribution of linked "o"	67 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	258 ms
+results.cypher	inferredNodes	42 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	2345 ms
+results.cypher	pCon_noConflicts	4597 ms
+results.cypher	pCon_conflicts	4439 ms
+results.cypher	pInc_noConflicts	4704 ms
+results.cypher	pInc_conflicts	4529 ms
+results.cypher	tInc_noConflicts	4799 ms
+results.cypher	tInc_conflicts	4562 ms
+Thu Sep 29 10:10:38 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_25k.csv
+----------------
+delete.cypher	delete nodes	15695 ms
+delete.cypher	TOTAL	15695 ms
+----------------
+schema.cypher	indices	4 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	13 ms
+----------------
+graphSetting.cypher	dataset loading	7454 ms
+graphSetting.cypher	TOTAL	7454 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	3801 ms
+constraints.cypher	C1 - birthDateConflict	263 ms
+constraints.cypher	C2 - deathDateConflict	95 ms
+constraints.cypher	C3 - birthDeathConflict	179 ms
+constraints.cypher	C4 - birthPlayerConflict	397 ms
+constraints.cypher	C5 - deathPlayerConflict	58 ms
+constraints.cypher	C6 - playerAgeConflict	692 ms
+constraints.cypher	C7 - playerTooOldConflict	724 ms
+constraints.cypher	C8 - twoTeamsConflict	74809 ms
+constraints.cypher	C14 - marriageConflict	659 ms
+constraints.cypher	C16 - birthMarriageConflict	92 ms
+constraints.cypher	C17 - deathMarriageConflict	37 ms
+constraints.cypher	C18 - playerCoachConflict	57 ms
+constraints.cypher	C19 - twoCompaniesConflict	92 ms
+constraints.cypher	TOTAL	81955 ms
+----------------
+stats.cypher	Nb triplets	152 ms
+stats.cypher	Nb "o"	59 ms
+stats.cypher	Nb "s"	56 ms
+stats.cypher	nb "p"	57 ms
+stats.cypher	Nb "p" links distribution	83 ms
+stats.cypher	Nb conflicts distribution	2517 ms
+stats.cypher	Nb temporal conflicts	1827 ms
+stats.cypher	Distribution of linked "o"	78 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	315 ms
+results.cypher	inferredNodes	51 ms
+results.cypher	tCon_noConflicts	24 ms
+results.cypher	tCon_conflicts	2718 ms
+results.cypher	pCon_noConflicts	5331 ms
+results.cypher	pCon_conflicts	5199 ms
+results.cypher	pInc_noConflicts	5592 ms
+results.cypher	pInc_conflicts	5254 ms
+results.cypher	tInc_noConflicts	5660 ms
+results.cypher	tInc_conflicts	5417 ms
+Thu Sep 29 10:13:09 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_50k.csv
+----------------
+delete.cypher	delete nodes	18344 ms
+delete.cypher	TOTAL	18344 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	11042 ms
+graphSetting.cypher	TOTAL	11042 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	9933 ms
+constraints.cypher	C1 - birthDateConflict	79 ms
+constraints.cypher	C2 - deathDateConflict	71 ms
+constraints.cypher	C3 - birthDeathConflict	87 ms
+constraints.cypher	C4 - birthPlayerConflict	128 ms
+constraints.cypher	C5 - deathPlayerConflict	54 ms
+constraints.cypher	C6 - playerAgeConflict	229 ms
+constraints.cypher	C7 - playerTooOldConflict	174 ms
+constraints.cypher	C8 - twoTeamsConflict	8357 ms
+constraints.cypher	C14 - marriageConflict	256 ms
+constraints.cypher	C16 - birthMarriageConflict	34 ms
+constraints.cypher	C17 - deathMarriageConflict	24 ms
+constraints.cypher	C18 - playerCoachConflict	69 ms
+constraints.cypher	C19 - twoCompaniesConflict	58 ms
+constraints.cypher	TOTAL	19553 ms
+----------------
+stats.cypher	Nb triplets	169 ms
+stats.cypher	Nb "o"	63 ms
+stats.cypher	Nb "s"	64 ms
+stats.cypher	nb "p"	60 ms
+stats.cypher	Nb "p" links distribution	91 ms
+stats.cypher	Nb conflicts distribution	276 ms
+stats.cypher	Nb temporal conflicts	237 ms
+stats.cypher	Distribution of linked "o"	89 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	315 ms
+results.cypher	inferredNodes	66 ms
+results.cypher	tCon_noConflicts	11 ms
+results.cypher	tCon_conflicts	335 ms
+results.cypher	pCon_noConflicts	638 ms
+results.cypher	pCon_conflicts	590 ms
+results.cypher	pInc_noConflicts	656 ms
+results.cypher	pInc_conflicts	597 ms
+results.cypher	tInc_noConflicts	701 ms
+results.cypher	tInc_conflicts	610 ms
+Thu Sep 29 10:14:07 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_50k.csv
+----------------
+delete.cypher	delete nodes	5789 ms
+delete.cypher	TOTAL	5789 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	15787 ms
+graphSetting.cypher	TOTAL	15787 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	27773 ms
+constraints.cypher	C1 - birthDateConflict	808 ms
+constraints.cypher	C2 - deathDateConflict	255 ms
+constraints.cypher	C3 - birthDeathConflict	338 ms
+constraints.cypher	C4 - birthPlayerConflict	836 ms
+constraints.cypher	C5 - deathPlayerConflict	178 ms
+constraints.cypher	C6 - playerAgeConflict	1358 ms
+constraints.cypher	C7 - playerTooOldConflict	1712 ms
+constraints.cypher	C8 - twoTeamsConflict	166852 ms
+constraints.cypher	C14 - marriageConflict	850 ms
+constraints.cypher	C16 - birthMarriageConflict	112 ms
+constraints.cypher	C17 - deathMarriageConflict	80 ms
+constraints.cypher	C18 - playerCoachConflict	147 ms
+constraints.cypher	C19 - twoCompaniesConflict	239 ms
+constraints.cypher	TOTAL	201538 ms
+----------------
+stats.cypher	Nb triplets	339 ms
+stats.cypher	Nb "o"	128 ms
+stats.cypher	Nb "s"	128 ms
+stats.cypher	nb "p"	126 ms
+stats.cypher	Nb "p" links distribution	194 ms
+stats.cypher	Nb conflicts distribution	5237 ms
+stats.cypher	Nb temporal conflicts	4193 ms
+stats.cypher	Distribution of linked "o"	178 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	728 ms
+results.cypher	inferredNodes	115 ms
+results.cypher	tCon_noConflicts	30 ms
+results.cypher	tCon_conflicts	5853 ms
+results.cypher	pCon_noConflicts	11600 ms
+results.cypher	pCon_conflicts	11201 ms
+results.cypher	pInc_noConflicts	11774 ms
+results.cypher	pInc_conflicts	11301 ms
+results.cypher	tInc_noConflicts	11984 ms
+results.cypher	tInc_conflicts	11750 ms
+Thu Sep 29 10:19:27 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_50k.csv
+----------------
+delete.cypher	delete nodes	40570 ms
+delete.cypher	TOTAL	40570 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	11052 ms
+graphSetting.cypher	TOTAL	11052 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	12343 ms
+constraints.cypher	C1 - birthDateConflict	116 ms
+constraints.cypher	C2 - deathDateConflict	83 ms
+constraints.cypher	C3 - birthDeathConflict	106 ms
+constraints.cypher	C4 - birthPlayerConflict	216 ms
+constraints.cypher	C5 - deathPlayerConflict	71 ms
+constraints.cypher	C6 - playerAgeConflict	330 ms
+constraints.cypher	C7 - playerTooOldConflict	337 ms
+constraints.cypher	C8 - twoTeamsConflict	32919 ms
+constraints.cypher	C14 - marriageConflict	618 ms
+constraints.cypher	C16 - birthMarriageConflict	65 ms
+constraints.cypher	C17 - deathMarriageConflict	61 ms
+constraints.cypher	C18 - playerCoachConflict	91 ms
+constraints.cypher	C19 - twoCompaniesConflict	68 ms
+constraints.cypher	TOTAL	47424 ms
+----------------
+stats.cypher	Nb triplets	181 ms
+stats.cypher	Nb "o"	64 ms
+stats.cypher	Nb "s"	63 ms
+stats.cypher	nb "p"	62 ms
+stats.cypher	Nb "p" links distribution	96 ms
+stats.cypher	Nb conflicts distribution	1124 ms
+stats.cypher	Nb temporal conflicts	869 ms
+stats.cypher	Distribution of linked "o"	93 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	364 ms
+results.cypher	inferredNodes	60 ms
+results.cypher	tCon_noConflicts	18 ms
+results.cypher	tCon_conflicts	1426 ms
+results.cypher	pCon_noConflicts	2442 ms
+results.cypher	pCon_conflicts	2318 ms
+results.cypher	pInc_noConflicts	2480 ms
+results.cypher	pInc_conflicts	2536 ms
+results.cypher	tInc_noConflicts	2560 ms
+results.cypher	tInc_conflicts	2431 ms
+Thu Sep 29 10:21:29 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_50k.csv
+----------------
+delete.cypher	delete nodes	11125 ms
+delete.cypher	TOTAL	11125 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	10937 ms
+graphSetting.cypher	TOTAL	10937 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	10325 ms
+constraints.cypher	C1 - birthDateConflict	83 ms
+constraints.cypher	C2 - deathDateConflict	73 ms
+constraints.cypher	C3 - birthDeathConflict	123 ms
+constraints.cypher	C4 - birthPlayerConflict	128 ms
+constraints.cypher	C5 - deathPlayerConflict	54 ms
+constraints.cypher	C6 - playerAgeConflict	237 ms
+constraints.cypher	C7 - playerTooOldConflict	196 ms
+constraints.cypher	C8 - twoTeamsConflict	9372 ms
+constraints.cypher	C14 - marriageConflict	193 ms
+constraints.cypher	C16 - birthMarriageConflict	37 ms
+constraints.cypher	C17 - deathMarriageConflict	28 ms
+constraints.cypher	C18 - playerCoachConflict	45 ms
+constraints.cypher	C19 - twoCompaniesConflict	40 ms
+constraints.cypher	TOTAL	20934 ms
+----------------
+stats.cypher	Nb triplets	168 ms
+stats.cypher	Nb "o"	58 ms
+stats.cypher	Nb "s"	58 ms
+stats.cypher	nb "p"	57 ms
+stats.cypher	Nb "p" links distribution	87 ms
+stats.cypher	Nb conflicts distribution	316 ms
+stats.cypher	Nb temporal conflicts	253 ms
+stats.cypher	Distribution of linked "o"	86 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	330 ms
+results.cypher	inferredNodes	55 ms
+results.cypher	tCon_noConflicts	3 ms
+results.cypher	tCon_conflicts	373 ms
+results.cypher	pCon_noConflicts	722 ms
+results.cypher	pCon_conflicts	656 ms
+results.cypher	pInc_noConflicts	744 ms
+results.cypher	pInc_conflicts	669 ms
+results.cypher	tInc_noConflicts	778 ms
+results.cypher	tInc_conflicts	683 ms
+Thu Sep 29 10:22:21 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_50k.csv
+----------------
+delete.cypher	delete nodes	6098 ms
+delete.cypher	TOTAL	6098 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	16814 ms
+graphSetting.cypher	TOTAL	16814 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	15289 ms
+constraints.cypher	C1 - birthDateConflict	181 ms
+constraints.cypher	C2 - deathDateConflict	97 ms
+constraints.cypher	C3 - birthDeathConflict	124 ms
+constraints.cypher	C4 - birthPlayerConflict	451 ms
+constraints.cypher	C5 - deathPlayerConflict	85 ms
+constraints.cypher	C6 - playerAgeConflict	621 ms
+constraints.cypher	C7 - playerTooOldConflict	684 ms
+constraints.cypher	C8 - twoTeamsConflict	66165 ms
+constraints.cypher	C14 - marriageConflict	680 ms
+constraints.cypher	C16 - birthMarriageConflict	51 ms
+constraints.cypher	C17 - deathMarriageConflict	39 ms
+constraints.cypher	C18 - playerCoachConflict	68 ms
+constraints.cypher	C19 - twoCompaniesConflict	69 ms
+constraints.cypher	TOTAL	84604 ms
+----------------
+stats.cypher	Nb triplets	231 ms
+stats.cypher	Nb "o"	75 ms
+stats.cypher	Nb "s"	75 ms
+stats.cypher	nb "p"	73 ms
+stats.cypher	Nb "p" links distribution	111 ms
+stats.cypher	Nb conflicts distribution	2148 ms
+stats.cypher	Nb temporal conflicts	1801 ms
+stats.cypher	Distribution of linked "o"	108 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	418 ms
+results.cypher	inferredNodes	70 ms
+results.cypher	tCon_noConflicts	23 ms
+results.cypher	tCon_conflicts	2499 ms
+results.cypher	pCon_noConflicts	4973 ms
+results.cypher	pCon_conflicts	4684 ms
+results.cypher	pInc_noConflicts	4971 ms
+results.cypher	pInc_conflicts	4783 ms
+results.cypher	tInc_noConflicts	5082 ms
+results.cypher	tInc_conflicts	4917 ms
+Thu Sep 29 10:24:51 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_50k.csv
+----------------
+delete.cypher	delete nodes	19524 ms
+delete.cypher	TOTAL	19524 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	13520 ms
+graphSetting.cypher	TOTAL	13520 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	18503 ms
+constraints.cypher	C1 - birthDateConflict	393 ms
+constraints.cypher	C2 - deathDateConflict	163 ms
+constraints.cypher	C3 - birthDeathConflict	220 ms
+constraints.cypher	C4 - birthPlayerConflict	536 ms
+constraints.cypher	C5 - deathPlayerConflict	110 ms
+constraints.cypher	C6 - playerAgeConflict	877 ms
+constraints.cypher	C7 - playerTooOldConflict	922 ms
+constraints.cypher	C8 - twoTeamsConflict	86952 ms
+constraints.cypher	C14 - marriageConflict	748 ms
+constraints.cypher	C16 - birthMarriageConflict	67 ms
+constraints.cypher	C17 - deathMarriageConflict	55 ms
+constraints.cypher	C18 - playerCoachConflict	88 ms
+constraints.cypher	C19 - twoCompaniesConflict	84 ms
+constraints.cypher	TOTAL	109718 ms
+----------------
+stats.cypher	Nb triplets	272 ms
+stats.cypher	Nb "o"	94 ms
+stats.cypher	Nb "s"	91 ms
+stats.cypher	nb "p"	89 ms
+stats.cypher	Nb "p" links distribution	137 ms
+stats.cypher	Nb conflicts distribution	2936 ms
+stats.cypher	Nb temporal conflicts	2348 ms
+stats.cypher	Distribution of linked "o"	135 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	521 ms
+results.cypher	inferredNodes	84 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	3222 ms
+results.cypher	pCon_noConflicts	6427 ms
+results.cypher	pCon_conflicts	6037 ms
+results.cypher	pInc_noConflicts	6444 ms
+results.cypher	pInc_conflicts	6271 ms
+results.cypher	tInc_noConflicts	6676 ms
+results.cypher	tInc_conflicts	6419 ms
+Thu Sep 29 10:28:09 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_50k.csv
+----------------
+delete.cypher	delete nodes	24862 ms
+delete.cypher	TOTAL	24862 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	14972 ms
+graphSetting.cypher	TOTAL	14972 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	21798 ms
+constraints.cypher	C1 - birthDateConflict	682 ms
+constraints.cypher	C2 - deathDateConflict	243 ms
+constraints.cypher	C3 - birthDeathConflict	323 ms
+constraints.cypher	C4 - birthPlayerConflict	627 ms
+constraints.cypher	C5 - deathPlayerConflict	129 ms
+constraints.cypher	C6 - playerAgeConflict	977 ms
+constraints.cypher	C7 - playerTooOldConflict	1074 ms
+constraints.cypher	C8 - twoTeamsConflict	95735 ms
+constraints.cypher	C14 - marriageConflict	830 ms
+constraints.cypher	C16 - birthMarriageConflict	100 ms
+constraints.cypher	C17 - deathMarriageConflict	113 ms
+constraints.cypher	C18 - playerCoachConflict	112 ms
+constraints.cypher	C19 - twoCompaniesConflict	162 ms
+constraints.cypher	TOTAL	122905 ms
+----------------
+stats.cypher	Nb triplets	295 ms
+stats.cypher	Nb "o"	112 ms
+stats.cypher	Nb "s"	108 ms
+stats.cypher	nb "p"	106 ms
+stats.cypher	Nb "p" links distribution	163 ms
+stats.cypher	Nb conflicts distribution	3292 ms
+stats.cypher	Nb temporal conflicts	2673 ms
+stats.cypher	Distribution of linked "o"	159 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	593 ms
+results.cypher	inferredNodes	139 ms
+results.cypher	tCon_noConflicts	36 ms
+results.cypher	tCon_conflicts	3741 ms
+results.cypher	pCon_noConflicts	7463 ms
+results.cypher	pCon_conflicts	7011 ms
+results.cypher	pInc_noConflicts	7495 ms
+results.cypher	pInc_conflicts	7280 ms
+results.cypher	tInc_noConflicts	7808 ms
+results.cypher	tInc_conflicts	7500 ms
+Thu Sep 29 10:31:55 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_75k.csv
+----------------
+delete.cypher	delete nodes	28610 ms
+delete.cypher	TOTAL	28610 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	24863 ms
+graphSetting.cypher	TOTAL	24863 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	21127 ms
+constraints.cypher	C1 - birthDateConflict	119 ms
+constraints.cypher	C2 - deathDateConflict	90 ms
+constraints.cypher	C3 - birthDeathConflict	107 ms
+constraints.cypher	C4 - birthPlayerConflict	195 ms
+constraints.cypher	C5 - deathPlayerConflict	93 ms
+constraints.cypher	C6 - playerAgeConflict	242 ms
+constraints.cypher	C7 - playerTooOldConflict	206 ms
+constraints.cypher	C8 - twoTeamsConflict	14344 ms
+constraints.cypher	C14 - marriageConflict	265 ms
+constraints.cypher	C16 - birthMarriageConflict	61 ms
+constraints.cypher	C17 - deathMarriageConflict	39 ms
+constraints.cypher	C18 - playerCoachConflict	100 ms
+constraints.cypher	C19 - twoCompaniesConflict	65 ms
+constraints.cypher	TOTAL	37053 ms
+----------------
+stats.cypher	Nb triplets	254 ms
+stats.cypher	Nb "o"	92 ms
+stats.cypher	Nb "s"	92 ms
+stats.cypher	nb "p"	87 ms
+stats.cypher	Nb "p" links distribution	136 ms
+stats.cypher	Nb conflicts distribution	509 ms
+stats.cypher	Nb temporal conflicts	388 ms
+stats.cypher	Distribution of linked "o"	134 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	521 ms
+results.cypher	inferredNodes	95 ms
+results.cypher	tCon_noConflicts	11 ms
+results.cypher	tCon_conflicts	552 ms
+results.cypher	pCon_noConflicts	1048 ms
+results.cypher	pCon_conflicts	1022 ms
+results.cypher	pInc_noConflicts	1059 ms
+results.cypher	pInc_conflicts	1001 ms
+results.cypher	tInc_noConflicts	1101 ms
+results.cypher	tInc_conflicts	1028 ms
+Thu Sep 29 12:20:59 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_75k.csv
+----------------
+delete.cypher	delete nodes	10035 ms
+delete.cypher	TOTAL	10035 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	29473 ms
+graphSetting.cypher	TOTAL	29473 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	57174 ms
+constraints.cypher	C1 - birthDateConflict	1024 ms
+constraints.cypher	C2 - deathDateConflict	334 ms
+constraints.cypher	C3 - birthDeathConflict	441 ms
+constraints.cypher	C4 - birthPlayerConflict	1446 ms
+constraints.cypher	C5 - deathPlayerConflict	207 ms
+constraints.cypher	C6 - playerAgeConflict	2415 ms
+constraints.cypher	C7 - playerTooOldConflict	2725 ms
+constraints.cypher	C8 - twoTeamsConflict	285243 ms
+constraints.cypher	C14 - marriageConflict	1054 ms
+constraints.cypher	C16 - birthMarriageConflict	160 ms
+constraints.cypher	C17 - deathMarriageConflict	92 ms
+constraints.cypher	C18 - playerCoachConflict	238 ms
+constraints.cypher	C19 - twoCompaniesConflict	164 ms
+constraints.cypher	TOTAL	352717 ms
+----------------
+stats.cypher	Nb triplets	516 ms
+stats.cypher	Nb "o"	198 ms
+stats.cypher	Nb "s"	193 ms
+stats.cypher	nb "p"	195 ms
+stats.cypher	Nb "p" links distribution	285 ms
+stats.cypher	Nb conflicts distribution	9027 ms
+stats.cypher	Nb temporal conflicts	7302 ms
+stats.cypher	Distribution of linked "o"	273 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1115 ms
+results.cypher	inferredNodes	178 ms
+results.cypher	tCon_noConflicts	46 ms
+results.cypher	tCon_conflicts	10105 ms
+results.cypher	pCon_noConflicts	19947 ms
+results.cypher	pCon_conflicts	19790 ms
+results.cypher	pInc_noConflicts	20526 ms
+results.cypher	pInc_conflicts	20012 ms
+results.cypher	tInc_noConflicts	21073 ms
+results.cypher	tInc_conflicts	21065 ms
+Thu Sep 29 12:30:19 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_75k.csv
+----------------
+delete.cypher	delete nodes	74169 ms
+delete.cypher	TOTAL	74169 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	1044251 ms
+graphSetting.cypher	TOTAL	1044251 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	24714 ms
+constraints.cypher	C1 - birthDateConflict	161 ms
+constraints.cypher	C2 - deathDateConflict	105 ms
+constraints.cypher	C3 - birthDeathConflict	129 ms
+constraints.cypher	C4 - birthPlayerConflict	437 ms
+constraints.cypher	C5 - deathPlayerConflict	109 ms
+constraints.cypher	C6 - playerAgeConflict	570 ms
+constraints.cypher	C7 - playerTooOldConflict	602 ms
+constraints.cypher	C8 - twoTeamsConflict	45908 ms
+constraints.cypher	C14 - marriageConflict	750 ms
+constraints.cypher	C16 - birthMarriageConflict	85 ms
+constraints.cypher	C17 - deathMarriageConflict	66 ms
+constraints.cypher	C18 - playerCoachConflict	167 ms
+constraints.cypher	C19 - twoCompaniesConflict	83 ms
+constraints.cypher	TOTAL	73886 ms
+----------------
+stats.cypher	Nb triplets	275 ms
+stats.cypher	Nb "o"	100 ms
+stats.cypher	Nb "s"	108 ms
+stats.cypher	nb "p"	96 ms
+stats.cypher	Nb "p" links distribution	146 ms
+stats.cypher	Nb conflicts distribution	1547 ms
+stats.cypher	Nb temporal conflicts	1247 ms
+stats.cypher	Distribution of linked "o"	142 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	589 ms
+results.cypher	inferredNodes	91 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	1736 ms
+results.cypher	pCon_noConflicts	3448 ms
+results.cypher	pCon_conflicts	3217 ms
+results.cypher	pInc_noConflicts	3468 ms
+results.cypher	pInc_conflicts	3340 ms
+results.cypher	tInc_noConflicts	3592 ms
+results.cypher	tInc_conflicts	3361 ms
+Thu Sep 29 12:50:43 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_75k.csv
+----------------
+delete.cypher	delete nodes	17260 ms
+delete.cypher	TOTAL	17260 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	22157 ms
+graphSetting.cypher	TOTAL	22157 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	22132 ms
+constraints.cypher	C1 - birthDateConflict	102 ms
+constraints.cypher	C2 - deathDateConflict	89 ms
+constraints.cypher	C3 - birthDeathConflict	107 ms
+constraints.cypher	C4 - birthPlayerConflict	210 ms
+constraints.cypher	C5 - deathPlayerConflict	85 ms
+constraints.cypher	C6 - playerAgeConflict	294 ms
+constraints.cypher	C7 - playerTooOldConflict	299 ms
+constraints.cypher	C8 - twoTeamsConflict	17526 ms
+constraints.cypher	C14 - marriageConflict	222 ms
+constraints.cypher	C16 - birthMarriageConflict	45 ms
+constraints.cypher	C17 - deathMarriageConflict	32 ms
+constraints.cypher	C18 - playerCoachConflict	76 ms
+constraints.cypher	C19 - twoCompaniesConflict	39 ms
+constraints.cypher	TOTAL	41258 ms
+----------------
+stats.cypher	Nb triplets	248 ms
+stats.cypher	Nb "o"	90 ms
+stats.cypher	Nb "s"	88 ms
+stats.cypher	nb "p"	85 ms
+stats.cypher	Nb "p" links distribution	131 ms
+stats.cypher	Nb conflicts distribution	565 ms
+stats.cypher	Nb temporal conflicts	453 ms
+stats.cypher	Distribution of linked "o"	129 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	509 ms
+results.cypher	inferredNodes	84 ms
+results.cypher	tCon_noConflicts	2 ms
+results.cypher	tCon_conflicts	680 ms
+results.cypher	pCon_noConflicts	1282 ms
+results.cypher	pCon_conflicts	1208 ms
+results.cypher	pInc_noConflicts	1348 ms
+results.cypher	pInc_conflicts	1221 ms
+results.cypher	tInc_noConflicts	1332 ms
+results.cypher	tInc_conflicts	1254 ms
+Thu Sep 29 12:52:18 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_75k.csv
+----------------
+delete.cypher	delete nodes	10941 ms
+delete.cypher	TOTAL	10941 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	23978 ms
+graphSetting.cypher	TOTAL	23978 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	30259 ms
+constraints.cypher	C1 - birthDateConflict	300 ms
+constraints.cypher	C2 - deathDateConflict	153 ms
+constraints.cypher	C3 - birthDeathConflict	186 ms
+constraints.cypher	C4 - birthPlayerConflict	557 ms
+constraints.cypher	C5 - deathPlayerConflict	125 ms
+constraints.cypher	C6 - playerAgeConflict	843 ms
+constraints.cypher	C7 - playerTooOldConflict	894 ms
+constraints.cypher	C8 - twoTeamsConflict	83779 ms
+constraints.cypher	C14 - marriageConflict	743 ms
+constraints.cypher	C16 - birthMarriageConflict	80 ms
+constraints.cypher	C17 - deathMarriageConflict	55 ms
+constraints.cypher	C18 - playerCoachConflict	105 ms
+constraints.cypher	C19 - twoCompaniesConflict	74 ms
+constraints.cypher	TOTAL	118153 ms
+----------------
+stats.cypher	Nb triplets	378 ms
+stats.cypher	Nb "o"	125 ms
+stats.cypher	Nb "s"	115 ms
+stats.cypher	nb "p"	112 ms
+stats.cypher	Nb "p" links distribution	170 ms
+stats.cypher	Nb conflicts distribution	2777 ms
+stats.cypher	Nb temporal conflicts	2254 ms
+stats.cypher	Distribution of linked "o"	165 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	649 ms
+results.cypher	inferredNodes	105 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	3161 ms
+results.cypher	pCon_noConflicts	6049 ms
+results.cypher	pCon_conflicts	5878 ms
+results.cypher	pInc_noConflicts	6168 ms
+results.cypher	pInc_conflicts	6045 ms
+results.cypher	tInc_noConflicts	6363 ms
+results.cypher	tInc_conflicts	6098 ms
+Thu Sep 29 12:55:45 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_75k.csv
+----------------
+delete.cypher	delete nodes	27207 ms
+delete.cypher	TOTAL	27207 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	1877397 ms
+graphSetting.cypher	TOTAL	1877397 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	37447 ms
+constraints.cypher	C1 - birthDateConflict	737 ms
+constraints.cypher	C2 - deathDateConflict	247 ms
+constraints.cypher	C3 - birthDeathConflict	347 ms
+constraints.cypher	C4 - birthPlayerConflict	692 ms
+constraints.cypher	C5 - deathPlayerConflict	145 ms
+constraints.cypher	C6 - playerAgeConflict	1157 ms
+constraints.cypher	C7 - playerTooOldConflict	1314 ms
+constraints.cypher	C8 - twoTeamsConflict	99775 ms
+constraints.cypher	C14 - marriageConflict	915 ms
+constraints.cypher	C16 - birthMarriageConflict	164 ms
+constraints.cypher	C17 - deathMarriageConflict	100 ms
+constraints.cypher	C18 - playerCoachConflict	160 ms
+constraints.cypher	C19 - twoCompaniesConflict	153 ms
+constraints.cypher	TOTAL	143353 ms
+----------------
+stats.cypher	Nb triplets	399 ms
+stats.cypher	Nb "o"	151 ms
+stats.cypher	Nb "s"	151 ms
+stats.cypher	nb "p"	147 ms
+stats.cypher	Nb "p" links distribution	227 ms
+stats.cypher	Nb conflicts distribution	3782 ms
+stats.cypher	Nb temporal conflicts	3105 ms
+stats.cypher	Distribution of linked "o"	210 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	841 ms
+results.cypher	inferredNodes	142 ms
+results.cypher	tCon_noConflicts	32 ms
+results.cypher	tCon_conflicts	4353 ms
+results.cypher	pCon_noConflicts	8145 ms
+results.cypher	pCon_conflicts	7973 ms
+results.cypher	pInc_noConflicts	8241 ms
+results.cypher	pInc_conflicts	8292 ms
+results.cypher	tInc_noConflicts	8565 ms
+results.cypher	tInc_conflicts	8325 ms
+Thu Sep 29 13:31:09 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_75k.csv
+----------------
+delete.cypher	delete nodes	33323 ms
+delete.cypher	TOTAL	33323 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	2913052 ms
+graphSetting.cypher	TOTAL	2913052 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	48076 ms
+constraints.cypher	C1 - birthDateConflict	890 ms
+constraints.cypher	C2 - deathDateConflict	294 ms
+constraints.cypher	C3 - birthDeathConflict	412 ms
+constraints.cypher	C4 - birthPlayerConflict	1094 ms
+constraints.cypher	C5 - deathPlayerConflict	210 ms
+constraints.cypher	C6 - playerAgeConflict	1737 ms
+constraints.cypher	C7 - playerTooOldConflict	1943 ms
+constraints.cypher	C8 - twoTeamsConflict	217523 ms
+constraints.cypher	C14 - marriageConflict	889 ms
+constraints.cypher	C16 - birthMarriageConflict	184 ms
+constraints.cypher	C17 - deathMarriageConflict	88 ms
+constraints.cypher	C18 - playerCoachConflict	205 ms
+constraints.cypher	C19 - twoCompaniesConflict	167 ms
+constraints.cypher	TOTAL	273712 ms
+----------------
+stats.cypher	Nb triplets	481 ms
+stats.cypher	Nb "o"	183 ms
+stats.cypher	Nb "s"	182 ms
+stats.cypher	nb "p"	178 ms
+stats.cypher	Nb "p" links distribution	269 ms
+stats.cypher	Nb conflicts distribution	6850 ms
+stats.cypher	Nb temporal conflicts	5775 ms
+stats.cypher	Distribution of linked "o"	254 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	987 ms
+results.cypher	inferredNodes	173 ms
+results.cypher	tCon_noConflicts	33 ms
+results.cypher	tCon_conflicts	8040 ms
+results.cypher	pCon_noConflicts	14819 ms
+results.cypher	pCon_conflicts	14449 ms
+results.cypher	pInc_noConflicts	15178 ms
+results.cypher	pInc_conflicts	14894 ms
+results.cypher	tInc_noConflicts	15575 ms
+results.cypher	tInc_conflicts	15391 ms
+Thu Sep 29 14:26:54 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_100k.csv
+----------------
+delete.cypher	delete nodes	57792 ms
+delete.cypher	TOTAL	57792 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	dataset loading	1835249 ms
+graphSetting.cypher	TOTAL	1835249 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	40560 ms
+constraints.cypher	C1 - birthDateConflict	123 ms
+constraints.cypher	C2 - deathDateConflict	305 ms
+constraints.cypher	C3 - birthDeathConflict	169 ms
+constraints.cypher	C4 - birthPlayerConflict	324 ms
+constraints.cypher	C5 - deathPlayerConflict	166 ms
+constraints.cypher	C6 - playerAgeConflict	401 ms
+constraints.cypher	C7 - playerTooOldConflict	332 ms
+constraints.cypher	C8 - twoTeamsConflict	21088 ms
+constraints.cypher	C14 - marriageConflict	289 ms
+constraints.cypher	C16 - birthMarriageConflict	71 ms
+constraints.cypher	C17 - deathMarriageConflict	55 ms
+constraints.cypher	C18 - playerCoachConflict	141 ms
+constraints.cypher	C19 - twoCompaniesConflict	51 ms
+constraints.cypher	TOTAL	64075 ms
+----------------
+stats.cypher	Nb triplets	348 ms
+stats.cypher	Nb "o"	129 ms
+stats.cypher	Nb "s"	125 ms
+stats.cypher	nb "p"	124 ms
+stats.cypher	Nb "p" links distribution	190 ms
+stats.cypher	Nb conflicts distribution	690 ms
+stats.cypher	Nb temporal conflicts	593 ms
+stats.cypher	Distribution of linked "o"	186 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	696 ms
+results.cypher	inferredNodes	124 ms
+results.cypher	tCon_noConflicts	10 ms
+results.cypher	tCon_conflicts	859 ms
+results.cypher	pCon_noConflicts	1544 ms
+results.cypher	pCon_conflicts	1496 ms
+results.cypher	pInc_noConflicts	1678 ms
+results.cypher	pInc_conflicts	1485 ms
+results.cypher	tInc_noConflicts	1598 ms
+results.cypher	tInc_conflicts	1522 ms
+Thu Sep 29 14:59:50 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_100k.csv
+----------------
+delete.cypher	delete nodes	14668 ms
+delete.cypher	TOTAL	14668 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	39498 ms
+graphSetting.cypher	TOTAL	39498 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	114544 ms
+constraints.cypher	C1 - birthDateConflict	1275 ms
+constraints.cypher	C2 - deathDateConflict	393 ms
+constraints.cypher	C3 - birthDeathConflict	570 ms
+constraints.cypher	C4 - birthPlayerConflict	2110 ms
+constraints.cypher	C5 - deathPlayerConflict	311 ms
+constraints.cypher	C6 - playerAgeConflict	3403 ms
+constraints.cypher	C7 - playerTooOldConflict	3905 ms
+constraints.cypher	C8 - twoTeamsConflict	392431 ms
+constraints.cypher	C14 - marriageConflict	1085 ms
+constraints.cypher	C16 - birthMarriageConflict	185 ms
+constraints.cypher	C17 - deathMarriageConflict	101 ms
+constraints.cypher	C18 - playerCoachConflict	281 ms
+constraints.cypher	C19 - twoCompaniesConflict	212 ms
+constraints.cypher	TOTAL	520806 ms
+----------------
+stats.cypher	Nb triplets	702 ms
+stats.cypher	Nb "o"	279 ms
+stats.cypher	Nb "s"	273 ms
+stats.cypher	nb "p"	302 ms
+stats.cypher	Nb "p" links distribution	390 ms
+stats.cypher	Nb conflicts distribution	12758 ms
+stats.cypher	Nb temporal conflicts	11484 ms
+stats.cypher	Distribution of linked "o"	392 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1494 ms
+results.cypher	inferredNodes	247 ms
+results.cypher	tCon_noConflicts	52 ms
+results.cypher	tCon_conflicts	15913 ms
+results.cypher	pCon_noConflicts	29994 ms
+results.cypher	pCon_conflicts	29993 ms
+results.cypher	pInc_noConflicts	30669 ms
+results.cypher	pInc_conflicts	30438 ms
+results.cypher	tInc_noConflicts	31279 ms
+results.cypher	tInc_conflicts	30796 ms
+Thu Sep 29 15:13:33 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_100k.csv
+----------------
+delete.cypher	delete nodes	78213 ms
+delete.cypher	TOTAL	78213 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+inputFile=pinstConf_rockit_wikidata_10_100k.csv
+----------------
+graphSetting.cypher	dataset loading	2133389 ms
+graphSetting.cypher	TOTAL	2133389 ms
+----------------
+delete.cypher	delete nodes	425747 ms
+delete.cypher	TOTAL	425747 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	48816 ms
+constraints.cypher	C1 - birthDateConflict	200 ms
+constraints.cypher	C2 - deathDateConflict	142 ms
+constraints.cypher	C3 - birthDeathConflict	178 ms
+constraints.cypher	C4 - birthPlayerConflict	514 ms
+constraints.cypher	C5 - deathPlayerConflict	172 ms
+constraints.cypher	C6 - playerAgeConflict	765 ms
+constraints.cypher	C7 - playerTooOldConflict	759 ms
+constraints.cypher	C8 - twoTeamsConflict	63523 ms
+constraints.cypher	C14 - marriageConflict	836 ms
+constraints.cypher	C16 - birthMarriageConflict	121 ms
+constraints.cypher	C17 - deathMarriageConflict	88 ms
+constraints.cypher	C18 - playerCoachConflict	181 ms
+constraints.cypher	C19 - twoCompaniesConflict	84 ms
+constraints.cypher	TOTAL	116379 ms
+----------------
+stats.cypher	Nb triplets	409 ms
+stats.cypher	Nb "o"	151 ms
+stats.cypher	Nb "s"	147 ms
+stats.cypher	nb "p"	145 ms
+stats.cypher	Nb "p" links distribution	222 ms
+stats.cypher	Nb conflicts distribution	2295 ms
+stats.cypher	Nb temporal conflicts	1902 ms
+stats.cypher	Distribution of linked "o"	215 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	876 ms
+results.cypher	inferredNodes	141 ms
+results.cypher	tCon_noConflicts	28 ms
+results.cypher	tCon_conflicts	2701 ms
+results.cypher	pCon_noConflicts	5024 ms
+results.cypher	pCon_conflicts	4970 ms
+results.cypher	pInc_noConflicts	5139 ms
+results.cypher	pInc_conflicts	5012 ms
+results.cypher	tInc_noConflicts	5348 ms
+results.cypher	tInc_conflicts	5149 ms
+Thu Sep 29 15:53:44 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_100k.csv
+----------------
+graphSetting.cypher	TOTAL	0 ms
+----------------
+delete.cypher	delete nodes	26501 ms
+delete.cypher	TOTAL	26501 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+constraints.cypher	Strict Temporal Consistency	74 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+constraints.cypher	C1 - birthDateConflict	19 ms
+constraints.cypher	C2 - deathDateConflict	18 ms
+constraints.cypher	C3 - birthDeathConflict	22 ms
+constraints.cypher	C4 - birthPlayerConflict	17 ms
+constraints.cypher	C5 - deathPlayerConflict	17 ms
+constraints.cypher	C6 - playerAgeConflict	20 ms
+constraints.cypher	C7 - playerTooOldConflict	20 ms
+constraints.cypher	C8 - twoTeamsConflict	28 ms
+constraints.cypher	C14 - marriageConflict	50 ms
+constraints.cypher	C16 - birthMarriageConflict	4 ms
+constraints.cypher	C17 - deathMarriageConflict	1 ms
+constraints.cypher	C18 - playerCoachConflict	26 ms
+constraints.cypher	C19 - twoCompaniesConflict	28 ms
+constraints.cypher	TOTAL	344 ms
+----------------
+stats.cypher	Nb triplets	10 ms
+stats.cypher	Nb "o"	5 ms
+stats.cypher	Nb "s"	4 ms
+stats.cypher	nb "p"	4 ms
+stats.cypher	Nb "p" links distribution	5 ms
+stats.cypher	Nb conflicts distribution	6 ms
+stats.cypher	Nb temporal conflicts	15 ms
+stats.cypher	Distribution of linked "o"	5 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	26 ms
+results.cypher	inferredNodes	12 ms
+results.cypher	tCon_noConflicts	8 ms
+results.cypher	tCon_conflicts	7 ms
+results.cypher	pCon_noConflicts	16 ms
+results.cypher	pCon_conflicts	14 ms
+results.cypher	pInc_noConflicts	16 ms
+results.cypher	pInc_conflicts	14 ms
+results.cypher	tInc_noConflicts	17 ms
+results.cypher	tInc_conflicts	13 ms
+Thu Sep 29 15:54:12 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_100k.csv
+----------------
+delete.cypher	delete nodes	194 ms
+delete.cypher	TOTAL	194 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	TOTAL	0 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	37 ms
+constraints.cypher	C1 - birthDateConflict	18 ms
+constraints.cypher	C2 - deathDateConflict	19 ms
+constraints.cypher	C3 - birthDeathConflict	23 ms
+constraints.cypher	C4 - birthPlayerConflict	18 ms
+constraints.cypher	C5 - deathPlayerConflict	18 ms
+constraints.cypher	C6 - playerAgeConflict	21 ms
+constraints.cypher	C7 - playerTooOldConflict	20 ms
+constraints.cypher	C8 - twoTeamsConflict	28 ms
+constraints.cypher	C14 - marriageConflict	51 ms
+constraints.cypher	C16 - birthMarriageConflict	2 ms
+constraints.cypher	C17 - deathMarriageConflict	1 ms
+constraints.cypher	C18 - playerCoachConflict	27 ms
+constraints.cypher	C19 - twoCompaniesConflict	29 ms
+constraints.cypher	TOTAL	312 ms
+----------------
+stats.cypher	Nb triplets	8 ms
+stats.cypher	Nb "o"	5 ms
+stats.cypher	Nb "s"	4 ms
+stats.cypher	nb "p"	4 ms
+stats.cypher	Nb "p" links distribution	5 ms
+stats.cypher	Nb conflicts distribution	5 ms
+stats.cypher	Nb temporal conflicts	15 ms
+stats.cypher	Distribution of linked "o"	5 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	27 ms
+results.cypher	inferredNodes	13 ms
+results.cypher	tCon_noConflicts	8 ms
+results.cypher	tCon_conflicts	8 ms
+results.cypher	pCon_noConflicts	17 ms
+results.cypher	pCon_conflicts	14 ms
+results.cypher	pInc_noConflicts	16 ms
+results.cypher	pInc_conflicts	60 ms
+results.cypher	tInc_noConflicts	18 ms
+results.cypher	tInc_conflicts	16 ms
+Thu Sep 29 15:54:37 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_100k.csv
+----------------
+graphSetting.cypher	dataset loading	32054 ms
+graphSetting.cypher	TOTAL	32054 ms
+----------------
+delete.cypher	delete nodes	7582 ms
+delete.cypher	TOTAL	7582 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	54965 ms
+constraints.cypher	C1 - birthDateConflict	144 ms
+constraints.cypher	C2 - deathDateConflict	143 ms
+constraints.cypher	C3 - birthDeathConflict	161 ms
+constraints.cypher	C4 - birthPlayerConflict	389 ms
+constraints.cypher	C5 - deathPlayerConflict	156 ms
+constraints.cypher	C6 - playerAgeConflict	484 ms
+constraints.cypher	C7 - playerTooOldConflict	436 ms
+constraints.cypher	C8 - twoTeamsConflict	34507 ms
+constraints.cypher	C14 - marriageConflict	318 ms
+constraints.cypher	C16 - birthMarriageConflict	66 ms
+constraints.cypher	C17 - deathMarriageConflict	49 ms
+constraints.cypher	C18 - playerCoachConflict	147 ms
+constraints.cypher	C19 - twoCompaniesConflict	194 ms
+constraints.cypher	TOTAL	92159 ms
+----------------
+stats.cypher	Nb triplets	426 ms
+stats.cypher	Nb "o"	142 ms
+stats.cypher	Nb "s"	140 ms
+stats.cypher	nb "p"	137 ms
+stats.cypher	Nb "p" links distribution	211 ms
+stats.cypher	Nb conflicts distribution	1031 ms
+stats.cypher	Nb temporal conflicts	814 ms
+stats.cypher	Distribution of linked "o"	202 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	103 ms
+results.cypher	inferredNodes	144 ms
+results.cypher	tCon_noConflicts	12 ms
+results.cypher	tCon_conflicts	1202 ms
+results.cypher	pCon_noConflicts	2153 ms
+results.cypher	pCon_conflicts	2086 ms
+results.cypher	pInc_noConflicts	2227 ms
+results.cypher	pInc_conflicts	2144 ms
+results.cypher	tInc_noConflicts	2278 ms
+results.cypher	tInc_conflicts	2247 ms
+Thu Sep 29 15:56:40 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_100k.csv
+----------------
+graphSetting.cypher	TOTAL	0 ms
+----------------
+delete.cypher	delete nodes	18017 ms
+delete.cypher	TOTAL	18017 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	39 ms
+constraints.cypher	C1 - birthDateConflict	18 ms
+constraints.cypher	C2 - deathDateConflict	19 ms
+constraints.cypher	C3 - birthDeathConflict	23 ms
+constraints.cypher	C4 - birthPlayerConflict	17 ms
+constraints.cypher	C5 - deathPlayerConflict	17 ms
+constraints.cypher	C6 - playerAgeConflict	20 ms
+constraints.cypher	C7 - playerTooOldConflict	20 ms
+constraints.cypher	C8 - twoTeamsConflict	28 ms
+constraints.cypher	C14 - marriageConflict	50 ms
+constraints.cypher	C16 - birthMarriageConflict	2 ms
+constraints.cypher	C17 - deathMarriageConflict	1 ms
+constraints.cypher	C18 - playerCoachConflict	26 ms
+constraints.cypher	C19 - twoCompaniesConflict	28 ms
+constraints.cypher	TOTAL	308 ms
+----------------
+stats.cypher	Nb triplets	8 ms
+stats.cypher	Nb "o"	4 ms
+stats.cypher	Nb "s"	4 ms
+stats.cypher	nb "p"	4 ms
+stats.cypher	Nb "p" links distribution	5 ms
+stats.cypher	Nb conflicts distribution	4 ms
+stats.cypher	Nb temporal conflicts	15 ms
+stats.cypher	Distribution of linked "o"	5 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	26 ms
+results.cypher	inferredNodes	12 ms
+results.cypher	tCon_noConflicts	8 ms
+results.cypher	tCon_conflicts	7 ms
+results.cypher	pCon_noConflicts	15 ms
+results.cypher	pCon_conflicts	13 ms
+results.cypher	pInc_noConflicts	16 ms
+results.cypher	pInc_conflicts	14 ms
+results.cypher	tInc_noConflicts	16 ms
+results.cypher	tInc_conflicts	14 ms
+Thu Sep 29 15:57:00 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_100k.csv
+----------------
+delete.cypher	delete nodes	173 ms
+delete.cypher	TOTAL	173 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+graphSetting.cypher	TOTAL	0 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	36 ms
+constraints.cypher	C1 - birthDateConflict	17 ms
+constraints.cypher	C2 - deathDateConflict	18 ms
+constraints.cypher	C3 - birthDeathConflict	22 ms
+constraints.cypher	C4 - birthPlayerConflict	18 ms
+constraints.cypher	C5 - deathPlayerConflict	17 ms
+constraints.cypher	C6 - playerAgeConflict	19 ms
+constraints.cypher	C7 - playerTooOldConflict	19 ms
+constraints.cypher	C8 - twoTeamsConflict	76 ms
+constraints.cypher	C14 - marriageConflict	50 ms
+constraints.cypher	C16 - birthMarriageConflict	2 ms
+constraints.cypher	C17 - deathMarriageConflict	1 ms
+constraints.cypher	C18 - playerCoachConflict	26 ms
+constraints.cypher	C19 - twoCompaniesConflict	28 ms
+constraints.cypher	TOTAL	349 ms
+----------------
+stats.cypher	Nb triplets	8 ms
+stats.cypher	Nb "o"	5 ms
+stats.cypher	Nb "s"	4 ms
+stats.cypher	nb "p"	4 ms
+stats.cypher	Nb "p" links distribution	5 ms
+stats.cypher	Nb conflicts distribution	5 ms
+stats.cypher	Nb temporal conflicts	14 ms
+stats.cypher	Distribution of linked "o"	5 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	26 ms
+results.cypher	inferredNodes	12 ms
+results.cypher	tCon_noConflicts	8 ms
+results.cypher	tCon_conflicts	8 ms
+results.cypher	pCon_noConflicts	16 ms
+results.cypher	pCon_conflicts	13 ms
+results.cypher	pInc_noConflicts	16 ms
+results.cypher	pInc_conflicts	13 ms
+results.cypher	tInc_noConflicts	16 ms
+results.cypher	tInc_conflicts	13 ms
+Thu Sep 29 15:57:26 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_100k.csv
+----------------
+graphSetting.cypher	dataset loading	37628 ms
+graphSetting.cypher	TOTAL	37628 ms
+----------------
+delete.cypher	delete nodes	12330 ms
+delete.cypher	TOTAL	12330 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	10 ms
+----------------
+inputFile=pinstConf_rockit_wikidata_0_200k.csv
+----------------
+inputFile=pinstConf_rockit_wikidata_0_250k.csv
+----------------
+constraints.cypher	Strict Temporal Consistency	73412 ms
+constraints.cypher	C1 - birthDateConflict	913 ms
+constraints.cypher	C2 - deathDateConflict	331 ms
+constraints.cypher	C3 - birthDeathConflict	454 ms
+constraints.cypher	C4 - birthPlayerConflict	1177 ms
+constraints.cypher	C5 - deathPlayerConflict	240 ms
+constraints.cypher	C6 - playerAgeConflict	1785 ms
+constraints.cypher	C7 - playerTooOldConflict	1983 ms
+inputFile=pinstConf_rockit_wikidata_10_100k.csv
+----------------
+delete.cypher	delete nodes	25156 ms
+delete.cypher	TOTAL	25156 ms
+----------------
+schema.cypher	indices	33 ms
+schema.cypher	indices	9 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	8 ms
+schema.cypher	indices	7 ms
+schema.cypher	indices	8 ms
+schema.cypher	TOTAL	97 ms
+----------------
+graphSetting.cypher	dataset loading	26566 ms
+graphSetting.cypher	TOTAL	26566 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	9328 ms
+constraints.cypher	C1 - birthDateConflict	366 ms
+constraints.cypher	C2 - deathDateConflict	205 ms
+constraints.cypher	C3 - birthDeathConflict	279 ms
+constraints.cypher	C4 - birthPlayerConflict	504 ms
+constraints.cypher	C5 - deathPlayerConflict	201 ms
+constraints.cypher	C6 - playerAgeConflict	776 ms
+constraints.cypher	C7 - playerTooOldConflict	719 ms
+constraints.cypher	C8 - twoTeamsConflict	54277 ms
+constraints.cypher	C14 - marriageConflict	809 ms
+constraints.cypher	C16 - birthMarriageConflict	105 ms
+constraints.cypher	C17 - deathMarriageConflict	85 ms
+constraints.cypher	C18 - playerCoachConflict	184 ms
+constraints.cypher	C19 - twoCompaniesConflict	108 ms
+constraints.cypher	TOTAL	67946 ms
+----------------
+stats.cypher	Nb triplets	407 ms
+stats.cypher	Nb "o"	154 ms
+stats.cypher	Nb "s"	136 ms
+stats.cypher	nb "p"	130 ms
+stats.cypher	Nb "p" links distribution	227 ms
+stats.cypher	Nb conflicts distribution	1751 ms
+stats.cypher	Nb temporal conflicts	1394 ms
+stats.cypher	Distribution of linked "o"	231 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	843 ms
+results.cypher	inferredNodes	211 ms
+results.cypher	tCon_noConflicts	35 ms
+results.cypher	tCon_conflicts	2094 ms
+results.cypher	pCon_noConflicts	4160 ms
+results.cypher	pCon_conflicts	4132 ms
+results.cypher	pInc_noConflicts	4418 ms
+results.cypher	pInc_conflicts	4201 ms
+results.cypher	tInc_noConflicts	4436 ms
+results.cypher	tInc_conflicts	4360 ms
+Thu Sep 29 16:03:02 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_100k.csv
+----------------
+delete.cypher	delete nodes	23715 ms
+delete.cypher	TOTAL	23715 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	28904 ms
+graphSetting.cypher	TOTAL	28904 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	34877 ms
+constraints.cypher	C1 - birthDateConflict	251 ms
+constraints.cypher	C2 - deathDateConflict	100 ms
+constraints.cypher	C3 - birthDeathConflict	121 ms
+constraints.cypher	C4 - birthPlayerConflict	270 ms
+constraints.cypher	C5 - deathPlayerConflict	111 ms
+constraints.cypher	C6 - playerAgeConflict	373 ms
+constraints.cypher	C7 - playerTooOldConflict	361 ms
+constraints.cypher	C8 - twoTeamsConflict	26703 ms
+constraints.cypher	C14 - marriageConflict	222 ms
+constraints.cypher	C16 - birthMarriageConflict	49 ms
+constraints.cypher	C17 - deathMarriageConflict	35 ms
+constraints.cypher	C18 - playerCoachConflict	100 ms
+constraints.cypher	C19 - twoCompaniesConflict	50 ms
+constraints.cypher	TOTAL	63623 ms
+----------------
+stats.cypher	Nb triplets	293 ms
+stats.cypher	Nb "o"	115 ms
+stats.cypher	Nb "s"	113 ms
+stats.cypher	nb "p"	110 ms
+stats.cypher	Nb "p" links distribution	174 ms
+stats.cypher	Nb conflicts distribution	814 ms
+stats.cypher	Nb temporal conflicts	609 ms
+stats.cypher	Distribution of linked "o"	175 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	563 ms
+results.cypher	inferredNodes	118 ms
+results.cypher	tCon_noConflicts	4 ms
+results.cypher	tCon_conflicts	1090 ms
+results.cypher	pCon_noConflicts	1853 ms
+results.cypher	pCon_conflicts	1739 ms
+results.cypher	pInc_noConflicts	1956 ms
+results.cypher	pInc_conflicts	1774 ms
+results.cypher	tInc_noConflicts	2249 ms
+results.cypher	tInc_conflicts	1915 ms
+Thu Sep 29 16:05:19 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_100k.csv
+----------------
+delete.cypher	delete nodes	15363 ms
+delete.cypher	TOTAL	15363 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	32298 ms
+graphSetting.cypher	TOTAL	32298 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	46424 ms
+constraints.cypher	C1 - birthDateConflict	436 ms
+constraints.cypher	C2 - deathDateConflict	182 ms
+constraints.cypher	C3 - birthDeathConflict	238 ms
+constraints.cypher	C4 - birthPlayerConflict	680 ms
+constraints.cypher	C5 - deathPlayerConflict	196 ms
+constraints.cypher	C6 - playerAgeConflict	1032 ms
+constraints.cypher	C7 - playerTooOldConflict	1149 ms
+constraints.cypher	C8 - twoTeamsConflict	77443 ms
+constraints.cypher	C14 - marriageConflict	828 ms
+constraints.cypher	C16 - birthMarriageConflict	76 ms
+constraints.cypher	C17 - deathMarriageConflict	56 ms
+constraints.cypher	C18 - playerCoachConflict	145 ms
+constraints.cypher	C19 - twoCompaniesConflict	115 ms
+constraints.cypher	TOTAL	129000 ms
+----------------
+stats.cypher	Nb triplets	400 ms
+stats.cypher	Nb "o"	150 ms
+stats.cypher	Nb "s"	145 ms
+stats.cypher	nb "p"	143 ms
+stats.cypher	Nb "p" links distribution	249 ms
+stats.cypher	Nb conflicts distribution	3088 ms
+stats.cypher	Nb temporal conflicts	2386 ms
+stats.cypher	Distribution of linked "o"	207 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	728 ms
+results.cypher	inferredNodes	152 ms
+results.cypher	tCon_noConflicts	2 ms
+results.cypher	tCon_conflicts	3464 ms
+results.cypher	pCon_noConflicts	6989 ms
+results.cypher	pCon_conflicts	6741 ms
+results.cypher	pInc_noConflicts	7225 ms
+results.cypher	pInc_conflicts	6902 ms
+results.cypher	tInc_noConflicts	7326 ms
+results.cypher	tInc_conflicts	7031 ms
+Thu Sep 29 16:09:26 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_100k.csv
+----------------
+delete.cypher	delete nodes	34229 ms
+delete.cypher	TOTAL	34229 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	18 ms
+----------------
+graphSetting.cypher	dataset loading	33395 ms
+graphSetting.cypher	TOTAL	33395 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	57874 ms
+constraints.cypher	C1 - birthDateConflict	772 ms
+constraints.cypher	C2 - deathDateConflict	272 ms
+constraints.cypher	C3 - birthDeathConflict	381 ms
+constraints.cypher	C4 - birthPlayerConflict	978 ms
+constraints.cypher	C5 - deathPlayerConflict	185 ms
+constraints.cypher	C6 - playerAgeConflict	1534 ms
+constraints.cypher	C7 - playerTooOldConflict	1600 ms
+constraints.cypher	C8 - twoTeamsConflict	157841 ms
+constraints.cypher	C14 - marriageConflict	923 ms
+constraints.cypher	C16 - birthMarriageConflict	102 ms
+constraints.cypher	C17 - deathMarriageConflict	74 ms
+constraints.cypher	C18 - playerCoachConflict	167 ms
+constraints.cypher	C19 - twoCompaniesConflict	126 ms
+constraints.cypher	TOTAL	222829 ms
+----------------
+stats.cypher	Nb triplets	449 ms
+stats.cypher	Nb "o"	181 ms
+stats.cypher	Nb "s"	177 ms
+stats.cypher	nb "p"	201 ms
+stats.cypher	Nb "p" links distribution	281 ms
+stats.cypher	Nb conflicts distribution	5206 ms
+stats.cypher	Nb temporal conflicts	4035 ms
+stats.cypher	Distribution of linked "o"	277 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	886 ms
+results.cypher	inferredNodes	181 ms
+results.cypher	tCon_noConflicts	21 ms
+results.cypher	tCon_conflicts	5875 ms
+results.cypher	pCon_noConflicts	11775 ms
+results.cypher	pCon_conflicts	11615 ms
+results.cypher	pInc_noConflicts	12335 ms
+results.cypher	pInc_conflicts	11687 ms
+results.cypher	tInc_noConflicts	12556 ms
+results.cypher	tInc_conflicts	12213 ms
+Thu Sep 29 16:15:59 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_100k.csv
+----------------
+delete.cypher	delete nodes	51934 ms
+delete.cypher	TOTAL	51934 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	15 ms
+----------------
+graphSetting.cypher	dataset loading	34962 ms
+graphSetting.cypher	TOTAL	34962 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	74201 ms
+constraints.cypher	C1 - birthDateConflict	1003 ms
+constraints.cypher	C2 - deathDateConflict	308 ms
+constraints.cypher	C3 - birthDeathConflict	433 ms
+constraints.cypher	C4 - birthPlayerConflict	1420 ms
+constraints.cypher	C5 - deathPlayerConflict	214 ms
+constraints.cypher	C6 - playerAgeConflict	2545 ms
+constraints.cypher	C7 - playerTooOldConflict	2669 ms
+constraints.cypher	C8 - twoTeamsConflict	265794 ms
+constraints.cypher	C14 - marriageConflict	1037 ms
+constraints.cypher	C16 - birthMarriageConflict	179 ms
+constraints.cypher	C17 - deathMarriageConflict	114 ms
+constraints.cypher	C18 - playerCoachConflict	279 ms
+constraints.cypher	C19 - twoCompaniesConflict	200 ms
+constraints.cypher	TOTAL	350396 ms
+----------------
+stats.cypher	Nb triplets	525 ms
+stats.cypher	Nb "o"	211 ms
+stats.cypher	Nb "s"	207 ms
+stats.cypher	nb "p"	204 ms
+stats.cypher	Nb "p" links distribution	329 ms
+stats.cypher	Nb conflicts distribution	8623 ms
+stats.cypher	Nb temporal conflicts	6578 ms
+stats.cypher	Distribution of linked "o"	296 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1102 ms
+results.cypher	inferredNodes	212 ms
+results.cypher	tCon_noConflicts	35 ms
+results.cypher	tCon_conflicts	9674 ms
+results.cypher	pCon_noConflicts	19220 ms
+results.cypher	pCon_conflicts	18858 ms
+results.cypher	pInc_noConflicts	19868 ms
+results.cypher	pInc_conflicts	19294 ms
+results.cypher	tInc_noConflicts	19970 ms
+results.cypher	tInc_conflicts	19748 ms
+Thu Sep 29 16:26:00 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_200k.csv
+----------------
+delete.cypher	delete nodes	74499 ms
+delete.cypher	TOTAL	74499 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	15 ms
+----------------
+graphSetting.cypher	dataset loading	268659 ms
+graphSetting.cypher	TOTAL	268659 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	106931 ms
+constraints.cypher	C1 - birthDateConflict	227 ms
+constraints.cypher	C2 - deathDateConflict	193 ms
+constraints.cypher	C3 - birthDeathConflict	264 ms
+constraints.cypher	C4 - birthPlayerConflict	604 ms
+constraints.cypher	C5 - deathPlayerConflict	247 ms
+constraints.cypher	C6 - playerAgeConflict	737 ms
+constraints.cypher	C7 - playerTooOldConflict	647 ms
+constraints.cypher	C8 - twoTeamsConflict	45118 ms
+constraints.cypher	C14 - marriageConflict	298 ms
+constraints.cypher	C16 - birthMarriageConflict	73 ms
+constraints.cypher	C17 - deathMarriageConflict	43 ms
+constraints.cypher	C18 - playerCoachConflict	238 ms
+constraints.cypher	C19 - twoCompaniesConflict	74 ms
+constraints.cypher	TOTAL	155694 ms
+----------------
+stats.cypher	Nb triplets	567 ms
+stats.cypher	Nb "o"	220 ms
+stats.cypher	Nb "s"	220 ms
+stats.cypher	nb "p"	218 ms
+stats.cypher	Nb "p" links distribution	353 ms
+stats.cypher	Nb conflicts distribution	1292 ms
+stats.cypher	Nb temporal conflicts	965 ms
+stats.cypher	Distribution of linked "o"	317 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1317 ms
+results.cypher	inferredNodes	242 ms
+results.cypher	tCon_noConflicts	15 ms
+results.cypher	tCon_conflicts	1547 ms
+results.cypher	pCon_noConflicts	2989 ms
+results.cypher	pCon_conflicts	2837 ms
+results.cypher	pInc_noConflicts	3303 ms
+results.cypher	pInc_conflicts	2945 ms
+results.cypher	tInc_noConflicts	3220 ms
+results.cypher	tInc_conflicts	3002 ms
+Thu Sep 29 16:34:55 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_200k.csv
+----------------
+delete.cypher	delete nodes	39539 ms
+delete.cypher	TOTAL	39539 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	557454 ms
+graphSetting.cypher	TOTAL	557454 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	303855 ms
+constraints.cypher	C1 - birthDateConflict	2127 ms
+constraints.cypher	C2 - deathDateConflict	595 ms
+constraints.cypher	C3 - birthDeathConflict	899 ms
+constraints.cypher	C4 - birthPlayerConflict	4187 ms
+constraints.cypher	C5 - deathPlayerConflict	521 ms
+constraints.cypher	C6 - playerAgeConflict	7267 ms
+constraints.cypher	C7 - playerTooOldConflict	7798 ms
+constraints.cypher	C8 - twoTeamsConflict	715224 ms
+constraints.cypher	C14 - marriageConflict	1104 ms
+constraints.cypher	C16 - birthMarriageConflict	261 ms
+constraints.cypher	C17 - deathMarriageConflict	140 ms
+constraints.cypher	C18 - playerCoachConflict	499 ms
+constraints.cypher	C19 - twoCompaniesConflict	227 ms
+constraints.cypher	TOTAL	1044704 ms
+----------------
+stats.cypher	Nb triplets	1231 ms
+stats.cypher	Nb "o"	457 ms
+stats.cypher	Nb "s"	450 ms
+stats.cypher	nb "p"	438 ms
+stats.cypher	Nb "p" links distribution	676 ms
+stats.cypher	Nb conflicts distribution	36672 ms
+stats.cypher	Nb temporal conflicts	28633 ms
+stats.cypher	Distribution of linked "o"	741 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	2586 ms
+results.cypher	inferredNodes	505 ms
+results.cypher	tCon_noConflicts	37 ms
+results.cypher	tCon_conflicts	32695 ms
+results.cypher	pCon_noConflicts	72622 ms
+results.cypher	pCon_conflicts	69939 ms
+results.cypher	pInc_noConflicts	75091 ms
+results.cypher	pInc_conflicts	73686 ms
+results.cypher	tInc_noConflicts	68824 ms
+results.cypher	tInc_conflicts	75252 ms
+Thu Sep 29 17:13:49 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_200k.csv
+----------------
+delete.cypher	delete nodes	86163 ms
+delete.cypher	TOTAL	86163 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	13 ms
+----------------
+graphSetting.cypher	dataset loading	273235 ms
+graphSetting.cypher	TOTAL	273235 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	120751 ms
+constraints.cypher	C1 - birthDateConflict	388 ms
+constraints.cypher	C2 - deathDateConflict	352 ms
+constraints.cypher	C3 - birthDeathConflict	320 ms
+constraints.cypher	C4 - birthPlayerConflict	910 ms
+constraints.cypher	C5 - deathPlayerConflict	278 ms
+constraints.cypher	C6 - playerAgeConflict	1283 ms
+constraints.cypher	C7 - playerTooOldConflict	1271 ms
+constraints.cypher	C8 - twoTeamsConflict	108064 ms
+constraints.cypher	C14 - marriageConflict	952 ms
+constraints.cypher	C16 - birthMarriageConflict	134 ms
+constraints.cypher	C17 - deathMarriageConflict	83 ms
+constraints.cypher	C18 - playerCoachConflict	326 ms
+constraints.cypher	C19 - twoCompaniesConflict	135 ms
+constraints.cypher	TOTAL	235247 ms
+----------------
+stats.cypher	Nb triplets	652 ms
+stats.cypher	Nb "o"	236 ms
+stats.cypher	Nb "s"	234 ms
+stats.cypher	nb "p"	249 ms
+stats.cypher	Nb "p" links distribution	360 ms
+stats.cypher	Nb conflicts distribution	3330 ms
+stats.cypher	Nb temporal conflicts	2811 ms
+stats.cypher	Distribution of linked "o"	359 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1271 ms
+results.cypher	inferredNodes	267 ms
+results.cypher	tCon_noConflicts	34 ms
+results.cypher	tCon_conflicts	4080 ms
+results.cypher	pCon_noConflicts	8076 ms
+results.cypher	pCon_conflicts	7924 ms
+results.cypher	pInc_noConflicts	8204 ms
+results.cypher	pInc_conflicts	8161 ms
+results.cypher	tInc_noConflicts	8644 ms
+results.cypher	tInc_conflicts	8229 ms
+Thu Sep 29 17:28:11 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_200k.csv
+----------------
+delete.cypher	delete nodes	56612 ms
+delete.cypher	TOTAL	56612 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	14 ms
+----------------
+graphSetting.cypher	dataset loading	58123 ms
+graphSetting.cypher	TOTAL	58123 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	109813 ms
+constraints.cypher	C1 - birthDateConflict	213 ms
+constraints.cypher	C2 - deathDateConflict	176 ms
+constraints.cypher	C3 - birthDeathConflict	210 ms
+constraints.cypher	C4 - birthPlayerConflict	579 ms
+constraints.cypher	C5 - deathPlayerConflict	229 ms
+constraints.cypher	C6 - playerAgeConflict	826 ms
+constraints.cypher	C7 - playerTooOldConflict	691 ms
+constraints.cypher	C8 - twoTeamsConflict	55223 ms
+constraints.cypher	C14 - marriageConflict	308 ms
+constraints.cypher	C16 - birthMarriageConflict	79 ms
+constraints.cypher	C17 - deathMarriageConflict	59 ms
+constraints.cypher	C18 - playerCoachConflict	215 ms
+constraints.cypher	C19 - twoCompaniesConflict	83 ms
+constraints.cypher	TOTAL	168704 ms
+----------------
+stats.cypher	Nb triplets	579 ms
+stats.cypher	Nb "o"	228 ms
+stats.cypher	Nb "s"	226 ms
+stats.cypher	nb "p"	222 ms
+stats.cypher	Nb "p" links distribution	349 ms
+stats.cypher	Nb conflicts distribution	1842 ms
+stats.cypher	Nb temporal conflicts	1332 ms
+stats.cypher	Distribution of linked "o"	328 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1125 ms
+results.cypher	inferredNodes	247 ms
+results.cypher	tCon_noConflicts	5 ms
+results.cypher	tCon_conflicts	2052 ms
+results.cypher	pCon_noConflicts	3828 ms
+results.cypher	pCon_conflicts	3780 ms
+results.cypher	pInc_noConflicts	4094 ms
+results.cypher	pInc_conflicts	3807 ms
+results.cypher	tInc_noConflicts	4119 ms
+results.cypher	tInc_conflicts	3889 ms
+Thu Sep 29 17:33:35 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_200k.csv
+----------------
+delete.cypher	delete nodes	41228 ms
+delete.cypher	TOTAL	41228 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	14 ms
+----------------
+graphSetting.cypher	dataset loading	62708 ms
+graphSetting.cypher	TOTAL	62708 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	142411 ms
+constraints.cypher	C1 - birthDateConflict	968 ms
+constraints.cypher	C2 - deathDateConflict	334 ms
+constraints.cypher	C3 - birthDeathConflict	541 ms
+constraints.cypher	C4 - birthPlayerConflict	1254 ms
+constraints.cypher	C5 - deathPlayerConflict	311 ms
+constraints.cypher	C6 - playerAgeConflict	1916 ms
+constraints.cypher	C7 - playerTooOldConflict	1933 ms
+constraints.cypher	C8 - twoTeamsConflict	187206 ms
+constraints.cypher	C14 - marriageConflict	884 ms
+constraints.cypher	C16 - birthMarriageConflict	144 ms
+constraints.cypher	C17 - deathMarriageConflict	86 ms
+constraints.cypher	C18 - playerCoachConflict	290 ms
+constraints.cypher	C19 - twoCompaniesConflict	163 ms
+constraints.cypher	TOTAL	338441 ms
+----------------
+stats.cypher	Nb triplets	727 ms
+stats.cypher	Nb "o"	292 ms
+stats.cypher	Nb "s"	291 ms
+stats.cypher	nb "p"	288 ms
+stats.cypher	Nb "p" links distribution	468 ms
+stats.cypher	Nb conflicts distribution	5974 ms
+stats.cypher	Nb temporal conflicts	4724 ms
+stats.cypher	Distribution of linked "o"	421 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1423 ms
+results.cypher	inferredNodes	305 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	6804 ms
+results.cypher	pCon_noConflicts	13410 ms
+results.cypher	pCon_conflicts	13282 ms
+results.cypher	pInc_noConflicts	13726 ms
+results.cypher	pInc_conflicts	13489 ms
+results.cypher	tInc_noConflicts	13918 ms
+results.cypher	tInc_conflicts	13696 ms
+Thu Sep 29 17:42:56 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_200k.csv
+----------------
+delete.cypher	delete nodes	76008 ms
+delete.cypher	TOTAL	76008 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	TOTAL	19 ms
+----------------
+graphSetting.cypher	dataset loading	63157 ms
+graphSetting.cypher	TOTAL	63157 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	196316 ms
+constraints.cypher	C1 - birthDateConflict	1325 ms
+constraints.cypher	C2 - deathDateConflict	407 ms
+constraints.cypher	C3 - birthDeathConflict	620 ms
+constraints.cypher	C4 - birthPlayerConflict	2227 ms
+constraints.cypher	C5 - deathPlayerConflict	373 ms
+constraints.cypher	C6 - playerAgeConflict	3626 ms
+constraints.cypher	C7 - playerTooOldConflict	3894 ms
+constraints.cypher	C8 - twoTeamsConflict	385278 ms
+constraints.cypher	C14 - marriageConflict	1126 ms
+constraints.cypher	C16 - birthMarriageConflict	269 ms
+constraints.cypher	C17 - deathMarriageConflict	120 ms
+constraints.cypher	C18 - playerCoachConflict	400 ms
+constraints.cypher	C19 - twoCompaniesConflict	172 ms
+constraints.cypher	TOTAL	596153 ms
+----------------
+stats.cypher	Nb triplets	905 ms
+stats.cypher	Nb "o"	367 ms
+stats.cypher	Nb "s"	360 ms
+stats.cypher	nb "p"	353 ms
+stats.cypher	Nb "p" links distribution	570 ms
+stats.cypher	Nb conflicts distribution	13550 ms
+stats.cypher	Nb temporal conflicts	10040 ms
+stats.cypher	Distribution of linked "o"	565 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1755 ms
+results.cypher	inferredNodes	373 ms
+results.cypher	tCon_noConflicts	45 ms
+results.cypher	tCon_conflicts	14522 ms
+results.cypher	pCon_noConflicts	29276 ms
+results.cypher	pCon_conflicts	28707 ms
+results.cypher	pInc_noConflicts	29508 ms
+results.cypher	pInc_conflicts	29552 ms
+results.cypher	tInc_noConflicts	30188 ms
+results.cypher	tInc_conflicts	30018 ms
+Thu Sep 29 17:59:23 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_200k.csv
+----------------
+delete.cypher	delete nodes	111551 ms
+delete.cypher	TOTAL	111551 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	469770 ms
+graphSetting.cypher	TOTAL	469770 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	248824 ms
+constraints.cypher	C1 - birthDateConflict	1681 ms
+constraints.cypher	C2 - deathDateConflict	542 ms
+constraints.cypher	C3 - birthDeathConflict	774 ms
+constraints.cypher	C4 - birthPlayerConflict	3209 ms
+constraints.cypher	C5 - deathPlayerConflict	469 ms
+constraints.cypher	C6 - playerAgeConflict	5444 ms
+constraints.cypher	C7 - playerTooOldConflict	5982 ms
+constraints.cypher	C8 - twoTeamsConflict	498839 ms
+constraints.cypher	C14 - marriageConflict	955 ms
+constraints.cypher	C16 - birthMarriageConflict	266 ms
+constraints.cypher	C17 - deathMarriageConflict	121 ms
+constraints.cypher	C18 - playerCoachConflict	445 ms
+constraints.cypher	C19 - twoCompaniesConflict	154 ms
+constraints.cypher	TOTAL	767705 ms
+----------------
+stats.cypher	Nb triplets	1058 ms
+stats.cypher	Nb "o"	434 ms
+stats.cypher	Nb "s"	423 ms
+stats.cypher	nb "p"	448 ms
+stats.cypher	Nb "p" links distribution	691 ms
+stats.cypher	Nb conflicts distribution	19797 ms
+stats.cypher	Nb temporal conflicts	15784 ms
+stats.cypher	Distribution of linked "o"	648 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	2076 ms
+results.cypher	inferredNodes	434 ms
+results.cypher	tCon_noConflicts	34 ms
+results.cypher	tCon_conflicts	22167 ms
+results.cypher	pCon_noConflicts	44895 ms
+results.cypher	pCon_conflicts	44819 ms
+results.cypher	pInc_noConflicts	46414 ms
+results.cypher	pInc_conflicts	45584 ms
+results.cypher	tInc_noConflicts	46871 ms
+results.cypher	tInc_conflicts	46371 ms
+Thu Sep 29 18:29:51 UTC 2022
+inputFile=pinstConf_rockit_wikidata_0_250k.csv
+----------------
+delete.cypher	delete nodes	83159 ms
+delete.cypher	TOTAL	83159 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	425253 ms
+graphSetting.cypher	TOTAL	425253 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	159258 ms
+constraints.cypher	C1 - birthDateConflict	398 ms
+constraints.cypher	C2 - deathDateConflict	289 ms
+constraints.cypher	C3 - birthDeathConflict	262 ms
+constraints.cypher	C4 - birthPlayerConflict	696 ms
+constraints.cypher	C5 - deathPlayerConflict	311 ms
+constraints.cypher	C6 - playerAgeConflict	915 ms
+constraints.cypher	C7 - playerTooOldConflict	783 ms
+constraints.cypher	C8 - twoTeamsConflict	54851 ms
+constraints.cypher	C14 - marriageConflict	297 ms
+constraints.cypher	C16 - birthMarriageConflict	81 ms
+constraints.cypher	C17 - deathMarriageConflict	56 ms
+constraints.cypher	C18 - playerCoachConflict	299 ms
+constraints.cypher	C19 - twoCompaniesConflict	90 ms
+constraints.cypher	TOTAL	218586 ms
+----------------
+stats.cypher	Nb triplets	721 ms
+stats.cypher	Nb "o"	290 ms
+stats.cypher	Nb "s"	287 ms
+stats.cypher	nb "p"	276 ms
+stats.cypher	Nb "p" links distribution	565 ms
+stats.cypher	Nb conflicts distribution	1649 ms
+stats.cypher	Nb temporal conflicts	1349 ms
+stats.cypher	Distribution of linked "o"	423 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1465 ms
+results.cypher	inferredNodes	318 ms
+results.cypher	tCon_noConflicts	12 ms
+results.cypher	tCon_conflicts	2000 ms
+results.cypher	pCon_noConflicts	4005 ms
+results.cypher	pCon_conflicts	3635 ms
+results.cypher	pInc_noConflicts	3960 ms
+results.cypher	pInc_conflicts	3913 ms
+results.cypher	tInc_noConflicts	4280 ms
+results.cypher	tInc_conflicts	3829 ms
+Thu Sep 29 18:44:39 UTC 2022
+inputFile=pinstConf_rockit_wikidata_100_250k.csv
+----------------
+delete.cypher	delete nodes	53624 ms
+delete.cypher	TOTAL	53624 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	14 ms
+----------------
+graphSetting.cypher	dataset loading	91607 ms
+graphSetting.cypher	TOTAL	91607 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	457916 ms
+constraints.cypher	C1 - birthDateConflict	2657 ms
+constraints.cypher	C2 - deathDateConflict	745 ms
+constraints.cypher	C3 - birthDeathConflict	962 ms
+constraints.cypher	C4 - birthPlayerConflict	5475 ms
+constraints.cypher	C5 - deathPlayerConflict	670 ms
+constraints.cypher	C6 - playerAgeConflict	8983 ms
+constraints.cypher	C7 - playerTooOldConflict	10253 ms
+constraints.cypher	C8 - twoTeamsConflict	903292 ms
+constraints.cypher	C14 - marriageConflict	1287 ms
+constraints.cypher	C16 - birthMarriageConflict	276 ms
+constraints.cypher	C17 - deathMarriageConflict	157 ms
+constraints.cypher	C18 - playerCoachConflict	524 ms
+constraints.cypher	C19 - twoCompaniesConflict	222 ms
+constraints.cypher	TOTAL	1393419 ms
+----------------
+stats.cypher	Nb triplets	1320 ms
+stats.cypher	Nb "o"	498 ms
+stats.cypher	Nb "s"	499 ms
+stats.cypher	nb "p"	483 ms
+stats.cypher	Nb "p" links distribution	805 ms
+stats.cypher	Nb conflicts distribution	3055 ms
+stats.cypher	Nb temporal conflicts	2362 ms
+stats.cypher	Distribution of linked "o"	759 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	2851 ms
+results.cypher	inferredNodes	600 ms
+results.cypher	tCon_noConflicts	26 ms
+results.cypher	tCon_conflicts	4750 ms
+results.cypher	pCon_noConflicts	7553 ms
+results.cypher	pCon_conflicts	7570 ms
+results.cypher	pInc_noConflicts	7610 ms
+results.cypher	pInc_conflicts	7740 ms
+results.cypher	tInc_noConflicts	7888 ms
+results.cypher	tInc_conflicts	7916 ms
+Thu Sep 29 19:49:29 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_250k.csv
+----------------
+delete.cypher	delete nodes	181540 ms
+delete.cypher	TOTAL	181540 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	4 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	16 ms
+----------------
+graphSetting.cypher	dataset loading	81346 ms
+graphSetting.cypher	TOTAL	81346 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	24489 ms
+constraints.cypher	C1 - birthDateConflict	544 ms
+constraints.cypher	C2 - deathDateConflict	271 ms
+constraints.cypher	C3 - birthDeathConflict	477 ms
+constraints.cypher	C4 - birthPlayerConflict	1098 ms
+constraints.cypher	C5 - deathPlayerConflict	357 ms
+constraints.cypher	C6 - playerAgeConflict	1575 ms
+constraints.cypher	C7 - playerTooOldConflict	2148 ms
+constraints.cypher	C8 - twoTeamsConflict	126709 ms
+constraints.cypher	C14 - marriageConflict	700 ms
+constraints.cypher	C16 - birthMarriageConflict	125 ms
+constraints.cypher	C17 - deathMarriageConflict	94 ms
+constraints.cypher	C18 - playerCoachConflict	401 ms
+constraints.cypher	C19 - twoCompaniesConflict	99 ms
+constraints.cypher	TOTAL	159087 ms
+----------------
+stats.cypher	Nb triplets	852 ms
+stats.cypher	Nb "o"	330 ms
+stats.cypher	Nb "s"	322 ms
+stats.cypher	nb "p"	313 ms
+stats.cypher	Nb "p" links distribution	510 ms
+stats.cypher	Nb conflicts distribution	4212 ms
+stats.cypher	Nb temporal conflicts	3341 ms
+stats.cypher	Distribution of linked "o"	473 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1618 ms
+results.cypher	inferredNodes	344 ms
+results.cypher	tCon_noConflicts	22 ms
+results.cypher	tCon_conflicts	4853 ms
+results.cypher	pCon_noConflicts	10974 ms
+results.cypher	pCon_conflicts	9135 ms
+results.cypher	pInc_noConflicts	9700 ms
+results.cypher	pInc_conflicts	9600 ms
+results.cypher	tInc_noConflicts	9863 ms
+results.cypher	tInc_conflicts	9692 ms
+Thu Sep 29 19:58:01 UTC 2022
+inputFile=pinstConf_rockit_wikidata_1_250k.csv
+----------------
+delete.cypher	delete nodes	74214 ms
+delete.cypher	TOTAL	74214 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	13 ms
+----------------
+graphSetting.cypher	dataset loading	73958 ms
+graphSetting.cypher	TOTAL	73958 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	22330 ms
+constraints.cypher	C1 - birthDateConflict	249 ms
+constraints.cypher	C2 - deathDateConflict	243 ms
+constraints.cypher	C3 - birthDeathConflict	318 ms
+constraints.cypher	C4 - birthPlayerConflict	861 ms
+constraints.cypher	C5 - deathPlayerConflict	303 ms
+constraints.cypher	C6 - playerAgeConflict	1060 ms
+constraints.cypher	C7 - playerTooOldConflict	895 ms
+constraints.cypher	C8 - twoTeamsConflict	69409 ms
+constraints.cypher	C14 - marriageConflict	570 ms
+constraints.cypher	C16 - birthMarriageConflict	103 ms
+constraints.cypher	C17 - deathMarriageConflict	79 ms
+constraints.cypher	C18 - playerCoachConflict	280 ms
+constraints.cypher	C19 - twoCompaniesConflict	86 ms
+constraints.cypher	TOTAL	96786 ms
+----------------
+stats.cypher	Nb triplets	735 ms
+stats.cypher	Nb "o"	303 ms
+stats.cypher	Nb "s"	294 ms
+stats.cypher	nb "p"	487 ms
+stats.cypher	Nb "p" links distribution	462 ms
+stats.cypher	Nb conflicts distribution	2215 ms
+stats.cypher	Nb temporal conflicts	1705 ms
+stats.cypher	Distribution of linked "o"	425 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1430 ms
+results.cypher	inferredNodes	318 ms
+results.cypher	tCon_noConflicts	7 ms
+results.cypher	tCon_conflicts	2481 ms
+results.cypher	pCon_noConflicts	4832 ms
+results.cypher	pCon_conflicts	4536 ms
+results.cypher	pInc_noConflicts	5043 ms
+results.cypher	pInc_conflicts	4651 ms
+results.cypher	tInc_noConflicts	5205 ms
+results.cypher	tInc_conflicts	4940 ms
+Thu Sep 29 20:02:55 UTC 2022
+inputFile=pinstConf_rockit_wikidata_25_250k.csv
+----------------
+delete.cypher	delete nodes	56605 ms
+delete.cypher	TOTAL	56605 ms
+----------------
+schema.cypher	indices	3 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	15 ms
+----------------
+graphSetting.cypher	dataset loading	79494 ms
+graphSetting.cypher	TOTAL	79494 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	28470 ms
+constraints.cypher	C1 - birthDateConflict	992 ms
+constraints.cypher	C2 - deathDateConflict	443 ms
+constraints.cypher	C3 - birthDeathConflict	522 ms
+constraints.cypher	C4 - birthPlayerConflict	1657 ms
+constraints.cypher	C5 - deathPlayerConflict	427 ms
+constraints.cypher	C6 - playerAgeConflict	2580 ms
+constraints.cypher	C7 - playerTooOldConflict	2595 ms
+constraints.cypher	C8 - twoTeamsConflict	263937 ms
+constraints.cypher	C14 - marriageConflict	891 ms
+constraints.cypher	C16 - birthMarriageConflict	163 ms
+constraints.cypher	C17 - deathMarriageConflict	115 ms
+constraints.cypher	C18 - playerCoachConflict	539 ms
+constraints.cypher	C19 - twoCompaniesConflict	161 ms
+constraints.cypher	TOTAL	303492 ms
+----------------
+stats.cypher	Nb triplets	905 ms
+stats.cypher	Nb "o"	374 ms
+stats.cypher	Nb "s"	368 ms
+stats.cypher	nb "p"	362 ms
+stats.cypher	Nb "p" links distribution	585 ms
+stats.cypher	Nb conflicts distribution	8401 ms
+stats.cypher	Nb temporal conflicts	6504 ms
+stats.cypher	Distribution of linked "o"	555 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	1864 ms
+results.cypher	inferredNodes	390 ms
+results.cypher	tCon_noConflicts	30 ms
+results.cypher	tCon_conflicts	9401 ms
+results.cypher	pCon_noConflicts	18967 ms
+results.cypher	pCon_conflicts	18368 ms
+results.cypher	pInc_noConflicts	19085 ms
+results.cypher	pInc_conflicts	19053 ms
+results.cypher	tInc_noConflicts	19822 ms
+results.cypher	tInc_conflicts	19326 ms
+Thu Sep 29 20:12:57 UTC 2022
+inputFile=pinstConf_rockit_wikidata_50_250k.csv
+----------------
+delete.cypher	delete nodes	112801 ms
+delete.cypher	TOTAL	112801 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	12 ms
+----------------
+graphSetting.cypher	dataset loading	89158 ms
+graphSetting.cypher	TOTAL	89158 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	36250 ms
+constraints.cypher	C1 - birthDateConflict	1529 ms
+constraints.cypher	C2 - deathDateConflict	484 ms
+constraints.cypher	C3 - birthDeathConflict	676 ms
+constraints.cypher	C4 - birthPlayerConflict	2942 ms
+constraints.cypher	C5 - deathPlayerConflict	492 ms
+constraints.cypher	C6 - playerAgeConflict	4976 ms
+constraints.cypher	C7 - playerTooOldConflict	5457 ms
+constraints.cypher	C8 - twoTeamsConflict	490888 ms
+constraints.cypher	C14 - marriageConflict	1037 ms
+constraints.cypher	C16 - birthMarriageConflict	248 ms
+constraints.cypher	C17 - deathMarriageConflict	114 ms
+constraints.cypher	C18 - playerCoachConflict	479 ms
+constraints.cypher	C19 - twoCompaniesConflict	133 ms
+constraints.cypher	TOTAL	545705 ms
+----------------
+stats.cypher	Nb triplets	1112 ms
+stats.cypher	Nb "o"	464 ms
+stats.cypher	Nb "s"	537 ms
+stats.cypher	nb "p"	451 ms
+stats.cypher	Nb "p" links distribution	715 ms
+stats.cypher	Nb conflicts distribution	18833 ms
+stats.cypher	Nb temporal conflicts	13077 ms
+stats.cypher	Distribution of linked "o"	692 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	2362 ms
+results.cypher	inferredNodes	472 ms
+results.cypher	tCon_noConflicts	28 ms
+results.cypher	tCon_conflicts	19553 ms
+results.cypher	pCon_noConflicts	38519 ms
+results.cypher	pCon_conflicts	37145 ms
+results.cypher	pInc_noConflicts	38327 ms
+results.cypher	pInc_conflicts	38413 ms
+results.cypher	tInc_noConflicts	39088 ms
+results.cypher	tInc_conflicts	38751 ms
+Thu Sep 29 20:30:43 UTC 2022
+inputFile=pinstConf_rockit_wikidata_75_250k.csv
+----------------
+delete.cypher	delete nodes	186310 ms
+delete.cypher	TOTAL	186310 ms
+----------------
+schema.cypher	indices	2 ms
+schema.cypher	indices	2 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	indices	1 ms
+schema.cypher	TOTAL	11 ms
+----------------
+graphSetting.cypher	dataset loading	93326 ms
+graphSetting.cypher	TOTAL	93326 ms
+----------------
+constraints.cypher	Strict Temporal Consistency	42782 ms
+constraints.cypher	C1 - birthDateConflict	2038 ms
+constraints.cypher	C2 - deathDateConflict	619 ms
+constraints.cypher	C3 - birthDeathConflict	825 ms
+constraints.cypher	C4 - birthPlayerConflict	4023 ms
+constraints.cypher	C5 - deathPlayerConflict	641 ms
+constraints.cypher	C6 - playerAgeConflict	6809 ms
+constraints.cypher	C7 - playerTooOldConflict	7475 ms
+constraints.cypher	C8 - twoTeamsConflict	766816 ms
+constraints.cypher	C14 - marriageConflict	1118 ms
+constraints.cypher	C16 - birthMarriageConflict	288 ms
+constraints.cypher	C17 - deathMarriageConflict	153 ms
+constraints.cypher	C18 - playerCoachConflict	555 ms
+constraints.cypher	C19 - twoCompaniesConflict	203 ms
+constraints.cypher	TOTAL	834345 ms
+----------------
+stats.cypher	Nb triplets	1375 ms
+stats.cypher	Nb "o"	517 ms
+stats.cypher	Nb "s"	515 ms
+stats.cypher	nb "p"	502 ms
+stats.cypher	Nb "p" links distribution	780 ms
+stats.cypher	Nb conflicts distribution	33817 ms
+stats.cypher	Nb temporal conflicts	29283 ms
+stats.cypher	Distribution of linked "o"	802 ms
+----------------
+results.cypher	mapping_Neo4j_wikidata	2765 ms
+results.cypher	inferredNodes	543 ms
+results.cypher	tCon_noConflicts	35 ms
+results.cypher	tCon_conflicts	31026 ms
+results.cypher	pCon_noConflicts	69306 ms
+results.cypher	pCon_conflicts	69232 ms
+results.cypher	pInc_noConflicts	70327 ms
+results.cypher	pInc_conflicts	70162 ms
+results.cypher	tInc_noConflicts	72100 ms
+results.cypher	tInc_conflicts	71102 ms
+Thu Sep 29 20:58:42 UTC 2022
+inputFile=pinstConf_rockit_wikidata_10_100k.csv
+----------------
