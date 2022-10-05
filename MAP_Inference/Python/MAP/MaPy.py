@@ -21,7 +21,7 @@ import multiprocessing
 #with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k_nrockit.json', 'r') as f:
     #dico = json.load(f)
 
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
     dico = json.load(f)
 
 with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_0_5k_nrockit.json', 'r') as f2:
@@ -87,7 +87,7 @@ def compatible_merge(node,liste,dico):
 		
 
 # Build the solutions
-def build_sol(dico,index):
+def build_sol(dico):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
@@ -139,7 +139,7 @@ def build_sol(dico,index):
                     if potential_max < winner[2]:
                         del liste_sol[x]
                         x -= 1
-                    """             
+                    """           
                     diff = (set_nodes - liste_sol[x][1]) #- liste_sol[x][0]
                     sum_max = 0
                     for n in diff:
@@ -153,17 +153,19 @@ def build_sol(dico,index):
                         if len(set_diff) == 0:
                                 del liste_sol[x]
                                 x -= 1
+                    
                         else: # solution ne pouvant gagner mais avec des nodes a garder => new sol contient uniquement new nodes                           
-                            #potential_max = liste_sol[x][2]
-                            #for k in range(i+1,len(l_dico)):
-                            #    potential_max += l_dico[k][1][0] 
-                            #if potential_max < winner[2]:
+                            potential_max = liste_sol[x][2]
+                            for k in range(i+1,len(l_dico)):
+                                potential_max += l_dico[k][1][0] 
+                            if potential_max < winner[2]:
                                 liste_sol[x][0] = set_diff
                                 liste_sol[x][1] = set()
                                 liste_sol[x][2] = 0
                                 for n in liste_sol[x][0]:
                                     liste_sol[x][1] |= set(dico[str(n)][1])
                                     liste_sol[x][2] += dico[str(n)][0] 
+                        
                 x += 1 
 
         while j < len(liste_sol)-h:
@@ -294,7 +296,7 @@ def solutionForList(l_dico):
     return output
 
 
-
+"""
 start = time.time()
 output1 = solutionForList(l_dico)
 end = time.time()
@@ -318,7 +320,7 @@ print(len(output1[1])+len(dico))#+len(dico2))
 #print(output1[1])
 
 
-"""
+
 with open('n-rockit_solution_0_5k_avecC0.json', 'r') as f:
     l_rockit = json.load(f)
 
@@ -405,10 +407,10 @@ def parallelization(l_dico):
 		output[1] += liste
 	return output
 
-"""
+
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
@@ -431,4 +433,3 @@ if __name__ == '__main__':
     print(f'nb nodes total = {len(output1[1]) + len(dico)}')
     #print(f'Score total = {output1[0] + output12 + output2}')
     print(f'Score total = {output1[0] + output2}')
-"""
