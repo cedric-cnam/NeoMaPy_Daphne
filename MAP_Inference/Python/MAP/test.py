@@ -4,6 +4,13 @@ import json
 
 
 """
+mapy nrockit 0_5k:
+Temps d'exécution conf : 482.83s
+46121722.17380003
+3434.621000000002
+Score total MaPy = 46125156.79480003
+3254 nodes
+
 with open('.\..\..\Data_Json\Dictionnary\ClearDico\dico-2.5kConf.json', 'r') as f:
 	dico1 = json.load(f)
 

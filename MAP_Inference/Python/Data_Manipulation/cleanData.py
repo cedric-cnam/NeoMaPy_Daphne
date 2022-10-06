@@ -13,7 +13,7 @@ import json
 # Give your initial json file containing the conflicting nodes
 #data = 'dicoTest100.json'
 #data = '.\..\..\Data_Json\Dictionnary\\1kDico.json'
-data = '.\..\..\Data_Json\Dictionnary\dicotIncConf_0_50k.json'
+data = '.\..\..\Data_Json\Dictionnary\dicotIncConf_0_5k_nrockit.json'
 with open(data, 'r') as f:
     dico = json.load(f)
 
@@ -78,7 +78,7 @@ output = select(dico)
 
 
 # Creation of the json file of this dictionnary    
-fichier = open("dicotIncInitClear_0_50k.json", "w")
+fichier = open("dicotIncInitClear_0_5k_nrockit.json", "w")
 fichier.write("{\n")
 size = len(output)
 i = 1

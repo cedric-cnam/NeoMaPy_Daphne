@@ -18,14 +18,11 @@ import multiprocessing
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
 
-#with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k_nrockit.json', 'r') as f:
-    #dico = json.load(f)
-
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_100_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k.json', 'r') as f:
     dico = json.load(f)
 
-with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_0_5k_nrockit.json', 'r') as f2:
-    dico2 = json.load(f2)
+#with open('.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncNoConfClear_0_5k_nrockit.json', 'r') as f2:
+#    dico2 = json.load(f2)
 
 ##############################################################################################################
 ##############################################################################################################
@@ -50,6 +47,7 @@ def sum_weight(dico,solution):
 
 def max_sum_list_int(dico,l_sol):
     l_sum = []
+    #print(f'len-sol = {len(l_sol)}')
     for sol in l_sol:
         l_sum.append(sum_weight(dico,sol[0]))
     return (max(l_sum), l_sol[l_sum.index(max(l_sum))][0])
@@ -60,14 +58,31 @@ def deletInclude(liste):
     while i < len(liste):
         j = i + 1 
         while j < len(liste):
-            if liste[i][0] < liste[j][0]:
+            if (liste[i][0] < liste[j][0]):
                 del liste[i]
                 continue
-            elif liste[j][0] < liste[i][0]:
+            elif (liste[j][0] < liste[i][0]):
                 del liste[j]	
                 continue
+            """
+            if (liste[i][1] >= liste[j][1] and liste[i][2] < liste[j][2]):
+                print("here i")
+                del liste[i]
+                continue
+            elif (liste[j][1] >= liste[i][1] and liste[j][2] < liste[i][2]):
+                print("here j")
+                del liste[j]	
+                continue
+            """ 
             j += 1
         i += 1
+
+"""
+i = 43 + len(l_dico) = 107 et len_sol = 6392 
+i = 44 + len(l_dico) = 107 et len_sol = 8394 
+i = 45 + len(l_dico) = 107 et len_sol = 7068 
+i = 46 + len(l_dico) = 107 et len_sol = 7635 
+"""
 
 
 #liste = [[id_nodes],[conflicts]]
@@ -84,10 +99,9 @@ def compatible_merge(node,liste,dico):
                 l_merge_comp[1] |= set(dico[str(n)][1])
                 l_merge_comp[2] += dico[str(n)][0]
     return (l_merge_comp,compatible)
-		
 
-# Build the solutions
-def build_sol(dico):
+
+def end_sol(sol_init,index,dico):
     liste_sol = []
     l_dico = list(dico.items())
     nb_nodes = len(l_dico)
@@ -95,24 +109,37 @@ def build_sol(dico):
     modulo2 = 2
     threshold = int(nb_nodes*0.67)
     #threshold = int(nb_nodes*0.33)
-    liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
-    maxi = l_dico[0][1][0]
+    liste_sol.append(sol_init)
+    maxi = sol_init[2]
     max_sol = liste_sol[0]
     new_max = False
-    winner = liste_sol[0]
+    winner = sol_init
     try_winner = False
+
+    conf = sol_init[1]
+    change = False
 
     set_nodes = set()
     for l in l_dico:
         set_nodes.add(int(l[0]))
 
-    for i in range(0,len(l_dico)):
-        #print(f'i = {i} + len(l_dico) = {len(l_dico)} et len_sol = {len(liste_sol)} ')
-        j = 0
-        h = 0 # sert à ne pas compter plusieurs fois les nodes ajoutés en fin de liste
+    for i in range(index,len(l_dico)):
+        
+        if len(liste_sol) > 100:
+            liste_sol2 = []
+            for sol in liste_sol:
+                s = end_sol(sol,i,dico)
+                liste_sol2.append(s)
+            change = True
+            break
 
-        #if i == 42:
-            #printSol(liste_sol)
+
+
+        if i not in conf:
+            #print(f'end_sol : i = {i} + len(l_dico) = {len(l_dico)} et len_sol = {len(liste_sol)} ')
+            j = 0
+            h = 0 # sert à ne pas compter plusieurs fois les nodes ajoutés en fin de liste
+
         if new_max == True and (len(max_sol[0]) + len(max_sol[1]) > threshold):
             #print("la ?")
             potential_winner = copy.deepcopy(max_sol)
@@ -139,7 +166,7 @@ def build_sol(dico):
                     if potential_max < winner[2]:
                         del liste_sol[x]
                         x -= 1
-                    """           
+                    """             
                     diff = (set_nodes - liste_sol[x][1]) #- liste_sol[x][0]
                     sum_max = 0
                     for n in diff:
@@ -153,22 +180,24 @@ def build_sol(dico):
                         if len(set_diff) == 0:
                                 del liste_sol[x]
                                 x -= 1
-                    
                         else: # solution ne pouvant gagner mais avec des nodes a garder => new sol contient uniquement new nodes                           
-                            potential_max = liste_sol[x][2]
-                            for k in range(i+1,len(l_dico)):
-                                potential_max += l_dico[k][1][0] 
-                            if potential_max < winner[2]:
+                            #potential_max = liste_sol[x][2]
+                            #for k in range(i+1,len(l_dico)):
+                            #    potential_max += l_dico[k][1][0] 
+                            #if potential_max < winner[2]:
                                 liste_sol[x][0] = set_diff
                                 liste_sol[x][1] = set()
                                 liste_sol[x][2] = 0
                                 for n in liste_sol[x][0]:
                                     liste_sol[x][1] |= set(dico[str(n)][1])
                                     liste_sol[x][2] += dico[str(n)][0] 
-                        
                 x += 1 
+        #if index == 39:
+            #print(f'i = {i}')
 
         while j < len(liste_sol)-h:
+            #if index == 39:
+                #print(f'j = {j}')
             (l2,bool) = compatible_merge(int(l_dico[i][0]),liste_sol[j],dico)
             if bool:
                 liste_sol[j][0].add(int(l_dico[i][0]))
@@ -181,29 +210,20 @@ def build_sol(dico):
                 
                 #if i > threshold2:
                 if len(liste_sol[j][0]) + len(liste_sol[j][1]) > threshold:
+                    #best_sol = end_sol(liste_sol[j],i+1,dico)
+                    #if index == 39:
+                        #print(f'l_sol2 = {len(best_sol)}')
+                    #end_sols.append(best_sol)
+                    #del liste_sol[j]
+                    #j -= 1 
+                    
                     potential_max = liste_sol[j][2]
                     for k in range(i+1,len(l_dico)):
                         potential_max += l_dico[k][1][0]  
                     if potential_max < maxi:
-                        """
-                        set_id = set()
-                        for l in liste_sol:
-                            if l != liste_sol[j]:
-                                set_id |= l[0]
-                        set_diff = liste_sol[j][0] - set_id
-                        if len(set_diff) == 0:
-                            """
                         del liste_sol[j]
                         j -= 1 
-                        """
-                        else:
-                            liste_sol[j][0] = set_diff
-                            liste_sol[j][1] = set()
-                            liste_sol[j][2] = 0
-                            for n in liste_sol[j][0]:
-                                liste_sol[j][1] |= set(dico[str(n)][1])
-                                liste_sol[j][2] += dico[str(n)][0]      
-                            """
+                     
                     
             else:
                 include = False
@@ -219,12 +239,14 @@ def build_sol(dico):
                         max_sol = copy.deepcopy(l2)
                         new_max = True
             j += 1
+
         if i%modulo  == 0:    
             deletInclude(liste_sol)    
 
         #if i > threshold2 and i%modulo2==0:
+        
         if i%modulo2 == 0:
-            x = 0
+            x = 0            
             while x < len(liste_sol):                
                 if len(liste_sol[x][0]) + len(liste_sol[x][1]) > threshold:
                     diff = (set_nodes - liste_sol[x][1]) - liste_sol[x][0]
@@ -249,14 +271,234 @@ def build_sol(dico):
                                 liste_sol[x][2] += dico[str(n)][0]
                 x += 1 
 
-    for sol in liste_sol:
+    if change == False:
+        best_score = 0
+        for sol in liste_sol:
+            for i2 in range(0,len(l_dico) ):
+                if int(l_dico[i2][0]) not in sol[1] and int(l_dico[i2][0]) not in sol[0]:
+                    sol[0].add(int(l_dico[i2][0]))
+                    sol[1] |= set(l_dico[i2][1][1])
+                    sol[2] += l_dico[i2][1][0]
+            if sol[2] > best_score:
+                best_score = sol[2]
+                best_sol = sol
+    else:
+        best_score = 0
+        for sol in liste_sol2:
+            for i2 in range(0,len(l_dico)):
+                if int(l_dico[i2][0]) not in sol[1] and int(l_dico[i2][0]) not in sol[0]:
+                    sol[0].add(int(l_dico[i2][0]))
+                    sol[1] |= set(l_dico[i2][1][1])
+                    sol[2] += l_dico[i2][1][0]
+            if sol[2] > best_score:
+                best_score = sol[2]
+                best_sol = sol      
+
+    #if best_sol == []:
+        #print("problem !!")
+    return best_sol
+
+
+# Build the solutions
+def build_sol(dico,index):
+    liste_sol = []
+    l_dico = list(dico.items())
+    nb_nodes = len(l_dico)
+    modulo = 4
+    modulo2 = 2
+    threshold = int(nb_nodes*0.67)
+    #threshold = int(nb_nodes*0.95)
+    liste_sol.append([{int(l_dico[0][0])},set(l_dico[0][1][1]), l_dico[0][1][0]])
+    maxi = l_dico[0][1][0]
+    max_sol = liste_sol[0]
+    new_max = False
+    winner = liste_sol[0]
+    try_winner = False
+
+    end = False
+    end_sols = []
+
+    #print(f'index = {index}')
+
+    set_nodes = set()
+    for l in l_dico:
+        set_nodes.add(int(l[0]))
+    
+    #if index == 39:
+        #print(f'l_dico = {len(l_dico)}')
+
+    for i in range(0,len(l_dico)):
+        #if index == 39:
+            #print(f'i = {i} et l_sol = {len(liste_sol)}')
+        if len(liste_sol)> 100:
+            print(f'build sol : i = {i} + len(l_dico) = {len(l_dico)} et len_sol = {len(liste_sol)} ')
+        j = 0
+        h = 0 # sert à ne pas compter plusieurs fois les nodes ajoutés en fin de liste
+
+        
+        if len(liste_sol) > 100 :  
+            for sol in liste_sol:
+                best_sol = end_sol(sol,i,dico)
+                end_sols.append(best_sol)
+            end = True
+            break
+        
+
+        #if i == 42:
+            #printSol(liste_sol)
+            #print(f'0 : {len(liste_sol[0][0]) + len(liste_sol[0][1])} / {len(l_dico)}')
+            #print(f'1 : {len(liste_sol[1][0]) + len(liste_sol[1][1])} / {len(l_dico)}')
+            #print(f'2 : {len(liste_sol[2][0]) + len(liste_sol[2][1])} / {len(l_dico)}')
+            #print(f'3 : {len(liste_sol[3][0]) + len(liste_sol[3][1])} / {len(l_dico)}')
+            #print(f'4 : {len(liste_sol[4][0]) + len(liste_sol[4][1])} / {len(l_dico)}')
+
+        if new_max == True and (len(max_sol[0]) + len(max_sol[1]) > threshold):
+            #print("la ?")
+            potential_winner = copy.deepcopy(max_sol)
+            new_max = False
+            for k in range(i+1,len(l_dico)):
+                if int(l_dico[k][0]) not in potential_winner[1]:
+                    potential_winner[0].add(int(l_dico[k][0]))
+                    potential_winner[1] |= set(l_dico[k][1][1])
+                    potential_winner[2] += l_dico[k][1][0]
+            if potential_winner[2] > winner[2]:
+                winner = copy.deepcopy(potential_winner)
+                try_winner = True
+
+        if try_winner:
+            x = 0
+            try_winner = False
+            while x < len(liste_sol):                
+                if len(liste_sol[x][0]) + len(liste_sol[x][1]) > threshold:
+                    #print("ici ?")
+                    """
+                    potential_max = liste_sol[x][2]
+                    for k in range(i+1,len(l_dico)):
+                        potential_max += l_dico[k][1][0] 
+                    if potential_max < winner[2]:
+                        del liste_sol[x]
+                        x -= 1
+                    """             
+                    diff = (set_nodes - liste_sol[x][1]) #- liste_sol[x][0]
+                    sum_max = 0
+                    for n in diff:
+                        sum_max += dico[str(n)][0]
+                    if sum_max + liste_sol[x][2] < winner[2]:
+                        set_id = set()
+                        for l in liste_sol:
+                            if l != liste_sol[x]:
+                                set_id |= l[0]
+                        set_diff = liste_sol[x][0] - set_id
+                        if len(set_diff) == 0:
+                                del liste_sol[x]
+                                x -= 1
+                        else: # solution ne pouvant gagner mais avec des nodes a garder => new sol contient uniquement new nodes                           
+                            #potential_max = liste_sol[x][2]
+                            #for k in range(i+1,len(l_dico)):
+                            #    potential_max += l_dico[k][1][0] 
+                            #if potential_max < winner[2]:
+                                liste_sol[x][0] = set_diff
+                                liste_sol[x][1] = set()
+                                liste_sol[x][2] = 0
+                                for n in liste_sol[x][0]:
+                                    liste_sol[x][1] |= set(dico[str(n)][1])
+                                    liste_sol[x][2] += dico[str(n)][0] 
+                x += 1 
+        #if index == 39:
+            #print(f'i = {i}')
+
+        while j < len(liste_sol)-h:
+            #if index == 39:
+                #print(f'j = {j}')
+            (l2,bool) = compatible_merge(int(l_dico[i][0]),liste_sol[j],dico)
+            if bool:
+                liste_sol[j][0].add(int(l_dico[i][0]))
+                liste_sol[j][1] |= set(l_dico[i][1][1])
+                liste_sol[j][2] += l_dico[i][1][0]
+                if maxi < liste_sol[j][2]:
+                    maxi = liste_sol[j][2]
+                    max_sol = copy.deepcopy(liste_sol[j])  
+                    new_max = True
+                
+                #if i > threshold2:
+                if len(liste_sol[j][0]) + len(liste_sol[j][1]) > threshold:
+                    #best_sol = end_sol(liste_sol[j],i+1,dico)
+                    #if index == 39:
+                        #print(f'l_sol2 = {len(best_sol)}')
+                    #end_sols.append(best_sol)
+                    #del liste_sol[j]
+                    #j -= 1 
+                    
+                    potential_max = liste_sol[j][2]
+                    for k in range(i+1,len(l_dico)):
+                        potential_max += l_dico[k][1][0]  
+                    if potential_max < maxi:
+                        del liste_sol[j]
+                        j -= 1 
+                     
+                    
+            else:
+                include = False
+                for l in liste_sol:
+                    if l2[0] <= l[0]:# or l2[0]>l[0]:
+                        include = True
+                        break
+                if not(include):
+                    liste_sol += [[l2[0],l2[1],l2[2]]]
+                    h += 1
+                    if maxi < l2[2]:
+                        maxi = l2[2]
+                        max_sol = copy.deepcopy(l2)
+                        new_max = True
+            j += 1
+
+        if i%modulo  == 0:    
+            deletInclude(liste_sol)    
+
+        #if i > threshold2 and i%modulo2==0:
+        
+        if i%modulo2 == 0:
+            x = 0            
+            while x < len(liste_sol):                
+                if len(liste_sol[x][0]) + len(liste_sol[x][1]) > threshold:
+                    diff = (set_nodes - liste_sol[x][1]) - liste_sol[x][0]
+                    sum_max = 0
+                    for n in diff:
+                        sum_max += dico[str(n)][0]
+                    if sum_max + liste_sol[x][2] < maxi:
+                        set_id = set()
+                        for l in liste_sol:
+                            if l != liste_sol[x]:
+                                set_id |= l[0]
+                        set_diff = liste_sol[x][0] - set_id
+                        if len(set_diff) == 0:
+                            del liste_sol[x]
+                            x -= 1
+                        else:
+                            liste_sol[x][0] = set_diff
+                            liste_sol[x][1] = set()
+                            liste_sol[x][2] = 0
+                            for n in liste_sol[x][0]:
+                                liste_sol[x][1] |= set(dico[str(n)][1])
+                                liste_sol[x][2] += dico[str(n)][0]
+                x += 1 
+            
+    if end==False:
+        end_sols = copy.deepcopy(liste_sol)
+    
+    for sol in end_sols:
         for i2 in range(0,i):
             if int(l_dico[i2][0]) not in sol[1] and int(l_dico[i2][0]) not in sol[0]:
                 sol[0].add(int(l_dico[i2][0]))
                 sol[1] |= set(l_dico[i2][1][1])
                 sol[2] += l_dico[i2][1][0]
     
-    return liste_sol
+
+    #if index == 38:
+    #print(f'end_sol = {end_sols}')
+    #print(f'list_sol = {liste_sol}')
+    
+    return end_sols
 
 
 ##############################################################################################################
@@ -266,20 +508,20 @@ def build_sol(dico):
 
 ##################################### LOAD the data for OPTI 2 ###############################################
 
-#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k_nrockit.json', 'r') as f: 	
-#    l_dico = json.load(f)
-
 with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k.json', 'r') as f: 	
     l_dico = json.load(f)
 
-#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k_nrockitClear.json', 'r') as f: 	
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k_nrockit.json', 'r') as f: 	
     #l_dico = json.load(f)
+
+#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k_nrockitClear.json', 'r') as f: 	
+#    l_dico = json.load(f)
 
 #################################### Apply Opti 1 on the list of dico ########################################
 def solutionForList(l_dico):
     set_init = set()
     output = [0, set_init]
-    i = 1
+    i = 0
     size = len(l_dico["list"])
     for dico in l_dico["list"]:
         #start = time.time()
@@ -296,7 +538,7 @@ def solutionForList(l_dico):
     return output
 
 
-"""
+
 start = time.time()
 output1 = solutionForList(l_dico)
 end = time.time()
@@ -320,7 +562,7 @@ print(len(output1[1])+len(dico))#+len(dico2))
 #print(output1[1])
 
 
-
+"""
 with open('n-rockit_solution_0_5k_avecC0.json', 'r') as f:
     l_rockit = json.load(f)
 
@@ -407,10 +649,10 @@ def parallelization(l_dico):
 		output[1] += liste
 	return output
 
-
+"""
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_100_50k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_5k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
@@ -433,3 +675,4 @@ if __name__ == '__main__':
     print(f'nb nodes total = {len(output1[1]) + len(dico)}')
     #print(f'Score total = {output1[0] + output12 + output2}')
     print(f'Score total = {output1[0] + output2}')
+"""
