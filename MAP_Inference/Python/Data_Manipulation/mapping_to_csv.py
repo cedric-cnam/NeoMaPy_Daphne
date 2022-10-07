@@ -1,13 +1,13 @@
 import json
 
-file_json = "mapping_Neo4j_wikidata_0_5k_nrockit.json"
+file_json = "mapping_Neo4j_wikidata_0_5k.json"
 #file_json = open(data_json,"r")
 #file_solution = open("n-rockit_solution_0_4642_tinc.json","w")
 
 with open(file_json, 'r') as f:
     l_dico = json.load(f)
 
-new_file = open("wikidata_0_5k_nrockit.csv","w")
+new_file = open("wikidata_0_5k.csv","w")
 
 set_so = set()
 set_s = set()
@@ -32,7 +32,7 @@ for dico in l_dico:
     w = str(dico["weight"])
     
     #print("\n")
-    if w[-3:] == "+18":
+    if w[-3:] == "E18":
         w = "9223372"
     string = "pinstConf(\"" + s + "\",\"" + p + "\",\"" + o + "\",\"" + d_s + "\",\"" + d_e + "\",\"true\"," + w + ")\n" 
     new_file.write(string)

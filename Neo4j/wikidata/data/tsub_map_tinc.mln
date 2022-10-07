@@ -28,7 +28,7 @@ disjoint(i1,i2,i3,i4) := [(i2 < i3) || (i4 < i1)]
 
 
 // intervals for two property assertions (with the same subject and same property) conflict
-!pinst(x, p, y, i1, i2, valid) v !pinst(x, p, z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4).
+//!pinst(x, p, y, i1, i2, valid) v !pinst(x, p, z, i3, i4, valid) v sameAs(y, z) v disjoint(i1,i2,i3,i4).
 
 
 // 1. A person cannot have two birth dates

@@ -17,7 +17,7 @@ import multiprocessing
 ##############################################################################################################
 ##############################################################################################################
 ###################################### LOAD the data  OPTI 1 #################################################
-with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_50k.json', 'r') as f:
+with open('.\..\..\Data_Json\Dictionnary\dicoNoConf_0_5k.json', 'r') as f:
     dico = json.load(f)
 
 #with open('.\..\..\Data_Json\Dictionnary\dicotIncNoConf_0_5k.json', 'r') as f:
@@ -529,7 +529,7 @@ def parallelization(l_dico):
 
 if __name__ == '__main__':
     #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_50_50kClear.json', 'r') as f: 
-    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_0_50k.json', 'r') as f: 	
+    with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico_0_5k.json', 'r') as f: 	
         l_dico = json.load(f)
 
     start = time.time()
@@ -553,13 +553,68 @@ if __name__ == '__main__':
     #print(f'Score total = {output1[0] + output12 + output2}')
     print(f'Score total = {output1[0] + output2}')
 
-    """
+    
+      
+    with open('solution_0_5k.json', 'r') as f:
+        l_rockit = json.load(f)
+
     set_k = set()
     for k,v in dico.items():
         set_k.add(int(k))
 
     set_mapy = set(output1[1]).union(set_k)
+    set_rockit = set(l_rockit)
+    
 
+    """
+    diff1 = set_mapy.difference(set_rockit)
+    print(f'diff mapy - rockit = {diff1}\n')
+    print(len(diff1))
+
+    diff2 = set_rockit.difference(set_mapy)
+    print(f'diff rockit - mapy = {diff2}')
+    print(len(diff2))
+    """
+
+    
+    set_conf = set()
+    sum = 0
+    q = 0
+    for id in set_rockit:
+        #if q == 0:
+            #print(f'type id = {type(id)}')
+            #q += 1
+        for dico in l_dico["list"]:
+            #"if q == 1:
+                #print(dico)
+                #q += 1
+            if str(id) in dico:
+                #if q == 1 or q == 2:
+                    #print(f'ici')
+                    #q += 1
+                for conf in dico[str(id)][1]:
+                    if int(conf) in set_rockit:
+                        set_conf.add(int(conf))
+                        set_conf.add(int(id))
+                        sum += 1
+
+    #print(f'nb conflit rockit = {sum}')
+
+    print(f'nb nodes conflit rockit = {len(set_conf)}')
+    print(set_conf)
+    #without sA = 1566
+    #sameAS = 21
+
+    
+    """
+    set_k = set()
+    for k,v in dico.items():
+        set_k.add(int(k))
+
+
+    set_mapy = set(output1[1]).union(set_k)
+    """
+    
     sum = 0
     q = 0
     for id in set_mapy:
@@ -579,4 +634,4 @@ if __name__ == '__main__':
                         sum += 1
 
     print(f'nb conflit mapy = {sum}')
-    """
+    
