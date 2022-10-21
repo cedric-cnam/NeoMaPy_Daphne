@@ -7,12 +7,12 @@ conf: !pinstConf(s, p, o, i1, i2, valid, conf) v pinst(s, p, o, i1, i2, valid)
 
 // intervals must be consistent, otherwise record a conflict
 consistent(i1,i2) := [i1 <= i2]
-//!pinst(s, p, o, i1, i2, valid) v consistent(i1,i2).
+!pinst(s, p, o, i1, i2, valid) v consistent(i1,i2).
 
 
 before(i1,i2,i3,i4) := [i2 < i3]
 validLifeSpan(i1, i2) := [(i2 - i1) < 15000]
-aboveSixteen(birth, other) := [(other - birth) > 1500]
+aboveSixteen(birth, other) := [(other - birth) > 1600]
 belowFifty(birth, other) := [(other - birth) < 5000]
 // meets(i1,i2,i3,i4) := []
 // overlaps(i1,i2,i3,i4) := []

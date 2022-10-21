@@ -1,0 +1,1 @@
+sudo tail -f -n 200 neo4jDocker_folder/log

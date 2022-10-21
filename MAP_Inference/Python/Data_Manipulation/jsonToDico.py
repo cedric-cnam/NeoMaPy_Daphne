@@ -10,13 +10,13 @@ import json
 
 
 # Give your initial json file containing the conflicting nodes
-data_conf = '.\..\..\Data_Json\Initial_Data\\tInc_conflicts_0_5k_true.json'
+data_conf = '.\..\..\Data_Json\Initial_Data\conflicts_0_5k.json'
 with open(data_conf, 'r') as f:
     liste_conf = json.load(f)
 
 
 # Give your initial json file containing the non conflicting nodes
-data_noconf = '.\..\..\Data_Json\Initial_Data\\tInc_noConflicts_0_5k_true.json'
+data_noconf = '.\..\..\Data_Json\Initial_Data\\noConflicts_0_5k.json'
 with open(data_noconf, 'r') as f2:
     liste_noconf = json.load(f2)
 
@@ -48,7 +48,7 @@ for i in liste_noconf:
 
 
 # Creation of the json file of this dictionnary of conflicting nodes 
-fichier_conf = open("dicotIncConf_0_5k_true.json", "w")
+fichier_conf = open("dicoConf_0_5k.json", "w")
 fichier_conf.write("{\n")
 size = len(dico_conf)
 i = 1
@@ -69,7 +69,7 @@ fichier_conf.close()
 
 
 # Creation of the json file of this dictionnary of non conflicting nodes 
-fichier_noconf = open("dicotIncNoConf_0_5k_true.json", "w")
+fichier_noconf = open("dicoNoConf_0_5k.json", "w")
 fichier_noconf.write("{\n")
 size = len(dico_noconf)
 i = 1

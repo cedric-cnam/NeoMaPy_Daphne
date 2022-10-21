@@ -15,8 +15,8 @@ import time
 ############################################## LOAD the data #################################################
 
 start = time.time()
-data_conf = '.\..\..\Data_Json\Dictionnary\dicotIncConf_0_5k_true.json'
-#data_conf = '.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncConfClear_0_50k.json'
+data_conf = '.\..\..\Data_Json\Dictionnary\dicoConf_0_5k.json'
+#data_conf = '.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncConfClear_0_5k_nrockit.json'
 with open(data_conf, 'r') as f:     
     dic = json.load(f)
 
@@ -67,7 +67,8 @@ def Ndico(dico):
 ############################################## Write the data ################################################
 
 # Creation of the json file of this dictionnary    
-fichier = open("listOfDicotInc_0_5k_true.json", "w")
+fichier = open("listOfDico_0_5k.json", "w")
+#fichier = open("listOfDicotInc_0_5k_nrockitClear.json", "w")
 fichier.write("{\n")
 fichier.write("\t \"list\": [\n")
 ListeOfDicos = Ndico(dic)

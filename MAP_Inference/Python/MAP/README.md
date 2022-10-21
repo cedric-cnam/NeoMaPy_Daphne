@@ -233,7 +233,8 @@ Where:
     - Time : 5.4 sec
     - Score conflicts = 1987.274360180002
     - Score no conflicts = 9428.338059280117
-    - Score total = 11415.612419460118
+    - Score total = 11415.612419460118 => 1.2s
+    - Score total = 11415.612419460118 => 1.2s
     - listOfDicotInc_0_50k contains 10 767 nodes, 843 dico with max length = 348 
     - (indice, size, time) = [(0, 348, 0.64s), (1, 194, 0.21s), (2, 123, 0.08s), (3, 89, 0.02s), (4, 86, 0.69s), (5, 111, 1.90s)]
     - distribution with a gap of 50 = [809, 27, 5, 1, 0, 0, 1, 0, 0, 0]
@@ -244,7 +245,8 @@ Where:
     - Time : 86 sec
     - Score conflicts = 2559.32257055
     - Score no conflicts = 9010.019988558492
-    - Score total = 11569.342559108089
+    - Score total = 11569.342559108089 => 11s
+    - Score total = 11568.916159118087 => 5.5s
     - listOfDicotInc_10_50k contains - nodes, - dico with max length = ? 
     - DicotIncNoConf_10_50k contains - nodes
     - Total nodes = 
@@ -253,7 +255,8 @@ Where:
     - Time : 224.5 sec
     - Score conflicts = 3519.8857710051902
     - Score no conflicts = 8228.037928652875
-    - Score total = 11747.923699658066
+    - Score total = 11747.923699658066 => 20s
+    - 11747.826369658065 => 13s
 
 - 50_50k:
     - Time : 145 sec
@@ -263,13 +266,18 @@ Where:
     - listOfDicotInc_50_50k contains 39 909 nodes, 5393 dico with max length = 461 
     - DicotIncNoConf_50_50k contains 32 718 nodes
     - Total nodes = 72 627
+    - Score total = 12405.24347850234 => 22s
+    - Score total = 12403.868398462339 => 15s
 
 - 75_50k:
     - Time : 325.16 sec
     - Score conflicts = 6869.803541977189
     - Score no conflicts = 6288.838057316909
     - Score total = 13158.641599294097
-    - Score total = 13159.1569293041 => 26.5s
+    - Score total = 13159.1569293041 => 28s
+    - Score total = 13157.035139314099 => 18s
+    
+
 
 - 100_50k:
     - 756.9s
@@ -277,7 +285,8 @@ Where:
     - 8513.251010129014
     - 5046.633859383296
     - Score total = 13559.884869512309
-    - Score total = 13559.38823950231 => 78.3s
+    - Score total = 13559.38823950231 => 78.5s
+    - Score total = 13559.315129512313 => 35s
 
 
 
