@@ -36,9 +36,12 @@ MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
 WHERE tf1 <> tf2 AND tf1.date_start = tf2.date_start AND tf1.polarity <> tf2.polarity
 MERGE (tf1) -[:conflict{type:"C1-1"}]- (tf2);
 
+MATCH (n) RETURN id(n) AS id, labels(n) as labels, n.name as name, n.date_start+"" as date_start, n.date_end+"" AS date_end, n.s AS s, n.o as o, n.p as p, n.polarity AS polarity, n.weight+"" as weight
+MATCH (n)-[r]->(m) RETURN id(r) AS id, type(r) AS type, id(n) AS sourceId, id(m) AS targetId, r.type as conflictType
+
 //C2 - deathDateConflict
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
-  p2=(tf2:TF{p:"P569"}) -[:s]-> (s:Concept)
+  p2=(tf2:TF{p:"P570"}) -[:s]-> (s:Concept)
 WHERE tf1 <> tf2 AND tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C2"}]- (tf2);
 
