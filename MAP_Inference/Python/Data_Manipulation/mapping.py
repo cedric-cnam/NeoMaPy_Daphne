@@ -85,7 +85,7 @@ for line_db in file_db:
 
 file_json = "mapping_Neo4j_wikidata_0_5k.json"
 #file_json = open(data_json,"r")
-file_solution = open("solution_0_5k.json","w")
+file_solution = open("solution_0_5k_SansC0.json","w")
 
 with open(file_json, 'r') as f:
     l_dico = json.load(f)
