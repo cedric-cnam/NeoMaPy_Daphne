@@ -29,8 +29,8 @@ public class Connection implements AutoCloseable {
 
 	public Connection() throws Exception {
 		Config config = Config.builder().build();
-		driver = GraphDatabase.driver((String) GraphModeling.config.get("URI"),
-				AuthTokens.basic((String) GraphModeling.config.get("user"), (String) GraphModeling.config.get("mdp")),
+		driver = GraphDatabase.driver((String) NeoMaPy.config.get("URI"),
+				AuthTokens.basic((String) NeoMaPy.config.get("user"), (String) NeoMaPy.config.get("mdp")),
 				config);
 	}
 

@@ -35,6 +35,7 @@ public class WikidataReader {
 				lines.add(w);
 			} catch (Exception e) {System.out.println(line);e.printStackTrace();}
 		}
+		System.out.println("Nb lines: "+lines.size());
 		return lines;
 	}
 }

@@ -13,7 +13,7 @@ public class Translate2Neo4j {
 	WikidataReader wr = new WikidataReader ();
 	public static String outputFolder = "../data/wikidata2graphModeling/";
 	public static String inputFolder = "../data/input/";
-	public static float ratio_rand_negative_polarity = 0.0f;
+	public static float ratio_rand_negative_polarity = 0.05f;
 	public static boolean lowWeight = true;
 	public static boolean weightsNormalization = false;
 
@@ -57,6 +57,7 @@ public class Translate2Neo4j {
 					if(l.polarity && (!lowWeight || l.proba < sum_true/nb_true)) {
 						l.polarity = false;
 						nb_rand_negative_polarity--;
+						System.out.println("nb rand remaining: "+nb_rand_negative_polarity);
 					}
 				}
 			}
@@ -111,6 +112,7 @@ public class Translate2Neo4j {
 		List<String> files = new ArrayList<String> ();
 		try {
 			File f = new File(inputFolder);
+			System.out.println(inputFolder);
 			File[] listOfFiles = f.listFiles();
 
 			for (File file : listOfFiles) {
@@ -119,7 +121,7 @@ public class Translate2Neo4j {
 			    }
 			}
 		} catch (Exception e) {
-			
+			e.printStackTrace();
 		}
 		return files;
 	}
@@ -168,9 +170,9 @@ public class Translate2Neo4j {
 			try {
 				for(String s : args) {
 					if(s.startsWith("--input=")) {
-						inputFolder = s.substring(7);
+						inputFolder = s.substring(8);
 					} else if(s.startsWith("--output=")) {
-						outputFolder = s.substring(8);
+						outputFolder = s.substring(9);
 					} else if(s.startsWith("--ratio=")) {
 						ratio_rand_negative_polarity = new Float(s.substring(8));
 					} else if(s.startsWith("--lowWeight=")) {
