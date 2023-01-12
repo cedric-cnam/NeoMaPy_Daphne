@@ -17,12 +17,18 @@ public class RightPanel extends JPanel {
 	RightPanel(NeoMaPyGraph graph, int width, int height) {
 		super();
 		setLayout(new BorderLayout());
-		add(nodeInfo = new NodeInfoPanel(graph, 200, height), BorderLayout.CENTER);
-		add(graphInfo = new GraphInfoPanel(graph, 200, height), BorderLayout.SOUTH);
+		setSize(200, height);
+		add(nodeInfo = new NodeInfoPanel(graph, 400, height), BorderLayout.CENTER);
+		add(graphInfo = new GraphInfoPanel(graph, 400, height), BorderLayout.SOUTH);
 	}
 
 	void setNodeInfo(String nodeId) {
-		nodeInfo.setNodeInfo(nodeId);
+		try {
+			nodeInfo.setNodeInfo(nodeId);
+		} catch (BadLocationException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	void setGraphInfo() {

@@ -34,6 +34,8 @@ public class NeoMaPyGraph extends MultiGraph {
 			addTF(json);
 		else if (q.instruction.startsWith("TF conflict"))
 			addConflict(json);
+		else if (q.instruction.startsWith("TF inference"))
+			addInference(json);
 		else
 			return;
 	}
@@ -77,8 +79,16 @@ public class NeoMaPyGraph extends MultiGraph {
 		n.setAttribute("weight", weight);
 		setSize(nodeId, weight);
 
-		n.setAttribute("type", "TF");
+		String type = getStringNeo4j(json, "type");
+		n.setAttribute("type", "TF"+(type != null ? "_"+type:""));
 		addAttribute(n, "ui.class", "TF");
+		Object o = getNeo4jValue(json, "valid");
+		if(o != null && !((Boolean)o))
+			addAttribute(n, "ui.class", "TF_invalid");
+		else if (weight > 1000000)
+			addAttribute(n, "ui.class", "TF_infinite");
+		else
+			addAttribute(n, "ui.class", "TF");
 
 		addEdge(json, nodeId, "s");
 		addEdge(json, nodeId, "o");
@@ -96,6 +106,17 @@ public class NeoMaPyGraph extends MultiGraph {
 			addConsistency(e, json, "pCon");
 			addConsistency(e, json, "pInc");
 			addConsistency(e, json, "tInc");
+		} catch (org.graphstream.graph.EdgeRejectedException e) {
+			System.out.println(edgeId);
+		}
+	}
+
+	public void addInference(JSONObject json) {
+		String from = getStringNeo4j(json, "from");
+		String to = getStringNeo4j(json, "to");
+		String edgeId = edgeId(from, to);
+		try {
+			Edge e = addEdge(edgeId, "inference", from, to);
 		} catch (org.graphstream.graph.EdgeRejectedException e) {
 			System.out.println(edgeId);
 		}
@@ -156,15 +177,24 @@ public class NeoMaPyGraph extends MultiGraph {
 	}
 
 	public String getStringNeo4j(JSONObject json, String att) {
-		return (String) getNeo4jValue(json, att);
+		Object o = getNeo4jValue(json, att);
+		if(o == null)
+			return null;
+		return (String)o ;
 	}
 
 	public Boolean getBooleanNeo4j(JSONObject json, String att) {
-		return (Boolean) getNeo4jValue(json, att);
+		Object o = getNeo4jValue(json, att);
+		if(o == null)
+			return null;
+		return (Boolean)o;
 	}
 
 	public Double getDoubleNeo4j(JSONObject json, String att) {
-		return (Double) getNeo4jValue(json, att);
+		Object o = getNeo4jValue(json, att);
+		if(o == null)
+			return null;
+		return (Double)o;
 	}
 
 	public Object getNeo4jValue(JSONObject json, String att) {

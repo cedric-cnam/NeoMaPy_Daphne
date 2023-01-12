@@ -51,8 +51,9 @@ public class GraphStream extends JFrame {
 		viewer.enableAutoLayout();
 		add((DefaultView) viewer.addView("NeoMaPy", new SwingGraphRenderer()), BorderLayout.CENTER);
 
-		add(new ButtonPanel(this), BorderLayout.NORTH);
+		//add(new ButtonPanel(this), BorderLayout.NORTH);
 		add(rp = new RightPanel(graph, width, height), BorderLayout.EAST);
+		this.setJMenuBar(new MenuBar (this));
 
 		setLocationRelativeTo(null);
 		setVisible(true);

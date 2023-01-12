@@ -12,3 +12,6 @@ MATCH (tf:TF) RETURN tf.ID as Node_id, tf.date_start as date_start, tf.date_end 
 
 //TF conflict links
 MATCH p=(tf1)-[r:conflict]->(tf2) RETURN tf1.ID as from, tf2.ID as to, r.type as type, r.pCon as pCon, r.pInc as pInc, r.tInc as tInc;
+
+//TF inference links
+MATCH p=(tf1)-[r:rule]->(tf2) RETURN tf1.ID as from, tf2.ID as to;

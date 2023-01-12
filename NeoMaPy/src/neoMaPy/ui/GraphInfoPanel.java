@@ -28,10 +28,12 @@ public class GraphInfoPanel extends JPanel {
 	private NeoMaPyGraph graph;
 	private HTMLEditorKit kit = new HTMLEditorKit();
     private HTMLDocument doc = new HTMLDocument();
-   
+    public static ReadCSS rc;
+
 	GraphInfoPanel (NeoMaPyGraph graph, int width, int height){
 		setLayout(new BorderLayout());
 		this.graph = graph;
+		rc = new ReadCSS ("conf/NeoMaPy.css");
 		add(new JLabel("Graph properties"), BorderLayout.NORTH);
 		add(new JScrollPane(graphInfo = new JTextPane()), BorderLayout.CENTER);
 		graphInfo.setSize(200, height);
@@ -42,12 +44,12 @@ public class GraphInfoPanel extends JPanel {
 
 	void setGraphInfo() throws BadLocationException, IOException {
 		append("<html>", false, null);
-		append("Nodes\n", true, Color.black);
+		append("Nodes\n", true, "black");
 		setNodeInfo("s");
 		setNodeInfo("o");
 		setNodeInfo("p");
 		setNodeInfo("TF");
-		append("<br/>Edges\n", true, Color.black);
+		append("<br/>Edges\n", true, "black");
 		setEdgesInfo();
 		append("</html>", false, null);
 	}
@@ -60,13 +62,13 @@ public class GraphInfoPanel extends JPanel {
 				nb.addAndGet(1);
 			}
 		});
-		append(type + ": " + nb.get() + "\n", false, Color.blue);
+		append(type + ": " + nb.get() + "\n", false, "blue");
 	}
 
 	private void setEdgesInfo() {
 		Map<String, Integer> edgeAttributes = new HashMap<String, Integer>();
+		
 		graph.edges().forEach(e -> {
-			System.out.println(e.getAttribute("ui.color"));
 			e.attributeKeys().forEach(att -> {
 				if(att.compareTo("o") ==0 || att.compareTo("s") == 0 || att.compareTo("p") == 0 || att.compareTo("ui.class") == 0)
 					return;
@@ -81,7 +83,8 @@ public class GraphInfoPanel extends JPanel {
 		edgeAttributes.keySet().forEach(e -> {
 			Integer i = edgeAttributes.get(e);
 			try {
-				append(e + ": " + i + "\n", false, Color.blue);
+				String color = rc.getColor(e); 
+				append(e + ": " + i + "\n", false, color);
 			} catch (BadLocationException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -92,14 +95,14 @@ public class GraphInfoPanel extends JPanel {
 		});
 	}
 	
-	private void append (String text, boolean bold, Color c) throws BadLocationException, IOException {
+	private void append (String text, boolean bold, String c) throws BadLocationException, IOException {
 		if(bold)
 			text = "<b>"+text+"</b>";
 		if(c != null)
-			text = "<span style=\"color:"+c.toString()+";\">"+text+"</span>";
+			text = "<span style=\"color:"+c+";\">"+text+"</span>";
 		kit.insertHTML(doc, doc.getLength(), text, 0, 0, null);
 	}
-	
+	/*
 	private void appendToPane(JTextPane tp, String msg, Color c, boolean bold) {
 		StyleContext sc = StyleContext.getDefaultStyleContext();
 		AttributeSet aset = sc.addAttribute(SimpleAttributeSet.EMPTY, StyleConstants.Foreground, c);
@@ -116,4 +119,5 @@ public class GraphInfoPanel extends JPanel {
 		tp.setCharacterAttributes(aset, false);
 		tp.replaceSelection(msg);
 	}
+	*/
 }

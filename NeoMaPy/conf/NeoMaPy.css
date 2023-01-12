@@ -38,9 +38,7 @@
     "sprite-orientation" ...
     "canvas-color" .
 */
-graph {
-	fill-color: white;
-}
+graph {fill-color: white;}
 node {
 	size:3px;
 	size-mode: dyn-size;
@@ -50,6 +48,8 @@ node {
 node:clicked{fill-color:white;}
 
 node.TF{fill-color:#606060;shape:circle;stroke-mode:plain;stroke-color:black;z-index:10;}
+node.TF_infinite{fill-color:black;shape:circle;stroke-mode:plain;stroke-color:black;z-index:9;}
+node.TF_invalid{fill-color:#606060;shape:circle;stroke-mode:plain;stroke-color:black;z-index:10;}
 
 edge {shape: cubic-curve;size:1px;}
 
@@ -95,3 +95,5 @@ edge.TC1{fill-color:purple;size:1px;z-index:4;}
 edge.TC1_pCon{size:1px;fill-color:#f096f0;z-index:4;}
 edge.TC1_pInc{size:2px;fill-color:#c896c8;z-index:5;}
 edge.TC1_tInc{size:3px;fill-color:#c800c8;z-index:6;}
+
+edge.inference{size:1px;fill-color:blue;z-index:6;}
