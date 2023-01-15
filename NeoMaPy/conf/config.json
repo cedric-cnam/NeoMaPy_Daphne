@@ -3,5 +3,7 @@
     "user" : "neo4j",
     "mdp" : "admin",
     "database" : "DAPHNE",
-    "queriesFolder" : "cypherQueries/"
+    "generateGraphQueries" : "cypherQueries/generate_NeoMaPy.cypher",
+    "statsQueries" : "cypherQueries/stats_NeoMaPy.cypher",
+    "extractGraphQueries" : "cypherQueries/extract_NeoMaPy.cypher"
 }

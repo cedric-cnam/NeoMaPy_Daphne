@@ -1,4 +1,4 @@
-package neoMaPy.ui;
+package neoMaPy.ui.graphstream;
 
 import java.time.ZonedDateTime;
 import java.util.HashMap;
@@ -93,7 +93,6 @@ public class NeoMaPyGraph extends MultiGraph {
 		addEdge(json, nodeId, "s");
 		addEdge(json, nodeId, "o");
 		addEdge(json, nodeId, "p");
-
 	}
 
 	public void addConflict(JSONObject json) {

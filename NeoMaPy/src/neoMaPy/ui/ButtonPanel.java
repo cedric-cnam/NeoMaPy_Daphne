@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import neoMaPy.ui.graphstream.GraphStreamPanel;
+
 public class ButtonPanel extends JPanel implements ActionListener {
 	/**
 	 * 
@@ -16,9 +18,9 @@ public class ButtonPanel extends JPanel implements ActionListener {
 	private JButton CSSButton = new JButton("CSS reload");
 	private JButton layout = new JButton("Stop Layout");
 	private boolean layoutEnabled = true;
-	private GraphStream gs;
+	private GraphStreamPanel gs;
 
-	public ButtonPanel(GraphStream gs) {
+	public ButtonPanel(GraphStreamPanel gs) {
 		super();
 		this.gs = gs;
 		this.setLayout(new GridLayout(1, 2));
@@ -38,9 +40,9 @@ public class ButtonPanel extends JPanel implements ActionListener {
 			gs.getGraph().css();
 		} else if (e.getSource() == layout) {
 			if (layoutEnabled)
-				gs.viewer.disableAutoLayout();
+				;//gs.viewer.disableAutoLayout();
 			else
-				gs.viewer.enableAutoLayout();
+				;//gs.viewer.enableAutoLayout();
 			layoutEnabled = !layoutEnabled;
 		}
 

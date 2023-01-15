@@ -1,13 +1,11 @@
-package neoMaPy.ui;
+package neoMaPy.ui.graphstream;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import org.graphstream.ui.geom.Point2;
 import org.graphstream.ui.geom.Point3;
@@ -19,7 +17,9 @@ import org.graphstream.ui.view.View;
 import org.graphstream.ui.view.Viewer;
 import org.graphstream.ui.view.camera.Camera;
 
-public class GraphStream extends JFrame {
+import neoMaPy.NeoMaPy;
+
+public class GraphStreamPanel extends JPanel {
 	/**
 	 * 
 	 */
@@ -28,34 +28,38 @@ public class GraphStream extends JFrame {
 	// CSS :
 	// https://graphstream-project.org/doc/Advanced-Concepts/GraphStream-CSS-Reference/
 
+	int width, height;
 	Viewer viewer;
 	RightPanel rp;
 
 	private NeoMaPyGraph graph;
 	private DefaultMouseManager mouseManager;
 
-	public GraphStream() {
+	public GraphStreamPanel(int width, int height) {
 		super();
+		this.width= width;
+		this.height = height;
+	}
+
+	public void initGraph () {
 		graph = new NeoMaPyGraph("NeoMaPy");
 		viewer = new SwingViewer(graph, SwingViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
 		graph.setAttribute("ui.stylesheet", "url('file://conf/NeoMaPy.css')");
+		NeoMaPy.loadGraph();
+		
+		doLayout();
+		viewer();
 		// graph.setAttribute("ui.stylesheet", cssStyle);
 	}
-
+	
 	public void viewer() {
 		setLayout(new BorderLayout());
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = new Double(screenSize.getWidth()).intValue();
-		int height = new Double(screenSize.getHeight()).intValue();
-		setSize(width, height);
+
 		viewer.enableAutoLayout();
 		add((DefaultView) viewer.addView("NeoMaPy", new SwingGraphRenderer()), BorderLayout.CENTER);
 
 		//add(new ButtonPanel(this), BorderLayout.NORTH);
 		add(rp = new RightPanel(graph, width, height), BorderLayout.EAST);
-		this.setJMenuBar(new MenuBar (this));
-
-		setLocationRelativeTo(null);
 		setVisible(true);
 
 		mouseManager = new NeoMaPyMouseManager(this);
@@ -100,6 +104,10 @@ public class GraphStream extends JFrame {
 		return graph;
 	}
 
+	public Viewer getViewer () {
+		return viewer;
+	}
+	
 	void setInfo(String nodeId) {
 		rp.setNodeInfo(nodeId);
 	}

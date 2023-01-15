@@ -1,4 +1,4 @@
-package neoMaPy.ui;
+package neoMaPy.ui.graphstream;
 
 import java.awt.event.MouseEvent;
 import java.util.EnumSet;
@@ -8,9 +8,9 @@ import org.graphstream.ui.swing_viewer.util.DefaultMouseManager;
 import org.graphstream.ui.view.util.InteractiveElement;
 
 public class NeoMaPyMouseManager extends DefaultMouseManager {
-	GraphStream gs;
+	GraphStreamPanel gs;
 
-	NeoMaPyMouseManager(GraphStream gs) {
+	NeoMaPyMouseManager(GraphStreamPanel gs) {
 		super();
 		this.gs = gs;
 	}

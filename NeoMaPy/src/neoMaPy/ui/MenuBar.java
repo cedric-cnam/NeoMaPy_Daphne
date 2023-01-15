@@ -10,22 +10,22 @@ import javax.swing.JMenuItem;
 
 public class MenuBar extends JMenuBar implements ActionListener {
 	private static final long serialVersionUID = -7079284854154034465L;
-	GraphStream gs;
-	JMenuItem neo4j_load, neo4j_constraint, neo4j_stats,
+	NeoMaPyFrame neomapy;
+	JMenuItem graph_load, neo4j_connect, neo4j_queries,
 		graph_css, graph_layout, graph_sop, graph_invalidTF;
 
 	private boolean layoutEnabled = true, displaySop = false, displayInvalidTF = false;
-	public MenuBar (GraphStream gs) {
+	public MenuBar (NeoMaPyFrame neomapy) {
 		super ();
-		this.gs = gs;
+		this.neomapy = neomapy;
 
 		JMenu m = new JMenu ("Neo4j");
-		m.add(neo4j_load = menuItem("Load Graph", 0));
-		m.add(neo4j_constraint = menuItem("Constraints", 0));
-		m.add(neo4j_stats = menuItem("Graph Stats", 0));
+		m.add(neo4j_connect = menuItem("Connect to Neo4j", 0));
+		m.add(neo4j_queries = menuItem("Execute all queries", 0));
 		this.add(m);
 
 		m = new JMenu ("Conflict Graph");
+		m.add(graph_load = menuItem("Load Knowledge Graph", 0));
 		m.add(graph_css = menuItem("Reload CSS", KeyEvent.VK_C));
 		m.add(graph_layout = menuItem("Layout: stop", KeyEvent.VK_L));
 		m.add(graph_sop = menuItem("Display sop: false", 0));
@@ -45,38 +45,38 @@ public class MenuBar extends JMenuBar implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object o = e.getSource();
-		if(o == neo4j_load)
-			;
-		else if(o == neo4j_constraint)
-			;
-		else if(o == neo4j_stats)
-			;
+		if(o == graph_load)
+			neomapy.loadGraph();
+		else if(o == neo4j_connect)
+			neomapy.neo.connect();
+		else if(o == neo4j_queries)
+			neomapy.neo.executeQueries();
 		else if(o == graph_css)
-			gs.getGraph().css();
+			neomapy.getGraph().css();
 		else if(o == graph_layout) {
 			if (layoutEnabled) {
-				gs.viewer.disableAutoLayout();
+				neomapy.getViewer().disableAutoLayout();
 				graph_layout.setText("Layout: start");
 			} else {
-				gs.viewer.enableAutoLayout();
+				neomapy.getViewer().enableAutoLayout();
 				graph_layout.setText("Layout: stop");
 			}
 			layoutEnabled = !layoutEnabled;
 		} else if(o == graph_sop) {
 			if (!displaySop) {
-				gs.getGraph().setAttribute("ui.stylesheet", "graph {fill-color: gray;}");
+				neomapy.getGraph().setAttribute("ui.stylesheet", "graph {fill-color: gray;}");
 				graph_sop.setText("Display sop: true");
 			} else {
-				gs.getGraph().setAttribute("ui.stylesheet", "graph {fill-color: white;}");
+				neomapy.getGraph().setAttribute("ui.stylesheet", "graph {fill-color: white;}");
 				graph_sop.setText("Display sop: false");
 			}
 			displaySop = !displaySop;
 		} else if(o == graph_invalidTF) {
 			if (!displayInvalidTF) {
-				gs.getGraph().setAttribute("ui.stylesheet", "node.TF_invalid{stroke-color:red;}");
+				neomapy.getGraph().setAttribute("ui.stylesheet", "node.TF_invalid{stroke-color:red;}");
 				graph_invalidTF.setText("Display invalid TF: true");
 			} else {
-				gs.getGraph().setAttribute("ui.stylesheet", "node.TF_invalid{stroke-color:black;}");
+				neomapy.getGraph().setAttribute("ui.stylesheet", "node.TF_invalid{stroke-color:black;}");
 				graph_invalidTF.setText("Display invalid TF: false");
 			}
 			displayInvalidTF = !displayInvalidTF;

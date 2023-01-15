@@ -1,4 +1,4 @@
-package neoMaPy.ui;
+package neoMaPy.ui.graphstream;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

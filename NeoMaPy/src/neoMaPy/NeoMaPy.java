@@ -4,17 +4,18 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import neoMaPy.connection.Connection;
-import neoMaPy.ui.GraphStream;
+import neoMaPy.ui.NeoMaPyFrame;
 
 public class NeoMaPy {
-	private Connection connection;
+	private static Connection connection;
 
-	private GraphStream gs = null;
+	private static NeoMaPyFrame nmp = null;
 	public static String inputFile = null;
 
 	private static JSONParser parser = null;
@@ -27,27 +28,33 @@ public class NeoMaPy {
 	public void init() throws Exception {
 		config = readJSONFile("conf/config.json");
 		connection = new Connection();
-		gs = new GraphStream();
+		nmp = new NeoMaPyFrame();
+		nmp.init();
 	}
 
+	public static boolean connection () {
+		return connection.connect();
+	}
+	
 	public void close() throws Exception {
 		connection.close();
 	}
 
-	private void resultQueries(String fileQueries) {
-		System.out.println("----------------");
-		List<Query> queries = readQueries((String) config.get("queriesFolder") + fileQueries);
-		connection.loadGraph(queries, gs.getGraph());
-		gs.doLayout();
-		gs.viewer();
+	public static void loadGraph() {
+		List<Query> queries = readQueries((String) config.get("extractGraphQueries"));
+		connection.loadGraph(queries, nmp.getGraph());
 	}
 
 	public void viewer() {
 		// gs.viewer();
 	}
 
-	private List<Query> readQueries(String queryFile) {
-		System.out.println(queryFile);
+	public static Map<String, Integer> statQueries (){
+		Map<String, Integer> stats = Connection.loadStats(readQueries((String)NeoMaPy.config.get("statsQueries")));
+		return stats;
+	}
+	
+	public static List<Query> readQueries(String queryFile) {
 		List<Query> queries = new ArrayList<Query>();
 
 		try {
@@ -60,13 +67,13 @@ public class NeoMaPy {
 					instruction = line.substring(2);
 				} else if (line.endsWith(";")) {
 					if (query.length() > 0)
-						query += "\n\t";
+						query += "\n";
 					query += line;
 					queries.add(new Query(instruction, query));
 					query = "";
 				} else if (line.length() > 0) {
 					if (query.length() > 0)
-						query += "\n\t";
+						query += "\n";
 					query += line;
 				}
 			}
@@ -91,40 +98,9 @@ public class NeoMaPy {
 	public static void main(String[] args) {
 		System.setProperty("org.graphstream.ui", "swing");
 		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
-	    boolean set = true;
 		try {
-			if (args.length > 0) {
-				try {
-					for (String s : args) {
-						if (s.startsWith("--queryFile=")) {
-							inputFile = s.substring(12);
-							int slash = inputFile.lastIndexOf("/");
-							if (slash > 0)
-								inputFile = inputFile.substring(slash + 1);
-						}
-						if (s.startsWith("--help")) {
-							set = false;
-						}
-					}
-				} catch (Exception e) {
-					set = false;
-				}
-			}
-
-			if (!set || inputFile == null) {
-				System.out.println(
-						"--queryFile=XXX.cypher  -> The query file which gives the extraction of nodes and edges.");
-				System.exit(0);
-			}
-			System.out.println("queryFile=" + inputFile);
-
-			NeoMaPy npm = new NeoMaPy();
-			npm.resultQueries(inputFile);
-			npm.viewer();
-			npm.close();
-
+			new NeoMaPy();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

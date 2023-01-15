@@ -1,4 +1,4 @@
-package neoMaPy.ui;
+package neoMaPy.ui.graphstream;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
