@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -17,7 +18,10 @@ import org.graphstream.ui.view.View;
 import org.graphstream.ui.view.Viewer;
 import org.graphstream.ui.view.camera.Camera;
 
+import neoMaPy.MaPy;
 import neoMaPy.NeoMaPy;
+import neoMaPy.Query;
+import neoMaPy.ui.NeoMaPyFrame;
 
 public class GraphStreamPanel extends JPanel {
 	/**
@@ -41,26 +45,27 @@ public class GraphStreamPanel extends JPanel {
 		this.height = height;
 	}
 
-	public void initGraph () {
+	public void initGraph (List<Query> queries) {
+		if(graph !=null)
+			return;
 		graph = new NeoMaPyGraph("NeoMaPy");
 		viewer = new SwingViewer(graph, SwingViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
 		graph.setAttribute("ui.stylesheet", "url('file://conf/NeoMaPy.css')");
 		NeoMaPy.loadGraph();
 		
-		doLayout();
-		viewer();
+		//doLayout();
+		viewer(queries);
 		// graph.setAttribute("ui.stylesheet", cssStyle);
 	}
 	
-	public void viewer() {
+	public void viewer(List<Query> queries) {
 		setLayout(new BorderLayout());
 
 		viewer.enableAutoLayout();
 		add((DefaultView) viewer.addView("NeoMaPy", new SwingGraphRenderer()), BorderLayout.CENTER);
 
-		//add(new ButtonPanel(this), BorderLayout.NORTH);
 		add(rp = new RightPanel(graph, width, height), BorderLayout.EAST);
-		setVisible(true);
+		//setVisible(true);
 
 		mouseManager = new NeoMaPyMouseManager(this);
 		// viewer.getView("NeoMaPy").enableMouseOptions();
@@ -72,7 +77,7 @@ public class GraphStreamPanel extends JPanel {
 		    public void mouseWheelMoved(MouseWheelEvent e) {
 		        e.consume();
 		        int i = e.getWheelRotation();
-		        double factor = Math.pow(1.25, i);
+		        double factor = Math.pow(1.1, i);
 		        Camera cam = view.getCamera();
 		        double zoom = cam.getViewPercent() * factor;
 		        Point2 pxCenter  = cam.transformGuToPx(cam.getViewCenter().x, cam.getViewCenter().y, 0);
@@ -85,7 +90,7 @@ public class GraphStreamPanel extends JPanel {
 		    }
 		});
 
-		rp.setGraphInfo();
+		rp.setGraphInfo(queries);
 
 		// graph.countAttributes ();
 		/*
@@ -127,6 +132,23 @@ public class GraphStreamPanel extends JPanel {
 		this.revalidate();
 	}
 
+	public void processMap(MaPy mapy, List<Query> queries) {
+		if(graph == null)
+			NeoMaPyFrame.error("No Knowledge Graph generated\\Please create it in the \"Conflict Graph\" menu.");
+		else {
+			graph.processMap(mapy);
+			rp.setGraphInfo(queries);
+		}
+	}
+
+	public void resetMap(List<Query> queries) {
+		if(graph == null)
+			NeoMaPyFrame.error("No Knowledge Graph generated\\Please create it in the \"Conflict Graph\" menu.");
+		else {
+			graph.resetMap();
+			rp.setGraphInfo(queries);
+		}
+	}
 	public String toString() {
 		return "Graph (#nodes:" + graph.getNodeCount() + ",#edges:" + graph.getEdgeCount() + ")";// +graph.edgeAttributes;
 

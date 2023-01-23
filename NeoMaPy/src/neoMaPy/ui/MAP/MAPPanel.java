@@ -1,4 +1,4 @@
-package neoMaPy.ui.neo4j;
+package neoMaPy.ui.MAP;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -12,10 +12,12 @@ import java.util.Map;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
@@ -24,27 +26,31 @@ import javax.swing.text.html.HTMLEditorKit;
 
 import neoMaPy.NeoMaPy;
 import neoMaPy.Query;
+import neoMaPy.connection.Connection;
 
-public class NeoPanel extends JPanel implements ActionListener{
+public class MAPPanel extends JPanel implements ActionListener{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1302983545774175051L;
 
-	private JTextField uri, db, user, mdp;
-	private JTextPane dbStats;
-	private JLabel status;
-	private JButton connect, exec;
-	private JProgressBar pb;
+	JTextField uri, db, user, mdp;
+	JPanel queries;
+	JTextPane dbStats;
+	JLabel status;
+	JButton connect, exec;
+	JProgressBar pb;
 
 	private HTMLEditorKit kit = new HTMLEditorKit();
     private HTMLDocument doc;
-    private List<QueryPanel> queriesPanel = new ArrayList<QueryPanel> ();
-    private List<Query> queries;
+    int width, height;
+    List<QueryPanel> queriesPanel = new ArrayList<QueryPanel> ();
 
-	public NeoPanel (int width, int height) {
+	public MAPPanel (int width, int height) {
 		super();
 		setSize(width, height);
+		this.width = width;
+		this.height = height;
 		setLayout(new BorderLayout ());
 		
 		JPanel connection = new JPanel (new BorderLayout ());
@@ -74,7 +80,7 @@ public class NeoPanel extends JPanel implements ActionListener{
 		stats.add(new JLabel ("<html><b>Databases content</b></html>"), BorderLayout.NORTH);
 
 		JPanel queriesP = new JPanel (new BorderLayout ());
-		queriesP.add(new JScrollPane (queries((String) NeoMaPy.config.get("generateGraphQueries")),
+		queriesP.add(new JScrollPane (queries = queries((String) NeoMaPy.config.get("generateGraphQueries")),
 	            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 	            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
 		
@@ -148,7 +154,7 @@ public class NeoPanel extends JPanel implements ActionListener{
 	private JPanel queries (String queriesFile) {
 		if(queriesPanel.size() > 0)
 			return null;
-		queries = NeoMaPy.readQueries(queriesFile);
+		List<Query> queries = NeoMaPy.readQueries(queriesFile);
 		JPanel p = new JPanel (new GridLayout(10, 1, 50, 50));
 		p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
 		QueryPanel previousPanel = null;
@@ -157,7 +163,7 @@ public class NeoPanel extends JPanel implements ActionListener{
 				previousPanel.q.query += "\n"+q.query;
 				previousPanel.setText();
 			} else {
-				previousPanel = new QueryPanel (q, this);
+				previousPanel = new QueryPanel (q);
 				p.add(previousPanel);
 				queriesPanel.add(previousPanel);
 			}
@@ -165,11 +171,73 @@ public class NeoPanel extends JPanel implements ActionListener{
 		return p;
 	}
 
-	public List<Query> getQueries (){
-		return queries;
+	private class QueryPanel extends JPanel{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 5639974892840163200L;
+		Query q;
+		JTextArea text;
+		JLabel status;
+		QueryPanel (Query q){
+			super ();
+			setLayout(new BorderLayout());
+			this.q = q;
+			JButton b = new JButton ("<html><b>"+q.instruction+"</b></html>");
+			b.addActionListener(new ActionListener () {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					execute();
+				}
+			});
+			add(b, BorderLayout.NORTH);
+			
+			text = new JTextArea (q.query);
+			text.setLineWrap(true);
+			text.setRows(6);
+			add(new JScrollPane(text,
+		            JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+		            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER), BorderLayout.CENTER);
+			add(status = new JLabel("    "), BorderLayout.SOUTH);
+		}
+
+		private boolean execute () {
+			String query = text.getText();
+			try {
+				if(q.instruction.compareTo("Load CSV") == 0) {
+					String file = query.substring(query.indexOf("file:/")+6);
+					file = file.substring(0, file.indexOf("\""));
+					try{
+						Connection.updateQuery(query);
+						
+					} catch (Exception e) {
+						JOptionPane.showMessageDialog(this, "The CSV file cannot found.\n\n\""+file+"\"\n\nPut it in the 'import' folder of your Neo4j project.");
+						return false;
+					}
+				} else {
+					String [] queries = query.split(";");
+					for(String q : queries)
+						try{
+							Connection.updateQuery(q);
+						} catch (Exception e) {
+							JOptionPane.showMessageDialog(this, "Something wrong happened in query \""+this.q.instruction+"\"\n"+e.getMessage());
+							return false;
+						}
+				}
+				status.setText("<html><b>done</b></html>");
+				updateStats();
+			} catch (BadLocationException | IOException e) {
+				e.printStackTrace();
+			}
+			return true;
+		}
+		
+		void setText () {
+			text.setText(q.query);
+		}
 	}
 	
-	void updateStats () throws BadLocationException, IOException {
+	private void updateStats () throws BadLocationException, IOException {
 		Map<String, Integer> stats = NeoMaPy.statQueries();
 
 		doc = new HTMLDocument ();

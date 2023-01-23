@@ -5,16 +5,18 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 
 import org.graphstream.ui.view.Viewer;
 
+import neoMaPy.MaPy;
 import neoMaPy.ui.graphstream.GraphStreamPanel;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
 import neoMaPy.ui.neo4j.NeoPanel;
 
 public class NeoMaPyFrame extends JFrame {
-
+	public static JFrame frame;
 	GraphStreamPanel gsp;
 	NeoPanel neo;
 	JTabbedPane tabs;
@@ -24,6 +26,7 @@ public class NeoMaPyFrame extends JFrame {
 	private static final long serialVersionUID = -5767865719882084502L;
 
 	public NeoMaPyFrame () {
+		frame = this;
 	}
 	
 	public void init() {
@@ -38,7 +41,6 @@ public class NeoMaPyFrame extends JFrame {
 		tabs.addTab("Neo4j", neo = new NeoPanel (width, height));
 		neo.connect();
 		tabs.addTab("Graph", gsp = new GraphStreamPanel (width, height)); 
-
 
 		this.setJMenuBar(new MenuBar (this));
 
@@ -58,8 +60,14 @@ public class NeoMaPyFrame extends JFrame {
 		 */
 	}
 
+	public static void error (String message) {
+		JOptionPane.showMessageDialog(frame, message);
+	}
+	
 	public void loadGraph () {
-		gsp.initGraph();
+		tabs.setSelectedComponent(gsp);
+		gsp.initGraph(neo.getQueries());
+		this.setAlwaysOnTop(true);
 	}
 	
 	public NeoMaPyGraph getGraph() {
@@ -68,5 +76,13 @@ public class NeoMaPyFrame extends JFrame {
 
 	public Viewer getViewer () {
 		return gsp.getViewer();
+	}
+
+	public void processMap(MaPy mapy) {
+		gsp.processMap(mapy, neo.getQueries());
+	}
+
+	public void resetMap(){
+		gsp.resetMap(neo.getQueries());
 	}
 }

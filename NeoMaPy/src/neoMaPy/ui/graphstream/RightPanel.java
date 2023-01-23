@@ -2,9 +2,12 @@ package neoMaPy.ui.graphstream;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
+import java.util.List;
 
 import javax.swing.JPanel;
 import javax.swing.text.BadLocationException;
+
+import neoMaPy.Query;
 
 public class RightPanel extends JPanel {
 	/**
@@ -18,8 +21,10 @@ public class RightPanel extends JPanel {
 		super();
 		setLayout(new BorderLayout());
 		setSize(200, height);
-		add(nodeInfo = new NodeInfoPanel(graph, 400, height), BorderLayout.CENTER);
-		add(graphInfo = new GraphInfoPanel(graph, 400, height), BorderLayout.SOUTH);
+		graphInfo = new GraphInfoPanel(graph, 400, height);
+		nodeInfo = new NodeInfoPanel(graph, 400, height);
+		add(nodeInfo, BorderLayout.CENTER);
+		add(graphInfo, BorderLayout.SOUTH);
 	}
 
 	void setNodeInfo(String nodeId) {
@@ -31,9 +36,9 @@ public class RightPanel extends JPanel {
 		}
 	}
 
-	void setGraphInfo() {
+	void setGraphInfo(List<Query> queries) {
 		try {
-			graphInfo.setGraphInfo();
+			graphInfo.setGraphInfo(queries);
 		} catch (BadLocationException | IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

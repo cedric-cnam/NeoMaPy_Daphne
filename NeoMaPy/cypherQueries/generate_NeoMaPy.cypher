@@ -27,24 +27,37 @@ MERGE (ID_o) <-[:o]- (tf)
 MERGE (ID_p) <-[:p]- (tf);
 
 //Concept names
-MERGE(ID_b:Concept{ID:"P569"}) ON MATCH SET ID_b.type = "birthDate";
-MERGE(ID_d:Concept{ID:"P570"}) ON MATCH SET ID_d.type = "deathDate";
+MERGE(ID_b:Concept{ID:"P569"}) ON MATCH SET ID_b.name = "birthDate";
+MERGE(ID_d:Concept{ID:"P570"}) ON MATCH SET ID_d.name = "deathDate";
 MERGE(ID_t:Concept{ID:"P54"}) ON MATCH SET ID_t.name = "teamPlayer";
 MERGE(ID_c:Concept{ID:"P286"}) ON MATCH SET ID_c.name = "teamCoach";
 MERGE(ID_m:Concept{ID:"P26"}) ON MATCH SET ID_m.name = "marriage";
 MERGE(ID_w:Concept{ID:"P108"}) ON MATCH SET ID_w.name = "workCompany";
 
-MATCH (p) <-[:o]- (:TF) -[:p]-> (c:Concept)
-WHERE c.name IN ["teamCoach", "marriage"]
-SET p.name = "Person";
+MATCH (o) <-[:o]- (:TF) -[:p]-> (c:Concept), (s) <-[:s]- (t)
+WHERE c.name = "teamCoach"
+SET o.name = "Person"
+SET s.name = "Team";
 
-MATCH (p) <-[:o]- (:TF) -[:p]-> (c:Concept)
+MATCH (o) <-[:o]- (:TF) -[:p]-> (c:Concept), (s) <-[:s]- (t)
+WHERE c.name = "marriage"
+SET o.name = "Person"
+SET s.name = "Person";
+
+MATCH (o) <-[:o]- (t:TF) -[:p]-> (c:Concept), (s) <-[:s]- (t)
 WHERE c.name IN ["birthDate", "deathDate"]
-SET p.name = "Date";
+SET o.name = "Date"
+SET s.name = "Person";
 
-MATCH (p) <-[:s]- (:TF) -[:p]-> (c:Concept)
-WHERE c.name IN ["teamPlayer", "marriage", "workCompany", "birthDate", "deathDate"]
-SET p.name = "Person";
+MATCH (o) <-[:o]- (:TF) -[:p]-> (c:Concept), (s) <-[:s]- (t)
+WHERE c.name = "teamPlayer"
+SET s.name = "Person"
+SET o.name = "Team";
+
+MATCH (o) <-[:o]- (:TF) -[:p]-> (c:Concept), (s) <-[:s]- (t)
+WHERE c.name = "workCompany"
+SET s.name = "Person"
+SET o.name = "Company";
 
 //Inference UncertainRule-teams-Q495299-Q3873511
 MATCH p1=(c:Concept{name:"teamPlayer"}) <-[:p]- (tf1:TF) -[:s]-> (s), (tf1) -[:o]-> (o1:Concept{ID:"Q495299"}), (o2:Concept{ID:"Q3873511"})
@@ -100,7 +113,7 @@ MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
 WHERE tf1 <> tf2 AND tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C2"}]- (tf2);
 
-//Conflict - C2-1 - deathDateConflictPolarity
+//Conflict - C2_1 - deathDateConflictPolarity
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P570"}) -[:s]-> (s:Concept)
 WHERE tf1 <> tf2 AND tf1.date_start = tf2.date_start AND tf1.polarity <> tf2.polarity
@@ -113,17 +126,17 @@ WHERE (tf1.date_start > tf2.date_start OR tf1.date_start + duration({years: 150}
   AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C3"}]- (tf2);
 
-//Conflict - C4 - birthPlayerConflict
+//Conflict - C4_1 - birthPlayerConflict
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2:TF) -[:s]-> (s:Concept)
 WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
-MERGE (tf1) -[:conflict{type:"C4"}]- (tf2);
+MERGE (tf1) -[:conflict{type:"C4_1"}]- (tf2);
 
-//Conflict - C4 - birthPlayerConflict
+//Conflict - C4_2 - birthPlayerConflict
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
-MERGE (tf1) -[:conflict{type:"C4"}]- (tf2);
+MERGE (tf1) -[:conflict{type:"C4_2"}]- (tf2);
 
 //Conflict - C5 - deathPlayerConflict
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),

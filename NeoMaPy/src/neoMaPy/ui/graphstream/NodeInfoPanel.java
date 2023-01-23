@@ -85,13 +85,13 @@ public class NodeInfoPanel extends JPanel {
 		if (date_start != null)append("\nDate_start: " + date_start, false, null);
 		if (date_end != null)append("\nDate_end: " + date_end, false, null);
 		if (valid != null)append("\nValid: " + valid, false, null);
-		
+
 		if(type.compareTo("TF")==0) {
 			n.edges().forEach(e -> {
 				e.attributeKeys().forEach(att -> {
 					if(att.compareTo("o") ==0 || att.compareTo("s") == 0 || att.compareTo("p") == 0)
 						try {
-							append("\n"+att+": "+e.getTargetNode().getId(), false, "gray");
+							append("\n"+att+": "+e.getTargetNode().getAttribute("name")+" - "+e.getTargetNode().getId(), false, "gray");
 						} catch (BadLocationException | IOException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
@@ -109,7 +109,7 @@ public class NodeInfoPanel extends JPanel {
 		Map<String, Integer> edgeAttributes = new HashMap<String, Integer>();
 		n.edges().forEach(e -> {
 			e.attributeKeys().forEach(att -> {
-				if(att.compareTo("o") ==0 || att.compareTo("s") == 0 || att.compareTo("p") == 0 || att.compareTo("ui.class") == 0)
+				if(att.compareTo("o") ==0 || att.compareTo("s") == 0 || att.compareTo("p") == 0 || att.compareTo("ui.class") == 0 || att.compareTo("ui.hide") == 0)
 					return;
 				Integer val = edgeAttributes.get(att);
 				if (val == null)
@@ -122,7 +122,8 @@ public class NodeInfoPanel extends JPanel {
 		edgeAttributes.keySet().forEach(e -> {
 			Integer i = edgeAttributes.get(e);
 			try {
-				append(e+": "+i+"\n", false, null);
+				String color = GraphInfoPanel.rc.getColor(e); 
+				append(e+": "+i+"\n", false, color);
 			} catch (BadLocationException | IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();

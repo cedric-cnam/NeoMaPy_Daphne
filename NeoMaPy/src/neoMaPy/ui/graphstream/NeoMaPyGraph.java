@@ -14,11 +14,13 @@ import org.neo4j.driver.internal.value.FloatValue;
 import org.neo4j.driver.internal.value.NullValue;
 import org.neo4j.driver.internal.value.StringValue;
 
+import neoMaPy.MaPy;
 import neoMaPy.Query;
 
 public class NeoMaPyGraph extends MultiGraph {
-	// public Map<String, Integer> edgeAttributes = new HashMap<String, Integer> ();
+	private MaPy mapy = null;
 
+	public static final int infinity = 1000000;
 	public NeoMaPyGraph(String graphID) {
 		super(graphID);
 	}
@@ -85,7 +87,7 @@ public class NeoMaPyGraph extends MultiGraph {
 		Object o = getNeo4jValue(json, "valid");
 		if(o != null && !((Boolean)o))
 			addAttribute(n, "ui.class", "TF_invalid");
-		else if (weight > 1000000)
+		else if (weight > NeoMaPyGraph.infinity)
 			addAttribute(n, "ui.class", "TF_infinite");
 		else
 			addAttribute(n, "ui.class", "TF");
@@ -115,7 +117,8 @@ public class NeoMaPyGraph extends MultiGraph {
 		String to = getStringNeo4j(json, "to");
 		String edgeId = edgeId(from, to);
 		try {
-			Edge e = addEdge(edgeId, "inference", from, to);
+			//Edge e = 
+					addEdge(edgeId, "inference", from, to);
 		} catch (org.graphstream.graph.EdgeRejectedException e) {
 			System.out.println(edgeId);
 		}
@@ -240,5 +243,14 @@ public class NeoMaPyGraph extends MultiGraph {
 
 		});
 		System.out.println("Edges: " + edgeAttributes);
+	}
+
+	public void processMap(MaPy m) {
+		this.mapy = m;
+		mapy.processMAP(this);
+	}
+
+	public void resetMap() {
+		mapy.resetNodes(this);
 	}
 }

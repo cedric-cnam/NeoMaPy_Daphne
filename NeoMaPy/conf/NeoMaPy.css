@@ -43,7 +43,6 @@ node {
 	size:3px;
 	size-mode: dyn-size;
 	fill-color:lightgray;
-	shape:rounded-box;
 }
 node:clicked{fill-color:white;}
 
@@ -61,9 +60,9 @@ edge.s{fill-color: #e6fafa;z-index:0;visibility-mode:hidden;}
 node.o{fill-color: #fae6fa;z-index:0;visibility-mode:hidden;}
 edge.o{fill-color: #fae6fa;z-index:0;visibility-mode:hidden;}
 */
-node.s{fill-color: #e6fafa;size:6px;shape: box;z-index:1;}
-node.o{fill-color: #fae6fa;size:6px;shape: box;z-index:1;}
-node.p{fill-color: #fafae6;size:6px;shape: box;z-index:1;}
+node.s{fill-color: #e6fafa;size:6px;shape: box;z-index:1;shape:rounded-box;}
+node.o{fill-color: #fae6fa;size:6px;shape: box;z-index:1;shape:rounded-box;}
+node.p{fill-color: #fafae6;size:6px;shape: box;z-index:1;shape:rounded-box;}
 
 edge.p{fill-color: white;z-index:0;visibility-mode:hidden;}
 edge.s{fill-color: white;z-index:0;visibility-mode:hidden;}
@@ -72,7 +71,8 @@ edge.o{fill-color: white;z-index:0;visibility-mode:hidden;}
 edge.C1{fill-color:red;z-index:3;}
 edge.C1_1{fill-color:red;z-index:3;}
 edge.C3{fill-color:red;z-index:3;}
-edge.C4{fill-color:red;z-index:3;}
+edge.C4_1{fill-color:red;z-index:3;}
+edge.C4_2{fill-color:red;z-index:3;}
 
 edge.C2{fill-color:red;z-index:3;}
 edge.C2_1{fill-color:red;z-index:3;}
@@ -83,11 +83,11 @@ edge.C6_1{fill-color:green;z-index:3;}
 edge.C7{fill-color:green;z-index:3;}
 edge.C8{fill-color:green;z-index:3;}
 
-edge.C18{stroke-color:#6cd377;z-index:3;}
-
-edge.C9{stroke-color:#5353ff;z-index:3;}
+edge.C14{stroke-color:#5353ff;z-index:3;}
 edge.C16{stroke-color:#5353ff;z-index:3;}
 edge.C17{stroke-color:#5353ff;z-index:3;}
+
+edge.C18{stroke-color:#a5552a;z-index:3;}
 
 edge.C19{stroke-color:#a5552a;z-index:3;}
 
@@ -96,4 +96,4 @@ edge.TC1_pCon{size:1px;fill-color:#f096f0;z-index:4;}
 edge.TC1_pInc{size:2px;fill-color:#c896c8;z-index:5;}
 edge.TC1_tInc{size:3px;fill-color:#c800c8;z-index:6;}
 
-edge.inference{size:1px;fill-color:blue;z-index:6;}
+edge.inference{size:1px;fill-color:orange;z-index:6;}
