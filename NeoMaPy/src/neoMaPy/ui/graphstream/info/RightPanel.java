@@ -9,7 +9,6 @@ import javax.swing.text.BadLocationException;
 
 import neoMaPy.Query;
 import neoMaPy.ui.graphstream.GraphStreamPanel;
-import neoMaPy.ui.graphstream.NeoMaPyGraph;
 
 public class RightPanel extends JPanel {
 	/**
@@ -26,7 +25,7 @@ public class RightPanel extends JPanel {
 		setSize(200, height);
 		searchPanel = new SearchPanel(gsp, 400, height);
 		graphInfo = new GraphInfoPanel(gsp.getGraph(), 400, height);
-		nodeInfo = new NodeInfoPanel(gsp.getGraph(), 400, height);
+		nodeInfo = new NodeInfoPanel(gsp.getGraph(), searchPanel, 400, height);
 		add(searchPanel, BorderLayout.NORTH);
 		add(nodeInfo, BorderLayout.CENTER);
 		add(graphInfo, BorderLayout.SOUTH);

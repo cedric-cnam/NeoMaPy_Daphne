@@ -22,14 +22,16 @@ public class NodeInfoPanel extends JPanel {
 	
 	private NeoMaPyGraph graph;
 	JTextPane nodeText;
+	private SearchPanel search;
 	//JTextArea edgesText;
 	private HTMLEditorKit kit = new HTMLEditorKit();
     private HTMLDocument doc = new HTMLDocument();
 
-	NodeInfoPanel(NeoMaPyGraph graph, int width, int height) {
+	NodeInfoPanel(NeoMaPyGraph graph, SearchPanel search, int width, int height) {
 		super ();
 		this.graph = graph;
 		setLayout(new BorderLayout ());
+		this.search = search;
 		
 		JPanel p = new JPanel (new BorderLayout ());
 		p.add(new JLabel("Node Information            "), BorderLayout.NORTH);
@@ -39,19 +41,7 @@ public class NodeInfoPanel extends JPanel {
 		nodeText.setEditorKit(kit);
 		nodeText.setDocument(doc);
 
-
-		//nodeText.setText("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
-		//nodeText.setSize(width, height);
-		//nodeText.setLineWrap(true);
 		add(p, BorderLayout.CENTER);
-/*
-		p = new JPanel (new BorderLayout ());
-		p.add(new JLabel("Node's edges Information"), BorderLayout.NORTH);
-		p.add(new JScrollPane (edgesText = new JTextArea (20, 10)), BorderLayout.CENTER);
-		edgesText.setText("\n\n\n");
-		//edgesText.setSize(width, height);
-		edgesText.setLineWrap(true);
-		add(p, BorderLayout.SOUTH);*/
 	}
 
 	void setNodeInfo(String nodeId) throws BadLocationException, IOException {
@@ -78,7 +68,8 @@ public class NodeInfoPanel extends JPanel {
 		doc = new HTMLDocument ();
 		nodeText.setDocument(doc);
 		append("<html>", false, null);
-		append("<span style=\"font-size:8px;\">NodeId: "+ID+"</span>", false, "gray");
+		search.setNodeId(ID);
+		//append("<span style=\"font-size:8px;\">NodeId: "+ID+"</span>", false, "gray");
 		
 		append("Node Type: "+type, true, null);
 		if (name != null)append("\nName: " + name, false, null);

@@ -15,15 +15,15 @@ public class SearchPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 6707600808327035442L;
 	
 	private GraphStreamPanel gsp;
-	JTextField nodeText;
-	JButton search;
+	private JTextField nodeText;
+	private JButton search;
 
 	SearchPanel(GraphStreamPanel gsp, int width, int height) {
 		super ();
 		this.gsp = gsp;
 		setLayout(new BorderLayout ());
 		
-		add(new JLabel ("NodeId search"), BorderLayout.NORTH);
+		add(new JLabel ("NodeId Zoom"), BorderLayout.NORTH);
 		add(nodeText = new JTextField(), BorderLayout.CENTER);
 		add(search = new JButton("Search"), BorderLayout.EAST);
 		search.addActionListener(this);
@@ -33,5 +33,9 @@ public class SearchPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String nodeId = nodeText.getText();
 		gsp.zoomOnNode(nodeId);
+	}
+
+	public void setNodeId (String nodeId) {
+		nodeText.setText(nodeId);
 	}
 }
