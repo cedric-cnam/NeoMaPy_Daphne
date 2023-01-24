@@ -8,5 +8,6 @@
 	<classpathentry kind="lib" path="lib/neo4j-java-driver-slim-4.4.9.jar"/>
 	<classpathentry kind="lib" path="lib/reactive-streams-1.0.4.jar"/>
 	<classpathentry kind="lib" path="lib/gs-ui-swing-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/gs-algo-2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -68,6 +68,7 @@ public class NeoMaPyFrame extends JFrame {
 		tabs.setSelectedComponent(gsp);
 		gsp.initGraph(neo.getQueries());
 		this.setAlwaysOnTop(true);
+		this.setAutoRequestFocus(true);
 	}
 	
 	public NeoMaPyGraph getGraph() {

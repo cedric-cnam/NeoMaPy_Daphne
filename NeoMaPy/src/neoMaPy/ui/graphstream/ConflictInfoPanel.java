@@ -13,6 +13,7 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 
 import neoMaPy.Query;
+import neoMaPy.ui.graphstream.info.GraphInfoPanel;
 
 public class ConflictInfoPanel extends JPanel {
 	/**
