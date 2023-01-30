@@ -18,11 +18,12 @@ import copy
 import multiprocessing
 
 
-if len( sys.argv ) == 1:
-    print( "Please give the 3 following parameters:" )
+if len( sys.argv ) != 5:
+    print( "Please give the 4 following parameters:" )
     print( "1. your initial json file containing the conflicting nodes," )
     print( "2. your initial json file containing the non conflicting nodes," )
     print( "3. the integer k = top element to keep during the algo of MaPy." )
+    print( "4. the float of the threshold or 0 for no threshold." )
     exit()
 
 # Give your initial json file containing the conflicting nodes
@@ -40,6 +41,7 @@ with open(data_noconf, 'r') as f2:
 
 global topk
 topk = int(sys.argv[3])
+seuil = float(sys.argv[4])
 
 
 ##############################################################################################################
@@ -47,12 +49,28 @@ topk = int(sys.argv[3])
 
 
 # Creation of the dictionnary of conflincting nodes where (key,value) is ('id' : [weight, listOfConflicts])
+if seuil > 0:
+    set_del_node = set()
+
 dico_conf = {}
 for i in liste_conf:
     id = i["Node_id"]
     w = i["weight"]
     conf = i["Conflicts_node_ids"]
-    dico_conf[id] = (w,conf)
+    if seuil > 0:
+        if w > seuil:
+            dico_conf[id] = (w,conf)
+        else:
+            set_del_node.add(id)
+    else:
+        dico_conf[id] = (w,conf)
+
+if seuil > 0:
+    for id in dico_conf:
+        set_conf = set(dico_conf[id][1])
+        new_conf = list(set_conf - set_del_node)
+        w = dico_conf[id][0]
+        dico_conf[id] = (w,new_conf)
 
 
 # Creation of the dictionnary of non conflincting nodes where (key,value) is ('id' : [weight, []])
@@ -61,7 +79,11 @@ for i in liste_noconf:
     id = i["Node_id"]
     w = i["weight"]
     conf = []
-    dico_noconf[id] = (w,conf)
+    if seuil > 0:
+        if w > seuil:
+            dico_noconf[id] = (w,conf)
+    else:
+        dico_noconf[id] = (w,conf)
 
 
 ##############################################################################################################
@@ -225,15 +247,6 @@ def psum(numbers,alpha):
     for x in numbers:
         sum += x**alpha
     return sum**(1/alpha)
-
-
-def threshold(dico,alpha):
-    output = {}
-    for id,item in dico.items():
-        if item[0] > alpha:
-            output[id] = item
-    return output
-
 
 
 
@@ -702,7 +715,7 @@ if __name__ == '__main__':
     fichier.write(str(len(dico)))
     fichier.write("\n") 
 
-    fichier.write("Number of solutions in no conflicts: ")
+    fichier.write("Number of solutions in total: ")
     totalnode = len(output1[1]) + len(dico)
     fichier.write(str(totalnode))
     fichier.write("\n") 
