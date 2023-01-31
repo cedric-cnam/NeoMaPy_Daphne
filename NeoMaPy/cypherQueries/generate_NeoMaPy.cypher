@@ -95,74 +95,74 @@ MERGE (tf1) -[c:conflict]- (tf2)
 ON CREATE SET c.type="TC1", c.tInc=true
 ON MATCH SET c.tInc=true;
 
-//Conflict - C1 - birthDateConflict
+//Conflict - C1 - Only one birthdate
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P569"}) -[:s]-> (s:Concept)
 WHERE tf1 <> tf2 AND tf1.date_start <> tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C1"}]- (tf2);
 
-//Conflict - C1_1 - birthDateConflictPolarity
+//Conflict - C1_1 - Birthdate polarity
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P569"}) -[:s]-> (s:Concept)
 WHERE tf1 <> tf2 AND tf1.date_start = tf2.date_start AND tf1.polarity <> tf2.polarity
 MERGE (tf1) -[:conflict{type:"C1_1"}]- (tf2);
 
-//Conflict - C2 - deathDateConflict
+//Conflict - C2 - Only one deathdate
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P570"}) -[:s]-> (s:Concept)
 WHERE tf1 <> tf2 AND tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C2"}]- (tf2);
 
-//Conflict - C2_1 - deathDateConflictPolarity
+//Conflict - C2_1 - Deathdate polarity
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P570"}) -[:s]-> (s:Concept)
 WHERE tf1 <> tf2 AND tf1.date_start = tf2.date_start AND tf1.polarity <> tf2.polarity
 MERGE (tf1) -[:conflict{type:"C2_1"}]- (tf2);
 
-//Conflict - C3 - birthDeathConflict
+//Conflict - C3 - Older than 150y
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P570"}) -[:s]-> (s:Concept)
 WHERE (tf1.date_start > tf2.date_start OR tf1.date_start + duration({years: 150}) <= tf2.date_start)
   AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C3"}]- (tf2);
 
-//Conflict - C4_1 - birthPlayerConflict
+//Conflict - C4_1 - Player not already born
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(:Concept{name:"teamPlayer"}) <-[:p]- (tf2:TF) -[:s]-> (s:Concept)
 WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C4_1"}]- (tf2);
 
-//Conflict - C4_2 - birthPlayerConflict
+//Conflict - C4_2 - Player not already born (2)
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C4_2"}]- (tf2);
 
-//Conflict - C5 - deathPlayerConflict
+//Conflict - C5 - Player cannot be dead
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C5"}]- (tf2);
 
-//Conflict - C6 - playerAgeConflict
+//Conflict - C6 - Player must be older than 16y
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C6"}]- (tf2);
 
-//Conflict - C7 - playerTooOldConflict
+//Conflict - C7 - Player must be younger than 50y
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start + duration({years: 50}) < tf2.date_end AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C7"}]- (tf2);
 
-//Conflict - C8 - twoTeamsConflict
+//Conflict - C8 - Only one team at a time for a player
 MATCH (tf1:TF{p:"P54", polarity:true}) -[:s]->  (s) <-[:s]- (tf2:TF{p:"P54", polarity:true})
 WHERE tf1.o <> tf2.o and ( (tf1.date_start < tf2.date_start and tf2.date_start < tf1.date_end)
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
 MERGE (tf1) -[:conflict{type:"C8"}]- (tf2);
 
-//Conflict - C14 - marriageConflict
+//Conflict - C14 - Only one marriage at a time for a player
 MATCH p1=(tf1:TF{p:"P26"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P26"}) -[:s]-> (s:Concept)
 WHERE tf1.o <> tf1.o AND tf1.polarity = true AND tf2.polarity = true AND
@@ -171,19 +171,19 @@ WHERE tf1.o <> tf1.o AND tf1.polarity = true AND tf2.polarity = true AND
     OR (tf1.date_start = tf2.date_start and tf1.date_end = tf2.date_end))
 MERGE (tf1) -[:conflict{type:"C14"}]- (tf2);
 
-//Conflict - C16 - birthMarriageConflict
+//Conflict - C16 - Must be born to get married
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P26"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start > tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C16"}]- (tf2);
 
-//Conflict - C17 - deathMarriageConflict
+//Conflict - C17 - Must be alive to get married
 MATCH p1=(tf1:TF{p:"P570"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P26"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start < tf2.date_start AND tf1.polarity = true AND tf2.polarity = true
 MERGE (tf1) -[:conflict{type:"C17"}]- (tf2);
 
-//Conflict - C18 - playerCoachConflict
+//Conflict - C18 - A coach is not a player at the same time
 MATCH p1=(tf1:TF{p:"P54"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P286"}) -[:o]-> (s:Concept)
 WHERE tf1.polarity = true AND tf2.polarity = true AND
@@ -191,7 +191,7 @@ WHERE tf1.polarity = true AND tf2.polarity = true AND
     OR (tf2.date_start < tf1.date_start and tf1.date_start < tf2.date_end) )
 MERGE (tf1) -[:conflict{type:"C18"}]- (tf2);
 
-//Conflict - C19 - twoCompaniesConflict
+//Conflict - C19 - Only one company at a time
 MATCH p1=(tf1:TF{p:"P108"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P108"}) -[:s]-> (s:Concept)
 WHERE tf1.o <> tf2.o AND tf1.polarity = true AND tf2.polarity = true AND
@@ -201,7 +201,7 @@ MERGE (tf1) -[:conflict{type:"C19"}]- (tf2);
 
 
 
-//Weighted Rule - C6-1 - playerAgeConflict
+//Conflict Weighted Rule - C6-1 - A player COULD be between 16y&18y
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.date_start + duration({years: 14}) < tf2.date_start

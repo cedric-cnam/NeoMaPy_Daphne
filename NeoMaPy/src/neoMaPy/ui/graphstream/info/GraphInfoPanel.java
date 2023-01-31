@@ -2,6 +2,7 @@ package neoMaPy.ui.graphstream.info;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +33,7 @@ public class GraphInfoPanel extends JPanel {
 	private HTMLEditorKit kit = new HTMLEditorKit();
     private HTMLDocument doc = new HTMLDocument();
     public static ReadCSS rc;
+    private StringBuffer sb;
 
 	GraphInfoPanel (NeoMaPyGraph graph, int width, int height){
 		setLayout(new BorderLayout());
@@ -48,16 +50,16 @@ public class GraphInfoPanel extends JPanel {
 	void setGraphInfo(List<Query> queries) throws BadLocationException, IOException {
 		doc = new HTMLDocument ();
 		graphInfo.setDocument(doc);
-
-		append("<html>", false, null);
-		append("Nodes\n", true, "black");
+		sb = new StringBuffer ("<html><table><tr><th colspan=3 style=\"border:1px;\"><b>Nodes</b></th></tr>");
 		setNodeInfo("s");
 		setNodeInfo("o");
 		setNodeInfo("p");
 		setNodeInfo("TF");
-		append("<br/>Edges\n", true, "black");
+		sb.append("<tr><th colspan=3 style=\"border:1px;\"><b>Edges</b></th></tr>");
 		setConflictInfo(queries);
-		append("</html>", false, null);
+		sb.append("</table></html>");
+		
+		kit.insertHTML(doc, doc.getLength(), sb.toString(), 0, 0, null);
 	}
 
 	double weight = 0.0;int infinity = 0;
@@ -93,18 +95,19 @@ public class GraphInfoPanel extends JPanel {
 				}
 			}
 		});
-		append(type + ": " + (nbtotal.get()-nbRemoved.get()) + "\n", false, "blue");
+		append(type, (nbtotal.get()-nbRemoved.get())+"", "", false, "blue");
 		if(type.compareTo("TF")==0) {
-			append("Valid: " + Math.round(
+			sb.append("<tr><th colspan=3 style=\"border:1px;\"><b>Quality</b></th></tr>");
+			append("Valid", Math.round(
 					new Float  (nbValid.get()-nbValidRemoved.get())/
-					new Float(nbtotal.get()-nbRemoved.get())*10000.0)/100.0 + "%\n", false, "blue");
-			append("Removed: " + Math.round(
+					new Float(nbtotal.get()-nbRemoved.get())*10000.0)/100.0 + "%", "", false, "blue");
+			append("Removed", Math.round(
 					new Float(nbRemoved.get())/
-					new Float(nbtotal.get())*10000.0)/100.0 + "%\n", false, "blue");
-			append("Invalid removed: " + Math.round(
+					new Float(nbtotal.get())*10000.0)/100.0 + "%", "", false, "blue");
+			append("Invalid removed", Math.round(
 					new Float(nbInvalidRemoved.get())/
-					new Float(nbtotal.get()-nbValid.get())*10000)/100 + "%\n", true, "blue");
-			append("Graph weight: "+ Math.round(weight*100.0)/100.0 + " (+"+infinity+" inf)", true, "blue");
+					new Float(nbtotal.get()-nbValid.get())*10000)/100 + "%", "", true, "blue");
+			append("Graph weight", Math.round(weight*100.0)/100.0+"", "(+"+infinity+" inf)", true, "blue");
 		}
 	}
 
@@ -126,7 +129,6 @@ public class GraphInfoPanel extends JPanel {
 			}
 		});
 
-		append("<html>", false, null);
 		for(Query q: queries) {
 			if(q.instruction.startsWith("Conflict")) {
 				String code = q.instruction.substring(q.instruction.indexOf("-")+2);
@@ -145,15 +147,15 @@ public class GraphInfoPanel extends JPanel {
 				Integer nb = edgeAttributes.get(edge);
 				if(nb == null)
 					nb = 0;
-				append("<b>"+code + "\t("+nb+")</b>\t"+name, false, GraphInfoPanel.rc.getColor(code));
+				append(code, nb+"", name, true, GraphInfoPanel.rc.getColor(code));
 			} else if(q.instruction.contains("Inference")) {
 				Integer nb = edgeAttributes.get("inference");
 				if(nb == null)
 					nb = 0;
-				append("<b>Inference\t("+nb+")</b>\t", false, GraphInfoPanel.rc.getColor("inference"));
+				append("Inference", nb+"", "", true, GraphInfoPanel.rc.getColor("inference"));
 			}
 		}
-		append("</html>", false, null);
+		//append("</html>", false, null);
 	}
 
 	private boolean validEdge (Edge e) {
@@ -167,12 +169,8 @@ public class GraphInfoPanel extends JPanel {
 
 		return true;
 	}
-	
-	private void append (String text, boolean bold, String c) throws BadLocationException, IOException {
-		if(bold)
-			text = "<b>"+text+"</b>";
-		if(c != null)
-			text = "<span style=\"color:"+c+";\">"+text+"</span>";
-		kit.insertHTML(doc, doc.getLength(), text, 0, 0, null);
+
+	private void append (String key, String value, String info, boolean bold, String c) throws BadLocationException, IOException {
+		sb.append("<tr style=\"color:"+c+";\"><td>"+(bold?"<b>":"")+key+(bold?"</b>":"")+ "</b></td><td><b>"+value+"</b></td><td>"+info+"</td></tr>");
 	}
 }
