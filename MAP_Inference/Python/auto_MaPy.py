@@ -23,7 +23,7 @@ if len( sys.argv ) != 5:
     print( "1. your initial json file containing the conflicting nodes," )
     print( "2. your initial json file containing the non conflicting nodes," )
     print( "3. the integer k = top element to keep during the algo of MaPy." )
-    print( "4. the float of the threshold or 0 for no threshold." )
+    print( "4. the float of the threshold or use 0 for no threshold." )
     exit()
 
 # Give your initial json file containing the conflicting nodes
