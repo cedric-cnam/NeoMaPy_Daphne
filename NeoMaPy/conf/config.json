@@ -5,5 +5,7 @@
     "database" : "DAPHNE",
     "generateGraphQueries" : "cypherQueries/generate_NeoMaPy.cypher",
     "statsQueries" : "cypherQueries/stats_NeoMaPy.cypher",
-    "extractGraphQueries" : "cypherQueries/extract_NeoMaPy.cypher"
+    "extractGraphQueries" : "cypherQueries/extract_NeoMaPy.cypher",
+    "MaPyQueries" : "cypherQueries/results_NeoMapy.cypher",
+    "mapyFolder" : "output/mapy/"
 }

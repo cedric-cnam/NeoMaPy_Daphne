@@ -35,8 +35,8 @@ public class MaPy {
 		default:								strategy = new SortedStrategy(1, false);break;
 		}
 	}
-	public MaPy(int cons, int topK) {
-		strategy = new MaPyStrategy(cons, topK);
+	public MaPy(int cons, int topK, double threshold) {
+		strategy = new MaPyStrategy(cons, topK, threshold);
 	}
 
 	public boolean processMAP(NeoMaPyGraph graph) {

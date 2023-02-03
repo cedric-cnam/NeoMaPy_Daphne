@@ -79,8 +79,13 @@ public class NeoMaPyFrame extends JFrame {
 		return gsp.getViewer();
 	}
 
+	Boolean processing = false;
 	public void processMap(MaPy mapy) {
-		gsp.processMap(mapy, neo.getQueries());
+		if(!processing) {
+			processing = true;
+			gsp.processMap(mapy, neo.getQueries());
+			processing = false;
+		}
 	}
 
 	public void resetMap(){

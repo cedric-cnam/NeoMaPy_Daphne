@@ -1,9 +1,15 @@
 package neoMaPy.connection;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Config;
@@ -15,6 +21,7 @@ import org.neo4j.driver.Session;
 import org.neo4j.driver.Transaction;
 import org.neo4j.driver.TransactionWork;
 import org.neo4j.driver.exceptions.ClientException;
+import org.neo4j.driver.internal.value.FloatValue;
 import org.neo4j.driver.internal.value.IntegerValue;
 
 import neoMaPy.NeoMaPy;
@@ -63,6 +70,39 @@ public class Connection implements AutoCloseable {
 			});
 		}
 		return values;
+	}
+
+	public static void readQueries2JSON(String file, String query) {
+		try (Session session = driver.session()) {
+			session.readTransaction(new TransactionWork<Integer>() {
+				@Override
+				public Integer execute(Transaction tx) {
+					BufferedWriter output = null;
+					try {
+						Result result = tx.run(query);
+							
+						output = new BufferedWriter(new FileWriter(NeoMaPy.config.get("mapyFolder")+file));
+						output.write("[");
+						if(result.hasNext()) {
+							JSONObject o = toJSON(result.next());
+							output.write(o.toJSONString().replaceAll("TRUE", "true"));
+							
+							while (result.hasNext()) {
+								o = toJSON(result.next());
+								output.write(",\n"+o.toJSONString().replaceAll("TRUE", "true"));
+							}
+						}
+						output.write("]");
+						output.flush();
+						output.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					return 1;
+				}
+			});
+		}
 	}
 
 	public static boolean updateQuery (String query) throws ClientException {

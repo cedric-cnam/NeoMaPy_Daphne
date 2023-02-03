@@ -7,16 +7,19 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JSeparator;
 import javax.swing.JSlider;
 import javax.swing.KeyStroke;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import neoMaPy.MaPy;
+import neoMaPy.MaPyStrategy.MaPyStrategy;
 
 public class MenuBar extends JMenuBar implements ActionListener, ItemListener, ChangeListener {
 	private static final long serialVersionUID = -7079284854154034465L;
@@ -25,8 +28,8 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		graph_css, graph_layout, graph_sop, graph_invalidTF,
 		processMAP, resetMAP,
 		randomMAP, conflictDecreasingMAP, conflictIncreasingMAP, weightDecreasingMAP, weightIncreasingMAP, invalidMAP;
-	JRadioButtonMenuItem [] tempC = new JRadioButtonMenuItem [4];int tempCons=0;
-	JMenu topK, cons;int topKv = 10;JSlider slider;
+	JRadioButtonMenuItem [] tempC = new JRadioButtonMenuItem [4];int tempCons=0; double threshold=0.0;
+	JMenu topK, cons, thresholdMenu;int topKv = 10;JSlider sliderTopK, sliderThreshold;
 
 	private boolean layoutEnabled = true, displaySop = false, displayInvalidTF = false;
 	public MenuBar (NeoMaPyFrame neomapy) {
@@ -47,22 +50,39 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		this.add(m);
 
 		m = new JMenu ("MAP Inference");
+		m.add(new JLabel ("NeoMaPy"));
 		cons = new JMenu ("Temporal Consistency - tCon");
 		ButtonGroup bg = new ButtonGroup ();
-		cons.add (radioMenuItem("tCon - Total Consistency", 0, true, bg));
-		cons.add (radioMenuItem("pCon - Partial Consistency", 1, false, bg));
-		cons.add (radioMenuItem("pInc - Partial Inconsistency", 2, false, bg));
-		cons.add (radioMenuItem("tInc - Total Inconsistency", 3, false, bg));
+		cons.add (radioMenuItem("tCon - Total Consistency", MaPyStrategy.tCon, true, bg));
+		cons.add (radioMenuItem("pCon - Partial Consistency", MaPyStrategy.pCon, false, bg));
+		cons.add (radioMenuItem("pInc - Partial Inconsistency", MaPyStrategy.pInc, false, bg));
+		cons.add (radioMenuItem("tInc - Total Inconsistency", MaPyStrategy.tInc, false, bg));
 		m.add(cons);
-		
+
+		topK = new JMenu ("Top-"+MaPyStrategy.minTopK);
+		sliderTopK = new JSlider(MaPyStrategy.minTopK, MaPyStrategy.maxTopK);
+		sliderTopK.setValue(MaPyStrategy.minTopK);
+        sliderTopK.addChangeListener(this);
+        topK.add(sliderTopK);
+        m.add(topK);
+
+		thresholdMenu = new JMenu ("Threshold-"+new Double (MaPyStrategy.minThreshold).doubleValue()/10.0);
+		sliderThreshold = new JSlider(MaPyStrategy.minThreshold, MaPyStrategy.maxThreshold);
+		sliderThreshold.setValue(MaPyStrategy.minThreshold);
+		sliderThreshold.addChangeListener(this);
+		thresholdMenu.add(sliderThreshold);
+        m.add(thresholdMenu);  
+        
 		topK = new JMenu ("Top-10");
-		slider = new JSlider(3, 20);
-		slider.setValue(10);
-        slider.addChangeListener(this);
-        topK.add(slider);
+		sliderTopK = new JSlider(MaPyStrategy.minTopK, MaPyStrategy.maxTopK);
+		sliderTopK.setValue(MaPyStrategy.minTopK);
+		sliderTopK.addChangeListener(this);
+        topK.add(sliderTopK);
         m.add(topK);  
         
-        m.add(processMAP = menuItem("process", KeyEvent.VK_M));
+        m.add(processMAP = menuItem("Process", KeyEvent.VK_M));
+		m.add(new JSeparator());
+
         m.add(resetMAP = menuItem("reset", KeyEvent.VK_R));
         
         JMenu test = new JMenu ("MAP test");
@@ -134,7 +154,7 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 			}
 			displayInvalidTF = !displayInvalidTF;
 		} else if (o == resetMAP)			neomapy.resetMap();
-		else if (o == processMAP)			neomapy.processMap (new MaPy (tempCons, topKv));
+		else if (o == processMAP)			neomapy.processMap (new MaPy (tempCons, topKv, threshold));
 		else if(o == randomMAP)				neomapy.processMap (new MaPy (MaPy.RANDOM_STRATEGY));
 		else if(o == conflictIncreasingMAP)	neomapy.processMap (new MaPy (MaPy.CONFLICT_INCREASING_STRATEGY));
 		else if(o == conflictDecreasingMAP)	neomapy.processMap (new MaPy (MaPy.CONFLICT_DECREASING_STRATEGY));
@@ -154,9 +174,13 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		if(e.getSource() == slider) {
-			topKv = slider.getValue();
+		if(e.getSource() == sliderTopK) {
+			topKv = sliderTopK.getValue();
 			topK.setText("Top-"+topKv);
+		} else if(e.getSource() == sliderThreshold) {
+			threshold = new Double (sliderThreshold.getValue()).doubleValue()/10.0;
+			thresholdMenu.setText("Threshold-"+threshold);
 		}
+
 	}
 }
