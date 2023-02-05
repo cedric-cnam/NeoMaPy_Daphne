@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy.ui;
 
 import java.awt.event.ActionEvent;
@@ -73,14 +76,7 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		thresholdMenu.add(sliderThreshold);
         m.add(thresholdMenu);  
         
-		topK = new JMenu ("Top-10");
-		sliderTopK = new JSlider(MaPyStrategy.minTopK, MaPyStrategy.maxTopK);
-		sliderTopK.setValue(MaPyStrategy.minTopK);
-		sliderTopK.addChangeListener(this);
-        topK.add(sliderTopK);
-        m.add(topK);  
-        
-        m.add(processMAP = menuItem("Process", KeyEvent.VK_M));
+        m.add(processMAP = menuItem("Compute MAP Inference", KeyEvent.VK_M));
 		m.add(new JSeparator());
 
         m.add(resetMAP = menuItem("reset", KeyEvent.VK_R));
@@ -154,13 +150,13 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 			}
 			displayInvalidTF = !displayInvalidTF;
 		} else if (o == resetMAP)			neomapy.resetMap();
-		else if (o == processMAP)			neomapy.processMap (new MaPy (tempCons, topKv, threshold));
-		else if(o == randomMAP)				neomapy.processMap (new MaPy (MaPy.RANDOM_STRATEGY));
-		else if(o == conflictIncreasingMAP)	neomapy.processMap (new MaPy (MaPy.CONFLICT_INCREASING_STRATEGY));
-		else if(o == conflictDecreasingMAP)	neomapy.processMap (new MaPy (MaPy.CONFLICT_DECREASING_STRATEGY));
-		else if(o == weightIncreasingMAP)	neomapy.processMap (new MaPy (MaPy.WEIGHT_INCREASING_STRATEGY));
-		else if(o == weightDecreasingMAP)	neomapy.processMap (new MaPy (MaPy.WEIGHT_DECREASING_STRATEGY));
-		else if(o == invalidMAP)			neomapy.processMap (new MaPy (MaPy.GOAL_STRATEGY));
+		else if (o == processMAP)			neomapy.processMAP (MaPy.strategy(tempCons, topKv, threshold, neomapy.getGraph().getMapping()));
+		else if(o == randomMAP)				neomapy.processMAP (MaPy.strategy(MaPy.RANDOM_STRATEGY));
+		else if(o == conflictIncreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.CONFLICT_INCREASING_STRATEGY));
+		else if(o == conflictDecreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.CONFLICT_DECREASING_STRATEGY));
+		else if(o == weightIncreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.WEIGHT_INCREASING_STRATEGY));
+		else if(o == weightDecreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.WEIGHT_DECREASING_STRATEGY));
+		else if(o == invalidMAP)			neomapy.processMAP (MaPy.strategy(MaPy.GOAL_STRATEGY));
 	}
 
 	@Override

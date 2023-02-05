@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy.ui.graphstream;
 
 import java.time.ZonedDateTime;
@@ -16,13 +19,18 @@ import org.neo4j.driver.internal.value.StringValue;
 
 import neoMaPy.MaPy;
 import neoMaPy.Query;
+import neoMaPy.MaPyStrategy.MAPStrategy;
 
 public class NeoMaPyGraph extends MultiGraph {
 	private MaPy mapy = null;
 
+	private Map<String, String> mapping;
+
 	public static final int infinity = 1000000;
 	public NeoMaPyGraph(String graphID) {
 		super(graphID);
+		mapping = new HashMap<String, String> ();
+		mapy = new MaPy ();
 	}
 
 	public void css() {
@@ -73,6 +81,7 @@ public class NeoMaPyGraph extends MultiGraph {
 	public void addTF(JSONObject json) {
 		String nodeId = (String) getNeo4jValue(json, "Node_id");
 		Node n = addNodeById(nodeId);
+		mapping.put(getNeo4jValue(json, "neo4jID").toString(), nodeId);
 		n.setAttribute("date_start", (ZonedDateTime) getNeo4jValue(json, "date_start"));
 		n.setAttribute("date_end", (ZonedDateTime) getNeo4jValue(json, "date_end"));
 		n.setAttribute("polarity", getBooleanNeo4j(json, "polarity"));
@@ -245,12 +254,16 @@ public class NeoMaPyGraph extends MultiGraph {
 		System.out.println("Edges: " + edgeAttributes);
 	}
 
-	public void processMap(MaPy m) {
-		this.mapy = m;
-		mapy.processMAP(this);
+	public void processMAP(MAPStrategy s) {
+		mapy.processMAP(this, s);
 	}
 
 	public void resetMap() {
+		mapy.resetStrategy();
 		mapy.resetNodes(this);
+	}
+
+	public Map<String, String> getMapping() {
+		return mapping;
 	}
 }

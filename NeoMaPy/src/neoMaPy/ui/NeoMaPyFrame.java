@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy.ui;
 
 import java.awt.BorderLayout;
@@ -10,7 +13,7 @@ import javax.swing.JTabbedPane;
 
 import org.graphstream.ui.view.Viewer;
 
-import neoMaPy.MaPy;
+import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.ui.graphstream.GraphStreamPanel;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
 import neoMaPy.ui.neo4j.NeoPanel;
@@ -80,10 +83,10 @@ public class NeoMaPyFrame extends JFrame {
 	}
 
 	Boolean processing = false;
-	public void processMap(MaPy mapy) {
+	public void processMAP(MAPStrategy s) {
 		if(!processing) {
 			processing = true;
-			gsp.processMap(mapy, neo.getQueries());
+			gsp.processMAP(s, neo.getQueries());
 			processing = false;
 		}
 	}

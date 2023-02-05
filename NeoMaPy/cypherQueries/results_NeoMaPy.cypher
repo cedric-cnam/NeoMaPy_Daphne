@@ -41,7 +41,7 @@ ORDER BY size(Conflicts_node_ids) DESC, Node_id ASC;
 MATCH (tf1:TF)
 OPTIONAL MATCH (tf1) -[c:conflict]- (tf2:TF)
 WHERE c.pCon<>true OR c.pInc<>true OR c.tInc is not null OR c.type <> "TC1" AND tf1.weight > <<threshold>> AND tf2.weight > <<threshold>>
-WITH distinct id(tf1) AS Node_id, collect(id(tf)) as conflicts, tf1.weight AS weight
+WITH distinct id(tf1) AS Node_id, collect(id(tf2)) as conflicts, tf1.weight AS weight
 WHERE size(conflicts) =0
 RETURN Node_id, weight;
 
@@ -55,7 +55,7 @@ ORDER BY size(Conflicts_node_ids) DESC, Node_id ASC;
 MATCH (tf1:TF)
 OPTIONAL MATCH (tf1) -[c:conflict]- (tf2:TF)
 WHERE c.pCon<>true OR c.pInc<>true OR c.tInc<>true OR c.type <> "TC1" AND tf1.weight > <<threshold>> AND tf2.weight > <<threshold>>
-WITH distinct id(tf1) AS Node_id, collect(id(tf)) as conflicts, tf1.weight AS weight
+WITH distinct id(tf1) AS Node_id, collect(id(tf2)) as conflicts, tf1.weight AS weight
 WHERE size(conflicts) =0
 RETURN Node_id, weight;
 

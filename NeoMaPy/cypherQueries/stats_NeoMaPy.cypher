@@ -1,8 +1,8 @@
 //Concepts
-MATCH (c:Concept) <-- () return count(*) as NB;
+MATCH (c:Concept) <-- () return count(distinct c) as NB;
 
 //TFs
-MATCH (tf:TF) -- () return count(*) as NB;
+MATCH (tf:TF) -- () return count(distinct tf) as NB;
 
 //Conflicts
 MATCH p=(tf1)-[r:conflict]->(tf2) RETURN count(*) as NB;

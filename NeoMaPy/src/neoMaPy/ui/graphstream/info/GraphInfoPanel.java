@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy.ui.graphstream.info;
 
 import java.awt.BorderLayout;
@@ -30,6 +33,7 @@ public class GraphInfoPanel extends JPanel {
 	private static final long serialVersionUID = 2800380442407155164L;
 	private JTextPane graphInfo;
 	private NeoMaPyGraph graph;
+	private MAPBar mapBar;
 	private HTMLEditorKit kit = new HTMLEditorKit();
     private HTMLDocument doc = new HTMLDocument();
     public static ReadCSS rc;
@@ -41,6 +45,7 @@ public class GraphInfoPanel extends JPanel {
 		rc = new ReadCSS ("conf/NeoMaPy.css");
 		add(new JLabel("Graph properties"), BorderLayout.NORTH);
 		add(new JScrollPane(graphInfo = new JTextPane()), BorderLayout.CENTER);
+		add(mapBar = new MAPBar (), BorderLayout.SOUTH);
 		graphInfo.setSize(200, height);
 		graphInfo.setContentType("text/html");
 		graphInfo.setEditorKit(kit);

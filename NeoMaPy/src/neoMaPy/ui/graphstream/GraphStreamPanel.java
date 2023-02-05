@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy.ui.graphstream;
 
 import java.awt.BorderLayout;
@@ -10,8 +13,6 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import org.graphstream.algorithm.Toolkit;
-import org.graphstream.graph.Node;
 import org.graphstream.ui.geom.Point2;
 import org.graphstream.ui.geom.Point3;
 import org.graphstream.ui.graphicGraph.GraphicGraph;
@@ -25,9 +26,9 @@ import org.graphstream.ui.view.Viewer;
 import org.graphstream.ui.view.camera.Camera;
 import org.graphstream.ui.view.util.GraphMetrics;
 
-import neoMaPy.MaPy;
 import neoMaPy.NeoMaPy;
 import neoMaPy.Query;
+import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.ui.NeoMaPyFrame;
 import neoMaPy.ui.graphstream.info.RightPanel;
 
@@ -202,11 +203,11 @@ public class GraphStreamPanel extends JPanel {
 		this.revalidate();
 	}
 
-	public void processMap(MaPy mapy, List<Query> queries) {
+	public void processMAP(MAPStrategy s, List<Query> queries) {
 		if(graph == null)
 			NeoMaPyFrame.error("No Knowledge Graph generated\\Please create it in the \"Conflict Graph\" menu.");
 		else {
-			graph.processMap(mapy);
+			graph.processMAP(s);
 			rp.setGraphInfo(queries);
 		}
 	}

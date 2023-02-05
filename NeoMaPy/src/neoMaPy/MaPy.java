@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import neoMaPy.MaPyStrategy.InvalidStrategy;
 import neoMaPy.MaPyStrategy.MaPyStrategy;
 import neoMaPy.MaPyStrategy.RandomStrategy;
 import neoMaPy.MaPyStrategy.SortedStrategy;
-import neoMaPy.MaPyStrategy.Strategy;
+import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
 
 public class MaPy {
@@ -21,10 +24,15 @@ public class MaPy {
 	public static final int WEIGHT_DECREASING_STRATEGY = 6;
 	public static final int GOAL_STRATEGY = 7;
 
-	private Strategy strategy;
+	private MAPStrategy strategy;
 	private List<String> nodes = new ArrayList<String>();
 
-	public MaPy(int strat) {
+	public MaPy () {
+		strategy = null;
+	}
+	
+	public static MAPStrategy strategy(int strat) {
+		MAPStrategy strategy;
 		switch(strat) {
 		case MaPy.CONFLICT_INCREASING_STRATEGY:	strategy = new SortedStrategy(1, true);break;
 		case MaPy.CONFLICT_DECREASING_STRATEGY: strategy = new SortedStrategy(1, false);break;
@@ -34,20 +42,25 @@ public class MaPy {
 		case MaPy.GOAL_STRATEGY: 				strategy = new InvalidStrategy();break;
 		default:								strategy = new SortedStrategy(1, false);break;
 		}
+		return strategy;
 	}
-	public MaPy(int cons, int topK, double threshold) {
-		strategy = new MaPyStrategy(cons, topK, threshold);
+	public static MAPStrategy strategy(int cons, int topK, double threshold, Map<String, String> mapping) {
+		return new MaPyStrategy(cons, topK, threshold, mapping);
 	}
 
-	public boolean processMAP(NeoMaPyGraph graph) {
-		if (graph == null)
+	public boolean processMAP(NeoMaPyGraph graph, MAPStrategy s) {
+		if (graph == null || s == null)
 			return false;
+		strategy = s;
 		resetNodes(graph);
-		nodes = strategy.strategy(graph);
+		nodes = strategy.computeStrategy(graph);
 		removeNodes(graph);
 		return true;
 	}
 
+	public void resetStrategy () {
+		strategy = null;
+	}
 	public void resetNodes(NeoMaPyGraph graph) {
 		graph.nodes().forEach(n -> {
 			Boolean b = (Boolean) n.getAttribute("removed");

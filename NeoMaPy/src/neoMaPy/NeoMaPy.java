@@ -1,3 +1,7 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
+
 package neoMaPy;
 
 import java.io.BufferedReader;

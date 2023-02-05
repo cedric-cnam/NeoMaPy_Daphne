@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 package neoMaPy.MaPyStrategy;
 
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ import org.graphstream.graph.Node;
 
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
 
-public class SortedStrategy extends Strategy {
+public class SortedStrategy extends MAPStrategy {
 	private int type;
 	private boolean increasing;
 	public SortedStrategy(int type, boolean increasing) {
@@ -21,7 +24,7 @@ public class SortedStrategy extends Strategy {
 	}
 
 	@Override
-	public List<String> strategy(NeoMaPyGraph graph) {
+	public List<String> computeStrategy(NeoMaPyGraph graph) {
 		Map<String, Long> conflictNodes = new HashMap<String, Long>();
 		graph.nodes().forEach(n -> {
 			if(((String)n.getAttribute("type")).compareTo("TF") == 0) {
