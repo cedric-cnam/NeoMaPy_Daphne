@@ -16,6 +16,7 @@ import org.graphstream.ui.view.Viewer;
 import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.ui.graphstream.GraphStreamPanel;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
+import neoMaPy.ui.graphstream.info.MAPBar;
 import neoMaPy.ui.neo4j.NeoPanel;
 
 public class NeoMaPyFrame extends JFrame {
@@ -91,6 +92,9 @@ public class NeoMaPyFrame extends JFrame {
 		}
 	}
 
+	public MAPBar getMAPBar() {
+		return gsp.getMAPBar();
+	}
 	public void resetMap(){
 		gsp.resetMap(neo.getQueries());
 	}

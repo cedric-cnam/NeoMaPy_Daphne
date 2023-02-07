@@ -201,7 +201,7 @@ MERGE (tf1) -[:conflict{type:"C19"}]- (tf2);
 
 
 
-//Conflict Weighted Rule - C6-1 - A player COULD be between 16y&18y
+//Conflict Weighted Rule - C6_1 - A player could be between 16y&18y
 MATCH p1=(tf1:TF{p:"P569"}) -[:s]-> (s:Concept),
   p2=(tf2:TF{p:"P54"}) -[:s]-> (s:Concept)
 WHERE tf1.date_start + duration({years: 16}) > tf2.date_start AND tf1.date_start + duration({years: 14}) < tf2.date_start

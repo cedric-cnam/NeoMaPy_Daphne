@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import neoMaPy.ui.graphstream.GraphStreamPanel;
@@ -18,7 +19,7 @@ public class SearchPanel extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 6707600808327035442L;
 	
 	private GraphStreamPanel gsp;
-	private JTextField nodeText;
+	private JTextArea nodeText;
 	private JButton search;
 
 	SearchPanel(GraphStreamPanel gsp, int width, int height) {
@@ -27,7 +28,8 @@ public class SearchPanel extends JPanel implements ActionListener {
 		setLayout(new BorderLayout ());
 		
 		add(new JLabel ("NodeId Zoom"), BorderLayout.NORTH);
-		add(nodeText = new JTextField(), BorderLayout.CENTER);
+		add(nodeText = new JTextArea(2,10), BorderLayout.CENTER);
+		nodeText.setLineWrap(true);
 		add(search = new JButton("Search"), BorderLayout.EAST);
 		search.addActionListener(this);
 	}

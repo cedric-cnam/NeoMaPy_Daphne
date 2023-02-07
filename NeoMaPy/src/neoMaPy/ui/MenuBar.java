@@ -32,7 +32,7 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		processMAP, resetMAP,
 		randomMAP, conflictDecreasingMAP, conflictIncreasingMAP, weightDecreasingMAP, weightIncreasingMAP, invalidMAP;
 	JRadioButtonMenuItem [] tempC = new JRadioButtonMenuItem [4];int tempCons=0; double threshold=0.0;
-	JMenu topK, cons, thresholdMenu;int topKv = 10;JSlider sliderTopK, sliderThreshold;
+	JMenu topK, cons, thresholdMenu;int topKv = MaPyStrategy.minTopK;int scaleTopK =50;JSlider sliderTopK, sliderThreshold;
 
 	private boolean layoutEnabled = true, displaySop = false, displayInvalidTF = false;
 	public MenuBar (NeoMaPyFrame neomapy) {
@@ -62,9 +62,9 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		cons.add (radioMenuItem("tInc - Total Inconsistency", MaPyStrategy.tInc, false, bg));
 		m.add(cons);
 
-		topK = new JMenu ("Top-"+MaPyStrategy.minTopK);
-		sliderTopK = new JSlider(MaPyStrategy.minTopK, MaPyStrategy.maxTopK);
-		sliderTopK.setValue(MaPyStrategy.minTopK);
+		topK = new JMenu ("Top-"+(MaPyStrategy.minTopK));
+		sliderTopK = new JSlider(MaPyStrategy.minTopK/scaleTopK, MaPyStrategy.maxTopK/scaleTopK);
+		sliderTopK.setValue(MaPyStrategy.minTopK/scaleTopK);
         sliderTopK.addChangeListener(this);
         topK.add(sliderTopK);
         m.add(topK);
@@ -112,11 +112,11 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		return mi;
 	}
 
-	long time = System.currentTimeMillis();
+	long when=0;
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(System.currentTimeMillis() - time < 500)return;time = System.currentTimeMillis();
+		if(when == e.getWhen())return;when = e.getWhen();
 		Object o = e.getSource();
 		if(o == graph_load)			neomapy.loadGraph();
 		else if(o == neo4j_connect)	neomapy.neo.connect();
@@ -150,33 +150,57 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 			}
 			displayInvalidTF = !displayInvalidTF;
 		} else if (o == resetMAP)			neomapy.resetMap();
-		else if (o == processMAP)			neomapy.processMAP (MaPy.strategy(tempCons, topKv, threshold, neomapy.getGraph().getMapping()));
-		else if(o == randomMAP)				neomapy.processMAP (MaPy.strategy(MaPy.RANDOM_STRATEGY));
-		else if(o == conflictIncreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.CONFLICT_INCREASING_STRATEGY));
-		else if(o == conflictDecreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.CONFLICT_DECREASING_STRATEGY));
-		else if(o == weightIncreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.WEIGHT_INCREASING_STRATEGY));
-		else if(o == weightDecreasingMAP)	neomapy.processMAP (MaPy.strategy(MaPy.WEIGHT_DECREASING_STRATEGY));
-		else if(o == invalidMAP)			neomapy.processMAP (MaPy.strategy(MaPy.GOAL_STRATEGY));
+		else if (o == processMAP) {	
+			setMAPLabel(MaPyStrategy.tcons(tempCons)+", top-"+topKv+", w > "+threshold);
+			neomapy.processMAP (MaPy.strategy(tempCons, topKv, threshold, neomapy.getGraph().getMapping(), neomapy.getMAPBar()));
+		}
+		else if(o == randomMAP) {
+			setMAPLabel("Random");
+			neomapy.processMAP (MaPy.strategy(MaPy.RANDOM_STRATEGY, neomapy.getMAPBar()));
+		}
+		else if(o == conflictIncreasingMAP) {
+			setMAPLabel("Increasing conflicts");
+			neomapy.processMAP (MaPy.strategy(MaPy.CONFLICT_INCREASING_STRATEGY, neomapy.getMAPBar()));
+		}
+		else if(o == conflictDecreasingMAP){
+			setMAPLabel("Decreasing conflicts");
+			neomapy.processMAP (MaPy.strategy(MaPy.CONFLICT_DECREASING_STRATEGY, neomapy.getMAPBar()));
+		}
+		else if(o == weightIncreasingMAP){
+			setMAPLabel("Increasing weight");
+			neomapy.processMAP (MaPy.strategy(MaPy.WEIGHT_INCREASING_STRATEGY, neomapy.getMAPBar()));
+		}
+		else if(o == weightDecreasingMAP){
+			setMAPLabel("Decreasing weight");
+			neomapy.processMAP (MaPy.strategy(MaPy.WEIGHT_DECREASING_STRATEGY, neomapy.getMAPBar()));
+		}
+		else if(o == invalidMAP) {
+			setMAPLabel("Only invalid");
+			neomapy.processMAP (MaPy.strategy(MaPy.GOAL_STRATEGY, neomapy.getMAPBar()));
+		}
 	}
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		Object o = e.getSource();
-		if(o == tempC[0] && tempC[0].isSelected()) {tempCons=0;cons.setText("Temporal Consistency - tCon");}
-		else if(o == tempC[1] && tempC[1].isSelected()){tempCons=1;cons.setText("Temporal Consistency - pCon");}
-		else if(o == tempC[2] && tempC[2].isSelected()){tempCons=2;cons.setText("Temporal Consistency - pInc");}
-		else if(o == tempC[3] && tempC[3].isSelected()){tempCons=3;cons.setText("Temporal Consistency - tInc");}
+		if(o == tempC[0] && tempC[0].isSelected()) {tempCons=MaPyStrategy.tCon;cons.setText("Temporal Consistency - tCon");}
+		else if(o == tempC[1] && tempC[1].isSelected()){tempCons=MaPyStrategy.pCon;cons.setText("Temporal Consistency - pCon");}
+		else if(o == tempC[2] && tempC[2].isSelected()){tempCons=MaPyStrategy.pInc;cons.setText("Temporal Consistency - pInc");}
+		else if(o == tempC[3] && tempC[3].isSelected()){tempCons=MaPyStrategy.tInc;cons.setText("Temporal Consistency - tInc");}
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		if(e.getSource() == sliderTopK) {
-			topKv = sliderTopK.getValue();
+			topKv = sliderTopK.getValue()*scaleTopK;
 			topK.setText("Top-"+topKv);
 		} else if(e.getSource() == sliderThreshold) {
 			threshold = new Double (sliderThreshold.getValue()).doubleValue()/10.0;
 			thresholdMenu.setText("Threshold-"+threshold);
 		}
-
 	}
+
+	public void setMAPLabel (String label) {
+		neomapy.getMAPBar().setLabel(label);
+	}	
 }

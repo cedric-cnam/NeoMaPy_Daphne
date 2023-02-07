@@ -6,3 +6,7 @@ To run the process :
 - execute : '*sudo docker-compose up*'
 - execute : '*./extractConflicts.sh*'. This step scan the import folder, for each it imports it, applies cypher queries, extract files, and proceed with next one
 - output files will be found in *docker_folder/output*
+
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */

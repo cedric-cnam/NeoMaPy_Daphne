@@ -14,17 +14,22 @@ import java.util.stream.Stream;
 import org.graphstream.graph.Node;
 
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
+import neoMaPy.ui.graphstream.info.MAPBar;
 
 public class SortedStrategy extends MAPStrategy {
 	private int type;
 	private boolean increasing;
-	public SortedStrategy(int type, boolean increasing) {
+	public SortedStrategy(int type, boolean increasing, MAPBar mapBar) {
+		super (mapBar);
 		this.type = type;
 		this.increasing = increasing;
 	}
 
 	@Override
 	public List<String> computeStrategy(NeoMaPyGraph graph) {
+		this.resetBar();
+		this.setBarMax(new Long(graph.nodes().count()).intValue()*2);
+
 		Map<String, Long> conflictNodes = new HashMap<String, Long>();
 		graph.nodes().forEach(n -> {
 			if(((String)n.getAttribute("type")).compareTo("TF") == 0) {
@@ -36,7 +41,11 @@ public class SortedStrategy extends MAPStrategy {
 				}
 				conflictNodes.put(n.getId(), l);
 			}
+			this.progressBar();
 		});
+
+		this.setBarMax(new Long(graph.nodes().count()+conflictNodes.size()).intValue());
+
 		List<String> nodes = new ArrayList<String>();
 
 		Stream<Map.Entry<String,Long>> sorted;
@@ -46,6 +55,7 @@ public class SortedStrategy extends MAPStrategy {
 		else
 			sorted = conflictNodes.entrySet().stream()
 				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
+
 		
 		sorted.forEach( entry ->{
 			String key = entry.getKey();
@@ -71,8 +81,8 @@ public class SortedStrategy extends MAPStrategy {
 				});
 			} else 
 				nodes.add(n.getId());
+			this.progressBar();
 		});
 		return nodes;
 	}
-
 }

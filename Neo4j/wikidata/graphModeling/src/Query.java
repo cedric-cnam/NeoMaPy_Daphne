@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 
 public class Query {
 	String instruction;

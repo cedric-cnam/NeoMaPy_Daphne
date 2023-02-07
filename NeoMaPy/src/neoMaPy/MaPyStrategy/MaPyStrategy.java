@@ -19,6 +19,7 @@ import neoMaPy.NeoMaPy;
 import neoMaPy.Query;
 import neoMaPy.connection.Connection;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
+import neoMaPy.ui.graphstream.info.MAPBar;
 
 public class MaPyStrategy extends MAPStrategy {
 	public static final int tCon = 0, pCon = 1, pInc = 2, tInc = 3, minTopK = 50, maxTopK = 1000;
@@ -31,17 +32,18 @@ public class MaPyStrategy extends MAPStrategy {
 	
 	private JSONObject solutions;
 	
-	public MaPyStrategy(int cons, int topK, double threshold, Map<String, String> mapping) {
+	public MaPyStrategy(int cons, int topK, double threshold, Map<String, String> mapping, MAPBar mapBar) {
+		super (mapBar);
 		this.mapping = mapping;
 		this.cons = cons;
 		this.topK = topK;
 		this.threshold = threshold;
 	}
 
-	private String tcons (int cons) {
+	public static String tcons (int cons) {
 		switch(cons) {
 		case pCon:return "pCon";
-		case pInc:return "tInc";
+		case pInc:return "pInc";
 		case tInc:return "tInc";
 		case tCon:
 		default: return "tCon";
@@ -50,8 +52,11 @@ public class MaPyStrategy extends MAPStrategy {
 	
 	@Override
 	public List<String> computeStrategy(NeoMaPyGraph graph) {
-		//NeoMaPyFrame.error("Extract nodes for the MAP Inference with: "		+ "cons(" + tcons(cons) + "), threshold-"+threshold);
+		this.resetBar();
+		this.setBarMax(7);
+
 		List<Query> queries = NeoMaPy.readQueries((String) NeoMaPy.config.get("MaPyQueries")); 
+		this.progressBar();
 		
 		String noConflictQuery = tcons(cons)+"_noConflicts", conflictQuery = tcons(cons)+"_conflicts", inferredNodesQuery = "inferredNodes";
 		
@@ -63,22 +68,28 @@ public class MaPyStrategy extends MAPStrategy {
 			if(q.instruction.compareTo(inferredNodesQuery) == 0)
 				inferredNodesQuery = q.query;
 		}
+		this.progressBar();
 		noConflictQuery = noConflictQuery.replaceAll("<<threshold>>", threshold+"");
 		conflictQuery = conflictQuery.replaceAll("<<threshold>>", threshold+"");
 		inferredNodesQuery = inferredNodesQuery.replaceAll("<<threshold>>", threshold+"");
 		
 		Connection.readQueries2JSON("noConflicts.json", noConflictQuery);
+		this.progressBar();
 		Connection.readQueries2JSON("conflicts.json", conflictQuery);
+		this.progressBar();
 		Connection.readQueries2JSON("inferred.json", inferredNodesQuery);
+		this.progressBar();
 
 		//NeoMaPyFrame.error("Call MaPy with extracted nodes and Top-" + topK);
 
 		launchMaPy ();
-		
+		this.progressBar();
+
 		List<String> nodeIds = new ArrayList<String> ();
 		try {
 			readMAP(nodeIds);
-			System.out.println(nodeIds.size()+" nodes in the MAP");
+			this.progressBar();
+			System.out.println(tcons(cons)+", top-"+topK+", w > "+threshold+" -> "+nodeIds.size()+" nodes in the MAP");
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -100,12 +111,9 @@ public class MaPyStrategy extends MAPStrategy {
 		String file = "./output/resultsMaPy/solutions_MaPy.txt";
 		BufferedReader br = new BufferedReader (new FileReader (file));
 		String l;
-		int i=0;
 		while ((l = br.readLine()) != null) {
 			nodeIds.add(nodeMapping(l));
-			i++;
 		}
-		System.out.println(i+" nodes in the file");
 		br.close();
 	}
 

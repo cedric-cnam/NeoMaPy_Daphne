@@ -5,7 +5,6 @@ package neoMaPy.ui.graphstream.info;
 
 import java.awt.BorderLayout;
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -145,7 +144,7 @@ public class GraphInfoPanel extends JPanel {
 				else {
 					if(code.contains("Partial Temporal Consistency")) edge = "pCon";
 					else if(code.contains("Partial Temporal Inconsistency")) edge = "pInc";
-					else if(code.contains("total Temporal Inconsistency")) edge = "tInc";
+					else if(code.contains("Total Temporal Inconsistency")) edge = "tInc";
 					code = "TC1";
 				}
 				String name = q.instruction.substring(q.instruction.lastIndexOf("-")+2);
@@ -177,5 +176,9 @@ public class GraphInfoPanel extends JPanel {
 
 	private void append (String key, String value, String info, boolean bold, String c) throws BadLocationException, IOException {
 		sb.append("<tr style=\"color:"+c+";\"><td>"+(bold?"<b>":"")+key+(bold?"</b>":"")+ "</b></td><td><b>"+value+"</b></td><td>"+info+"</td></tr>");
+	}
+
+	public MAPBar getMAPBar () {
+		return mapBar;
 	}
 }

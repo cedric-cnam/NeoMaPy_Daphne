@@ -1,3 +1,6 @@
+/**
+ * Created by Nicolas Travers <nicolas.travers@devinci.fr> 2022-2023©
+ */
 import java.time.LocalDate;
 
 public class Wikiline {

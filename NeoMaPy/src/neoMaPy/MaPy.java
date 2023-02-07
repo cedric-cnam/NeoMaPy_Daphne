@@ -9,11 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import neoMaPy.MaPyStrategy.InvalidStrategy;
+import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.MaPyStrategy.MaPyStrategy;
 import neoMaPy.MaPyStrategy.RandomStrategy;
 import neoMaPy.MaPyStrategy.SortedStrategy;
-import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
+import neoMaPy.ui.graphstream.info.MAPBar;
 
 public class MaPy {
 	public static final int DEFAULT_STRATEGY = 1;
@@ -31,21 +32,21 @@ public class MaPy {
 		strategy = null;
 	}
 	
-	public static MAPStrategy strategy(int strat) {
+	public static MAPStrategy strategy(int strat, MAPBar mapBar) {
 		MAPStrategy strategy;
 		switch(strat) {
-		case MaPy.CONFLICT_INCREASING_STRATEGY:	strategy = new SortedStrategy(1, true);break;
-		case MaPy.CONFLICT_DECREASING_STRATEGY: strategy = new SortedStrategy(1, false);break;
-		case MaPy.WEIGHT_INCREASING_STRATEGY: 	strategy = new SortedStrategy(2, true);break;
-		case MaPy.WEIGHT_DECREASING_STRATEGY: 	strategy = new SortedStrategy(2, false);break;
-		case MaPy.RANDOM_STRATEGY: 				strategy = new RandomStrategy();break;
-		case MaPy.GOAL_STRATEGY: 				strategy = new InvalidStrategy();break;
-		default:								strategy = new SortedStrategy(1, false);break;
+		case MaPy.CONFLICT_INCREASING_STRATEGY:	strategy = new SortedStrategy(1, true, mapBar);break;
+		case MaPy.CONFLICT_DECREASING_STRATEGY: strategy = new SortedStrategy(1, false, mapBar);break;
+		case MaPy.WEIGHT_INCREASING_STRATEGY: 	strategy = new SortedStrategy(2, true, mapBar);break;
+		case MaPy.WEIGHT_DECREASING_STRATEGY: 	strategy = new SortedStrategy(2, false, mapBar);break;
+		case MaPy.RANDOM_STRATEGY: 				strategy = new RandomStrategy(mapBar);break;
+		case MaPy.GOAL_STRATEGY: 				strategy = new InvalidStrategy(mapBar);break;
+		default:								strategy = new SortedStrategy(1, false, mapBar);break;
 		}
 		return strategy;
 	}
-	public static MAPStrategy strategy(int cons, int topK, double threshold, Map<String, String> mapping) {
-		return new MaPyStrategy(cons, topK, threshold, mapping);
+	public static MAPStrategy strategy(int cons, int topK, double threshold, Map<String, String> mapping, MAPBar mapBar) {
+		return new MaPyStrategy(cons, topK, threshold, mapping, mapBar);
 	}
 
 	public boolean processMAP(NeoMaPyGraph graph, MAPStrategy s) {

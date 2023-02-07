@@ -51,4 +51,8 @@ public class RightPanel extends JPanel {
 			e.printStackTrace();
 		}
 	}
+
+	public MAPBar getMAPBar () {
+		return graphInfo.getMAPBar();
+	}
 }

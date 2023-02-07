@@ -30,6 +30,7 @@ import neoMaPy.NeoMaPy;
 import neoMaPy.Query;
 import neoMaPy.MaPyStrategy.MAPStrategy;
 import neoMaPy.ui.NeoMaPyFrame;
+import neoMaPy.ui.graphstream.info.MAPBar;
 import neoMaPy.ui.graphstream.info.RightPanel;
 
 public class GraphStreamPanel extends JPanel {
@@ -212,6 +213,10 @@ public class GraphStreamPanel extends JPanel {
 		}
 	}
 
+	public MAPBar getMAPBar() {
+		return rp.getMAPBar();
+	}
+	
 	public void resetMap(List<Query> queries) {
 		if(graph == null)
 			NeoMaPyFrame.error("No Knowledge Graph generated\\Please create it in the \"Conflict Graph\" menu.");
