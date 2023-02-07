@@ -1,0 +1,1 @@
+Data required for this project were put on a distinct repository to lightweight the project. You can find all data on [NeoMaPy_Daphne_Data](https://github.com/cedric-cnam/NeoMaPy_Daphne_Data)
