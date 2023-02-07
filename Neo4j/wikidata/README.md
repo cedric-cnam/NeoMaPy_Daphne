@@ -1,6 +1,7 @@
 This repository contains:
 - The [**data**](data) folder with the wikidata dataset provided by Chekol
-- The [**wikidata_extractor**](wikidata_extractor) folder, a Java program that transforms the Wikidata/Rockit dataset into a CSV file to be imported in *Neo4j*
+- The [**graphModeling**](graphModeling) folder with a Java program for automatic computation of all input graphs (see data folder), and produce different list of conflictual nodes. The setting has been put on a *Docker* environment in order to ease the installation of *Neo4j*, configurations, program execution and output files (volumes are also provided)
+- The [**translate2Neo4j**](translate2Neo4j) folder, a Java program that transforms the Wikidata/Rockit dataset into a CSV file to be imported in *Neo4j*
 - [GraphSetting.md](GraphSetting.md) gives the instruction to import CSV files and generate the graph database in *Neo4j*
 - [Inference.md](Inference.md) gives the *Cypher* queries that generates new TF by inference (rules)
 - [Constrains.md](Constraints.md) gives the *Cypher* queries that generates all the conflicts related to expressed constraints on the dataset
