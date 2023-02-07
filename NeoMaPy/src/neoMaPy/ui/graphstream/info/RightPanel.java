@@ -52,7 +52,7 @@ public class RightPanel extends JPanel {
 		}
 	}
 
-	public MAPBar getMAPBar () {
+	public MAPBar getMAPBar() {
 		return graphInfo.getMAPBar();
 	}
 }

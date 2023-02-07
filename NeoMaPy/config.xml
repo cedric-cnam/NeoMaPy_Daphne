@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project NeoMapy">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/Users/ntravers/eclipse-workspace"/>
+    <property name="dir.jarfile" value="${dir.buildfile}"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/NeoMaPy_GUI.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="neoMaPy.NeoMaPy"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="${dir.jarfile}/bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/gs-core-2.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/json-simple-1.1.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/neo4j-java-driver-4.4.9.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/neo4j-java-driver-slim-4.4.9.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/reactive-streams-1.0.4.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/gs-ui-swing-2.0.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.jarfile}/lib/gs-algo-2.0.jar"/>
+        </jar>
+    </target>
+</project>

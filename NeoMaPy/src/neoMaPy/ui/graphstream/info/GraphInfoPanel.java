@@ -22,8 +22,8 @@ import org.graphstream.graph.Edge;
 import org.graphstream.graph.Node;
 
 import neoMaPy.Query;
+import neoMaPy.ReadCSS;
 import neoMaPy.ui.graphstream.NeoMaPyGraph;
-import neoMaPy.ui.graphstream.ReadCSS;
 
 public class GraphInfoPanel extends JPanel {
 	/**
@@ -34,17 +34,17 @@ public class GraphInfoPanel extends JPanel {
 	private NeoMaPyGraph graph;
 	private MAPBar mapBar;
 	private HTMLEditorKit kit = new HTMLEditorKit();
-    private HTMLDocument doc = new HTMLDocument();
-    public static ReadCSS rc;
-    private StringBuffer sb;
+	private HTMLDocument doc = new HTMLDocument();
+	public static ReadCSS rc;
+	private StringBuffer sb;
 
-	GraphInfoPanel (NeoMaPyGraph graph, int width, int height){
+	public GraphInfoPanel(NeoMaPyGraph graph, int width, int height) {
 		setLayout(new BorderLayout());
 		this.graph = graph;
-		rc = new ReadCSS ("conf/NeoMaPy.css");
+		rc = new ReadCSS("conf/NeoMaPy.css");
 		add(new JLabel("Graph properties"), BorderLayout.NORTH);
 		add(new JScrollPane(graphInfo = new JTextPane()), BorderLayout.CENTER);
-		add(mapBar = new MAPBar (), BorderLayout.SOUTH);
+		add(mapBar = new MAPBar(), BorderLayout.SOUTH);
 		graphInfo.setSize(200, height);
 		graphInfo.setContentType("text/html");
 		graphInfo.setEditorKit(kit);
@@ -52,9 +52,9 @@ public class GraphInfoPanel extends JPanel {
 	}
 
 	void setGraphInfo(List<Query> queries) throws BadLocationException, IOException {
-		doc = new HTMLDocument ();
+		doc = new HTMLDocument();
 		graphInfo.setDocument(doc);
-		sb = new StringBuffer ("<html><table><tr><th colspan=3 style=\"border:1px;\"><b>Nodes</b></th></tr>");
+		sb = new StringBuffer("<html><table><tr><th colspan=3 style=\"border:1px;\"><b>Nodes</b></th></tr>");
 		setNodeInfo("s");
 		setNodeInfo("o");
 		setNodeInfo("p");
@@ -62,11 +62,12 @@ public class GraphInfoPanel extends JPanel {
 		sb.append("<tr><th colspan=3 style=\"border:1px;\"><b>Edges</b></th></tr>");
 		setConflictInfo(queries);
 		sb.append("</table></html>");
-		
+
 		kit.insertHTML(doc, doc.getLength(), sb.toString(), 0, 0, null);
 	}
 
-	double weight = 0.0;int infinity = 0;
+	double weight = 0.0;
+	int infinity = 0;
 
 	private void setNodeInfo(String type) throws BadLocationException, IOException {
 		AtomicInteger nbtotal = new AtomicInteger(0);
@@ -80,14 +81,16 @@ public class GraphInfoPanel extends JPanel {
 			String nodeType = (String) n.getAttribute("type");
 			if (nodeType != null && nodeType.compareTo(type) == 0) {
 				nbtotal.addAndGet(1);
-				if(type.compareTo("TF")==0) {
+				if (type.compareTo("TF") == 0) {
 					Boolean removed = (Boolean) n.getAttribute("removed");
 					if (removed != null && removed) {
 						nbRemoved.addAndGet(1);
 					} else {
-						double w = (Double)n.getAttribute("weight");
-						if(w > NeoMaPyGraph.infinity)	infinity++;
-						else							weight += w;
+						double w = (Double) n.getAttribute("weight");
+						if (w > NeoMaPyGraph.infinity)
+							infinity++;
+						else
+							weight += w;
 					}
 					Boolean valid = (Boolean) n.getAttribute("valid");
 					if (valid != null && valid)
@@ -99,29 +102,29 @@ public class GraphInfoPanel extends JPanel {
 				}
 			}
 		});
-		append(type, (nbtotal.get()-nbRemoved.get())+"", "", false, "blue");
-		if(type.compareTo("TF")==0) {
+		append(type, (nbtotal.get() - nbRemoved.get()) + "", "", false, "blue");
+		if (type.compareTo("TF") == 0) {
 			sb.append("<tr><th colspan=3 style=\"border:1px;\"><b>Quality</b></th></tr>");
-			append("Valid", Math.round(
-					new Float  (nbValid.get()-nbValidRemoved.get())/
-					new Float(nbtotal.get()-nbRemoved.get())*10000.0)/100.0 + "%", "", false, "blue");
-			append("Removed", Math.round(
-					new Float(nbRemoved.get())/
-					new Float(nbtotal.get())*10000.0)/100.0 + "%", "", false, "blue");
-			append("Invalid removed", Math.round(
-					new Float(nbInvalidRemoved.get())/
-					new Float(nbtotal.get()-nbValid.get())*10000)/100 + "%", "", true, "blue");
-			append("Graph weight", Math.round(weight*100.0)/100.0+"", "(+"+infinity+" inf)", true, "blue");
+			append("Valid", Math.round(new Float(nbValid.get() - nbValidRemoved.get())
+					/ new Float(nbtotal.get() - nbRemoved.get()) * 10000.0) / 100.0 + "%", "", false, "blue");
+			append("Removed", Math.round(new Float(nbRemoved.get()) / new Float(nbtotal.get()) * 10000.0) / 100.0 + "%",
+					"", false, "blue");
+			append("Invalid removed",
+					Math.round(new Float(nbInvalidRemoved.get()) / new Float(nbtotal.get() - nbValid.get()) * 10000)
+							/ 100 + "%",
+					"", true, "blue");
+			append("Graph weight", Math.round(weight * 100.0) / 100.0 + "", "(+" + infinity + " inf)", true, "blue");
 		}
 	}
 
 	private void setConflictInfo(List<Query> queries) throws BadLocationException, IOException {
 		Map<String, Integer> edgeAttributes = new HashMap<String, Integer>();
-		
+
 		graph.edges().forEach(e -> {
-			if(validEdge (e)) {
+			if (validEdge(e)) {
 				e.attributeKeys().forEach(att -> {
-					if(att.compareTo("o") ==0 || att.compareTo("s") == 0 || att.compareTo("p") == 0 || att.compareTo("ui.class") == 0)
+					if (att.compareTo("o") == 0 || att.compareTo("s") == 0 || att.compareTo("p") == 0
+							|| att.compareTo("ui.class") == 0)
 						return;
 					Integer val = edgeAttributes.get(att);
 					if (val == null)
@@ -133,52 +136,58 @@ public class GraphInfoPanel extends JPanel {
 			}
 		});
 
-		for(Query q: queries) {
-			if(q.instruction.startsWith("Conflict")) {
-				String code = q.instruction.substring(q.instruction.indexOf("-")+2);
-				String edge =null;
-				if(code.indexOf(" -") > -1) {
+		for (Query q : queries) {
+			if (q.instruction.startsWith("Conflict")) {
+				String code = q.instruction.substring(q.instruction.indexOf("-") + 2);
+				String edge = null;
+				if (code.indexOf(" -") > -1) {
 					code = code.substring(0, code.indexOf(" -"));
 					edge = code;
-				}
-				else {
-					if(code.contains("Partial Temporal Consistency")) edge = "pCon";
-					else if(code.contains("Partial Temporal Inconsistency")) edge = "pInc";
-					else if(code.contains("Total Temporal Inconsistency")) edge = "tInc";
+				} else {
+					if (code.contains("Partial Temporal Consistency"))
+						edge = "pCon";
+					else if (code.contains("Partial Temporal Inconsistency"))
+						edge = "pInc";
+					else if (code.contains("Total Temporal Inconsistency"))
+						edge = "tInc";
 					code = "TC1";
 				}
-				String name = q.instruction.substring(q.instruction.lastIndexOf("-")+2);
+				String name = q.instruction.substring(q.instruction.lastIndexOf("-") + 2);
 				Integer nb = edgeAttributes.get(edge);
-				if(nb == null)
+				if (nb == null)
 					nb = 0;
-				append(code, nb+"", name, true, GraphInfoPanel.rc.getColor(code));
-			} else if(q.instruction.contains("Inference")) {
+				append(code, nb + "", name, true, GraphInfoPanel.rc.getColor(code));
+			} else if (q.instruction.contains("Inference")) {
 				Integer nb = edgeAttributes.get("inference");
-				if(nb == null)
+				if (nb == null)
 					nb = 0;
-				append("Inference", nb+"", "", true, GraphInfoPanel.rc.getColor("inference"));
+				append("Inference", nb + "", "", true, GraphInfoPanel.rc.getColor("inference"));
 			}
 		}
-		//append("</html>", false, null);
+		// append("</html>", false, null);
 	}
 
-	private boolean validEdge (Edge e) {
+	private boolean validEdge(Edge e) {
 		Node n = e.getSourceNode();
 		Boolean removed = (Boolean) n.getAttribute("removed");
-		if (removed != null && removed) return false;
+		if (removed != null && removed)
+			return false;
 
 		n = e.getTargetNode();
 		removed = (Boolean) n.getAttribute("removed");
-		if (removed != null && removed) return false;
+		if (removed != null && removed)
+			return false;
 
 		return true;
 	}
 
-	private void append (String key, String value, String info, boolean bold, String c) throws BadLocationException, IOException {
-		sb.append("<tr style=\"color:"+c+";\"><td>"+(bold?"<b>":"")+key+(bold?"</b>":"")+ "</b></td><td><b>"+value+"</b></td><td>"+info+"</td></tr>");
+	private void append(String key, String value, String info, boolean bold, String c)
+			throws BadLocationException, IOException {
+		sb.append("<tr style=\"color:" + c + ";\"><td>" + (bold ? "<b>" : "") + key + (bold ? "</b>" : "")
+				+ "</b></td><td><b>" + value + "</b></td><td>" + info + "</td></tr>");
 	}
 
-	public MAPBar getMAPBar () {
+	public MAPBar getMAPBar() {
 		return mapBar;
 	}
 }

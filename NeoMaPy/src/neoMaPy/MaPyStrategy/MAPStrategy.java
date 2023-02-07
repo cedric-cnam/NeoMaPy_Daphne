@@ -10,19 +10,22 @@ import neoMaPy.ui.graphstream.info.MAPBar;
 
 public abstract class MAPStrategy {
 	protected MAPBar mapBar;
+
 	public MAPStrategy(MAPBar mapBar) {
 		this.mapBar = mapBar;
 	}
 
-	protected void setBarMax (int value) {
+	protected void setBarMax(int value) {
 		mapBar.setBarMax(value);
 	}
-	protected void progressBar () {
+
+	protected void progressBar() {
 		mapBar.changeStatus();
 	}
-	protected void resetBar () {
+
+	protected void resetBar() {
 		mapBar.resetStatus();
 	}
-	
-	public abstract List<String> computeStrategy(NeoMaPyGraph graph); 
+
+	public abstract List<String> computeStrategy(NeoMaPyGraph graph);
 }

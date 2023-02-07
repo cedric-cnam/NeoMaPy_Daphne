@@ -29,24 +29,24 @@ public class NeoMaPyFrame extends JFrame {
 	 */
 	private static final long serialVersionUID = -5767865719882084502L;
 
-	public NeoMaPyFrame () {
+	public NeoMaPyFrame() {
 		frame = this;
 	}
-	
+
 	public void init() {
 		setLayout(new BorderLayout());
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = new Double(screenSize.getWidth()).intValue();
 		int height = new Double(screenSize.getHeight()).intValue();
 		setSize(width, height);
-		
-		add(tabs = new JTabbedPane (), BorderLayout.CENTER);
-		
-		tabs.addTab("Neo4j", neo = new NeoPanel (width, height));
-		neo.connect();
-		tabs.addTab("Graph", gsp = new GraphStreamPanel (width, height)); 
 
-		this.setJMenuBar(new MenuBar (this));
+		add(tabs = new JTabbedPane(), BorderLayout.CENTER);
+
+		tabs.addTab("Neo4j", neo = new NeoPanel(width, height));
+		neo.connect();
+		tabs.addTab("Graph", gsp = new GraphStreamPanel(width, height));
+
+		this.setJMenuBar(new MenuBar(this));
 
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -64,28 +64,29 @@ public class NeoMaPyFrame extends JFrame {
 		 */
 	}
 
-	public static void error (String message) {
+	public static void error(String message) {
 		JOptionPane.showMessageDialog(frame, message);
 	}
-	
-	public void loadGraph () {
+
+	public void loadGraph() {
 		tabs.setSelectedComponent(gsp);
 		gsp.initGraph(neo.getQueries());
 		this.setAlwaysOnTop(true);
 		this.setAutoRequestFocus(true);
 	}
-	
+
 	public NeoMaPyGraph getGraph() {
 		return gsp.getGraph();
 	}
 
-	public Viewer getViewer () {
+	public Viewer getViewer() {
 		return gsp.getViewer();
 	}
 
 	Boolean processing = false;
+
 	public void processMAP(MAPStrategy s) {
-		if(!processing) {
+		if (!processing) {
 			processing = true;
 			gsp.processMAP(s, neo.getQueries());
 			processing = false;
@@ -95,7 +96,8 @@ public class NeoMaPyFrame extends JFrame {
 	public MAPBar getMAPBar() {
 		return gsp.getMAPBar();
 	}
-	public void resetMap(){
+
+	public void resetMap() {
 		gsp.resetMap(neo.getQueries());
 	}
 }

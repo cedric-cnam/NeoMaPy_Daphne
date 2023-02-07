@@ -18,22 +18,23 @@ public class NeoMaPyMouseManager extends DefaultMouseManager {
 		this.gs = gs;
 	}
 
+	@Override
 	public void mouseMoved(MouseEvent event) {
-/*		try {
-			GraphicElement ge = view.findGraphicElementAt(EnumSet.of(InteractiveElement.NODE, InteractiveElement.EDGE),
-					event.getX(), event.getY());
-			if (ge != null)
-				gs.setInfo(ge);
-		} catch (Exception e) {
-
-		}
-*/
+		/*
+		 * try { GraphicElement ge =
+		 * view.findGraphicElementAt(EnumSet.of(InteractiveElement.NODE,
+		 * InteractiveElement.EDGE), event.getX(), event.getY()); if (ge != null)
+		 * gs.setInfo(ge); } catch (Exception e) {
+		 * 
+		 * }
+		 */
 	}
 
+	@Override
 	public void mouseClicked(MouseEvent event) {
 		try {
-			GraphicElement ge = view.findGraphicElementAt(EnumSet.of(InteractiveElement.NODE),
-					event.getX(), event.getY());
+			GraphicElement ge = view.findGraphicElementAt(EnumSet.of(InteractiveElement.NODE), event.getX(),
+					event.getY());
 			if (ge != null)
 				gs.setInfo(ge.getId());
 		} catch (Exception e) {

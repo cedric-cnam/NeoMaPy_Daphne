@@ -12,6 +12,7 @@ public class Query {
 		this.query = query;
 	}
 
+	@Override
 	public String toString() {
 		return "\n//" + instruction + "\n\t" + query;
 	}

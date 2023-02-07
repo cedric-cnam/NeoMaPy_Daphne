@@ -28,24 +28,40 @@ public class MaPy {
 	private MAPStrategy strategy;
 	private List<String> nodes = new ArrayList<String>();
 
-	public MaPy () {
+	public MaPy() {
 		strategy = null;
 	}
-	
+
 	public static MAPStrategy strategy(int strat, MAPBar mapBar) {
 		MAPStrategy strategy;
-		switch(strat) {
-		case MaPy.CONFLICT_INCREASING_STRATEGY:	strategy = new SortedStrategy(1, true, mapBar);break;
-		case MaPy.CONFLICT_DECREASING_STRATEGY: strategy = new SortedStrategy(1, false, mapBar);break;
-		case MaPy.WEIGHT_INCREASING_STRATEGY: 	strategy = new SortedStrategy(2, true, mapBar);break;
-		case MaPy.WEIGHT_DECREASING_STRATEGY: 	strategy = new SortedStrategy(2, false, mapBar);break;
-		case MaPy.RANDOM_STRATEGY: 				strategy = new RandomStrategy(mapBar);break;
-		case MaPy.GOAL_STRATEGY: 				strategy = new InvalidStrategy(mapBar);break;
-		default:								strategy = new SortedStrategy(1, false, mapBar);break;
+		switch (strat) {
+		case MaPy.CONFLICT_INCREASING_STRATEGY:
+			strategy = new SortedStrategy(1, true, mapBar);
+			break;
+		case MaPy.CONFLICT_DECREASING_STRATEGY:
+			strategy = new SortedStrategy(1, false, mapBar);
+			break;
+		case MaPy.WEIGHT_INCREASING_STRATEGY:
+			strategy = new SortedStrategy(2, true, mapBar);
+			break;
+		case MaPy.WEIGHT_DECREASING_STRATEGY:
+			strategy = new SortedStrategy(2, false, mapBar);
+			break;
+		case MaPy.RANDOM_STRATEGY:
+			strategy = new RandomStrategy(mapBar);
+			break;
+		case MaPy.GOAL_STRATEGY:
+			strategy = new InvalidStrategy(mapBar);
+			break;
+		default:
+			strategy = new SortedStrategy(1, false, mapBar);
+			break;
 		}
 		return strategy;
 	}
-	public static MAPStrategy strategy(int cons, int topK, double threshold, Map<String, String> mapping, MAPBar mapBar) {
+
+	public static MAPStrategy strategy(int cons, int topK, double threshold, Map<String, String> mapping,
+			MAPBar mapBar) {
 		return new MaPyStrategy(cons, topK, threshold, mapping, mapBar);
 	}
 
@@ -59,9 +75,10 @@ public class MaPy {
 		return true;
 	}
 
-	public void resetStrategy () {
+	public void resetStrategy() {
 		strategy = null;
 	}
+
 	public void resetNodes(NeoMaPyGraph graph) {
 		graph.nodes().forEach(n -> {
 			Boolean b = (Boolean) n.getAttribute("removed");
@@ -83,11 +100,11 @@ public class MaPy {
 		});
 		graph.nodes().forEach(n -> {
 			Boolean b = true;
-			String type = (String)n.getAttribute("type");
-			if(type.compareTo("o") == 0 || type.compareTo("s") == 0 || type.compareTo("p") == 0)
+			String type = (String) n.getAttribute("type");
+			if (type.compareTo("o") == 0 || type.compareTo("s") == 0 || type.compareTo("p") == 0)
 				b = false;
-			
-			if(!b)
+
+			if (!b)
 				return;
 			b = validNodes.get(n.getId());
 			if (b == null || !b) {

@@ -12,7 +12,7 @@ import neoMaPy.ui.graphstream.info.MAPBar;
 public class InvalidStrategy extends MAPStrategy {
 
 	public InvalidStrategy(MAPBar mapBar) {
-		super (mapBar);
+		super(mapBar);
 	}
 
 	@Override

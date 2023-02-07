@@ -12,9 +12,10 @@ import neoMaPy.ui.graphstream.info.MAPBar;
 public class RandomStrategy extends MAPStrategy {
 
 	public RandomStrategy(MAPBar mapBar) {
-		super (mapBar);
+		super(mapBar);
 	}
 
+	@Override
 	public List<String> computeStrategy(NeoMaPyGraph graph) {
 		this.resetBar();
 		this.setBarMax(new Long(graph.nodes().count()).intValue());

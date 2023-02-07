@@ -36,10 +36,10 @@ public class NeoMaPy {
 		nmp.init();
 	}
 
-	public static boolean connection () {
+	public static boolean connection() {
 		return connection.connect();
 	}
-	
+
 	public void close() throws Exception {
 		connection.close();
 	}
@@ -53,11 +53,17 @@ public class NeoMaPy {
 		// gs.viewer();
 	}
 
-	public static Map<String, Integer> statQueries (){
-		Map<String, Integer> stats = Connection.loadStats(readQueries((String)NeoMaPy.config.get("statsQueries")));
+	public static Map<String, Integer> statQueries() {
+		Map<String, Integer> stats = null;
+		try {
+			stats = Connection.loadStats(readQueries((String) NeoMaPy.config.get("statsQueries")));
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
 		return stats;
 	}
-	
+
 	public static List<Query> readQueries(String queryFile) {
 		List<Query> queries = new ArrayList<Query>();
 

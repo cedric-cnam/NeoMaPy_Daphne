@@ -18,26 +18,27 @@ public class MAPBar extends JPanel {
 	private JLabel l;
 	private final int maxStatus = 10;
 
-	MAPBar (){
-		super(new BorderLayout ());
-		add(l = new JLabel ("MAP status"), BorderLayout.WEST);
-		add(pb = new JProgressBar (0, maxStatus), BorderLayout.CENTER);
-		
+	public MAPBar() {
+		super(new BorderLayout());
+		add(l = new JLabel("MAP status"), BorderLayout.WEST);
+		add(pb = new JProgressBar(0, maxStatus), BorderLayout.CENTER);
+
 	}
 
-	public void setLabel (String label) {
+	public void setLabel(String label) {
 		System.out.println(label);
-		l.setText("MAP status ("+label+")");
+		l.setText("MAP status (" + label + ")");
 	}
-	
+
 	public void setBarMax(int value) {
 		pb.setMaximum(value);
 	}
-	public void resetStatus () {
+
+	public void resetStatus() {
 		pb.setValue(0);
 	}
 
-	public void changeStatus () {
-		pb.setValue(pb.getValue()+1);
+	public void changeStatus() {
+		pb.setValue(pb.getValue() + 1);
 	}
 }

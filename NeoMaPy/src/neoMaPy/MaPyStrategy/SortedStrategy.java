@@ -19,8 +19,9 @@ import neoMaPy.ui.graphstream.info.MAPBar;
 public class SortedStrategy extends MAPStrategy {
 	private int type;
 	private boolean increasing;
+
 	public SortedStrategy(int type, boolean increasing, MAPBar mapBar) {
-		super (mapBar);
+		super(mapBar);
 		this.type = type;
 		this.increasing = increasing;
 	}
@@ -28,42 +29,40 @@ public class SortedStrategy extends MAPStrategy {
 	@Override
 	public List<String> computeStrategy(NeoMaPyGraph graph) {
 		this.resetBar();
-		this.setBarMax(new Long(graph.nodes().count()).intValue()*2);
+		this.setBarMax(new Long(graph.nodes().count()).intValue() * 2);
 
 		Map<String, Long> conflictNodes = new HashMap<String, Long>();
 		graph.nodes().forEach(n -> {
-			if(((String)n.getAttribute("type")).compareTo("TF") == 0) {
+			if (((String) n.getAttribute("type")).compareTo("TF") == 0) {
 				long l;
-				if(type == 1)
+				if (type == 1)
 					l = n.edges().count();
 				else {
-					l = new Double (((Double)n.getAttribute("weight"))*1000.0).longValue();
+					l = new Double(((Double) n.getAttribute("weight")) * 1000.0).longValue();
 				}
 				conflictNodes.put(n.getId(), l);
 			}
 			this.progressBar();
 		});
 
-		this.setBarMax(new Long(graph.nodes().count()+conflictNodes.size()).intValue());
+		this.setBarMax(new Long(graph.nodes().count() + conflictNodes.size()).intValue());
 
 		List<String> nodes = new ArrayList<String>();
 
-		Stream<Map.Entry<String,Long>> sorted;
-		if(increasing)
-			sorted = conflictNodes.entrySet().stream()
-		       .sorted(Map.Entry.comparingByValue());
+		Stream<Map.Entry<String, Long>> sorted;
+		if (increasing)
+			sorted = conflictNodes.entrySet().stream().sorted(Map.Entry.comparingByValue());
 		else
-			sorted = conflictNodes.entrySet().stream()
-				.sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
+			sorted = conflictNodes.entrySet().stream().sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
 
-		
-		sorted.forEach( entry ->{
+		sorted.forEach(entry -> {
 			String key = entry.getKey();
 			Node n = graph.getNode(key);
 			AtomicInteger nb = new AtomicInteger(0);
 			n.edges().forEach(e -> {
-				e.attributeKeys().forEach( k -> {
-					if(k.compareTo("o") == 0 || k.compareTo("s") == 0 || k.compareTo("p") == 0 || k.compareTo("ui.class") == 0)
+				e.attributeKeys().forEach(k -> {
+					if (k.compareTo("o") == 0 || k.compareTo("s") == 0 || k.compareTo("p") == 0
+							|| k.compareTo("ui.class") == 0)
 						return;
 					else {
 						Boolean b = (Boolean) e.getAttribute("removed");
@@ -74,12 +73,12 @@ public class SortedStrategy extends MAPStrategy {
 					}
 				});
 			});
-			if(nb.get() > 0) {
+			if (nb.get() > 0) {
 				n.setAttribute("removed", true);
 				n.edges().forEach(e -> {
 					e.setAttribute("removed", true);
 				});
-			} else 
+			} else
 				nodes.add(n.getId());
 			this.progressBar();
 		});

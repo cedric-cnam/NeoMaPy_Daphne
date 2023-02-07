@@ -4,7 +4,6 @@
 package neoMaPy.ui;
 
 import java.awt.GridLayout;
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -43,9 +42,9 @@ public class ButtonPanel extends JPanel implements ActionListener {
 			gs.getGraph().css();
 		} else if (e.getSource() == layout) {
 			if (layoutEnabled)
-				;//gs.viewer.disableAutoLayout();
+				;// gs.viewer.disableAutoLayout();
 			else
-				;//gs.viewer.enableAutoLayout();
+				;// gs.viewer.enableAutoLayout();
 			layoutEnabled = !layoutEnabled;
 		}
 

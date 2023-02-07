@@ -27,10 +27,11 @@ public class NeoMaPyGraph extends MultiGraph {
 	private Map<String, String> mapping;
 
 	public static final int infinity = 1000000;
+
 	public NeoMaPyGraph(String graphID) {
 		super(graphID);
-		mapping = new HashMap<String, String> ();
-		mapy = new MaPy ();
+		mapping = new HashMap<String, String>();
+		mapy = new MaPy();
 	}
 
 	public void css() {
@@ -91,10 +92,10 @@ public class NeoMaPyGraph extends MultiGraph {
 		setSize(nodeId, weight);
 
 		String type = getStringNeo4j(json, "type");
-		n.setAttribute("type", "TF"+(type != null ? "_"+type:""));
+		n.setAttribute("type", "TF" + (type != null ? "_" + type : ""));
 		addAttribute(n, "ui.class", "TF");
 		Object o = getNeo4jValue(json, "valid");
-		if(o != null && !((Boolean)o))
+		if (o != null && !((Boolean) o))
 			addAttribute(n, "ui.class", "TF_invalid");
 		else if (weight > NeoMaPyGraph.infinity)
 			addAttribute(n, "ui.class", "TF_infinite");
@@ -126,8 +127,8 @@ public class NeoMaPyGraph extends MultiGraph {
 		String to = getStringNeo4j(json, "to");
 		String edgeId = edgeId(from, to);
 		try {
-			//Edge e = 
-					addEdge(edgeId, "inference", from, to);
+			// Edge e =
+			addEdge(edgeId, "inference", from, to);
 		} catch (org.graphstream.graph.EdgeRejectedException e) {
 			System.out.println(edgeId);
 		}
@@ -183,29 +184,29 @@ public class NeoMaPyGraph extends MultiGraph {
 		Object o = getNeo4jValue(json, type);
 		if (o != null) {
 			e.setAttribute(type, (Boolean) o);
-			addAttribute(e, "ui.class", "TC1_"+type);
+			addAttribute(e, "ui.class", "TC1_" + type);
 		}
 	}
 
 	public String getStringNeo4j(JSONObject json, String att) {
 		Object o = getNeo4jValue(json, att);
-		if(o == null)
+		if (o == null)
 			return null;
-		return (String)o ;
+		return (String) o;
 	}
 
 	public Boolean getBooleanNeo4j(JSONObject json, String att) {
 		Object o = getNeo4jValue(json, att);
-		if(o == null)
+		if (o == null)
 			return null;
-		return (Boolean)o;
+		return (Boolean) o;
 	}
 
 	public Double getDoubleNeo4j(JSONObject json, String att) {
 		Object o = getNeo4jValue(json, att);
-		if(o == null)
+		if (o == null)
 			return null;
-		return (Double)o;
+		return (Double) o;
 	}
 
 	public Object getNeo4jValue(JSONObject json, String att) {
