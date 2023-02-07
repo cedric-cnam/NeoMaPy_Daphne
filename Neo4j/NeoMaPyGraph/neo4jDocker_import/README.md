@@ -1,0 +1,1 @@
+Data required for this project were put on a distinct repository to lightweight the project. Pick your CSV files from [NeoMaPy_Daphne_Data](https://github.com/cedric-cnam/NeoMaPy_Daphne_Data/tree/main/translate2Neo4j). those data were processed by *translate2Neo4j* to correspond to the appropriate format in Neo4j.
