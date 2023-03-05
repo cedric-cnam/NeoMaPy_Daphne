@@ -8,4 +8,4 @@ MERGE (tf:TF{ID:l.ID_TF,date_start:datetime(l.date_start),date_end:datetime(l.da
 	p:l.ID_p, o:l.ID_o, s:l.ID_s})
 MERGE (ID_s) <-[:s]- (tf)
 MERGE (ID_o) <-[:o]- (tf)
-MERGE (ID_p) <-[:p]- (tf);}
+MERGE (ID_p) <-[:p]- (tf)};
