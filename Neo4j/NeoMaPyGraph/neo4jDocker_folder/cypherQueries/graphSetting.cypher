@@ -1,5 +1,5 @@
 //dataset loading
-CALL {LOAD CSV WITH HEADERS FROM "file:/pinstConf_rockit_wikidata_10_5k.csv" as l FIELDTERMINATOR ';'
+CALL {LOAD CSV WITH HEADERS FROM "file:/<<FILE>>" as l FIELDTERMINATOR ';'
 WITH l WHERE datetime(l.date_start) <= datetime(l.date_end)
 MERGE (ID_s:Concept{ID:l.ID_s})
 MERGE (ID_o:Concept{ID:l.ID_o})
