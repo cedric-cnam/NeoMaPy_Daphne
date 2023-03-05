@@ -1,0 +1,21 @@
+
+;NB_triplets
+Nb triplets;0
+
+;NB_o
+Nb "o";0
+
+;NB_s
+Nb "s";0
+
+;NB_p
+nb "p";0
+
+;ID;NAME;NB
+
+;TYPE;CONFLICT_CODE;NB
+
+;NB_pCon;NB_pConpInc;NB_pInc;NB_tInc;NB_total
+Nb temporal conflicts;0;0;0;0;0
+
+;o_ID;NB
