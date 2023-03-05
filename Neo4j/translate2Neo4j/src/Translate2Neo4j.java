@@ -14,8 +14,8 @@ import java.util.zip.ZipOutputStream;
 
 public class Translate2Neo4j {
 	WikidataReader wr = new WikidataReader ();
-	public static String outputFolder = "../data/wikidata2graphModeling/";
-	public static String inputFolder = "../data/input/";
+	public static String outputFolder = "/Users/ntravers/git/NeoMaPy_Daphne_Data/translate2Neo4j/";
+	public static String inputFolder = "/Users/ntravers/git/NeoMaPy_Daphne_Data/wikidata - nrockit/input data/";
 	public static float ratio_rand_negative_polarity = 0.05f;
 	public static boolean lowWeight = true;
 	public static boolean weightsNormalization = false;
