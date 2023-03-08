@@ -1,7 +1,7 @@
 //Temporal Uncertain Rules
 //C0 - Strict Temporal Consistency
 MATCH (tf1:TF) -[:s]-> (s:Concept) <-[:s]- (tf2:TF)
-WHERE tf1.o <> tf2.o AND tf1.p=tf2.p AND NOT( (tf1.date_end < tf2.date_start) OR (tf2.date_end < tf1.date_start))
+WHERE tf1.o <> tf2.o AND tf1.p=tf2.p AND NOT( (tf1.date_end <= tf2.date_start) OR (tf2.date_end <= tf1.date_start))
 MERGE (tf1) -[:conflict{type:"C0"}]- (tf2);
 
 //C1 - birthDateConflict

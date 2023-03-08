@@ -1,6 +1,5 @@
 //dataset loading
-USING PERIODIC COMMIT 100
-LOAD CSV WITH HEADERS FROM "file:/<<FILE>>" as l FIELDTERMINATOR ';'
+CALL {LOAD CSV WITH HEADERS FROM "file:/<<FILE>>" as l FIELDTERMINATOR ';'
 WITH l WHERE datetime(l.date_start) <= datetime(l.date_end)
 MERGE (ID_s:Concept{ID:l.ID_s})
 MERGE (ID_o:Concept{ID:l.ID_o})
@@ -9,4 +8,4 @@ MERGE (tf:TF{ID:l.ID_TF,date_start:datetime(l.date_start),date_end:datetime(l.da
 	p:l.ID_p, o:l.ID_o, s:l.ID_s})
 MERGE (ID_s) <-[:s]- (tf)
 MERGE (ID_o) <-[:o]- (tf)
-MERGE (ID_p) <-[:p]- (tf);
+MERGE (ID_p) <-[:p]- (tf)};
