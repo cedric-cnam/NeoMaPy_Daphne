@@ -261,6 +261,28 @@ def sum_weight(dico,solution):
         sum += dico[str(id)][0]
     return sum
 
+def sum_weight_noInf(dico,solution):
+    sum = 0
+    i = 0
+    for id in solution:
+        if dico[str(id)][0] < 10000:
+            sum += dico[str(id)][0]
+        else :
+            i += 1
+    return sum,i
+
+def sum_weight_ldico_noInf(ldico,solution):
+    sum = 0
+    i = 0
+    for id in solution:
+        for dico in ldico["list"]:
+            if str(id) in dico:
+                if dico[str(id)][0] < 10000:
+                    sum += dico[str(id)][0]
+                else:
+                    i+=1
+    return sum,i
+
 
 def max_sum_list_int(dico,l_sol):
     l_sum = []
@@ -638,6 +660,7 @@ if __name__ == '__main__':
     #print(f'number of sub dico = {len(l_dico["list"])}\n')
     start = time.time()
     output1 = parallelization(l_dico)
+    output1_noInf,nbinf1 = sum_weight_ldico_noInf(l_dico,output1[1])
     end = time.time()
     elapsed = end - start
     #print(f'Execution time conflict : {elapsed:.5}s')
@@ -646,6 +669,7 @@ if __name__ == '__main__':
 
     start = time.time()
     output2 = sum_weight(dico,dico)
+    output2_noInf,nbinf2 = sum_weight_noInf(dico,dico)
     end = time.time()
     elapsed = end - start
     #print(f'Execution time no conflict : {elapsed:.5}s')
@@ -654,9 +678,17 @@ if __name__ == '__main__':
 
     #print(f'nb nodes conf = {len(output1[1])}')
     #print(f'nb nodes no conf = {len(dico)}')
-    #print(f'nb nodes total = {len(output1[1]) + len(dico)}')
+    print(f'nb nodes total = {len(output1[1]) + len(dico)}')
+    sol_MAPY = set(output1[1])
+    for id in dico:
+        sol_MAPY.add(id)
+    print(sol_MAPY)
+    print(len(sol_MAPY))
+    print(f'nb nodes inf total = {nbinf1+nbinf2}')
     #print(f'Score total = {output1[0] + output12 + output2}')
-    #print(f'Score total = {output1[0] + output2}')
+    print(f'Time total = {time_conf + time_noconf}')
+    print(f'Score total = {output1[0] + output2}')
+    print(f'Score total without Inf = {output1_noInf + output2_noInf}')
     
     ############################################## Write the data ################################################
 
