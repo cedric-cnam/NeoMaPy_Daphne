@@ -40,8 +40,10 @@ WHERE tf1.date_start + duration({years: 50}) < tf2.date_end
 MERGE (tf1) -[:conflict{type:"C7"}]- (tf2);
 
 //C8 - twoTeamsConflict
-MATCH (tf1:TF{p:"P54"}) -[:s]-> (s) <-[:s]- (tf2:TF{p:"P54"})
-WHERE tf1.o <> tf2.o AND NOT( (tf1.date_end < tf2.date_start) OR (tf2.date_end < tf1.date_start))
+MATCH (s:Concept) <-[:s]- (:TF{p:"P54"})
+WITH distinct id(s) as id
+MATCH (tf1:TF{p:"P54"}) -[:s]-> (s:Concept) <-[:s]- (tf2:TF{p:"P54"})
+WHERE id(s) = id AND tf1.o <> tf2.o AND NOT( (tf1.date_end < tf2.date_start) OR (tf2.date_end < tf1.date_start))
 MERGE (tf1) -[:conflict{type:"C8"}]- (tf2);
 
 //C14 - marriageConflict
