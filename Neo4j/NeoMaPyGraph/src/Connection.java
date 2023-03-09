@@ -157,11 +157,11 @@ public class Connection implements AutoCloseable {
 							output.write("[");
 							if(result.hasNext()) {
 								JSONObject o = toJSON(result.next());
-								output.write(o.toJSONString().replaceAll("TRUE", "true"));
+								output.write(o.toJSONString().replaceAll("TRUE", "true").replaceAll("FALSE", "false"));
 								
 								while (result.hasNext()) {
 									o = toJSON(result.next());
-									output.write(",\n"+o.toJSONString().replaceAll("TRUE", "true"));
+									output.write(",\n"+o.toJSONString().replaceAll("TRUE", "true").replaceAll("FALSE", "false"));
 								}
 							}
 							output.write("]");
