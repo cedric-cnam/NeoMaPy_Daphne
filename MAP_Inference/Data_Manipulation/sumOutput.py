@@ -53,7 +53,8 @@ for line_db in file_db:
 
     #k = 0
     list_possibilities = []
-    #list_test = []
+    list_test = []
+    dico_test = {}
     ban_list = []
 
     for line_csv in lines_csv:
@@ -75,9 +76,10 @@ for line_db in file_db:
                 str_weight = list_line_csv[12].split(" ")
                 weight = float(str_weight[2][:-3])
                 list_possibilities.append(weight)
-                #list_test.append([weight,[id_1,id_2,id_3,id_4,id_5]])
+                
+                list_test.append([weight,str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)])
                 #sum += weight
-                i += 1
+                #i += 1
                 find = True     
 
                 #k += 1
@@ -86,20 +88,39 @@ for line_db in file_db:
     #    print(f"{id_1} {id_2} {id_3} {id_4} {id_5}")
 
     if find:
-        sum += min(list_possibilities)
+        #sum += min(list_possibilities)
+        #print(str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5))
+
+        if str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5) not in dico_test:
+            dico_test[str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)] = list_possibilities
+        #else:
+         #   dico_test[str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)].add(weight)
+
+        """
         if str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5) not in ban_list:
+
             for w in list_possibilities:
                 sum += w
+                i+=1
 
-        if min(list_possibilities) < 10000:
-            sum_noInf += min(list_possibilities)
+                if w < 10000:
+                    sum_noInf += w
+                    j+=1
+
+            ban_list.append([w,str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)])
+        """
+
+        maxi = max(dico_test[str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)])
+        dico_test[str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)] = dico_test[str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)].remove(maxi)
+        sum += maxi
+        i+=1
+        if maxi < 10000:
+            sum_noInf += maxi
             j+=1
-        
-
 
         #if max(list_possibilities) > 10000:
-            #print(list_test)
-            #print(f'{id_1} and {id_2} and {id_3} and {id_4} and {id_5}')
+         #   print(list_test)
+          #  print(f'{id_1} and {id_2} and {id_3} and {id_4} and {id_5}')
         k +=1
 
     else:
@@ -110,9 +131,9 @@ for line_db in file_db:
 
 print(f'i = {i}')
 print(f'j = {j}')
-print(f'j = {k}')
+print(f'k = {k}')
 print(f'sum = {sum}')
-print(f'sum = {sum_noInf}')
+print(f'sum_noInf = {sum_noInf}')
 
 file_db.close()
 file_csv.close()
