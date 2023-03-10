@@ -77,6 +77,7 @@ public class Connection implements AutoCloseable {
 				//timeElapsed = Duration.between(start, end);
 				total += t;
 				//total += timeElapsed.toMillis();
+				session.close();
 				try {
 					log(step, q.instruction, t);
 					//timeElapsed.toMillis());
