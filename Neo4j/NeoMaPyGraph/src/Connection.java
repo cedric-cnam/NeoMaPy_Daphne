@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -65,17 +66,21 @@ public class Connection implements AutoCloseable {
 
 	public void updateQueries(String step, List<Query> queries) {
 		long total = 0l;
-		Instant start, end;
-		Duration timeElapsed;
+		//Instant start, end;
+		//Duration timeElapsed;
 		for (Query q : queries) {
 			try (Session session = driver.session()) {
-				start = Instant.now();
-				session.run(q.query);
-				end = Instant.now();
-				timeElapsed = Duration.between(start, end);
-				total += timeElapsed.toMillis();
+				//start = Instant.now();
+				Result r = session.run(q.query);
+				long t = r.consume().resultAvailableAfter(TimeUnit.MILLISECONDS);
+				//end = Instant.now();
+				//timeElapsed = Duration.between(start, end);
+				total += t;
+				//total += timeElapsed.toMillis();
+				session.close();
 				try {
-					log(step, q.instruction, timeElapsed.toMillis());
+					log(step, q.instruction, t);
+					//timeElapsed.toMillis());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -157,11 +162,11 @@ public class Connection implements AutoCloseable {
 							output.write("[");
 							if(result.hasNext()) {
 								JSONObject o = toJSON(result.next());
-								output.write(o.toJSONString().replaceAll("TRUE", "true"));
+								output.write(o.toJSONString().replaceAll("TRUE", "true").replaceAll("FALSE", "false"));
 								
 								while (result.hasNext()) {
 									o = toJSON(result.next());
-									output.write(",\n"+o.toJSONString().replaceAll("TRUE", "true"));
+									output.write(",\n"+o.toJSONString().replaceAll("TRUE", "true").replaceAll("FALSE", "false"));
 								}
 							}
 							output.write("]");

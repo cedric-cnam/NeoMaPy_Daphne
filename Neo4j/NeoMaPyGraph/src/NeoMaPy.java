@@ -34,8 +34,11 @@ public class NeoMaPy {
 		connection.close();
 	}
 
-	public void graphSettings() throws Exception {
+	public void graphDelete() throws Exception {
 		graphSetting ("delete.cypher");
+	}
+	
+	public void graphSettings() throws Exception {
 		graphSetting ("schema.cypher");
 		graphSetting ("graphSetting.cypher");
 	}
@@ -169,6 +172,7 @@ public class NeoMaPy {
 
 			NeoMaPy gm = new NeoMaPy ();
 			if(!noDelete) {
+				gm.graphDelete();
 				gm.graphSettings();
 			}
 			if(inference)
@@ -176,6 +180,9 @@ public class NeoMaPy {
 			gm.constraints();
 			gm.statsQueries ("stats.cypher", "stats");
 			gm.resultQueries ("results.cypher");
+			if(!noDelete) {
+				gm.graphDelete();
+			}
 			gm.close();
 
 		} catch (Exception e) {

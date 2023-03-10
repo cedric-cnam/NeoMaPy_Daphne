@@ -1,7 +1,7 @@
 {
 	"URI" : "bolt://localhost:7687",
     "user" : "neo4j",
-    "mdp" : "admin",
+    "mdp" : "admin_neo4j",
     "database" : "DAPHNE",
     "generateGraphQueries" : "cypherQueries/generate_NeoMaPy.cypher",
     "statsQueries" : "cypherQueries/stats_NeoMaPy.cypher",
