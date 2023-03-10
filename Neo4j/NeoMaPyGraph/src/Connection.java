@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -65,17 +66,20 @@ public class Connection implements AutoCloseable {
 
 	public void updateQueries(String step, List<Query> queries) {
 		long total = 0l;
-		Instant start, end;
-		Duration timeElapsed;
+		//Instant start, end;
+		//Duration timeElapsed;
 		for (Query q : queries) {
 			try (Session session = driver.session()) {
-				start = Instant.now();
-				session.run(q.query);
-				end = Instant.now();
-				timeElapsed = Duration.between(start, end);
-				total += timeElapsed.toMillis();
+				//start = Instant.now();
+				Result r = session.run(q.query);
+				long t = r.consume().resultAvailableAfter(TimeUnit.MILLISECONDS);
+				//end = Instant.now();
+				//timeElapsed = Duration.between(start, end);
+				total += t;
+				//total += timeElapsed.toMillis();
 				try {
-					log(step, q.instruction, timeElapsed.toMillis());
+					log(step, q.instruction, t);
+					//timeElapsed.toMillis());
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
