@@ -1,20 +1,40 @@
 import csv
+import sys
+
+
+if len(sys.argv ) != 3:
+    print( "Please give the 2 following parameters:" )
+    print( "1. your csv file containing the initial data," )
+    print( "2. your db file containing the output." )
+    exit()
+
+# Give your initial json file containing the conflicting nodes
+wikidata = sys.argv[1]
+file_csv = open(wikidata, 'r')
+
+# Give your initial json file containing the non conflicting nodes
+output = sys.argv[2]
+file_db = open(output, 'r')
 
 #data = ".\..\..\..\Neo4J\wikidata\data\\rockit_wikidata_0_5k.csv"
-data_csv = ".\..\..\..\\NeoMaPy_Daphne_Data\\wikidata-nrockit\\input_data\\rockit_wikidata_10_5k.csv"
-file_csv = open(data_csv,"r")
+#data_csv = ".\..\..\..\\NeoMaPy_Daphne_Data\\wikidata-nrockit\\input_data\\rockit_wikidata_10_5k.csv"
+#file_csv = open(data_csv,"r")
 
 # C:\Users\Victor\Documents\GitHub\NeoMaPy_Daphne\MAP_Inference\Data_Manipulation
 # C:\Users\Victor\Documents\GitHub\NeoMaPy_Daphne_Data\wikidata-nrockit\input data
 
-data_db = ".\..\..\..\\NeoMaPy_Daphne_Data\MAP_nRockit\output_10_5k.db"
-file_db = open(data_db,'r')
+#data_db = ".\..\..\..\\NeoMaPy_Daphne_Data\MAP_nRockit\output_10_5k.db"
+#file_db = open(data_db,'r')
+
+
 
 sum = 0
 sum_noInf = 0
 i = 0
 j = 0
 dico_weight = {}
+nb_false_total = 0
+nb_false = 0
 lines_csv = csv.reader(file_csv, delimiter=",")
 for line_csv in lines_csv:
     if len(line_csv) > 3 :
@@ -29,6 +49,9 @@ for line_csv in lines_csv:
         id_d = int(id_d)
         id_e = list_line_csv[9]
         id_e = int(id_e)
+        
+        if list_line_csv[11] == "false":
+            nb_false_total += 1
 
         str_weight = list_line_csv[12].split(" ")
         weight = float(str_weight[2][:-3])
@@ -60,6 +83,9 @@ for line_db in file_db:
 
     id_5 = list_line[9]
     id_5 = int(float(id_5))
+
+    if str(list_line[11]) == "false":
+            nb_false += 1
     
     id = str(id_1)+str(id_2)+str(id_3)+str(id_4)+str(id_5)
     maxi = max(dico_weight[id])
@@ -77,15 +103,16 @@ print(f'nb not infinite node = {j}')
 print(f'sum = {sum}')
 print(f'sum_noInf = {sum_noInf}')
 
+print(f'nb_false = {nb_false}')
+print(f'nb_false_total = {nb_false_total}')
+print(f'ratio deleted false  = {float((nb_false_total-nb_false)/nb_false_total)}')
+
+
+
+
 file_db.close()
 file_csv.close()
 
 
 #pinstConf("Q24012",  "P54",  "Q1886",  "201301",  "201301",  "true", 0.23296)
 #pinstConf("Q24012",  "P54",  "Q1886",  "201301",  "201301",  "true", 0.37535)
-
-# [9.223372036854776e+18, ['Q5024', 'P54', 'Q2739', 200101, 200201]
-# [9.223372036854776e+18, ['Q1939', 'P54', 'Q1344163', 200501, 200608]
-# [9.223372036854776e+18, ['Q1925', 'P54', 'Q1450557', 201501, 201601]
-# [9.223372036854776e+18, ['Q10869', 'P54', 'Q5794', 201201, 201301] => ligne output 915, 1233, 1421, 2119
-# [9.223372036854776e+18, ['Q5117', 'P54', 'Q319699', 200201, 200201]
