@@ -27,14 +27,14 @@ if len( sys.argv ) != 5:
     exit()
 
 # Give your initial json file containing the conflicting nodes
-#data_conf = '.\..\..\Data_Json\Initial_Data\conflicts_75_200k.json'
+#data_conf = './../../Data_Json\Initial_Data\conflicts_75_200k.json'
 data_conf = sys.argv[1]
 with open(data_conf, 'r') as f:
     liste_conf = json.load(f)
 
 
 # Give your initial json file containing the non conflicting nodes
-#data_noconf = '.\..\..\Data_Json\Initial_Data\\noConflicts_75_200k.json'
+#data_noconf = './../../Data_Json\Initial_Data\\noConflicts_75_200k.json'
 data_noconf = sys.argv[2]
 with open(data_noconf, 'r') as f2:
     liste_noconf = json.load(f2)
@@ -142,8 +142,8 @@ fichier_noconf.close()
 ############################################## LOAD the data #################################################
 
 #start = time.time()
-data_conf = '.\dicoConf.json'
-#data_conf = '.\..\..\Data_Json\Dictionnary\ClearDico\dicotIncConfClear_75_200k_nrockit.json'
+data_conf = './dicoConf.json'
+#data_conf = './../../Data_Json\Dictionnary\ClearDico\dicotIncConfClear_75_200k_nrockit.json'
 with open(data_conf, 'r') as f:     
     dic = json.load(f)
 
@@ -605,13 +605,13 @@ def build_sol(dico):
 ##################################### LOAD the data for OPTI 2 ###############################################
 
 """
-with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDico_25_200k.json', 'r') as f: 	
+with open('./../../Data_Json\Dictionnary\listDico\listOfDico_25_200k.json', 'r') as f: 	
     l_dico = json.load(f)
 
-#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_25_200k.json', 'r') as f: 	
+#with open('./../../Data_Json\Dictionnary\listDico\listOfDicotInc_25_200k.json', 'r') as f: 	
 #    l_dico = json.load(f)
 
-#with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_25_200k_nrockitClear.json', 'r') as f: 	
+#with open('./../../Data_Json\Dictionnary\listDico\listOfDicotInc_25_200k_nrockitClear.json', 'r') as f: 	
     #l_dico = json.load(f)
 
 #################################### Apply Opti 1 on the list of dico ########################################
@@ -649,11 +649,11 @@ def parallelization(l_dico):
 
 
 if __name__ == '__main__':
-    with open('.\dicoNoConf.json', 'r') as f:
+    with open('./dicoNoConf.json', 'r') as f:
         dico = json.load(f)
 
-    #with open('.\..\..\Data_Json\Dictionnary\listDico\listOfDicotInc_25_200k.json', 'r') as f: 
-    with open('.\listOfDico.json', 'r') as f: 	
+    #with open('./../../Data_Json\Dictionnary\listDico\listOfDicotInc_25_200k.json', 'r') as f: 
+    with open('./listOfDico.json', 'r') as f: 	
         l_dico = json.load(f)
 
     
@@ -682,8 +682,8 @@ if __name__ == '__main__':
     sol_MAPY = set(output1[1])
     for id in dico:
         sol_MAPY.add(id)
-    print(sol_MAPY)
-    print(len(sol_MAPY))
+    #print(sol_MAPY)
+    #print(len(sol_MAPY))
     print(f'nb nodes inf total = {nbinf1+nbinf2}')
     #print(f'Score total = {output1[0] + output12 + output2}')
     print(f'Time total = {time_conf + time_noconf}')
