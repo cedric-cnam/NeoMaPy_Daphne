@@ -12,6 +12,7 @@ services:
    - 7474:7474
    - 7473:7473
    - 7687:7687
+  mem_limit: 60g
   environment:
    NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
    NEO4J_AUTH: neo4j/admin_neo4j
