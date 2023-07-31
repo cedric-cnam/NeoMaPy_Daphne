@@ -27,7 +27,7 @@ import neoMaPy.MaPyStrategy.MaPyStrategy;
 public class MenuBar extends JMenuBar implements ActionListener, ItemListener, ChangeListener {
 	private static final long serialVersionUID = -7079284854154034465L;
 	NeoMaPyFrame neomapy;
-	JMenuItem graph_load, neo4j_connect, neo4j_queries, graph_css, graph_layout, graph_sop, graph_invalidTF, processMAP,
+	JMenuItem graph_load, neo4j_connect, neo4j_queries, graph_view, graph_css, graph_layout, graph_sop, graph_invalidTF, processMAP,
 			resetMAP, randomMAP, conflictDecreasingMAP, conflictIncreasingMAP, weightDecreasingMAP, weightIncreasingMAP,
 			invalidMAP;
 	JRadioButtonMenuItem[] tempC = new JRadioButtonMenuItem[4];
@@ -51,6 +51,7 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 
 		m = new JMenu("Conflict Graph");
 		m.add(graph_load = menuItem("Load Knowledge Graph", KeyEvent.VK_G));
+		m.add(graph_view = menuItem("Reset View", KeyEvent.VK_R));
 		m.add(graph_css = menuItem("Reload CSS", KeyEvent.VK_C));
 		m.add(graph_layout = menuItem("Layout: stop", KeyEvent.VK_L));
 		m.add(graph_sop = menuItem("Display sop: false", KeyEvent.VK_S));
@@ -84,7 +85,7 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 		m.add(processMAP = menuItem("Compute MAP Inference", KeyEvent.VK_M));
 		m.add(new JSeparator());
 
-		m.add(resetMAP = menuItem("reset", KeyEvent.VK_R));
+		m.add(resetMAP = menuItem("reset", KeyEvent.VK_D));
 
 		JMenu test = new JMenu("MAP test");
 		test.add(randomMAP = menuItem("Random nodes", 0));
@@ -131,6 +132,8 @@ public class MenuBar extends JMenuBar implements ActionListener, ItemListener, C
 			neomapy.neo.connect();
 		else if (o == neo4j_queries)
 			neomapy.neo.executeQueries();
+		else if (o == graph_view)
+			neomapy.gsp.resetZoom();
 		else if (o == graph_css)
 			neomapy.getGraph().css();
 		else if (o == graph_layout) {

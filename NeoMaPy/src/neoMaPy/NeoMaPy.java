@@ -106,6 +106,8 @@ public class NeoMaPy {
 	}
 
 	public static void main(String[] args) {
+		//-Dsun.java2d.uiScale=100%
+		System.setProperty("sun.java2d.uiScale", "100%");
 		System.setProperty("org.graphstream.ui", "swing");
 		System.setProperty("org.graphstream.ui.renderer", "org.graphstream.ui.j2dviewer.J2DGraphRenderer");
 		try {

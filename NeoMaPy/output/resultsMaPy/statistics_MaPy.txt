@@ -1,13 +1,13 @@
-Number of sub dictionary: 206
+Number of sub dictionary: 204
 
-Time execution for conflicts: 14.046435832977295 secondes 
-Time execution for no conflicts: 0.0007307529449462891 secondes 
-Time execution total: 14.047166585922241 secondes 
+Time execution for conflicts: 0.44698381423950195 secondes 
+Time execution for no conflicts: 0.0003769397735595703 secondes 
+Time execution total: 0.4473607540130615 secondes 
 
 Weight of solutions in conflicts: 3.6893488e+19
 Weight of solutions in no conflicts: 9.223372000000003e+18
 Weight of solutions in total: 4.611686e+19
 
-Number of solutions in conflicts: 1725
-Number of solutions in no conflicts: 2484
-Number of solutions in total: 4209
+Number of solutions in conflicts: 1656
+Number of solutions in no conflicts: 2683
+Number of solutions in total: 4339

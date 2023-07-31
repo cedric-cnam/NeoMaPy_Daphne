@@ -9,22 +9,26 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.EnumSet;
 import java.util.List;
 
 import javax.swing.JPanel;
 
 import org.graphstream.ui.geom.Point2;
 import org.graphstream.ui.geom.Point3;
+import org.graphstream.ui.graphicGraph.GraphicElement;
 import org.graphstream.ui.graphicGraph.GraphicGraph;
 import org.graphstream.ui.graphicGraph.GraphicNode;
 import org.graphstream.ui.swing.SwingGraphRenderer;
 import org.graphstream.ui.swing_viewer.DefaultView;
 import org.graphstream.ui.swing_viewer.SwingViewer;
-import org.graphstream.ui.swing_viewer.util.DefaultMouseManager;
 import org.graphstream.ui.view.View;
 import org.graphstream.ui.view.Viewer;
+import org.graphstream.ui.view.ViewerListener;
+import org.graphstream.ui.view.ViewerPipe;
 import org.graphstream.ui.view.camera.Camera;
 import org.graphstream.ui.view.util.GraphMetrics;
+import org.graphstream.ui.view.util.InteractiveElement;
 
 import neoMaPy.NeoMaPy;
 import neoMaPy.Query;
@@ -33,11 +37,12 @@ import neoMaPy.ui.NeoMaPyFrame;
 import neoMaPy.ui.graphstream.info.MAPBar;
 import neoMaPy.ui.graphstream.info.RightPanel;
 
-public class GraphStreamPanel extends JPanel {
+public class GraphStreamPanel extends JPanel implements ViewerListener {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
+	protected boolean loop = true;
 
 	// CSS :
 	// https://graphstream-project.org/doc/Advanced-Concepts/GraphStream-CSS-Reference/
@@ -47,10 +52,10 @@ public class GraphStreamPanel extends JPanel {
 	RightPanel rp;
 
 	private NeoMaPyGraph graph;
-	private DefaultMouseManager mouseManager;
 
 	public GraphStreamPanel(int width, int height) {
 		super();
+		//this.setSize(width, height);
 		this.width = width;
 		this.height = height;
 	}
@@ -59,7 +64,9 @@ public class GraphStreamPanel extends JPanel {
 		if (graph != null)
 			return;
 		graph = new NeoMaPyGraph("NeoMaPy");
-		viewer = new SwingViewer(graph, SwingViewer.ThreadingModel.GRAPH_IN_ANOTHER_THREAD);
+		viewer = new SwingViewer(graph, SwingViewer.ThreadingModel
+				//.GRAPH_IN_GUI_THREAD);
+				.GRAPH_IN_ANOTHER_THREAD);
 		graph.setAttribute("ui.stylesheet", "url('file://conf/NeoMaPy.css')");
 		try { // Allow time for the viewer to build
 			Thread.sleep(500);
@@ -80,22 +87,52 @@ public class GraphStreamPanel extends JPanel {
 	public void viewer(List<Query> queries) {
 		setLayout(new BorderLayout());
 
+		//TODO: addon viewer pipe
+		
+		viewer.setCloseFramePolicy(Viewer.CloseFramePolicy.HIDE_ONLY);
+		ViewerPipe fromViewer = viewer.newViewerPipe();
+		fromViewer.addViewerListener(this);
+		fromViewer.addSink(graph);
+		
+		//while(loop) {
+			fromViewer.pump(); // or fromViewer.blockingPump(); in the nightly builds
+
+			// here your simulation code.
+
+			// You do not necessarily need to use a loop, this is only an example.
+			// as long as you call pump() before using the graph. pump() is non
+			// blocking.  If you only use the loop to look at event, use blockingPump()
+			// to avoid 100% CPU usage. The blockingPump() method is only available from
+			// the nightly builds.
+		//}
+	
+		//
+		
 		viewer.enableAutoLayout();
 		add((DefaultView) viewer.addView("NeoMaPy", new SwingGraphRenderer()), BorderLayout.CENTER);
 
 		add(rp = new RightPanel(this, width, height), BorderLayout.EAST);
 		// setVisible(true);
 
-		mouseManager = new NeoMaPyMouseManager(this);
-		// viewer.getView("NeoMaPy").enableMouseOptions();
-		viewer.getView("NeoMaPy").setMouseManager(mouseManager);
 		View view = viewer.getView("NeoMaPy");
-		view.getCamera().setViewPercent(1);
+		
+		Camera cam = view.getCamera();
+		cam.setAutoFitView(true);
+		view.enableMouseOptions();
+		//view.setMouseManager(mouseManager);
+		//cam.setViewPercent(1);
+		//cam.setBounds(0, 0, width, height, 0, 0);
+
+		System.out.println(((Component)view).getBounds());
+				
+		GraphMetrics gm = cam.getMetrics();
+
 		try { // Allow time for the viewer to build
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+
 		((Component) view).addMouseWheelListener(new MouseWheelListener() {
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
@@ -104,15 +141,19 @@ public class GraphStreamPanel extends JPanel {
 				if (i == 0)
 					return;
 				double factor = Math.pow(1.1, i);
-				Camera cam = view.getCamera();
 				double zoom = cam.getViewPercent() * factor;
-				if (zoom > 2)
+				if (zoom > 1.1) {
+					resetZoom();
+					return;
+				}
+				if (zoom < 0.05)
 					return;
 				Point2 pxCenter = cam.transformGuToPx(cam.getViewCenter().x, cam.getViewCenter().y, 0);
 				Point3 guClicked = cam.transformPxToGu(e.getX(), e.getY());
 				double newRatioPx2Gu = cam.getMetrics().ratioPx2Gu / factor;
 				double x = guClicked.x + (pxCenter.x - e.getX()) / newRatioPx2Gu;
 				double y = guClicked.y - (pxCenter.y - e.getY()) / newRatioPx2Gu;
+				System.out.println(x+"-"+y+" ("+zoom+")");
 				cam.setViewCenter(x, y, 0);
 				cam.setViewPercent(zoom);
 			}
@@ -122,6 +163,14 @@ public class GraphStreamPanel extends JPanel {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				try {
+					GraphicElement ge = view.findGraphicElementAt(EnumSet.of(InteractiveElement.NODE), e.getX(), e.getY());
+					if (ge != null) {
+						setInfo(ge.getId());
+					}
+				} catch (Exception ex) {
+
+				}
 			}
 
 			@Override
@@ -129,6 +178,8 @@ public class GraphStreamPanel extends JPanel {
 				e.consume();
 				x = e.getX();
 				y = e.getY();
+				//Point3 guClicked = cam.transformPxToGu(x, y);
+				//Point3 pxClicked = cam.transformGuToPx(guClicked.x, guClicked.y, 0);
 			}
 
 			@Override
@@ -140,11 +191,10 @@ public class GraphStreamPanel extends JPanel {
 				if (width < 50 || height < 50)
 					return;
 
-				Camera cam = view.getCamera();
+				//viewer.replayGraph(graph);
 				Point3 px1 = cam.transformPxToGu(x, y);
 				Point3 px2 = cam.transformPxToGu(e.getX(), e.getY());
 
-				GraphMetrics gm = cam.getMetrics();
 				double widthZoom = gm.graphWidthGU() / (px2.x - px1.x);
 				double heightZoom = gm.graphHeightGU() / (px2.y - px1.y);
 
@@ -155,9 +205,13 @@ public class GraphStreamPanel extends JPanel {
 				Point3 pxCenter = cam.transformPxToGu(centerX, centerY);
 
 				double zoom = cam.getViewPercent() / multi;
+				if (zoom > 1.5 || zoom < 0.05)
+					return;
 
 				cam.setViewCenter(pxCenter.x, pxCenter.y, 0);
 				cam.setViewPercent(zoom);
+				//cam.setBounds(0, 0, width, height, 0, 0);
+
 			}
 
 			@Override
@@ -178,9 +232,26 @@ public class GraphStreamPanel extends JPanel {
 
 		Camera cam = viewer.getView("NeoMaPy").getCamera();
 		cam.setViewCenter(gn.getX(), gn.getY(), 0);
-		cam.setViewPercent(0.05);
+		cam.setViewPercent(0.1);
 	}
 
+	public void resetZoom () {
+		View v = viewer.getView("NeoMaPy");
+		Camera cam = v.getCamera();
+		//cam.setBounds(0, 0, width, height, 0, 0);
+		//GraphMetrics gm = cam.getMetrics();
+		System.out.println("--- 1 ---\n"+v.getCamera());
+
+		cam.setAutoFitView(true);
+
+//		System.out.println("--- 2 ---\n"+gm);
+
+		this.repaint();
+		this.revalidate();
+
+		System.out.println("--- 3 ---\n"+v.getCamera());
+	}
+	
 	public NeoMaPyGraph getGraph() {
 		return graph;
 	}
@@ -234,5 +305,34 @@ public class GraphStreamPanel extends JPanel {
 	public String toString() {
 		return "Graph (#nodes:" + graph.getNodeCount() + ",#edges:" + graph.getEdgeCount() + ")";// +graph.edgeAttributes;
 
+	}
+
+	@Override
+	public void buttonPushed(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void buttonReleased(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseLeft(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseOver(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void viewClosed(String arg0) {
+		loop = false;
 	}
 }

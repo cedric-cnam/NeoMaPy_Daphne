@@ -36,8 +36,8 @@ public class NeoMaPyFrame extends JFrame {
 	public void init() {
 		setLayout(new BorderLayout());
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		int width = new Double(screenSize.getWidth()).intValue();
-		int height = new Double(screenSize.getHeight()).intValue();
+		int width = ((Double)screenSize.getWidth()).intValue();
+		int height = ((Double)screenSize.getHeight()).intValue();
 		setSize(width, height);
 
 		add(tabs = new JTabbedPane(), BorderLayout.CENTER);
@@ -50,6 +50,7 @@ public class NeoMaPyFrame extends JFrame {
 
 		setLocationRelativeTo(null);
 		setVisible(true);
+		pack();
 
 		// graph.countAttributes ();
 		/*
@@ -71,8 +72,9 @@ public class NeoMaPyFrame extends JFrame {
 	public void loadGraph() {
 		tabs.setSelectedComponent(gsp);
 		gsp.initGraph(neo.getQueries());
-		this.setAlwaysOnTop(true);
-		this.setAutoRequestFocus(true);
+		pack();
+		//this.setAlwaysOnTop(true);
+		//this.setAutoRequestFocus(true);
 	}
 
 	public NeoMaPyGraph getGraph() {

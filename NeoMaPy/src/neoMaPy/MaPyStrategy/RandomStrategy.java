@@ -18,7 +18,7 @@ public class RandomStrategy extends MAPStrategy {
 	@Override
 	public List<String> computeStrategy(NeoMaPyGraph graph) {
 		this.resetBar();
-		this.setBarMax(new Long(graph.nodes().count()).intValue());
+		this.setBarMax((int)graph.nodes().count());
 		List<String> nodes = new ArrayList<String>();
 		graph.nodes().forEach(n -> {
 			if (Math.random() > 0.25d) {
